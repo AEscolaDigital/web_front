@@ -4,6 +4,7 @@ import iconeMagnifier from "../../assets/header/iconeMagnifier.svg"
 import configurationIcon from "../../assets/header/configurationIcon.svg"
 import puzzleIcon from "../../assets/header/puzzleIcon.svg"
 import downloadIcon from "../../assets/header/downloadIcon.svg"
+import iconExit from "../../assets/header/iconExit.svg"
 import React from 'react';
 
 function Header() {
@@ -20,7 +21,6 @@ function Header() {
     return (
         <Container>
             <div></div>
-
             <div>
                 <input type="text" placeholder="Pesquisar" />
                 <button type="submit">
@@ -39,7 +39,7 @@ function Header() {
                     <img src={profile} />
                     <div>Jaqueline Silva</div>
                     <div>jaqueline@gmail.com</div>
-                    <div></div>
+                    <hr/>
                     <a>
                         <div>
                             <img src={configurationIcon} />
@@ -58,7 +58,13 @@ function Header() {
                         </div>
                         <div>Dowload do aplicativo</div>
                     </a>
-                    <div></div>
+                    <hr/>
+                    <a>
+                        <div>
+                            <img src={iconExit} />
+                        </div>
+                        <div>Saída</div>
+                    </a>
                 </div>
             </Card>
         </Container>

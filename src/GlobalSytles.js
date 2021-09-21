@@ -2,7 +2,8 @@ import { createGlobalStyle } from "styled-components";
 
 
 export const GlobalSyles = createGlobalStyle`
-      @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap');
+      @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,500;0,600;1,400&display=swap');
+
 
       :root{
           --color-blue-gradient: linear-gradient(180deg, #5059c9 50%, #7b83eb 100%);

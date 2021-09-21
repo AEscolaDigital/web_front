@@ -66,12 +66,41 @@ export const Card = styled.div`
 
     border-radius: 10px;
 
-    /* transition: height 0.9s, opacity 0.2s; */
     transition: height 500ms;
     
     >div{
         
+        >img{
+            display: block;
+            margin: 15px auto 10px auto;
+        }
+
+        >div{
+            text-align: center;
+        }
+
+        >div:nth-child(2){
+            font-size: 18px;
+        }
+
+        >div:nth-child(3){ 
+            font-size: 14px;
+            color: #9F9F9F;
+        }
+
+        hr{
+            width: 300px;
+            border: 1px solid #9F9F9F;
+            margin: 15px auto 20px auto;
+        }
+
+        a{
+            display: flex;
+            column-gap: 30px;
+
+            margin: 10px 0px 0px 30px;
+
+            font-size: 14px;
+        }
     }
-
-
 `;
