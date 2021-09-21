@@ -5,7 +5,7 @@ import { A } from "./styles";
 function BtnSubmit({text}){
 
     return(
-        <A>{text} </A>
+        <A> {text} </A>
     );
 }
 

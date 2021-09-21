@@ -9,7 +9,7 @@ export const Container = styled.nav`
 
    background-image: var(--color-blue-gradient);
 
-   border-radius: 0px 30px 30px 0px;
+   border-radius: 0px 30px 30px 30px;
 
    transition: all 500ms; 
 
