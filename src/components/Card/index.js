@@ -1,17 +1,19 @@
 import iconAddMember from "../../assets/card/iconAddMember.svg"
 import iconDelete from "../../assets/card/iconDelete.svg"
-import {Cards} from "./styles"
+import { Cards } from "./styles"
 
-function Card() {
+function Card({ display }) {
     return (
-        <Cards>
+        <Cards style={{ display: display, }} >
             <div>
-               <div>
-                   <img src={iconAddMember} />
-               </div>
-               <div>
-                   <img src={iconDelete} />
-               </div>
+                <div>
+                    <img src={iconAddMember} />
+                    <span>Adicionar membro</span>
+                </div>
+                <div>
+                    <img src={iconDelete} />
+                    <span>Excluir turma</span>
+                </div>
             </div>
 
         </Cards>
