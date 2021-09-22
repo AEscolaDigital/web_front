@@ -26,11 +26,4 @@ export const DivTabela = styled.div`
      width: 1020px;
      height: 692.13px;
      background-color: red;
-     
-    >div::nth-child(1){
-
-    }
-
-    >div::nth-child(2){
-    }
 `

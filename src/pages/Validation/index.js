@@ -12,8 +12,7 @@ function Validation() {
             <Nav/>
             <div>
                 <DivContainer>
-                    
-                    
+
                     <div>
                        
                     </div>

@@ -1,13 +1,14 @@
 import { ModalContainer, Overlay } from "./styles";
 import React from 'react';
-import BtnCancel from "../BtnCancel";
-import BtnSubmit from "../BtnSubmit";
 
-function Modal({ children, title }) {
+function Modal({ children, title, width }) {
 
   return (
     <Overlay>
-      <ModalContainer>
+      <ModalContainer style={{
+          width: width,
+  
+      }} >
         <h1 id="title">{title}</h1>
         {children}
       </ModalContainer>
