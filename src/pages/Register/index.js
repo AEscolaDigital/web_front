@@ -1,15 +1,13 @@
 import BtnCancel from "../../components/BtnCancel";
 import BtnSubmit from "../../components/BtnSubmit";
 import Input from "../../components/Input";
-import { Container, DivHeader, DivImage, DivRegister, } from "./styles";
+import { Container, DivHeader, DivImage, DivRegister, DivBtn } from "./styles";
 import imageRegister from "../../assets/register/imageRegister.svg";
 
 function Register() {
     return (
         <Container>
             <DivHeader>
-
-
                 <h1>Seja Bem-Vindo!</h1>
                 <h1>Preencha todos os dados abaixo, para se cadastrar na plataforma. </h1>
             </DivHeader>
@@ -32,8 +30,10 @@ function Register() {
                     <label for="alunosProfessores">Professor</label>
                 </div>
 
-                <BtnCancel text="Voltar" />
-                <BtnSubmit text="Próximo" />
+                <DivBtn>
+                    <BtnCancel text="Voltar" />
+                    <BtnSubmit text="Próximo" />
+                </DivBtn>
             </DivRegister>
 
             <DivImage>
