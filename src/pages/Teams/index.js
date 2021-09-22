@@ -27,11 +27,17 @@ function Teams() {
 
         <Container>
             {isModalVisible ?
-                <Modal title="Criar turma" onClose={() => setIsModalVisible(false) } >
+                <Modal title="Criar turma">
                     <div id="inputsModal" >
                         <Input className="labelWhite" label="Nome da turma" />
                         <Input className="labelWhite" label="Nome do professor" />
                         <Input className="labelWhite" label="Disciplina" />
+                    </div>
+                    <div id="btnModal" >
+                        <div onClick={() => setIsModalVisible(false)} >
+                            <BtnCancel text="Cancelar" />
+                        </div>
+                        <BtnSubmit text="Próximo" />
                     </div>
                 </Modal> : null}
             <Header />
@@ -43,6 +49,20 @@ function Teams() {
                 <h1>Suas turmas</h1>
             </div>
             <Section>
+                <div>
+                    <div>
+                        <img src={iconMore} onClick={e => setToogle(state => !state)} />
+
+                        <Card display={value} />
+                    </div>
+
+                    <img src={imgMathematics} />
+
+                    <div>
+                        <div>Matemática</div>
+                        <span>Prof. Guilherme</span>
+                    </div>
+                </div>
                 <div>
                     <div>
                         <img src={iconMore} onClick={e => setToogle(state => !state)} />
