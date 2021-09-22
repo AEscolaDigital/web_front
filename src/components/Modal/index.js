@@ -3,7 +3,7 @@ import React from 'react';
 import BtnCancel from "../BtnCancel";
 import BtnSubmit from "../BtnSubmit";
 
-function Modal({ onClose = () => { }, children, title }) {
+function Modal({ children, title }) {
 
   return (
     <Overlay>
