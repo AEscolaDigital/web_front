@@ -13,7 +13,7 @@ export const DivContainer = styled.div`
      background-color: white;
      border-radius: 8px;
     
-     margin: 47px 0px 0px 246px;
+     margin: 47px calc(50vw - 620px) 0px auto; 
 
      padding-bottom: 30px;
 

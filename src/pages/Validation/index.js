@@ -17,11 +17,11 @@ function Validation() {
                         <input id="inputFilter" type="text" value="Filter"/>
 
 
-                        <input id="inputBarraPesquisa" type="text" placeholder="Pesquisa">
+                        {/* <input id="inputBarraPesquisa" type="text" placeholder="Pesquisa">
                             <button type="submit">
                                 <img src={iconeMagnifier} />
                             </button>
-                        </input>
+                        </input> */}
                         
                     </div>
 
