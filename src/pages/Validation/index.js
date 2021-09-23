@@ -1,11 +1,12 @@
-import { Container, DivContainer, Table } from "./styled";
+import { Container, DivContainer, DivSearch, Table } from "./styles";
 import Header from "../../components/Header";
 import Nav from "../../components/Nav";
 import iconMore from "../../assets/validation/iconMore.svg";
 import iconVectorLeft from "../../assets/validation/iconVectorLeft.svg";
 import iconVectorRight from "../../assets/validation/iconVectorRight.svg";
-
-
+import iconeMagnifier from "../../assets/validation/iconeMagnifier.svg";
+import iconeMag from "../../assets/validation/iconeMagnifier.svg";
+import iconFilter from "../../assets/validation/iconFilter.svg"
 
 function Validation() {
     return (
@@ -15,14 +16,22 @@ function Validation() {
             <Nav />
             <div>
                 <DivContainer>
-                    <div>
-                        <input type="text" value="Filter">
-                        </input>
-                        
-                        <input type="text" placeholder="Pesquisa">
-                            
-                        </input>                      
-                    </div>
+                    <DivSearch>
+
+                        <button>
+                            <img src={iconFilter} />
+                            <span>Filter</span>
+                        </button>
+
+                        <div>
+                            <input type="text" placeholder="Pesquisar" />
+                            <button type="submit">
+                                <img src={iconeMagnifier} />
+                            </button>
+                        </div>
+                       
+                    </DivSearch>
+
 
                     <Table>
                         <thead>
@@ -35,7 +44,7 @@ function Validation() {
                                 <th></th>
                             </tr>
                         </thead>
-                        
+
                         <tbody>
                             <tr>
                                 <td className="tdSpan" >
@@ -231,17 +240,17 @@ function Validation() {
 
                         <tfoot>
                             <div>
-                                <div id="divQuantidadeLinhas">
+                                <div>
                                     Linhas por pagina: 10
                                 </div>
 
-                                <div id="divQuantidadePaginas">
+                                <div>
                                     1 de 2
                                 </div>
 
                                 <div id="divImgSetas">
                                     <img src={iconVectorLeft} />
-                                    <img  src={iconVectorRight} />
+                                    <img src={iconVectorRight} />
                                 </div>
                             </div>
                         </tfoot>
