@@ -1,9 +1,12 @@
-import { Container, DivContainer, InputFilter, inputBarraPesquisa, Table } from "./styled";
+import { Container, DivContainer, DivSearch, Table } from "./styles";
 import Header from "../../components/Header";
 import Nav from "../../components/Nav";
 import iconMore from "../../assets/validation/iconMore.svg";
+import iconVectorLeft from "../../assets/validation/iconVectorLeft.svg";
+import iconVectorRight from "../../assets/validation/iconVectorRight.svg";
 import iconeMagnifier from "../../assets/validation/iconeMagnifier.svg";
-
+import iconeMag from "../../assets/validation/iconeMagnifier.svg";
+import iconFilter from "../../assets/validation/iconFilter.svg"
 
 function Validation() {
     return (
@@ -13,17 +16,22 @@ function Validation() {
             <Nav />
             <div>
                 <DivContainer>
-                    <div className="divInputs">
-                        <input id="inputFilter" type="text" value="Filter"/>
+                    <DivSearch>
 
+                        <button>
+                            <img src={iconFilter} />
+                            <span>Filter</span>
+                        </button>
 
-                        {/* <input id="inputBarraPesquisa" type="text" placeholder="Pesquisa">
+                        <div>
+                            <input type="text" placeholder="Pesquisar" />
                             <button type="submit">
                                 <img src={iconeMagnifier} />
                             </button>
-                        </input> */}
-                        
-                    </div>
+                        </div>
+                       
+                    </DivSearch>
+
 
                     <Table>
                         <thead>
@@ -36,6 +44,7 @@ function Validation() {
                                 <th></th>
                             </tr>
                         </thead>
+
                         <tbody>
                             <tr>
                                 <td className="tdSpan" >
@@ -231,7 +240,18 @@ function Validation() {
 
                         <tfoot>
                             <div>
+                                <div>
+                                    Linhas por pagina: 10
+                                </div>
 
+                                <div>
+                                    1 de 2
+                                </div>
+
+                                <div id="divImgSetas">
+                                    <img src={iconVectorLeft} />
+                                    <img src={iconVectorRight} />
+                                </div>
                             </div>
                         </tfoot>
 
