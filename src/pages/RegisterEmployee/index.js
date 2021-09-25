@@ -6,23 +6,30 @@ function RegisterEmployee() {
     return(
         <Container>
             <DivImagem>
-                <header>
+                <h1>
                     Preencha todos os dados a seguir, para se cadastrar na plataforma.
-                </header>
+                </h1>
 
-                <div>
-                    <img src={iconRegistroProfessor} />
-                </div>
+                <img src={iconRegistroProfessor} />
             </DivImagem>
 
             <DivDados>
-                <header>
-                    Dados do  Funcionario
-                </header>
-
                 <div>
-                    <Input label="Nome Completo" width="553px"/>
+                    <h1>
+                        Dados do  Funcionario
+                    </h1>
                     
+                    <div>
+                        <Input label="Nome Completo" width="553px" />
+                    </div>
+
+                    <div>
+                        <Input label="Informe o seu RG" width="276px" />
+                    </div>
+
+                    <div>
+                        <Input label="Informe o seu CPF" width="276px" />
+                    </div>
                 </div>
             </DivDados>
         </Container>

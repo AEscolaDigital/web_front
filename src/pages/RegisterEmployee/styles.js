@@ -12,34 +12,38 @@ export const Container = styled.div`
 export const DivImagem = styled.div`
     width: 50vw;
 
-    > header{
-        margin: 88px 24px 0 25px;
-
+    > h1{
+        margin: 88px 0 0 25px;
+        align-items: center;
         font-family: Montserrat;
         font-style: normal;
         font-weight: normal;
-        font-size: 18px;
+        font-size: 22px;
         line-height: 22px;
 
         color: #5C5C5C;
     }
 
-    >div > img{
-        margin: 77px 0 155px 190px ;
+    >img{
+        margin: 77px 0 156px 190px;
     }
 `
 export const DivDados = styled.div`
     width: 50vw;
 
-    > header{
-        margin: 45px 212px 0 265px;
+    >div{
+        margin: 45px 98px 0 24px;
 
-        font-family: Montserrat;
-        font-style: normal;
-        font-weight: normal;
-        font-size: 18px;
-        line-height: 22px;
+        > h1{
+            margin-left: 188px;
+            margin-bottom: 74px;
+            font-family: Montserrat;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 22px;
+            line-height: 22px;
 
-        color: #5C5C5C;
-    }    
+            color: #5C5C5C;
+        }    
+    }
 `
