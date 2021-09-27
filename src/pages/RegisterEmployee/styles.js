@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    max-width: 2000;
+    max-width: 1300px;
     margin: auto;
 
     display: grid;
@@ -43,7 +43,18 @@ export const DivDados = styled.div`
         
     }
 
-    > div{
-        margin-top: 75px;
+    > div:nth-child(2){
+        margin-top: 70px;
+    }
+
+    > div:nth-child(3){
+        display: flex;
+        align-items: center;
+        margin-top: 40px;
+    }
+
+    >div:nth-child(6){
+        display: flex;
+        margin-top: 40px;
     }
 `
