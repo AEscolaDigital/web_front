@@ -14,22 +14,21 @@ function RegisterEmployee() {
             </DivImagem>
 
             <DivDados>
-                <div>
-                    <h1>
-                        Dados do  Funcionario
-                    </h1>
+                <h1>
+                    Dados do  Funcionario
+                </h1>
                     
-                    <div>
-                        <Input label="Nome Completo" width="553px" />
-                    </div>
+                <div>
+                    <Input label="Nome Completo" width="553px" />
+                </div>
 
-                    <div>
-                        <Input label="Informe o seu RG" width="276px" />
-                    </div>
+                <div>
+                    <Input label="Informe o seu RG" width="276px" />
+                    <Input label="Informe o seu CPF" width="276px" />
+                </div>
 
-                    <div>
-                        <Input label="Informe o seu CPF" width="276px" />
-                    </div>
+                <div>
+                    
                 </div>
             </DivDados>
         </Container>

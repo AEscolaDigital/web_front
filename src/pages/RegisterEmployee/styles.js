@@ -1,13 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    max-width: 1440px;
+    max-width: 2000;
     margin: auto;
 
     display: grid;
     grid-template-columns: 1fr 1fr;
-    //display: flex;
-    //justify-content: center;
+   
 `
 export const DivImagem = styled.div`
     width: 50vw;
@@ -25,25 +24,26 @@ export const DivImagem = styled.div`
     }
 
     >img{
-        margin: 77px 0 156px 190px;
+        margin: 77px 0 156px 190px
     }
 `
 export const DivDados = styled.div`
     width: 50vw;
 
-    >div{
-        margin: 45px 98px 0 24px;
+    > h1{
+        text-align: center;
+        margin: 50px 265px 0 0;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 22px;
+        line-height: 22px;
 
-        > h1{
-            margin-left: 188px;
-            margin-bottom: 74px;
-            font-family: Montserrat;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 22px;
-            line-height: 22px;
+        color: #5C5C5C;
+        
+    }
 
-            color: #5C5C5C;
-        }    
+    > div{
+        margin-top: 75px;
     }
 `
