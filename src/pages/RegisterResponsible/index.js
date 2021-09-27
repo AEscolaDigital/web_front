@@ -19,29 +19,44 @@ function RegisterResponsible() {
 
             <DivRegister>
                 <Input label="Nome Completo" width="600px"/>
+                
                 <div>
                     <Input label="Informe o seu RG" width="300px"/>
+                    <div>
+                    <p>Mande uma foto do seu RG</p>
                     <InputFile  />
-                </div>
-              
-                <div>   
+                    </div>
+                  
                     <Input label="Informe o seu CPF" width="300px"/>
+                    <div>
+                    <p>Mande uma foto do seu CPF</p>
                     <InputFile />
+                    </div>
                 </div>
+
                 <Input label="Data de Nascimento" width="300px"/>
-                <Input label="Informe seu CEP" width=" 450px"/>
-                <Input label="Informe a rua onde reside" width="450px"/>
+                <Input label="Informe seu CEP" width=" 490px"/>
+                <Input label="Informe a rua onde reside" width="490px"/>
                 
                 <div>
                     <Input label="Informe o Bairro" width="250px"/>
                     <Input label="Informe o Número" width="200px"/>
                 </div>
 
+                <div>
+                <Input label="Informe seu Estado" width="200px"/>
+                <Input label="Informe sua Cidade" width="250px" id="inputCidade"/>
+                </div>
+
+                <Input label="Informe algum Complemento" width="490px"/>
+
                 
                 
                 <DivBtn>
                     <BtnCancel text="Cancelar" />
+                    <div>
                     <BtnSubmit text="Concluir" />
+                    </div>
                 </DivBtn>
                 
             </DivRegister>
