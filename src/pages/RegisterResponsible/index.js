@@ -48,15 +48,16 @@ function RegisterResponsible() {
                 <Input label="Informe sua Cidade" width="250px" id="inputCidade"/>
                 </div>
 
-                <Input label="Informe algum Complemento" width="490px"/>
+                <Input label="Informe algum Complemento" width="490px" id="complemento"/>
 
                 
                 
                 <DivBtn>
                     <BtnCancel text="Cancelar" />
-                    <div>
-                    <BtnSubmit text="Concluir" />
-                    </div>
+
+                    
+                    <BtnSubmit text="Concluir" id="btnSubmit" />
+                    
                 </DivBtn>
                 
             </DivRegister>

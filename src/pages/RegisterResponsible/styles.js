@@ -35,14 +35,18 @@ export const DivRegister = styled.div`
        display: grid;
        grid-template-columns: 1fr 1fr;
        padding: 0px;
-       margin-top: 30px;
+       margin-top: 25px;
        }
 
        >div >div{
               padding: 0px;
               padding-right: 20px;
+              margin-top: 10px;
              
        }
+
+      
+
 
        >div >div > p {
               text-align: center;
@@ -55,18 +59,19 @@ export const DivRegister = styled.div`
               margin-right: 70px;
               
        }
+
+       #complemento{
+              margin-bottom: 40px;
+       }
 `
 
 export const DivBtn = styled.div`
-      
-      margin: 20px;
-
-       >div{
-              margin-left: 30px;  
-              
-              
-       }
-
+       
+       margin: 20px;
+       margin-bottom: 50px;
+       margin-left: 50px;
+       
+       
        
        `
 
