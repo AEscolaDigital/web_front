@@ -14,7 +14,8 @@ export const DivHeader = styled.div`
 
     max-width:1300px;
     grid-area:header;
-    
+    margin-top:100px;
+  
     >h1{
         color: var(--color-text);
         font-size:22px;
@@ -29,25 +30,38 @@ export const DivImage = styled.div`
     grid-area:DivImage;
     align-items:left;
     display:flex;
-    
+   position:relative;
+   top:100px;
+   right:80px;
+
 `
 
 export const DivDados = styled.div`
 
-
+   
     >h1{
         color: var(--color-text);
         font-size:22px;
         font-weight:800;
-       
         justify-items:center;
+        position:relative;
+        bottom:80px;
+        left:150px;
     }
 
     >div{
         grid-area:DivInput;
-        display:flex;
+       background:yellow;
+      
     }
    
+`
+export const DivAnexo = styled.div `
+
+    background:red;
+    width:150px;
+    height:200px;
+    margin: 0 0 10px 320px;
 `
 
 

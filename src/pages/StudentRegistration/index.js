@@ -1,4 +1,4 @@
-import { Container, DivImage, DivDados, DivHeader } from "./styles"
+import { Container, DivImage, DivDados, DivHeader, DivAnexo } from "./styles"
 import cadastro from "../../assets/studentRegister/registro 1.svg"
 import Input from "../../components/Input"
 
@@ -21,19 +21,23 @@ function StudentRegister() {
             
                 <h1>Dados dos Alunos </h1>
 
+            <div>
                 <div>
                     <Input label="RG do aluno" width="276px" />
                     <Input label="Cpf do Aluno" width="276px" />
                     <Input label="Cpf do Responsável" width="276px" />
                 </div>
+                
 
+               <div>
+                   
+               </div>
                 {/* <div id="anexo">
                     <input label="Anexo" width="276px" />
                     <input label="Anexo" width="276px" />
                     <input label="Anexo" width="276px" />
                 </div> */}
-
-
+            </div>
             </DivDados>
 
 
