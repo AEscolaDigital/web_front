@@ -6,7 +6,7 @@ export const Container = styled.div`
     margin: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas:"header header" "DivImage DivInput" ;
+    grid-template-areas:"header header" "DivImage DivDados" ;
     
 `
 
@@ -25,7 +25,8 @@ export const DivHeader = styled.div`
         justify-items:start;
     }
 
-` 
+`
+{/*Seção Imagem */ }
 export const DivImage = styled.div`
     grid-area:DivImage;
     align-items:left;
@@ -35,7 +36,7 @@ export const DivImage = styled.div`
    right:80px;
 
 `
-
+{/************* */ }
 export const DivDados = styled.div`
 
    
@@ -49,19 +50,48 @@ export const DivDados = styled.div`
         left:150px;
     }
 
-    >div{
-        grid-area:DivInput;
-       background:yellow;
-      
+    >div:nth-child(2){
+        display:flex;
+       
+        >span{
+            margin:40px 0 0 15px;
+        }
     }
-   
-`
-export const DivAnexo = styled.div `
 
-    background:red;
-    width:150px;
-    height:200px;
-    margin: 0 0 10px 320px;
+    >div:nth-child(3){
+        display:flex;
+       
+        >span{
+            margin:40px 0 0 15px;
+        }
+    }
+
+    >div:nth-child(4){
+        display:flex;
+       
+        >span{
+            margin:40px 0 0 15px;
+        }
+    }
+ 
+    >div:nth-child(6){
+       display:flex;
+    }
+
+    >div:nth-child(7){
+       display:flex;
+    }
+
+    >p{
+        margin: 10px 0px 0 120px;
+        fom
+    }
+
+    >div:nth-child(10){
+      margin: 5px 0 0 165px;
+    }
+
+   
 `
 
 

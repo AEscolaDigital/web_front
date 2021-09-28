@@ -23,7 +23,7 @@ class InputFile extends React.Component {
             <Container>
                 <label for="input">
                     <img alt="Ícone de imagem" src={iconFile} />
-                    <span>Selecione um arquivo</span>
+                    <span>Faça o upload</span>
                 </label>
                 <input type="file" id="input" onChange={this.handleChange} />
                 <img src={this.state.file} />
