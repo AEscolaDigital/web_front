@@ -32,7 +32,7 @@ export const DivImage = styled.div`
     align-items:left;
     display:flex;
    position:relative;
-   top:100px;
+   top:5s0px;
    right:80px;
 
 `
@@ -84,14 +84,27 @@ export const DivDados = styled.div`
 
     >p{
         margin: 10px 0px 0 120px;
-        fom
+        color: var(--color-text);
+        font-weight:600;
     }
 
     >div:nth-child(10){
-      margin: 5px 0 0 165px;
+      margin: 5px 0 0 175px;
     }
 
-   
+    >div:nth-child(11){
+        
+        >p{
+           text-align:center;
+           color: var(--color-text);
+            margin-top:40px;
+            font-size:25px;
+        }
+
+        
+
+    }
+
 `
 
 

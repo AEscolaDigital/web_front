@@ -68,17 +68,28 @@ function StudentRegister() {
                 </div>
 
                 <span>
-                    <Input label="Complemento" width="550px"/>    
-                 </span>
+                    <Input label="Complemento" width="550px" />
+                </span>
 
 
-                 <p>Faça o upload do comprovante de residência</p>
+                <p>Faça o upload do comprovante de residência</p>
 
-                 <div>
-                     <InputFile  width="200px"/>
-                 </div>
+                <div>
+                    <InputFile width="200px" />
+                </div>
                 {/********************************************************** */}
 
+
+                {/*Gênero Aluno */}
+
+                <div>
+                    <p>
+                        Gênero
+                    </p>
+                    
+                </div>
+
+                {/************ */}
             </DivDados>
 
 
