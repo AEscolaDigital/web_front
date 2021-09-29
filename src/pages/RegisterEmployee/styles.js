@@ -7,6 +7,7 @@ export const Container = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-areas:"header header" "DivImagem DivDados" ;
+   
 `
 export const DivHeader = styled.div`
     max-width: 1300px;
@@ -20,6 +21,9 @@ export const DivHeader = styled.div`
         font-weight: 400;
         padding-top: 20px;
         justify-items: start;
+
+    >img{
+        margin: 77px 0 156px 190px
     }
 `
 
@@ -86,6 +90,33 @@ export const DivDados = styled.div`
             left: 300px;
             top: 20px;
         }
+
+    > h1{
+        text-align: center;
+        margin: 50px 265px 0 0;
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 22px;
+        line-height: 22px;
+
+        color: #5C5C5C;
+        
+    }
+
+    > div:nth-child(2){
+        margin-top: 70px;
+    }
+
+    > div:nth-child(3){
+        display: flex;
+        align-items: center;
+        margin-top: 40px;
+    }
+
+    >div:nth-child(6){
+        display: flex;
+        margin-top: 40px;
     }
     
 `
