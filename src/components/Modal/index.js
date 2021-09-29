@@ -1,13 +1,13 @@
 import { ModalContainer, Overlay } from "./styles";
 import React from 'react';
 
-function Modal({ children, title, width, hegth }) {
+function Modal({ children, title, width, height }) {
 
   return (
     <Overlay>
       <ModalContainer style={{
           width: width,
-          hegth: hegth,
+          height: height,
   
       }} >
         <h1 id="title">{title}</h1>
