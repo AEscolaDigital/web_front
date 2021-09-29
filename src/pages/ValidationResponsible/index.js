@@ -1,6 +1,7 @@
 import { DivHeader, DivValidationLeft, } from "./styles";
 import Modal from "../../components/Modal";
 import Input from "../../components/Input";
+import InputFile from "../../components/inputFile";
 
 function ValidationResponsible() {
     return (
@@ -19,7 +20,7 @@ function ValidationResponsible() {
                 <Input label="Nome Completo"/>
 
                 <div>
-                    <inputFile/>
+                    <InputFile/>
                    
                 </div>
             </DivValidationLeft>
