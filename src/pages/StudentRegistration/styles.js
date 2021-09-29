@@ -32,7 +32,7 @@ export const DivImage = styled.div`
     align-items:left;
     display:flex;
    position:relative;
-   top:5s0px;
+  bottom:40px;
    right:80px;
 
 `
@@ -101,10 +101,43 @@ export const DivDados = styled.div`
             font-size:25px;
         }
 
-        
-
+        >div{
+            width:100px;
+            height:20px;
+            background:#5059C9;
+            margin-top:20px;
+            margin-bottom:20px;
+           margin-left:320px;
+        }
+        >div:nth-child(2){
+            width:100px;
+            height:20px;
+            background:white;
+            border:1px solid ;
+            float:left;
+           margin-left:180px;
+        }
     }
 
+        >div.entrar{
+
+            float:right;
+            position:relative;
+            top:45px;
+            right:30px;
+        }
+
+        >div.cancelar{
+            margin-top:65px;
+            margin-bottom:50px;
+            position:relative;
+            left:75px;
+        }
+
+
 `
+
+
+
 
 

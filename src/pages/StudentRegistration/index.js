@@ -2,7 +2,8 @@ import { Container, DivImage, DivDados, DivHeader } from "./styles"
 import cadastro from "../../assets/studentRegister/registro 1.svg"
 import Input from "../../components/Input"
 import InputFile from "../../components/inputFile"
-
+import BtnSubmit from "../../components/BtnSubmit"
+import BtnCancel from "../../components/BtnCancel"
 
 
 function StudentRegister() {
@@ -86,10 +87,29 @@ function StudentRegister() {
                     <p>
                         Gênero
                     </p>
-                    
+
+                    <div>
+                    </div>
+
+                    <div>
+                    </div>
+
                 </div>
 
                 {/************ */}
+
+
+                {/*Botões */}
+                <div className="entrar" >
+                    <BtnSubmit text="Concluir">     
+                    </BtnSubmit>
+                </div>
+
+                <div className="cancelar">
+                    <BtnCancel text="Cancelar">
+                    </BtnCancel>
+                </div>    
+                {/****** */}
             </DivDados>
 
 
