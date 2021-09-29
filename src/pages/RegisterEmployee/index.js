@@ -1,7 +1,7 @@
 import {Container, DivDados, DivHeader, DivImagem} from "./styles";
 import iconRegistroProfessor from "../../assets/registerEmployee/iconRegistroProfessor.svg"
 import Input from "../../components/Input"
-import InputFile from "../../components/inputFile"
+import InputFile from "../../components/InputFile"
 
 function RegisterEmployee() {
     return(
@@ -51,8 +51,6 @@ function RegisterEmployee() {
                     <Input label="Bairro" width="290px" />
 
                     <Input label="Número" width="113px" />
-
-                    <Input label="Complemento" width="200px" />
                 </div>
 
                 <div>
@@ -62,12 +60,30 @@ function RegisterEmployee() {
                 </div>
                 
                 <div>
+                    <Input label="Complemento" width="540px" />
+                </div>
+
+                <div>
                     <span>
                         Faça o upload do comprovante de residência
                     </span>
 
-                    <InputFile />
+                    <div>
+                        <InputFile />
+                    </div>
                 </div>
+
+                <div>
+                    <span>
+                        Genêro:
+                    </span>
+
+
+                    <input id=""></input>
+
+                    <input id=""></input>
+                </div>
+
             </DivDados>
         </Container>
     )
