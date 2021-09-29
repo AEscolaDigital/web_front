@@ -104,11 +104,60 @@ export const DivDados = styled.div`
             color: var(--color-text);
             font-size: 12px;
             font-weight: 600;
+            
         }
 
         >div{
             margin-top: 20px;
             margin-left: 30px;
+        }
+    }
+
+    >div:nth-child(10){
+
+        >span{
+            position: relative;
+            left: 380px;
+            color: var(--color-text);
+            font-size: 12px;
+            font-weight: 600;
+
+        }
+
+        .inputGenero{
+            display: flex;
+            margin-top: 30px;
+
+            >div:nth-child(1){
+                border: 2px solid #5059C9;
+                box-sizing: border-box;
+                border-radius: 0px 8px;
+                position: relative;
+                left: 200px;
+            }
+
+            >div:nth-child(2){
+                border: 2px solid #5059C9;
+                box-sizing: border-box;
+                border-radius: 0px 8px;
+                position: relative;
+                left: 300px;
+            }
+        }
+    }
+
+    .inputButao{
+        display: flex;
+        margin-top: 100px;
+
+        >div:nth-child(1){
+            position: relative;
+            left: 250px;
+        }
+
+        >div:nth-child(2){
+            position: relative;
+            left: 350px;
         }
     }
        

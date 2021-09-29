@@ -1,7 +1,9 @@
 import {Container, DivDados, DivHeader, DivImagem} from "./styles";
 import iconRegistroProfessor from "../../assets/registerEmployee/iconRegistroProfessor.svg"
 import Input from "../../components/Input"
-import InputFile from "../../components/InputFile"
+import BtnCancel from "../../components/BtnCancel"
+import BtnSubmit from "../../components/BtnSubmit"
+import InputFile from "../../components/inputFile"
 
 function RegisterEmployee() {
     return(
@@ -78,10 +80,25 @@ function RegisterEmployee() {
                         Genêro:
                     </span>
 
+                    <div className="inputGenero">
+                        <div>
+                            <input value="Masculino" width="120px" />
+                        </div>
+                        
+                        <div>
+                            <input value="Femenino" width="120px" />
+                        </div>
+                    </div>
+                </div>
 
-                    <input id=""></input>
+                <div className="inputButao">
+                    <div>
+                        <BtnCancel value="Cancelar" />
+                    </div>
 
-                    <input id=""></input>
+                    <div>
+                        <BtnSubmit label="Cadastrar" />
+                    </div>
                 </div>
 
             </DivDados>
