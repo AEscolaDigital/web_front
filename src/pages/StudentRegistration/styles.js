@@ -1,43 +1,52 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-
     max-width: 1300px;
     margin: auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-areas:"header header" "DivImage DivDados" ;
+    grid-template-areas:"header header" 
+                        "DivImage DivDados" ;
     
 `
 
 export const DivHeader = styled.div`
-
     max-width:1300px;
+    margin: auto;
     grid-area:header;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     margin-top:100px;
   
     >h1{
+        
         color: var(--color-text);
         font-size:22px;
         font-weight:400;
-        margin-top:15px;
-        padding-top:20px;
-        justify-items:start;
+           
+    }
+
+    >h2{
+        color: var(--color-text);
+        font-size:22px;
+        font-weight:200;
+        margin-left: 250px; 
+        display: grid;
+        grid-template-columns: 1fr 1fr;
     }
 
 `
 {/*Seção Imagem */ }
-export const DivImage = styled.div`
-    grid-area:DivImage;
-    align-items:left;
-    display:flex;
-   position:relative;
-  bottom:40px;
-   right:80px;
-
-`
+    export const DivImage = styled.div`
+        grid-area:DivImage;
+        align-items:left;
+        display:flex;
+        position:relative;
+        bottom:40px;
+        right:80px;
+    `
 {/************* */ }
-export const DivDados = styled.div`
+export const DivDados = styled.form`
 
    
     >h1{
@@ -47,7 +56,7 @@ export const DivDados = styled.div`
         justify-items:center;
         position:relative;
         bottom:80px;
-        left:150px;
+        
     }
 
     >div:nth-child(2){
