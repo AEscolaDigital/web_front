@@ -1,42 +1,43 @@
 import styled from "styled-components";
 
-export const Cards = styled.div`
-    width: 230px;
-    height: 112px;
 
+export const Container = styled.div`
+    width: 260px;
+    height: 250px;
+        
     background-color: white;
-    box-shadow: 0px 1px 5px 0px rgb(0 0 0 / 50%);
+    border-radius: 20px;
 
-    border-radius: 10px;
+    >img{
+            display: block;
+            margin: -25px auto 0px auto;
+        }
 
-    position:absolute;
-    z-index: 10;
-    
-    padding: 5px 10px 35px 10px;
-
-    >div{
-        display: flex;
-        flex-direction: column;
-        row-gap: 5px;
-    }
-
-    >div>div{
-        width: 215px;
-        height: 40px;
-
-        display: flex;
-        align-items: center;
-        column-gap: 20px;
+        >div:nth-child(1){
+            margin: 10px 0px  0px 215px;
+        }
 
         >img{
-            margin-left: 5px;
+            width: 132px;
+            height: 132px;
+
+            border-radius: 100%;
+            box-shadow: 0px 1px 5px 0px rgb(0 0 0 / 50%);
         }
 
-        :hover{
-            background-color: #EDEDED;
-            border-radius: 10px;
-            cursor: pointer;
-        }
-    }
+        >div:nth-child(3){
+            margin-top: 20px;
+            text-align: center;
+        
+            >div{
+                font-size: 20px;
+                font-weight: 600;
+                color: var(--color-text);
+            }
 
-`;
+            >span{
+                font-size: 14px;
+                color: #9F9F9F;
+            }
+        }
+`
