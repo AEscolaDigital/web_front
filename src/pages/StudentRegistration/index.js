@@ -1,15 +1,41 @@
-import { Container, DivImage, DivDados, DivHeader, DivBtn } from "./styles"
-import cadastro from "../../assets/studentRegister/registro 1.svg"
-import Input from "../../components/Input"
-import InputFile from "../../components/inputFile"
-import BtnSubmit from "../../components/BtnSubmit"
-import BtnCancel from "../../components/BtnCancel"
-import { useState } from "react"
+import { Container, DivImage, DivDados, DivHeader } from "./styles";
+import cadastro from "../../assets/studentRegister/registro 1.svg";
+import Input from "../../components/Input";
+import InputFile from "../../components/inputFile";
+import BtnSubmit from "../../components/BtnSubmit";
+import BtnCancel from "../../components/BtnCancel";
+import { useState, useEffect} from "react";
 import { signIn } from "../../services/security"
 import { api } from "../../services/api";
+ 
 
 
 function StudentRegister() {
+
+
+        const pesquisarCep = () =>{
+            const cep = document.getElementById('cep').value;
+            const url = `http://viacep.com.br/ws/${cep}/json/`;
+            fetch(url).then(console.log);
+        }
+
+
+        const [ andress , getAndress] = useState([])
+
+       
+
+        const getCep = async () =>{
+            const cep = document.querySelector('#cep').value = andress.street;
+            
+            
+            if(cep.length == 9){
+                const response = await  fetch(`http://viacep.com.br/ws/${cep}/json/`);
+                const data = await response.json();
+                getAndress(data)
+            }
+    
+        }
+
 
     const [formStudent, setStudent] = useState({
         name: "",
@@ -84,92 +110,113 @@ function StudentRegister() {
     return (
         <>
             {/* {isLoading && <Loading/>} */}
-            <Container>
+            <Container >
+                        
+                        
                 <DivHeader>
-                    <div>
-                        <h1>Preencha todos os dados a seguir, para se cadastrar na plataforma.</h1>
-                    </div>
+                    <h1>Preencha todos os dados a seguir, para se cadastrar na plataforma.</h1>
 
-                    <div id="divTextAluno">
-                        <h2>Dados do aluno</h2>
-                    </div>
+                    <h2>Dados do Aluno</h2>
+                    
                 </DivHeader>
-
 
                 <DivImage>
                     <img src={cadastro} />
                 </DivImage>
 
 
+
                 <DivDados onSubmit={handleSubmit}>
 
+
+                    {/* Seção dos uploads e documentação */}
+
                     <div>
-                        <Input label="RG do aluno" id="rg" width="300px" handler={handleInput} />
-
-                        <div>
-                            <p>Foto do RG</p>
-
+                        <Input label="RG do aluno" id="rg" width="270px" handler={handleInput} />
+                        <span>
                             <InputFile />
-                        </div>
+                        </span>
                     </div>
 
                     <div>
-                        <Input label="CPF do aluno" id="cpf" width="300px" handler={handleInput} />
-
-                        <div>
-                            <p>Foto do CPF</p>
-
+                        <Input label="CPF do aluno" id="cpf" width="270px" handler={handleInput} />
+                        <span>
                             <InputFile />
-                        </div>
+                        </span>
+                    </div>
+
+
+                    <div>
+                        <Input label="CPF do Responsável" id="cpf_responsible" width="270px" handler={handleInput} />
+                        <span>
+                            <InputFile />
+                        </span>
+                    </div>
+                    {/********************************************************* */}
+
+                    {/*Seção do endereço do usuário */}
+
+                    <div>
+                        <Input label="Informe o CEP" id="cep" onBlur={getCep}  width="552px" handler={handleInput} />
+
+                        <Input label="Informe a rua" id="street" width="552px" handler={handleInput} />
+
                     </div>
 
                     <div>
-                        <Input label="CPF do Responsável" id="cpf_responsible" width="300px" handler={handleInput} />
-
-                        <div>
-                            <p>Foto do CPF (Responsável)</p>
-                            <InputFile />
-                        </div>
-                    </div>
-
-                    <Input label="Informe o CEP" id="cep" width="552px" handler={handleInput} />
-                    <Input label="Informe a rua" id="street" width="552px" handler={handleInput} />
-
-                    <div>
-                        <Input label="Informe o bairro" id="district" width="354px" handler={handleInput} />
+                        <Input label="Informe o bairro" id="district" width="354px" handler={handleInput}/>
+                        
                         <Input label="Número" id="number" width="167px" handler={handleInput} />
+
+                       
                     </div>
 
                     <div>
                         <Input label="Estado" id="state" width="110px" value={formStudent.state} handler={handleInput} />
-                        <Input label="Cidade" id="city" width="410px" value={formStudent.city} handler={handleInput} />
+                        <Input label="Cidade" id="city" width="400px" value={formStudent.city}  handler={handleInput}/>
                     </div>
 
-                    <Input label="Complemento" id="complement" width="550px" handler={handleInput} />
+                    <span>
+                        <Input label="Complemento" id="complement" width="550px" handler={handleInput} />
+                    </span>
 
-                    <div id="uploadResidencia">
-                        <div>
-                            <p>Foto do comprovante de residência</p>
-                            <InputFile />
-                        </div>
-                    </div>
+
+                    <p>Faça o upload do comprovante de residência</p>
 
                     <div>
-                        <p> Selecione : </p>
-                        <input type="radio" name="mf" />
-                        <label for="alunosProfessores">Masculino</label>
+                        <InputFile width="200px" />
+                    </div>
+                    {/********************************************************** */}
 
-                        <input type="radio" name="mf" />
-                        <label for="alunosProfessores">Feminino</label>
+
+                    {/*Gênero Aluno */}
+                    {/*Adicionar oo campo genero no backend*/} 
+                    <div>
+                        <p>
+                            Gênero
+                        </p>
+
+                        <div>
+                        </div>
+
+                        <div>
+                        </div>
+
                     </div>
 
-                    <DivBtn>
-                        <BtnCancel text="Cancelar" />
-                        <div>
-                        <BtnSubmit text="Concluir" />
-                        </div>
-                    </DivBtn>
+                    {/************ */}
 
+
+                    {/*Botões */}
+                    <div className="entrar" >
+                        <BtnSubmit text="Concluir">
+                        </BtnSubmit>
+                    </div>
+
+                    <div className="cancelar">
+                        <BtnCancel text="Cancelar">
+                        </BtnCancel>
+                    </div>
                 </DivDados>
             </Container>
         </>
