@@ -107,7 +107,7 @@ function StudentRegister() {
                         <Input label="RG do aluno" id="rg" width="300px" handler={handleInput} />
 
                         <div>
-                            <p>Faça upload do RG</p>
+                            <p>Foto do RG</p>
 
                             <InputFile />
                         </div>
@@ -117,7 +117,7 @@ function StudentRegister() {
                         <Input label="CPF do aluno" id="cpf" width="300px" handler={handleInput} />
 
                         <div>
-                            <p>Faça upload CPF</p>
+                            <p>Foto do CPF</p>
 
                             <InputFile />
                         </div>
@@ -127,7 +127,7 @@ function StudentRegister() {
                         <Input label="CPF do Responsável" id="cpf_responsible" width="300px" handler={handleInput} />
 
                         <div>
-                            <p>Faça upload CPF do responsável</p>
+                            <p>Foto do CPF (Responsável)</p>
                             <InputFile />
                         </div>
                     </div>
@@ -149,7 +149,7 @@ function StudentRegister() {
 
                     <div id="uploadResidencia">
                         <div>
-                            <p>Faça o upload do comprovante de residência</p>
+                            <p>Foto do comprovante de residência</p>
                             <InputFile />
                         </div>
                     </div>
