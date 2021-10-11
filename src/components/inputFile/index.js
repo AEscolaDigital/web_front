@@ -1,35 +1,30 @@
 import React from "react";
+import { useRef } from "react";
 import { Container } from "./styles";
 import iconFile from "../../assets/inputFile/iconFile.svg"
 
-class InputFile extends React.Component {
-
-    constructor(props) {
-        super(props)
-        this.state = {
-            file: null
-        }
-        this.handleChange = this.handleChange.bind(this)
-    }
+function InputFile() {
     
-    handleChange(event) {
-        this.setState({
-            file: URL.createObjectURL(event.target.files[0])
-        })
+    const handleImage = () => {
+       const label = document.querySelector('#label');
+       const span = document.querySelector('#span');
+
+       label.style.background = "#5059c9";
+       span.style.color = "#FFFFFF";
+       span.innerHTML = "Arquivo selecionado";
+
     }
 
-    render() {
-        return (
-            <Container>
-                <label for="input">
-                    <img alt="Ícone de imagem" src={iconFile} />
-                    <span>Faça o upload</span>
-                </label>
-                <input type="file" id="input" onChange={this.handleChange} />
-                <img src={this.state.file} />
-            </Container>
-        );
-    }
+    return (
+        <Container >
+            <label for="input" id="label" >
+                <img alt="Ícone de imagem" src={iconFile} />
+                <span id="span" >Selecione um arquivo</span>
+            </label>
+            <input type="file" id="input" onChange={handleImage} />
+        </Container>
+    );
+
 }
 
 export default InputFile;

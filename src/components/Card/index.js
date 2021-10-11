@@ -1,20 +1,32 @@
-import iconAddMember from "../../assets/card/iconAddMember.svg"
-import iconDelete from "../../assets/card/iconDelete.svg"
-import {Cards} from "./styles"
+import { Container } from "./styles";
+import imgMathematics from "../../assets/teams/imgMathematics.svg"
+import iconMore from "../../assets/teams/iconMore.svg"
+import PoPup from "../../components/PoPup";
+import React from 'react';
 
-function Card() {
+
+function Card({ children }) {
+
+    const [toogle, setToogle] = React.useState(true);
+    const [value, setOpenClose] = React.useState('none');
+
+    React.useEffect(() => {
+        setOpenClose(() => toogle ? 'none' : 'block');
+    }, [toogle]);
+
     return (
-        <Cards>
+        <Container>
             <div>
-               <div>
-                   <img src={iconAddMember} />
-               </div>
-               <div>
-                   <img src={iconDelete} />
-               </div>
-            </div>
+                <img src={iconMore} onClick={e => setToogle(state => !state)} />
 
-        </Cards>
+                <PoPup display={value} />
+            </div>
+                {children}
+            <div>
+                <div>Matemática</div>
+                <span>Prof. Guilherme</span>
+            </div>
+        </Container>
     );
 }
 
