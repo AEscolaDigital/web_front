@@ -3,6 +3,7 @@ import BtnSubmit from "../../components/BtnSubmit";
 import Input from "../../components/Input";
 import { Container, DivHeader, DivImage, DivRegister, DivBtn } from "./styles";
 import imageRegister from "../../assets/register/imageRegister.svg";
+import { Link } from "react-router-dom";
 
 function Register() {
     return (
@@ -31,8 +32,8 @@ function Register() {
                 </div>
 
                 <DivBtn>
-                    <BtnCancel text="Voltar" />
-                    <BtnSubmit text="Próximo" />
+                    <Link to="/" > <BtnCancel text="Voltar" /> </Link>  
+                    <Link to="/register/responsible" > <BtnSubmit text="Próximo" /> </Link> 
                 </DivBtn>
             </DivRegister>
 

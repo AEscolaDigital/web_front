@@ -1,12 +1,13 @@
 import { GlobalSyles } from "./GlobalSytles";
-import ModalAviso from "./pages/ModalAviso";
+import Router from "./router";
+
 
 function App() {
 
   return (
       <>
         <GlobalSyles/>
-        <ModalAviso/>
+        <Router/>
       </>
   );
 

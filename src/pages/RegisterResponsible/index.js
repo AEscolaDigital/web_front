@@ -7,6 +7,7 @@ import InputFile from "../../components/inputFile";
 import resgisterResponsible from "../../assets/registerResponsible/imageResponsible.svg"
 
 import { Container, DivHeader, DivRegister, DivImage, DivBtn } from "./styles";
+import { Link } from "react-router-dom";
 
 function RegisterResponsible() {
     return(
@@ -50,14 +51,9 @@ function RegisterResponsible() {
 
                 <Input label="Informe algum Complemento" width="490px" id="complemento"/>
 
-                
-                
                 <DivBtn>
-                    <BtnCancel text="Cancelar" />
-
-                    
+                    <Link to="/register" > <BtnCancel text="Voltar" /> </Link> 
                     <BtnSubmit text="Concluir" id="btnSubmit" />
-                    
                 </DivBtn>
                 
             </DivRegister>

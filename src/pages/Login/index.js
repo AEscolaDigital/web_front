@@ -2,6 +2,7 @@ import imageLogin from "../../assets/login/undraw_secure_login_pdn4.svg"
 import Input from "../../components/Input";
 import BtnSubmit from "../../components/BtnSubmit";
 import { Container, DivImage, DivLogin } from "./styles";
+import { Link } from "react-router-dom";
 
 
 function Login() {
@@ -19,7 +20,7 @@ function Login() {
                         <BtnSubmit text="Entrar" />
                     </div>
                     <div id="register" >
-                        <span>Não tem cadastro? <a>cadastre-se</a> </span>
+                        <span>Não tem cadastro? <Link to="/register" >cadastre-se</Link> </span>
                     </div>
                 </div>
             </DivLogin>
