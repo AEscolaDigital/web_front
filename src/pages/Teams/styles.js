@@ -1,10 +1,53 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+
+    #btnCreateTeam{
+        display: flex;
+        justify-content: end;
+
+        width: 1220px;
+        margin: 40px auto 0px auto ;
+    
+        >a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            column-gap: 20px;
+
+            width: 200px;
+            height: 40px;
+
+            background-color: white;
+            border-radius: 10px 0px;
+
+            cursor: pointer;
+        }
+    }
+
+    #titleYourTeams{
+        width: 1000px;
+        margin: auto;
+
+        color: var(--color-text);
+    }
+
+    #btnModal{
+        display: flex;
+        column-gap: 30px;
+        justify-content: end;
+
+        margin-top: 30px;
+    }
+
+    #inputsModal{
+        width: 388px;
+        margin: auto;
+    }
 `
 export const Section = styled.section`
     width: 1120px;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-left: calc(50vw - 500px) ;
 
     display: grid;
@@ -12,44 +55,4 @@ export const Section = styled.section`
     column-gap: 25px;
     row-gap: 30px;
 
-    >div{
-        width: 260px;
-        height: 250px;
-        
-        background-color: white;
-        border-radius: 20px;
-        >img{
-            display: block;
-            margin: -25px auto 0px auto;
-        }
-
-        >div:nth-child(1){
-            margin: 10px 0px  0px 215px;
-        }
-
-        >img{
-            width: 132px;
-            height: 132px;
-
-            border-radius: 100%;
-            box-shadow: 0px 1px 5px 0px rgb(0 0 0 / 50%);
-        }
-
-        >div:nth-child(3){
-            margin-top: 20px;
-            text-align: center;
-        
-            >div{
-                font-size: 20px;
-                font-weight: 600;
-                color: var(--color-text);
-            }
-
-            >span{
-                font-size: 14px;
-                color: #9F9F9F;
-            }
-        }
-
-    }
 `

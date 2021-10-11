@@ -4,10 +4,8 @@ export const Container = styled.div`
     max-width: 420px;
     padding: 1rem;
     margin-top: 30px;
-
     > label{
         position: relative; 
-
         > span{
             position: absolute;
             left: 2px;
@@ -30,7 +28,6 @@ export const Container = styled.div`
             border-radius: 10px;
             height: 56px;
         } 
-
         > input:focus+span,
           input:not(:placeholder-shown)+span {
             transform: translate(0.25rem, -65%) scale(0.8);

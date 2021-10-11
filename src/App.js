@@ -1,8 +1,6 @@
+import InputFile from "./components/inputFile";
 import { GlobalSyles } from "./GlobalSytles";
 import Teams from "./pages/Teams";
-import Register from "./pages/Register";
-import RegisterPageStudent from "./pages/RegisterPageStudent";
-import Card from "./components/Card";
 import Login from "./pages/Login";
 
 function App() {
@@ -10,7 +8,7 @@ function App() {
   return (
       <>
         <GlobalSyles/>
-        <Login/>
+        <Teams/>
       </>
   );
 

@@ -1,6 +1,7 @@
 import { Container } from "./styles";
 
-function Input({ id, value, handler, label, width, type, colorLabel, ...rest }) {
+function Input({ id, value, handler, label, width, type, colorLabel,className, ...rest }) {
+
     return (
         <Container>
             <label>
@@ -14,7 +15,7 @@ function Input({ id, value, handler, label, width, type, colorLabel, ...rest }) 
                     onChange={handler}
                     type={type}
                 />
-                <span style={{
+                <span className={className} style={{
                     backgroundColor: colorLabel,
                 }
                 } >{label}</span>

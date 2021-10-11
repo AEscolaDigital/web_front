@@ -6,12 +6,23 @@ import iconFoul from "../../assets/nav/iconFoul.svg"
 import iconNotes from "../../assets/nav/iconNotes.svg"
 import iconValidation from "../../assets/nav/iconValidation.svg"
 
-function Nav(){
-    return(
-        <Container>
+
+function Nav() {
+   
+    const someHandler = () =>{
+        console.log("sssssssss")
+        const aa = "aaaaaa";
+        return aa;
+    }
+
+    console.log(someHandler())
+
+    return (
+        <Container onMouseEnter={() => someHandler()}
+        >
             <div>
                 <img src={iconFeed} alt="Ícone de feed" />
-                 <p>Feed</p>
+                <p  >Feed</p>
             </div>
             <div>
                 <img src={iconTeam} alt="Ícone de turmas" />
@@ -33,7 +44,7 @@ function Nav(){
                 <img src={iconValidation} alt="Ícone de validação" />
                 <p>Validação</p>
             </div>
-    
+
         </Container>
     );
 }

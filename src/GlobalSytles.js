@@ -25,5 +25,10 @@ export const GlobalSyles = createGlobalStyle`
 
       body{
        background-color: #EDEDED;
-     }
+      }
+
+      .displayNone{
+          display: none;
+      }
+
 `;
