@@ -70,7 +70,6 @@ export const DivDados = styled.div`
             position: relative;
             left: 30px;
             top: 40px;
-
         }
     }
 
@@ -104,12 +103,10 @@ export const DivDados = styled.div`
             color: var(--color-text);
             font-size: 12px;
             font-weight: 600;
-            
         }
 
         >div{
             margin-top: 20px;
-            margin-left: 30px;
         }
     }
 
