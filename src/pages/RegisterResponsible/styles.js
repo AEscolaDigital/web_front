@@ -82,5 +82,10 @@ export const DivImage = styled.div`
        justify-content: center;
        padding-left: 200px;
        grid-area: DivImage;
+
+       @media screen and (max-width: 1400px) {
+            padding-left: 0px;
+       }
+
        `
 
