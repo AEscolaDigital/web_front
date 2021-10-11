@@ -1,12 +1,12 @@
 import { GlobalSyles } from "./GlobalSytles";
-import RegisterResponsible from "./pages/RegisterResponsible";
+import ModalAviso from "./pages/ModalAviso";
 
 function App() {
 
   return (
       <>
         <GlobalSyles/>
-        <RegisterResponsible/>
+        <ModalAviso/>
       </>
   );
 
