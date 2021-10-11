@@ -1,8 +1,7 @@
 import { ModalContainer, Overlay } from "./styles";
 import React from 'react';
 
-
-function ModalAviso({ children, title, width }) {
+function Modal({ children, title, width }) {
 
   return (
     <Overlay>
@@ -18,4 +17,4 @@ function ModalAviso({ children, title, width }) {
 
 }
 
-export default ModalAviso;
+export default Modal;
