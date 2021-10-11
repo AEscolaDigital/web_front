@@ -53,4 +53,3 @@ export const DivImage = styled.div`
        justify-content: center;
        grid-area: DivImage;
        `
-
