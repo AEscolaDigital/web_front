@@ -25,30 +25,44 @@ export const DivLogin = styled.div`
         font-size: 18px;
     }
 
-    div>div:nth-child(2) a{
-        float: right;
-
-        color: #9F9F9F;
-        
-        margin: 20px 40px 30px 0px;
+    #ForgotPassword{
+        width: 395px;
+        text-align: end;
+        margin: 60px 0px 20px 0px;
     }
 
-    div>div:nth-child(3){
+    #btnSubmit {
         width: 400px;
-
         display: flex;
         justify-content: end;
     }
 
     #register{
-        margin-top: 100px;
-        font-size: 22px;
+        margin-top: 50px;
+        font-size: 18px;
 
         a{
             text-decoration: underline;
             cursor: pointer;
         }
     }
+`
+
+export const TypeUser = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+
+    >span{
+        color: var(--color-text);
+        margin: 25px 0px 0px 25px;
+    }
+
+    >div{
+        display: flex;
+        column-gap: 10px;
+    }
+   
 `
 
 export const DivImage = styled.div`

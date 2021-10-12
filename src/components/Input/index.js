@@ -1,6 +1,6 @@
 import { Container } from "./styles";
 
-function Input({ id, value, handler, label, width, type, colorLabel,className, ...rest }) {
+function Input({ id, value, handler, label, width, type, colorLabel, className, ...rest }) {
 
     return (
         <Container>
