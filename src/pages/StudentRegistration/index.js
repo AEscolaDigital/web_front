@@ -44,25 +44,22 @@ function StudentRegister() {
         //setIsLoading(true);
 
         try {
-            // const {name, email, password, phone, 
-            //     birth_date, rg, cpf,
-            //      cpf_responsible, genre_id, addresses } = formStudent;
-
-            const response = await api.post("/student", {
-                name: formStudent.name,
-                email: formStudent.email,
-                password: formStudent.password,
-                phone: formStudent.phone,
-                birth_date: formStudent.birth_date,
+            const response = await api.post("/students", {
+                name: "Teste",
+                email: "teste@gmail.com",
+                password: "123456",
+                phone: "(11)96838-7212",
+                birth_date: "2002-05-08",
                 rg: formStudent.rg,
                 cpf: formStudent.cpf,
                 cpf_responsible: formStudent.cpf_responsible,
-                genre_id: formStudent.genre_id,
+                genre_id:  1,
                 street: formStudent.street,
                 number: formStudent.number,
                 cep: formStudent.cep,
                 district: formStudent.district,
                 complement: formStudent.complement,
+                uf_state: "SP",
                 city: formStudent.city,
                 state: formStudent.state
 
@@ -71,8 +68,8 @@ function StudentRegister() {
             signIn(response.data)
 
             console.log(response.data)
-            //setIsLoading(false)
-            //history.push("/home");
+
+          
         } catch (error) {
             console.log(error.response.data);
 
