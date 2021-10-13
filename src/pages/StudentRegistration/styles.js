@@ -66,9 +66,21 @@ export const DivBtn = styled.div`
        display: grid;
        grid-template-columns: 1fr 1fr;
        padding: 20px;
-       margin-top: 25px;
+       margin-top: 50px;
        
        >div{
            margin-left: 270px;
        }
+`
+
+export const DivGenreText = styled.div`
+    margin-top: 20px;
+    margin-left: 170px;
+
+`
+
+export const DivGenre = styled.div`
+   margin-left: 100px;
+  
+  
 `

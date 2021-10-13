@@ -1,4 +1,4 @@
-import { Container, DivImage, DivDados, DivHeader, DivBtn } from "./styles"
+import { Container, DivImage, DivDados, DivHeader, DivBtn, DivGenre, DivGenreText } from "./styles"
 import cadastro from "../../assets/studentRegister/registro 1.svg"
 import Input from "../../components/Input"
 import InputFile from "../../components/inputFile"
@@ -115,7 +115,7 @@ function StudentRegister() {
                     </div>
 
                     <div>
-                        <Input label="CPF do aluno" id="cpf" width="300px" handler={handleInput} />
+                        <Input label="CPF do aluno" id="cpf" width="300px" handler={handleInput} mask="cpf" />
 
                         <div>
                             <p>Foto do CPF</p>
@@ -125,7 +125,7 @@ function StudentRegister() {
                     </div>
 
                     <div>
-                        <Input label="CPF do Responsável" id="cpf_responsible" width="300px" handler={handleInput} />
+                        <Input label="CPF do Responsável" id="cpf_responsible" width="300px" handler={handleInput} mask="cpf" />
 
                         <div>
                             <p>Foto do CPF (Responsável)</p>
@@ -133,7 +133,7 @@ function StudentRegister() {
                         </div>
                     </div>
 
-                    <Input label="Informe o CEP" id="cep" width="552px" handler={handleInput} />
+                    <Input label="Informe o CEP" id="cep" width="552px" handler={handleInput} mask="cep" />
                     <Input label="Informe a rua" id="street" width="552px" handler={handleInput} />
 
                     <div>
@@ -155,12 +155,18 @@ function StudentRegister() {
                         </div>
                     </div>
 
-                    <div>
-                        <RadioButton text="Masculino" idInput="generoM" forLabel="generoM"/>
-                        <RadioButton text="Feminino" idInput="generoF" forLabel="generoM"/>
-                    </div>
+
+                    <DivGenreText>
+                        <p>Escolha seu gênero : </p>
+                    </DivGenreText>
+
+                    <DivGenre>
+                        <RadioButton text="Masculino" idInput="generoM" forLabel="generoM" name="genre" value="1" />
+                        <RadioButton text="Feminino" idInput="generoF" forLabel="generoF" name="genre" value="2" />
+                    </DivGenre>
 
                     <DivBtn>
+
                         <BtnCancel text="Cancelar" />
                         <div>
                             <BtnSubmit text="Concluir" />
