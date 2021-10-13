@@ -15,7 +15,7 @@ export const Container = styled.div`
 
 export const DivLogin = styled.div`
     width: 50vw;
-    height: calc(45vw + 10px) ;
+    height: calc(48vw + 15px) ;
 
     background-color: white;  
 
