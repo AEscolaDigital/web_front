@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Teams from "./pages/Teams";
 import RegisterResponsible from "./pages/RegisterResponsible";
+import StudentRegister from "./pages/StudentRegistration";
 
 
 function PrivateRoute({ children, ...rest }) {
@@ -26,6 +27,9 @@ function Router() {
                 </Route>
                 <Route exact path="/register">
                     <Register />
+                </Route>
+                <Route exact path="/register/student">
+                    <StudentRegister />
                 </Route>
                 <Route exact path="/register/responsible">
                     <RegisterResponsible />
