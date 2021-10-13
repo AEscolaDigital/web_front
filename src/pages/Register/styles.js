@@ -26,16 +26,14 @@ export const DivHeader = styled.div`
     }
 `
 
-export const DivRegister = styled.div`
+export const FormContainer = styled.form`
     grid-area: DivRegister;
-   
     
         >div >p{
             padding: 20px;
             color: var(--color-text);
             font-size: 18px;
             font-weight: bold;
-
         }
 `
 

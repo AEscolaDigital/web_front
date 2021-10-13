@@ -42,7 +42,6 @@ function Input({
                 }}
                     id={id}
                     value={value}
-                    required
                     placeholder=" "
                     onChange={handler}
                     type={type}

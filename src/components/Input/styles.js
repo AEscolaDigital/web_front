@@ -37,7 +37,7 @@ export const Container = styled.div`
         }
         
         input:-webkit-autofill {
-            -webkit-box-shadow: 0 0 0 30px #EDEDED inset;
+            -webkit-box-shadow: 0 0 0 30px white inset;
         }
     } 
 `;

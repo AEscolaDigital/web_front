@@ -15,7 +15,11 @@ export const Container = styled.div`
 
 export const DivLogin = styled.div`
     width: 50vw;
-    height: calc(48vw + 15px) ;
+    height: calc(48vw + 15px);
+
+    @media (max-width: 1400px){
+        height: calc(44vw + 20px) ;
+    }
 
     background-color: white;  
 

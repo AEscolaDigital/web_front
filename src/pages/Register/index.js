@@ -1,23 +1,54 @@
 import BtnCancel from "../../components/BtnCancel";
 import BtnSubmit from "../../components/BtnSubmit";
 import Input from "../../components/Input";
-import { Container, DivHeader, DivImage, DivRegister, DivBtn, TypeUser } from "./styles";
+import { Container, DivHeader, DivImage, FormContainer, DivBtn, TypeUser } from "./styles";
 import imageRegister from "../../assets/register/imageRegister.svg";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import RadioButton from "../../components/RadioButton";
-import { useCallback, useState } from "react";
+import { useState } from "react";
+
 
 function Register() {
 
-    const [usuario, setUsuario] = useState();
+    const history = useHistory();
 
-    const handleChange = useCallback((e) =>  {
-        setUsuario({
-            ...usuario,
-            [e.currentTarget.name]: e.currentTarget.value,
-        });
+    const [typeUser, setTypeUser] = useState({
+        typeUser: "",
+    })
 
-    }, [usuario]);
+    const handleInputRadio = (e) => {
+        setTypeUser({ ...typeUser, [e.target.name]: e.target.value});
+    }
+
+    const [formRegister, setFormRegister] = useState({
+        name: "",
+        email: "",
+        password: "",
+        phone: "",
+        birthDate: ""
+    })
+
+    const handleInput = (e) => {
+        setFormRegister({ ...formRegister, [e.target.id]: e.target.value });
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            history.push({
+                pathname: `/register/${typeUser.typeUser}`,
+                state:{
+                    name: formRegister.name, 
+                    email: formRegister.email,
+                    password: formRegister.password,
+                    phone: formRegister.phone,
+                    birthDate: formRegister.birthDate
+            }})
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
 
@@ -28,28 +59,37 @@ function Register() {
                 <h1>Preencha todos os dados abaixo, para se cadastrar na plataforma. </h1>
             </DivHeader>
 
-            <DivRegister>
+            <FormContainer onSubmit={handleSubmit} >
 
                 <Input
+                    id="name"
+                    handler={handleInput}
                     label="Informe seu Nome Completo"
                 />
                 <Input
+                    id="email"
+                    handler={handleInput}
                     label="Informe um e-mail"
                     type="email"
                 />
                 <Input
+                    id="password"
+                    handler={handleInput}
                     label="Informe uma senha"
                     width="280px"
                     type="password"
                 />
                 <Input  
-                    onChange={handleChange}
+                    id="phone"
+                    handler={handleInput}
                     label="Informe seu Telefone"
                     pattern="\(?\d{2}\) ?9?\d{4}-?\d{4}"
                     maxlength="15"
                     mask="phone"
                 />
                 <Input
+                    id="birthDate"
+                    handler={handleInput}
                     label="Informe a data de nascimento"
                     type="date"
                     width="280px" />
@@ -58,7 +98,7 @@ function Register() {
                 <TypeUser>
                     <span>O que você é ?</span>
 
-                    <div>
+                    <div onChange={handleInputRadio} >
                         <RadioButton
                             idInput="student"
                             forLabel="student"
@@ -87,11 +127,9 @@ function Register() {
 
                 <DivBtn>
                     <Link to="/" > <BtnCancel text="Voltar" /> </Link>
-                    <Link to="/register/responsible" >
-                         <BtnSubmit onClick={() => console.log(usuario)} text="Próximo" /> 
-                    </Link>
+                    <BtnSubmit text="Próximo" /> 
                 </DivBtn>
-            </DivRegister>
+            </FormContainer>
 
             <DivImage>
                 <img src={imageRegister} />
