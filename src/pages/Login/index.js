@@ -20,7 +20,6 @@ function Login() {
 
     const handleInput = (e) => {
         setFormLogin({ ...formLogin, [e.target.id]: e.target.value });
-        console.log(e.target.id);
     }
 
     const [formLoginRadio, setTypeUser] = useState({
@@ -29,6 +28,17 @@ function Login() {
 
     const handleInputRadio = (e) => {
         setTypeUser({ ...formLoginRadio, [e.target.name]: e.target.value});
+    }
+
+    const errorLogin = (error) => {
+        document.querySelector('#error').classList.add('error');
+        document.querySelector('#error>span').textContent = `${error.error}`;
+
+        setInterval( () => {
+             document.querySelector('#error').classList.remove('error');
+             document.querySelector('#error>span').style.display = "none";
+        } , 3000)
+
     }
 
     const handleSubmit = async (e) => {
@@ -43,10 +53,11 @@ function Login() {
 
             signIn(response.data);
             
+
             history.push("/teams")
 
         } catch (error) {
-            console.log(error.response.data);
+            errorLogin(error.response.data)
         }
     }
     
@@ -55,12 +66,15 @@ function Login() {
             <DivLogin>
                 <div>
                     <h1>Bem vindo de volta! Por favor acesse sua conta.</h1>
-
+                    <div id="error" >
+                          <span></span>
+                    </div>
                     <form onSubmit={handleSubmit}  >
 
                         <Input 
                             label="Informe o seu E-mail" 
-                            colorLabel="white" id="email" 
+                            colorLabel="white" 
+                            id="email" 
                             handler={handleInput} 
                         />
 

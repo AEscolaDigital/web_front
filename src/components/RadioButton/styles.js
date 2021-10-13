@@ -14,7 +14,7 @@ export const Container = styled.div`
     label{
         min-width: 120px;
         display: inline-block;
-        background-color: rgba(255, 255, 255, .9);
+        background-color: transparent;
         border: 2px solid rgba(139, 139, 139, .3);
         color: #adadad;
         border-radius: 10px;
@@ -47,7 +47,8 @@ export const Container = styled.div`
 
     input {
         position: absolute;
-        opacity: 0;
+        opacity: 0; 
+        background-color: red;
     }     
   
     input:checked + label {

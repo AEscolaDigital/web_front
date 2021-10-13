@@ -25,6 +25,27 @@ export const DivLogin = styled.div`
         font-size: 18px;
     }
 
+    .error{
+        width: 400px;
+        height: 70px;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        margin: 20px 0px 20px 0px;
+
+        background-color: #5059c9;
+
+        border-radius: 0px 50px 0px 50px;
+        border: 2px solid #013097;
+        
+        span{
+            color: white;
+            font-size: 18px;
+        }
+    }
+    
     #ForgotPassword{
         width: 395px;
         text-align: end;
@@ -69,6 +90,7 @@ export const DivImage = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
 
     max-width: 46vw;
 

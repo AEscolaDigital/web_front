@@ -25,13 +25,13 @@ function RegisterResponsible() {
                     <Input label="Informe o seu RG" width="300px"/>
                     <div>
                     <p>Mande uma foto do seu RG</p>
-                    <InputFile  />
+                    <InputFile forLabel="rg" idInput="rg"  />
                     </div>
                   
                     <Input label="Informe o seu CPF" width="300px"/>
                     <div>
                     <p>Mande uma foto do seu CPF</p>
-                    <InputFile />
+                    <InputFile forLabel="cpf" idInput="cpf" />
                     </div>
                 </div>
 

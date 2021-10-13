@@ -39,17 +39,39 @@ export const DivRegister = styled.div`
         }
 `
 
+export const TypeUser = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+
+    >span{
+        color: var(--color-text);
+        margin: 25px 0px 0px 25px;
+    }
+
+    >div{
+        display: flex;
+        column-gap: 10px;
+    }
+   
+`
+
 export const DivBtn = styled.div`
        display: grid;
        grid-template-columns: 1fr 1fr;
        padding: 20px;
        margin-top: 25px;
-       `
+`
 
 
 export const DivImage = styled.div`
        display: flex;
-       align-items: center;
        justify-content: center;
        grid-area: DivImage;
-       `
+       
+        >img{
+            position: fixed;
+        }
+     
+       
+`

@@ -34,6 +34,10 @@ export const Container = styled.div`
             color: #4F4F4F;
             font-size: 15px;
             font-weight: 700;
-          }
+        }
+        
+        input:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 30px white inset;
+        }
     } 
 `;

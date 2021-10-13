@@ -12,6 +12,7 @@ function RadioButton({ idInput, name, value, text, forLabel, handler, checked })
                         value={value}
                         name={name}
                         onChange={handler}
+                        required
                     />
                     <label for={forLabel} > {text} </label>
                 </li>
