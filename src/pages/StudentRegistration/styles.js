@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-
     max-width : 1300px;
     margin: auto;
     display: grid;
@@ -15,11 +14,9 @@ export const DivHeader = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-area: header;
-
     #divTextAluno{
        margin-left: 300px;
     }
-
     h1{
         color: var(--color-text);
         font-size: 22px;
@@ -27,7 +24,6 @@ export const DivHeader = styled.div`
         padding-top: 80px;
         margin-left: -70px;
     }
-
     h2{
         color: var(--color-text);
         font-size: 18px;
@@ -54,7 +50,6 @@ export const DivDados = styled.form`
         display: grid;
         grid-template-columns: 1fr 1fr;
     }
-
     div>div> p {
         margin-top: 15px;
         margin-bottom: 5px;
@@ -76,5 +71,4 @@ export const DivBtn = styled.div`
        >div{
            margin-left: 270px;
        }
-
 `

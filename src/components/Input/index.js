@@ -1,6 +1,38 @@
+import { useCallback } from "react";
 import { Container } from "./styles";
+import { cep, currency, cpf, phone } from "./masks";
 
-function Input({ id, value, handler, label, width, type, colorLabel,className, ...rest }) {
+function Input({
+    id,
+    value,
+    handler,
+    label,
+    width,
+    type,
+    colorLabel,
+    className,
+    pattern,
+    name,
+    maxlength,
+    mask,
+    ...rest }) {
+
+    const handleKeyUp = useCallback((e) => {
+
+        if (mask === 'cep') {
+            cep(e);
+        }
+        if (mask === 'currency') {
+            currency(e);
+        } 
+        if (mask === 'cpf') {
+            cpf(e);
+        } 
+        if (mask === 'phone') {
+            phone(e)
+        }
+        
+    }, [mask]);
 
     return (
         <Container>
@@ -9,11 +41,17 @@ function Input({ id, value, handler, label, width, type, colorLabel,className, .
                     width: width,
                 }}
                     id={id}
-                    {...rest}
-                    placeholder=" "
                     value={value}
+                    required
+                    placeholder=" "
                     onChange={handler}
                     type={type}
+                    pattern={pattern}
+                    name={name}
+                    maxlength={maxlength}
+                    {...rest}
+                    onKeyUp={handleKeyUp}
+                    mask={mask}
                 />
                 <span className={className} style={{
                     backgroundColor: colorLabel,

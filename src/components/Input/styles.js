@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     max-width: 420px;
     padding: 1rem;
-    margin-top: 30px;
+    
     > label{
         position: relative; 
         > span{
@@ -34,6 +34,10 @@ export const Container = styled.div`
             color: #4F4F4F;
             font-size: 15px;
             font-weight: 700;
-          }
+        }
+        
+        input:-webkit-autofill {
+            -webkit-box-shadow: 0 0 0 30px white inset;
+        }
     } 
 `;
