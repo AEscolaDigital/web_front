@@ -6,34 +6,36 @@ import iconFoul from "../../assets/nav/iconFoul.svg"
 import iconNotes from "../../assets/nav/iconNotes.svg"
 import iconValidation from "../../assets/nav/iconValidation.svg"
 
-function Nav(){
-    return(
+
+function Nav() {
+
+    return (
         <Container>
             <div>
                 <img src={iconFeed} alt="Ícone de feed" />
-                 <p>Feed</p>
+                {/* <p  >Feed</p> */}
             </div>
             <div>
                 <img src={iconTeam} alt="Ícone de turmas" />
-                <p>Turmas</p>
+                {/* <p>Turmas</p> */}
             </div>
             <div>
                 <img src={iconActivities} alt="Ícone de atividades" />
-                <p>Atividades</p>
+                {/* <p>Atividades</p> */}
             </div>
             <div>
                 <img src={iconFoul} alt="Ícone de faltas" />
-                <p>Faltas</p>
+                {/* <p>Faltas</p> */}
             </div>
             <div>
                 <img src={iconNotes} alt="Ícone de notas" />
-                <p>Notas</p>
+                {/* <p>Notas</p> */}
             </div>
             <div>
                 <img src={iconValidation} alt="Ícone de validação" />
-                <p>Validação</p>
+                {/* <p>Validação</p> */}
             </div>
-    
+
         </Container>
     );
 }

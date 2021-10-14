@@ -75,6 +75,7 @@ export const Card = styled.div`
         }
         a{
             display: flex;
+            align-items: center;
             column-gap: 30px;
             margin: 10px 0px 0px 30px;
             font-size: 14px;
