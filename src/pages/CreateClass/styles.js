@@ -26,22 +26,12 @@ export const DivTurmas = styled.div`
   }
 
 `
-export const DivBtn = styled.div`
+export const BtnContainer = styled.div`
+    width: 500px;
 
- 
+    display: flex;
+    column-gap: 30px;
+    justify-content: end;
 
- >div{
-    position: relative;
-    left: 430px;
-    top:30px;
-   
- }
-
- >div:nth-child(2){
-    position: relative;
-    left: 230px;
-    top: -25px;
-    display: inline;
- }
 `
 
