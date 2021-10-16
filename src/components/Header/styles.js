@@ -3,10 +3,16 @@ import styled from "styled-components";
 export const Container = styled.header`
     width:  calc(100vw - 50px);
     height: 50px;
+
     margin: auto;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    position: fixed;
+    top: 0px;
+
     > div:nth-child(2) {
        position: relative;
        width: 455px;
@@ -75,6 +81,7 @@ export const Card = styled.div`
         }
         a{
             display: flex;
+            align-items: center;
             column-gap: 30px;
             margin: 10px 0px 0px 30px;
             font-size: 14px;
