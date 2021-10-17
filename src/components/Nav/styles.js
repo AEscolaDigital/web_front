@@ -4,7 +4,7 @@ export const Container = styled.nav`
    position: fixed;
    z-index: 10;
    left: 0px;
-   top: 50px;
+   top: 70px;
 
    width: 85px;
    height: calc(100vh - 50px);

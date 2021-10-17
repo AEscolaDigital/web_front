@@ -3,11 +3,11 @@ import styled from "styled-components";
 export const Container = styled.nav`
     position: fixed;
     left: 0px;
-    top: 50px;
+    top: 70px;
 
     z-index: 1;
 
-    width: 505px;
+    width: 500px;
     height: calc(100vh - 50px);
 
     padding-top: 40px;
