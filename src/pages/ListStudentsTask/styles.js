@@ -23,7 +23,7 @@ export const ContainerTask = styled.div`
                display: flex;
                align-items: center;
                text-align: start;
-               height: 45px;
+               height: 30px;
 
                font-family: Montserrat;
                font-style: normal;
@@ -33,52 +33,53 @@ export const ContainerTask = styled.div`
                color: #5C5C5C;
           }
      }
+    
+`
 
-     body {
-          width: 788px;
-          height: 90px;
-          display: flex;
-          align-items: center;
-          margin-left: 80px;
-          margin-top: 35px;
-          background-color: #FFFFFF;
+export const ContainerListTask = styled.div`
 
-          div > img {
-               margin-left: 50px;
-          }
+     >div{
 
-          div > span {
-               margin-left: 60px;
-               font-family: Montserrat;
-               font-style: normal;
-               font-weight: bold;
-               font-size: 18px;
+       width: 788px;
+       height: 96px;
+       background: white;
+       border-radius: 10px;
 
-               color: #5C5C5C;
-          }
+       padding-left: 45px;
+       padding-right: 40px;
 
-          div:nth-child(3) {
-               width: 222px;
-               height: 71px;
-               border: 1px solid #5059C9;
-               box-sizing: border-box;
-               border-radius: 10px;
-               margin-left: 132px;
+       margin-left: 80px;
+       margin-top: 35px;
 
-               div > span {
-                    list-style: none;
-                    padding-top: 10px;
-                    margin-left: 22px;
-                    font-family: Montserrat;
-                    font-style: normal;
-                    font-weight: bold;
-                    font-size: 18px;
-                    line-height: 21px;
-
-                    color: #5C5C5C;
-               }
-          }
+       display: grid;
+       grid-template-columns: 130px 361px 222px;
+       align-items: center;
+              
      }
+
+       .textListTask{
+            color: var(--color-text);
+            font-size: 18px;
+            font-weight: bold;
+       }
+
+       .dateTask{
+            border: 2px solid var(--color-blue);
+            border-radius: 10px;
+
+            >div{
+                 display: flex;
+                 flex-direction: column;
+                 padding: 10px 20px 14px 20px;
+
+                 >span{
+                      color: var(--color-text);
+                      font-size: 18px;
+                      font-weight: bold;
+
+                 }
+            }
+       }
 `
 
 

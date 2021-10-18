@@ -2,17 +2,37 @@ import Nav from "../../components/Nav";
 import Header from "../../components/Header";
 import React from 'react';
 
-import { Container, ContainerTask } from "./styles";
+import { Container, ContainerTask, ContainerListTask } from "./styles";
 import NavTask from "../../components/NavTask";
 import Imagem from "../../assets/student_task/img_controle_videoGame.svg"
 
 function Teams() {
 
+    const tasks = [
+        {
+            title: "consumo de API (CEP)",
+            finishdate: "14/10/2021",
+            discipline: "matematica"
+        },
+        {
+            title: "Random task",
+            finishdate: "17/10/2021",
+            discipline: "Projetos"
+        },
+        {
+            title: "consumo de API ",
+            finishdate: "18/10/2021",
+            discipline: "Projetos"
+        }
+    ];
+
+    tasks.map(task => console.log(task.title));
+
     return (
         <Container>
             <Header />
             <Nav />
-            <NavTask/>
+            <NavTask />
             <ContainerTask>
                 <header>
                     <div>
@@ -22,73 +42,37 @@ function Teams() {
                     <div>
                         <span>Atribuída</span>
                     </div>
-                   
-                   <div>
-                       <span>Concluída</span>
-                   </div>
+                    <div>
+                        <span>Concluída</span>
+                    </div>
                 </header>
 
-                <body>
-                    <div>
-                        <img src={Imagem} />
-                    </div>
-
-                    <div> 
-                        <span> Consumo de API ( CEP )</span>
-                    </div>
-
-                    <div> 
+                <ContainerListTask>
+                    {tasks.map(task => <div>
                         <div>
-                            <span>Data da Entrega</span>
+                            <img src={Imagem} />
                         </div>
-                        
-                        <div>
-                            <span> 14 / 10 / 2021 </span>
-                        </div>
-                    </div>
-                </body>
 
-                <body>
-                    <div>
-                        <img src={Imagem} />
-                    </div>
 
-                    <div> 
-                        <span> Linktree</span>
-                    </div>
+                        <>
+                            <div className="textListTask" >{task.title}</div>
+                            <div className="dateTask" >
+                                <div>
+                                    <span>Data de entrega</span>
+                                    <span>{task.finishdate}</span>
+                                </div>
+                            </div>
+                        </>
 
-                    <div> 
-                        <div>
-                            <span>Data da Entrega</span>
-                        </div>
-                        
-                        <div>
-                            <span> 14 / 10 / 2021 </span>
-                        </div>
                     </div>
-                </body>
+                    )}
 
-                <body>
-                    <div>
-                        <img src={Imagem} />
-                    </div>
 
-                    <div> 
-                        <span>Aplicação: Calculadora IMC</span>
-                    </div>
 
-                    <div> 
-                        <div>
-                            <span>Data da Entrega</span>
-                        </div>
-                        
-                        <div>
-                            <span> 14 / 10 / 2021 </span>
-                        </div>
-                    </div>
-                </body>
+                </ContainerListTask>
+
             </ContainerTask>
-             
+
         </Container>
 
     );
