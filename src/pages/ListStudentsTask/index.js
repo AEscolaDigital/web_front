@@ -1,8 +1,15 @@
 import Nav from "../../components/Nav";
 import Header from "../../components/Header";
+import Input from "../../components/Input";
+import BtnCancel from "../../components/BtnCancel";
+import BtnSubmit from "../../components/BtnSubmit";
 import React from 'react';
-import imagePerfil from "../../assets/listStudentsTask/imagePerfil.svg";
-import { Container, ContainerTask, MateriaisReferencias, ContainerImage, ContainerTexts, ReferenciaAnexo } from "./styles";
+import Image from "../../assets/listStudentsTask/Image.svg";
+import iconClip from "../../assets/listStudentsTask/Vector.png";
+import {
+    Container, ContainerTask, MateriaisReferencias, ContainerImage, ContainerTexts,
+    ReferenciaAnexo, ActivityDeliveryContainer, ContainerStudent, ContainerStudentAnexo, Divs
+} from "./styles";
 import NavTask from "../../components/NavTask";
 
 function Teams() {
@@ -15,7 +22,7 @@ function Teams() {
             <ContainerTask>
 
                 <ContainerImage>
-                    <img src={imagePerfil} />
+                    <img src={Image} />
 
                     <p>Prof° Amanda </p>
                     <p>14/07/2004</p>
@@ -46,14 +53,59 @@ function Teams() {
                 </MateriaisReferencias>
 
                 <ReferenciaAnexo>
-                    <h6>Materiáis de Referência</h6>
+                    <h5>Materiáis de Referência</h5>
                     <div>
-                        <p>batatinha frita 1,2,3... </p>
-                            
+                        <p>Aqui vai um arquivo de anexo... </p>
                     </div>
                 </ReferenciaAnexo>
 
             </ContainerTask>
+
+            <ActivityDeliveryContainer>
+                <ContainerStudent>
+                    <img src={Image} />
+
+                    <p>Emerson Silva </p>
+
+                </ContainerStudent>
+
+                <ContainerStudentAnexo>
+                    <div>
+                        <h4>Anexo</h4>
+
+                        <div id="enexos" >
+
+                            <Divs>
+                                <p>Aqui vai um arquivo de anexo... </p>
+                            </Divs>
+
+                            <Divs>
+                                <p>Aqui vai um arquivo de anexo... </p>
+                            </Divs>
+                        </div>
+
+
+                        <div id="imageAnexo">
+                            <img src={iconClip} />
+                            <p>Anexo</p>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div id="pontuacao">
+                            <Input label="Pontuação" />
+                        </div>
+                    </div>
+                </ContainerStudentAnexo>
+
+                <Input label="Comentários" width="600px" height="150px"/>
+
+
+                <BtnSubmit text="Corrigido" />
+                <BtnCancel text="Devolver" />
+
+            </ActivityDeliveryContainer>
+
 
         </Container>
 
