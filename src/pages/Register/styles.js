@@ -34,5 +34,6 @@ export const DivImage = styled.div`
        align-items: center;
        justify-content: center;
        grid-area: DivImage;
-       `
+       
+`
 
