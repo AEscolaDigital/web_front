@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     max-width: 420px;
     padding: 1rem;
-    margin-top: 30px;
+    margin-top: 5px;
 
     > label{
         position: relative; 
