@@ -4,14 +4,18 @@ export const Container = styled.div`
 `
 export const ContainerTask = styled.div`
 
-     width: 1350px;
+     width: 650px;
      height: 25vw;
      
      margin-top: 60px;
      margin-left: 530px;
-     border-radius: 20px 20px 0px 0px;
+     border-radius: 20px 0px 0px 0px;
      background-color: #fff;
-     padding-top: 20px;   
+     
+     
+     
+     display: grid;
+     grid-template-columns: 60px 60px;
 `
 
 export const ContainerImage = styled.div`
@@ -20,8 +24,6 @@ export const ContainerImage = styled.div`
      border-radius:90px;
      
      margin-left: 30px;
-     
-    
      display: grid;
      grid-template-columns: 80px 200px 200px;
 `
@@ -29,10 +31,7 @@ export const ContainerImage = styled.div`
 export const ContainerTexts = styled.div`
      width: 300px;
      height: 50px;
-    
-     
      margin-left: 110px;
-     
 `
 
 
@@ -63,15 +62,61 @@ export const ReferenciaAnexo = styled.div`
           background: var(--color-background);
           padding-top: 5px;
           padding-left: 10px;
-
-          
      }
     
 `
 
+export const DeliveryTask = styled.div`
+     width: 700px;
+     height: 25vw;
+     
+     margin-left: 590px;
+     border-radius: 0px 20px 0px 0px;
+     background-color: #fff;
+
+
+     div{
+          justify-content: right;
+          display: flex;
+          padding-right: 40px;
+          color: var(--color-text);
+          font-weight: 700;
+          
+     }
+
+`
+
+export const ContainerComent = styled.nav`
+     color: var(--color-text);
+     font-weight: 600;
+     padding-top: 20px;
+     padding-bottom: 120px;
+     line-height: 40px;
+
+
+`
+
+export const ContainerBtn = styled.div`
+     padding-top: 40px;
+     justify-content: right;
+     padding-right: 40px;
+     padding-bottom: 10px;
+     display: flex;
+
+     text-align: center;
+
+
+`
+
+export const ContainerGlobal1 = styled.div`
+     padding-top: 20px; 
+    
+`
+
+
 export const ActivityDeliveryContainer = styled.div`
      width: 1350px;
-     height: 40vw;
+     height: 20vw;
      margin-left: 530px;
      background-color: #fff;
      -webkit-box-shadow: 0px -4px 5px 0px rgba(0,0,0,0.5); 
@@ -80,29 +125,16 @@ export const ActivityDeliveryContainer = styled.div`
 
 `
 
-export const ContainerStudent = styled.div`
-     height: 50px;
-     width: 50px;
-     border-radius:90px;
-     
-     margin-left: 30px;
-     padding-top: 30px;
-    
-     display: grid;
-     grid-template-columns: 70px 180px ;
-        
-
-`
-
 export const ContainerStudentAnexo = styled.div`
      height: 200px;
      width: 200px;
 
-     margin-top: 50px;
+     margin-top: 10px;
      margin-left: 30px;
 
      display: grid;
      grid-template-columns: 500px 200px;
+     align-items: center;
 
      #enexos{
           display: flex;
@@ -138,13 +170,3 @@ export const Divs = styled.div`
      
 `
 
-export const ContainerBtn= styled.div`
-     width: 800px;
-     height: 50px;
-
-     display: flex;
-     padding-left: 500px;
-     margin-top: 30px;
-     gap: 50px;
-
-`
