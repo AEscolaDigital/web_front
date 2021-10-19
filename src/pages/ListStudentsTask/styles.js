@@ -136,6 +136,15 @@ export const Divs = styled.div`
      padding-top: 10px;
      margin-top: 10px;
      
+`
 
+export const ContainerBtn= styled.div`
+     width: 800px;
+     height: 50px;
+
+     display: flex;
+     padding-left: 500px;
+     margin-top: 30px;
+     gap: 50px;
 
 `

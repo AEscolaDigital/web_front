@@ -8,7 +8,8 @@ import Image from "../../assets/listStudentsTask/Image.svg";
 import iconClip from "../../assets/listStudentsTask/Vector.png";
 import {
     Container, ContainerTask, MateriaisReferencias, ContainerImage, ContainerTexts,
-    ReferenciaAnexo, ActivityDeliveryContainer, ContainerStudent, ContainerStudentAnexo, Divs
+    ReferenciaAnexo, ActivityDeliveryContainer, ContainerStudent, ContainerStudentAnexo, Divs,
+    ContainerBtn
 } from "./styles";
 import NavTask from "../../components/NavTask";
 
@@ -100,9 +101,10 @@ function Teams() {
 
                 <Input label="Comentários" width="600px" height="150px"/>
 
-
+                <ContainerBtn>
                 <BtnSubmit text="Corrigido" />
                 <BtnCancel text="Devolver" />
+                </ContainerBtn>
 
             </ActivityDeliveryContainer>
 
