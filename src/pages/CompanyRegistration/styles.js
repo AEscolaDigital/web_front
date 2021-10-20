@@ -1,50 +1,76 @@
 import styled from "styled-components";
 
-
 export const Container = styled.div`
 
-     overflow-x: hidden;
-    
+     display: grid;
+    grid-template-columns: 2fr 1fr ;    
+    overflow-y: hidden;
+   box-sizing:border-box;
     
 
 `
 export const DivHeader = styled.div`
 
+    
+
     div{
-        margin:80px 0 0 20vh;
+        margin: 5vw 0 10px 8vw;
         
-        h1 {
+        h1   {
         color: var(--color-text);
          font-size:22px;
+        line-height:30px;
         }
     }
-    div:nth-child(2){
-        margin:100px 0 0 20vh;
-        h3{
-            color:5C5C5C;
-            font-size:18px;
-        }
-    }
+   
 `
-export const InputRegistros = styled.div`
+export const DivCampos = styled.div`
 
+    >h1{
+        color: var(--color-text);
+        font-size:22px;
+        margin: 50px 0 10px 9vw;
+    }
     >div{
-        margin:25px 0 0 18vh;
-       >.endereco{
-           margin:35px 0 25px 15px;
-            display: inline-block;
-       }
+        margin: -23vw 30vw 0 9vw;
+        color: var(--color-text);
+        display:block;
     }
-
     >div:nth-child(2){
-       position:relative;
-       left:35%;
-       bottom:100vh;
-      display: inline-block;
+        margin:3vw 0 0 8vw;  
     }
-
     >div:nth-child(3){
+        margin:3vw 0 0 9vw;
+        >h2{
+            font-size:20px;
+            color: var(--color-text);
+        }
     }
-
+    >div:nth-child(4){
+        margin:20px 0 0 8vw ;
+    }
+    >div:nth-child(5){
+        display:flex;
+        margin:10px 0 0 8vw;
+    }
+    >div:nth-child(6){
+        margin:10px 0 0 8vw;
+    }
+    >div:nth-child(8){
+        margin:20px 0 0 8vw;
+    }
+    >div:nth-child(9){
+        margin: 3vw 0 5vw 25vw;
+    }
 `
+
+export const DivImage = styled.div`
+
+    margin:10vw 0 0 0;
+    position:relative;
+    bottom:-120px;
+    right:16vw;
+`
+
+
 
