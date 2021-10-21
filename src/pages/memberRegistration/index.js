@@ -3,7 +3,9 @@ import Header from "../../components/Header";
 import Nav from "../../components/Nav";
 import memberRegister from "../../assets/memberRegistration/memberRegister.png";
 import iconPerson from "../../assets/memberRegistration/iconPerson.png";
-import RadioButton from "../../components/RadioButton"
+import RadioButton from "../../components/RadioButton";
+import arrowLeft from "../../assets/memberRegistration/arrowLeft.svg";
+import arrowRight from "../../assets/memberRegistration/arrowRight.svg";
 
 import { Container, Cabeçalho, CabeçalhoLeft, CabeçalhoRight, Body, Page, Requisito, Informacoes, DivIcon, Footer } from "./styles";
 import Input from "../../components/Input";
@@ -123,7 +125,7 @@ function MemberRegister() {
                     
 
                     <Footer>
-                        <p>Linhas por página: 10</p> <p>1 de 2 </p> (-- --) <p> </p>
+                        <p>Linhas por página: 10</p> <p>1 de 2 </p>  <img src={arrowLeft}/> <img src={arrowRight}/>
                     </Footer>
                 </Informacoes>
 

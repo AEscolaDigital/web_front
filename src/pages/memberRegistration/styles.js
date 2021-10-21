@@ -174,4 +174,8 @@ export const Footer= styled.footer`
     gap: 40px;
     padding-right: 20px;
 
+    img{
+        cursor: pointer;
+    }
+
 `
