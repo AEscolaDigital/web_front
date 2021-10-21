@@ -10,11 +10,11 @@ export const Container = styled.div`
 
         > span{
             position: absolute;
-            left: 2px;
+            left: 35px;
             top: 0;
             margin: 7.2px;
             white-space: nowrap;
-            background: #EDEDED;
+            background: #fff;
             color: #A8A8A8;
             transition: transform 200ms ease-in;
             line-height: 2.7;
@@ -26,6 +26,7 @@ export const Container = styled.div`
             width: 100%;
             border: 2px solid #5059C9;
             padding: 1rem;
+            padding-left: 50px;
             background: transparent;
             border-radius: 10px;
             height: 56px;
