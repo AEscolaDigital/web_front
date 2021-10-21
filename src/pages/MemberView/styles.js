@@ -162,8 +162,9 @@ export const Informacoes = styled.div`
         font-weight: 600;
     }
 
-    img{
+    img:hover{
         cursor: pointer;
+        transform: scale(1.1);
     }
 `
 
