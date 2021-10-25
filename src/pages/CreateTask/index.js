@@ -1,7 +1,6 @@
 import Nav from "../../components/Nav";
 import Header from "../../components/Header";
 import Input from "../../components/Input";
-
 import React from 'react';
 import iconClip from "../../assets/createTask/Vector.svg";
 import {
@@ -10,6 +9,8 @@ import {
 
 } from "./styles";
 import NavTask from "../../components/NavTask";
+import iconAnexo from "../../assets/iconAnexo/Group.svg"
+
 
 function CreateTask() {
 
@@ -20,16 +21,19 @@ function CreateTask() {
             <NavTask />
 
             <ContainerTask>
-                <p>Preencha os campos para adicionar uma tarefa</p>
+                <div className="titulo">
+                    <p>Preencha os campos para adicionar uma tarefa</p>
+                </div>
 
-                <Input label="Nome da Tarefa"/>
+                <div>
+                    <Input label="Nome da Tarefa" width="423px" height="63px" />
+                    <div>
+                        <Input label="Descrição da Tarefa" width="695px" height="203px" />
+                    </div>
+                    <Input label="Data de entrega" type="date" height="63px" width="423px" />
 
-                <Input label="Descrição da Tarefa"/>
-
-                <Input label="Data de entrega"/>
-
-                <Input label="Pontos"/>
-
+                    <Input label="Pontos" type="number"      width="423px" height="63px" />
+                </div>
             </ContainerTask>
 
             <ActivityDeliveryContainer>
@@ -37,9 +41,15 @@ function CreateTask() {
                 <ContainerStudentAnexo>
                     <div>
                         <ReferenciaAnexo>
-                            <h5>Materiáis de Referência</h5>
                             <div>
-                                <p>Aqui vai um arquivo de anexo... </p>
+                                <h5>Materiáis de Referência</h5>
+                            </div>
+
+                            <div>
+                                <p>https://developer.mozilla.org/pt-BR/docs/Web/HTML </p>
+                                <div>
+                                    <img src={iconAnexo} />
+                                </div>
                             </div>
                         </ReferenciaAnexo>
 

@@ -12,6 +12,22 @@ export const ContainerTask = styled.div`
      border-radius: 20px 20px 0px 0px;
      background-color: #fff;
      padding-top: 20px;   
+
+     >.titulo{
+          margin: 40px 0 0 80px;
+
+          >p{
+               font-weight:bold;
+          }
+     }
+
+     >div{
+          margin:10px 0 0 60px;
+
+          >div{
+               margin: 20px 0 25px 0;
+          }
+     }
 `
 
 export const ContainerImage = styled.div`
@@ -29,10 +45,7 @@ export const ContainerImage = styled.div`
 export const ContainerTexts = styled.div`
      width: 300px;
      height: 50px;
-    
-     
      margin-left: 110px;
-     
 `
 
 
@@ -53,18 +66,33 @@ export const MateriaisReferencias = styled.div`
 export const ReferenciaAnexo = styled.div`
      width: 350px;
      height: 100px;
-     
      margin-left: 110px;
 
-     div{
-          width: 400px;
+     >div{
+          margin: 30px 0 0 0;
+
+
+          >h5{
+               font-size:18px;
+               color:5C5C5C;
+          }
+     }
+
+     div:nth-child(2){
+          width: 435px;
           height: 30px;
-          
           background: var(--color-background);
           padding-top: 5px;
           padding-left: 10px;
-
+          margin: 30px 0 0 0;
           
+         >div{
+               position:relative;
+               left:41vh;
+               bottom:18px;
+               display:inline;   
+
+         }
      }
     
 `
@@ -90,25 +118,19 @@ export const ContainerStudent = styled.div`
     
      display: grid;
      grid-template-columns: 70px 180px ;
-        
-
 `
 
 export const ContainerStudentAnexo = styled.div`
      height: 200px;
      width: 200px;
-
      margin-top: 50px;
      margin-left: 30px;
-
      display: grid;
      grid-template-columns: 500px 200px;
 
      #enexos{
           display: flex;
           flex-direction: column;
-
-          
      }
 
      #imageAnexo{
@@ -118,7 +140,7 @@ export const ContainerStudentAnexo = styled.div`
           gap: 10px;
           color: #9f9f9f;
           font-weight: 700;
-          
+          margin: 15px 0 0 100px;
      }
 
      #pontuacao{
@@ -129,13 +151,10 @@ export const ContainerStudentAnexo = styled.div`
 export const Divs = styled.div`
      width: 400px;
      height: 40px;
-          
      background: var(--color-background);
-    
      padding-left: 10px; 
      padding-top: 10px;
      margin-top: 10px;
-     
 `
 
 export const ContainerBtn= styled.div`
