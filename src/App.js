@@ -10,7 +10,7 @@ function App() {
   return (
       <>
         <GlobalSyles/>
-        <CreateClass/>
+        <CreateClass />
       </>
   );
 
