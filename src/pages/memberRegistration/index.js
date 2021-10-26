@@ -6,13 +6,52 @@ import iconPerson from "../../assets/memberRegistration/iconPerson.png";
 import RadioButton from "../../components/RadioButton";
 import arrowLeft from "../../assets/memberRegistration/arrowLeft.svg";
 import arrowRight from "../../assets/memberRegistration/arrowRight.svg";
-
+import BtnSubmit from "../../components/BtnSubmit";
 import { Container, Cabeçalho, CabeçalhoLeft, CabeçalhoRight, Body, Page, Requisito, Informacoes, DivIcon, Footer } from "./styles";
 import Input from "../../components/Input";
+import { useState } from "react"
+import { signIn } from "../../services/security"
+import { api } from "../../services/api";
 
 
 
 function MemberRegister() {
+
+
+    const [formMemberRegister, setMemberRegister] = useState({
+        
+        name: "",
+        email: "",
+        role_id: "",
+    });
+
+
+
+    const handleInput = (e) => {
+        setMemberRegister({ ...formMemberRegister, [e.target.id]: e.target.value });
+    };
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await api.post("/responsibles", {
+                name: formMemberRegister.name,
+                email: formMemberRegister.email,
+                role_id: formMemberRegister.role_id,
+                
+            });
+
+            signIn(response.data)
+
+            const idUser = response.data.idUser;
+
+        } catch (error) {
+            console.log(error.response.data);
+        }
+    }
+
     return (
         <Container>
             <Header />
@@ -50,18 +89,24 @@ function MemberRegister() {
                     <div id="linha"></div>
                 </Page>
 
-                <Requisito>
+                <Requisito onSubmit={handleSubmit}>
                     <div>
-                    <Input label="Informe o E-mail" width="400px"/>
+                    <Input label="Informe o Nome" width="400px" id="name" handler={handleInput}/>
+
+                    <Input label="Informe o E-mail" width="400px" id="email" handler={handleInput}/>
 
                 <DivIcon>
                     <img src={iconPerson} />
                 </DivIcon>
 
                     <div id="radioButton">
-                    <RadioButton text="Aluno" idInput="aluno" forLabel="aluno" name="genre"  />
-                    <RadioButton text="Professor" idInput="professor" forLabel="professor" name="genre"  />
-                    <RadioButton text="Administrador" idInput="admin" forLabel="admin" name="genre"  />
+                    <RadioButton text="Aluno" idInput="aluno" forLabel="aluno" name="genre" value="1" />
+                    <RadioButton text="Professor" idInput="professor" forLabel="professor" name="genre" value="2"  />
+                    <RadioButton text="Administrador" idInput="admin" forLabel="admin" name="genre" value="3" />
+                    </div>
+
+                    <div id="btnSubmit">
+                        <BtnSubmit text="Enviar"/>
                     </div>
 
                     </div>

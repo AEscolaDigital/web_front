@@ -95,7 +95,7 @@ export const Page = styled.div`
 
 `
 
-export const Requisito = styled.div`
+export const Requisito = styled.form`
 
     display: flex;
     margin-left: 130px;
@@ -105,6 +105,14 @@ export const Requisito = styled.div`
         width: 500px;
         height: 300px;  
     }
+
+    #btnSubmit{
+        width: 150px;
+        height: 40px;
+        margin-top:50px;
+        margin-left: 20px;
+    }
+
 
     #radioButton{
         display: flex;
@@ -135,6 +143,7 @@ export const DivIcon = styled.div`
 export const Informacoes = styled.div`
     .line{
         border: 1px solid var(--color-blue);
+       
         margin-left: 120px;
         margin-right: 120px; 
     }
