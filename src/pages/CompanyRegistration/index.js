@@ -18,7 +18,7 @@ function CompanyRegistration() {
 
     const getCep = async () => {
         const cep = document.querySelector('#cep').value;
-
+    
         if (cep.length == 9) {
             const response = await fetch(`http://viacep.com.br/ws/${cep}/json/`);
             const data = await response.json();
@@ -26,7 +26,6 @@ function CompanyRegistration() {
             getAndress(data)
         }
     }
-
 
     const [formRegistration, setRegistration] = useState({
         name: "",
@@ -51,6 +50,7 @@ function CompanyRegistration() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        console.log(formRegistration.phone);
 
         try {
             const response = await api.post("/schools", {
@@ -76,6 +76,7 @@ function CompanyRegistration() {
 
 
             signIn(response.data)
+           
 
             const idUser = response.data.idUser;
 
@@ -116,7 +117,7 @@ function CompanyRegistration() {
                     <Input label="Telefone comercial" width="420px" mask="phone" handler={handleInput} id="phone" />
                     <Input label="Nome da escola" width="420px" handler={handleInput} id="CompanyName" />
                     <Input label="CNPJ" width="420px" handler={handleInput} id="cnpj" />
-                    <Input width="330px" id="school_size" handler={handleInput} />
+                    <Input label="Quantidade de alunos" width="330px" id="school_size" handler={handleInput} />
                 </div>
 
                 <div>
