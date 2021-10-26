@@ -8,6 +8,26 @@ import { useState } from "react";
 
 function CompanyRegistration() {
 
+
+    const [andress, getAndress] = useState({
+        logradouro: "",
+        localidade: "",
+        bairro: "",
+        uf: "",
+    })
+
+    const getCep = async () => {
+        const cep = document.querySelector('#cep').value;
+
+        if (cep.length == 9) {
+            const response = await fetch(`http://viacep.com.br/ws/${cep}/json/`);
+            const data = await response.json();
+
+            getAndress(data)
+        }
+    }
+
+
     const [formRegistration, setRegistration] = useState({
         name: "",
         phone: "",
@@ -15,24 +35,16 @@ function CompanyRegistration() {
         cnpj: "",
         cep: "",
         school_size: '',
-        street: "",
-        district: "",
         number: "",
-        city: "",
-        state: "São Paulo",
-        uf_state: "sp",
         complement: "",
         email: "",
         password: "",
-        
+
     });
 
 
-
     const handleInput = (e) => {
-        const aaa = setRegistration({ ...formRegistration, [e.target.id]: e.target.value });
-        console.log(aaa.state);
-
+        setRegistration({ ...formRegistration, [e.target.id]: e.target.value });
     };
 
 
@@ -49,16 +61,16 @@ function CompanyRegistration() {
                 school_size: formRegistration.school_size,
                 address: [{
                     cep: formRegistration.cep,
-                    street: formRegistration.street,
-                    district: formRegistration.district,
+                    street: andress.logradouro,
+                    district: andress.bairro,
                     number: formRegistration.number,
-                    city: formRegistration.city,
+                    city: andress.localidade,
                     state: formRegistration.state,
-                    uf_state: formRegistration.uf_state,
+                    uf_state: andress.uf,
                     complement: formRegistration.complement,
                 }],
                 email: formRegistration.email,
-                password: formRegistration.password
+                password: formRegistration.password,
 
             });
 
@@ -112,31 +124,82 @@ function CompanyRegistration() {
                 </div>
 
                 <div>
-                    <Input label="Informe o seu CEP" width="425px" required handler={handleInput} id="cep" mask="cep" />
-                    <Input label="Informe a rua onde reside" width="425px" required handler={handleInput} id="street" />
-                </div>
-                <div>
-                    <Input label="Informe o bairro" width="230px" required handler={handleInput} id="district" />
-                    <Input label="Número" type="number" width="150px" required handler={handleInput} id="number" />
+                    <Input
+                        label="Informe o seu CEP"
+                        width="425px"
+                        required
+                        handler={handleInput}
+                        id="cep"
+                        onBlur={getCep}
+                        mask="cep" />
+
+                    <Input
+                        id="street"
+                        label="Informe a rua onde reside"
+                        value={`${andress.logradouro}`}
+                        width="490px"
+                        handler={handleInput} 
+                        disabled/>
                 </div>
 
                 <div>
-                    <Input label="Cidade" width="280px" required handler={handleInput} id="city" />
-                    <Input label="UF" width="100px" required handler={handleInput} id="uf_state" />
+                    <Input
+                        label="Informe o bairro"
+                        width="230px"
+                        value={`${andress.bairro}`}
+                        handler={handleInput}
+                        id="district"
+                        disabled />
+
+                    <Input
+                        label="Número"
+                        type="number"
+                        width="150px"
+                        required
+                        handler={handleInput}
+                        id="number" />
                 </div>
 
                 <div>
-                    <Input label="Estado" width="420px" handler={handleInput} id="state"/>
-                    <Input label="Complemento" width="420px" handler={handleInput} id="complement" />
+                    <Input
+                        label="Cidade"
+                        width="280px"
+                        required
+                        value={`${andress.localidade}`}
+                        handler={handleInput}
+                        disabled
+                        id="city" />
+
+                    <Input
+                        label="UF"
+                        width="100px"
+                        required
+                        value={`${andress.uf}`}
+                        handler={handleInput}
+                        disabled
+                        id="uf_state" />
+                </div>
+
+                <div>
+                    <Input
+                        label="Estado"
+                        width="420px"
+                        handler={handleInput}
+                        id="state" />
+
+                    <Input
+                        label="Complemento"
+                        width="420px"
+                        handler={handleInput}
+                        id="complement" />
                 </div>
 
                 <h1> Como você fará Login: </h1>
 
                 <div>
-                    <Input label="informe o email" width="425px" required handler={handleInput} id="email"/>
-                    <Input label="Informe a senha" type="password" width="280px" required handle={handleInput} id="password"/>
+                    <Input label="informe o email" width="425px" required handler={handleInput} id="email" />
+                    <Input label="Informe a senha" type="password" width="280px" required handler={handleInput} id="password" />
                 </div>
-
 
                 <div>
                     <BtnSubmit text="Enviar" />
