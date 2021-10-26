@@ -35,12 +35,14 @@ export const Container = styled.div`
         font-weight: 900;
         font-size: 12px;
         padding: 2px 6px 2px 2px;
-        content: url("icon_more.svg");
+        content: url("https://firebasestorage.googleapis.com/v0/b/school-12606.appspot.com/o/icons%2Ficon_more.png?alt=media&token=e9061f75-c6de-4198-8225-d509767e6a8d");
         transition: transform .3s ease-in-out;
     }
 
     input:checked + label::before {
-        content: url("check_icon.svg");
+        width: 10px !important;
+        height: 10px !important;
+        content: url("https://firebasestorage.googleapis.com/v0/b/school-12606.appspot.com/o/icons%2Fcheck_icon.png?alt=media&token=9b0cba38-6729-4ddc-8b81-3895fe76751e");
         transform: rotate(-360deg);
         transition: transform .3s ease-in-out;
     }
