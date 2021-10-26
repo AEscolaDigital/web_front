@@ -154,7 +154,6 @@ function CompanyRegistration() {
 
                     <Input
                         label="Número"
-                        type="number"
                         width="150px"
                         required
                         handler={handleInput}

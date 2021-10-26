@@ -35,7 +35,7 @@ export const DivCampos = styled.form`
         margin: 50px 0px 10px 9vw;
     }
     >div{
-        margin: -23vw 30vw 0px 9vw;
+        margin: 0px 30vw 0px 9vw;
         color: var(--color-text);
         display:block;
     }
@@ -74,11 +74,13 @@ export const DivCampos = styled.form`
 `
 
 export const DivImage = styled.div`
-
     margin:10vw 0px 0px 0px;
-    position:relative;
-    bottom:-120px;
-    right:16vw;
+
+    >img{
+        position: fixed;
+        bottom: calc(50vh - 250px);
+        right: 30px;
+    }
 `
 
 
