@@ -3,6 +3,7 @@ import { isSignedIn } from "./services/security";
 
 import Login from "./pages/Login";
 import Teams from "./pages/Teams";
+import RegisterSchool from "./pages/RegisterSchool";
 
 function PrivateRoute({ children, ...rest }) {
     if (isSignedIn()) {
@@ -19,6 +20,9 @@ function Router() {
             <Switch>
                 <Route exact path="/" >
                     <Login />
+                </Route>
+                <Route exact path="/registerSchool" >
+                    <RegisterSchool/>
                 </Route>
                 <PrivateRoute path="/teams">
                     <Teams />

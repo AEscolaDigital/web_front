@@ -5,9 +5,11 @@ import BtnSubmit from "../../components/BtnSubmit";
 import { api } from "../../services/api";
 import { signIn } from "../../services/security";
 import { useState } from "react";
+import { useHistory } from "react-router";
 
 function CompanyRegistration() {
 
+    const history = useHistory();
 
     const [andress, getAndress] = useState({
         logradouro: "",
@@ -77,10 +79,7 @@ function CompanyRegistration() {
 
             signIn(response.data)
            
-
-            const idUser = response.data.idUser;
-
-            //history.push("/register/modalaviso")
+            history.push("/Teams")
 
         } catch (error) {
             console.log(error.response.data);

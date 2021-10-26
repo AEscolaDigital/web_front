@@ -23,7 +23,7 @@ function Login() {
     }
 
     const [formLoginRadio, setTypeUser] = useState({
-        typeUser: "",
+        role: "",
     })
 
     const handleInputRadio = (e) => {
@@ -48,7 +48,7 @@ function Login() {
             const response = await api.post("/sessions", {
                 email: formLogin.email,
                 password: formLogin.password,
-                typeUser: formLoginRadio.typeUser
+                role: formLoginRadio.role
             });
 
             signIn(response.data);
@@ -93,25 +93,25 @@ function Login() {
                                 <RadioButton 
                                         idInput="student" 
                                         forLabel="student" 
-                                        name="typeUser" 
+                                        name="role" 
                                         text="Aluno" 
-                                        value="student" 
+                                        value="ROLE_USER" 
                                 />
 
                                 <RadioButton 
-                                        idInput="employee" 
-                                        forLabel="employee"
-                                        name="typeUser" 
-                                        text="Funcionário" 
-                                        value="employee" 
+                                        idInput="Escola" 
+                                        forLabel="Escola"
+                                        name="role" 
+                                        text="Escola" 
+                                        value="ROLE_ADMIN" 
                                 />
 
                                 <RadioButton 
-                                        idInput="responsible" 
-                                        forLabel="responsible" 
-                                        name="typeUser" 
-                                        text="Responsável" 
-                                        value="responsible" 
+                                        idInput="Professor" 
+                                        forLabel="Professor" 
+                                        name="role" 
+                                        text="Professor" 
+                                        value="ROLE_TEACHER" 
                                 />
                             </div>
                         </TypeUser>
@@ -125,8 +125,8 @@ function Login() {
 
                     <div id="register" >
                         <span> 
-                            Não tem cadastro? 
-                            <Link to="/register" >cadastre-se</Link>
+                            Escola não tem cadastro
+                            <Link to="/registerSchool" > cadastre-se</Link>
                         </span>
                     </div>
 
