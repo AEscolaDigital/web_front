@@ -7,11 +7,11 @@ function PoPup({ display }) {
         <Container style={{ display: display, }} >
             <div>
                 <div>
-                    <img src={iconAddMember} />
+                    <img src={iconAddMember} alt="Icone de adicionar membro" />
                     <span>Adicionar membro</span>
                 </div>
                 <div>
-                    <img src={iconDelete} />
+                    <img src={iconDelete} alt="Icone de deleção" />
                     <span>Excluir turma</span>
                 </div>
             </div>

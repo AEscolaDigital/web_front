@@ -21,7 +21,7 @@ function CompanyRegistration() {
     const getCep = async () => {
         const cep = document.querySelector('#cep').value;
     
-        if (cep.length == 9) {
+        if (cep.length === 9) {
             const response = await fetch(`http://viacep.com.br/ws/${cep}/json/`);
             const data = await response.json();
 
@@ -103,7 +103,7 @@ function CompanyRegistration() {
             </DivHeader>
 
             <DivImage>
-                <img src={company} />
+                <img src={company} alt="Imagem representando o cadastro de uma escola na plataforma"  />
             </DivImage>
 
             <DivCampos onSubmit={handleSubmit}>

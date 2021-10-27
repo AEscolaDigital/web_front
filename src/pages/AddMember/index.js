@@ -9,6 +9,7 @@ import { Container, Cabeçalho, CabeçalhoLeft, CabeçalhoRight, Body, Page, Con
 import Input from "../../components/Input";
 import { useEffect, useState } from "react"
 import { api } from "../../services/api";
+import { Link } from "react-router-dom";
 
 function AddMember() {
  
@@ -88,14 +89,14 @@ function AddMember() {
                     <ol>Existe duas opções para adicionar membro
 
                         <li>adicionar o e-mail do usuário</li>
-                        <li>enviar um arquivo excel conforme o exemplo, <a href="">aqui</a></li>
-
+                        <li>enviar um arquivo excel conforme o exemplo <Link to="/addMember" >aqui</Link>
+                        </li>
                     </ol>
 
                 </CabeçalhoLeft>
 
                 <CabeçalhoRight>
-                    <img src={memberRegister} />
+                    <img src={memberRegister} alt="Imagem representando o adicionamento de membros na plataforma" />
                 </CabeçalhoRight>
             </Cabeçalho>
 
@@ -193,8 +194,8 @@ function AddMember() {
                             </div>
 
                             <div id="divImgSetas">
-                                <img src={arrowLeft} />
-                                <img src={arrowRight} />
+                                <img src={arrowLeft} alt="Seta para esquerda" />
+                                <img src={arrowRight} alt="Seta para direita" />
                             </div>
                         </div>
                     </tfoot>

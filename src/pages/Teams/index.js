@@ -9,6 +9,7 @@ import Input from "../../components/Input";
 import BtnSubmit from "../../components/BtnSubmit";
 import BtnCancel from "../../components/BtnCancel";
 import Card from "../../components/Card";
+import { Link } from "react-router-dom";
 
 function Teams() {
 
@@ -34,35 +35,35 @@ function Teams() {
             <Header />
             <Nav />
             <div id="btnCreateTeam" >
-                <a onClick={() => setIsModalVisible(true)}> <img src={iconTeam} /> <span>Criar Turma</span> </a>
+                <Link onClick={() => setIsModalVisible(true)}> <img src={iconTeam} alt="Icone de um grupo de pessoas" /> <span>Criar Turma</span> </Link>
             </div>
             <div id="titleYourTeams" >
                 <h1>Suas turmas</h1>
             </div>
             <Section>
                 <Card>
-                    <img src={imgMathematics} />
+                    <img src={imgMathematics} alt="" />
                 </Card>
                 <Card>
-                    <img src={imgMathematics} />
+                    <img src={imgMathematics} alt="" />
                 </Card>
                 <Card>
-                    <img src={imgMathematics} />
+                    <img src={imgMathematics} alt="" />
                 </Card>
                 <Card>
-                    <img src={imgMathematics} />
+                    <img src={imgMathematics} alt="" />
                 </Card>
                 <Card>
-                    <img src={imgMathematics} />
+                    <img src={imgMathematics} alt="" />
                 </Card>
                 <Card>
-                    <img src={imgMathematics} />
+                    <img src={imgMathematics} alt="" />
                 </Card>
                 <Card>
-                    <img src={imgMathematics} />
+                    <img src={imgMathematics} alt="" />
                 </Card>
                 <Card>
-                    <img src={imgMathematics} />
+                    <img src={imgMathematics} alt="" />
                 </Card>
             </Section>
         </Container>

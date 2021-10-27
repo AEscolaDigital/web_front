@@ -1,5 +1,4 @@
 import { Container } from "./styles";
-import imgMathematics from "../../assets/teams/imgMathematics.svg"
 import iconMore from "../../assets/teams/iconMore.svg"
 import PoPup from "../../components/PoPup";
 import React from 'react';

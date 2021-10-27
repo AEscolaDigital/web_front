@@ -117,7 +117,7 @@ function Login() {
                             </div>
                         </TypeUser>
                         <div id="ForgotPassword" >
-                            <a>Esqueceu a senha?</a>
+                            <Link to="/" >Esqueceu a senha?</Link>
                         </div>
                         <div id="btnSubmit" >
                             <BtnSubmit text="Entrar" />
@@ -134,7 +134,7 @@ function Login() {
             </DivLogin>
 
             <DivImage>
-                <img src={imageLogin} />
+                <img src={imageLogin} alt="Imagem representando o login, na plataforma" />
             </DivImage>
             
         </Container>
