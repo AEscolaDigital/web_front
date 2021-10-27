@@ -1,10 +1,10 @@
 import React from 'react';
 import Nav from "../../components/Nav";
 import Header from "../../components/Header";
-import Card from "../../components/Card";
 import { Container, Section, } from "./styles";
 import memberCreate from "../../assets/memberClassCreate/createMember.svg";
 import classCreate from "../../assets/memberClassCreate/createClass.svg";
+import { Link } from 'react-router-dom';
 
 
 
@@ -16,26 +16,20 @@ function MemberClassCreate() {
 
 
             <Section>
+                <Link to="/CreateClass">
                 <div>
-                    {/* <div>
-                        <img src={classCreate} onClick={e => setToogle(state => !state)}  /> 
-
-                        <Card status={value} /> 
-                    </div> */}
-
+                   
                     <img src={classCreate} />
                     <p>Criar Turmas</p>
                 </div>
+                </Link>
 
-
+                <Link to="/AddMember">
                 <div>
-                    {/* <div>
-                        <img src={classCreate} />
-                    </div> */}
-
                     <img src={memberCreate} />
                     <p>Adicionar Membros</p>
                 </div>
+                </Link>
             </Section>
         </Container>
     );

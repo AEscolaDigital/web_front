@@ -24,16 +24,14 @@ export const Section = styled.section`
         cursor: pointer;
        
         
-        >img{
-            display: block;
-            margin: 20px auto 0px auto;
-            
-        }
+       
 
         >img{
             width: 132px;
             height: 132px;
 
+            display: block;
+            margin: 20px auto 0px auto;
             border-radius: 100%;
             box-shadow: 0px 1px 5px 0px rgb(0 0 0 / 50%);
             cursor: pointer;
