@@ -95,10 +95,13 @@ export const Page = styled.div`
 
 `
 
-export const Requisito = styled.form`
+export const ContainerAddMember = styled.div`
 
     display: flex;
+
+    margin-top: 20px;
     margin-left: 130px;
+    margin-bottom: 50px;
     
 
     >div{
@@ -107,84 +110,108 @@ export const Requisito = styled.form`
     }
 
     #btnSubmit{
-        width: 150px;
-        height: 40px;
-        margin-top:50px;
-        margin-left: 20px;
-    }
+        display: flex;
+        justify-content: end;
 
+        width: 100%;
+        margin-top:50px;
+
+    }
 
     #radioButton{
         display: flex;
-        margin-top: 20px;
-        
-        gap: 10px;
+        column-gap: 10px;
+        margin-top: -20px;
     }
 
     #fileExcel{
         width: 350px;
         height: 60px;
+
         border: 2px dashed var(--color-blue);
         text-align: center;
         padding-top: 15px;
+
         margin-left: 250px;
         margin-top: 40px;
         cursor: pointer;
     }
 `
 
-export const DivIcon = styled.div`
-    margin-left: 450px;
-    margin-top: -60px;
-    
+export const ContainerTable = styled.table`
+    width: 1120px;
+    margin: auto;
 
-`
+    #trTh{
+        display: grid;
+        grid-template-columns: 300px 400px 300px 300px;
 
-export const Informacoes = styled.div`
-    .line{
-        border: 1px solid var(--color-blue);
-       
-        margin-left: 120px;
-        margin-right: 120px; 
-    }
+        border-bottom:  2px solid var(--color-blue);
+        border-top:  2px solid var(--color-blue);
 
-    .titles{
-        height: 50px;
+        height: 60px;
+
+        align-items: center;
+
         color: var(--color-blue);
-        display: flex;
-        align-items: center;
-        margin-left: 200px;
-        gap: 200px;
-        font-weight: 600;
+        font-weight: bolder;
+
+        padding-left: 50px;
+
+       th{
+           text-align: start;
+       }
     }
 
-    .add{
-        height: 50px;
-        display: flex;
-        align-items: center;
-        margin-left: 200px;
-        gap: 130px;
-        color: var(--color-text);
-        font-weight: 600;
+    tbody{
+        width: 1120px;
+        margin: auto;
+
+        tr{
+            display: grid;
+            align-items: center;
+            grid-template-columns: 300px 400px 300px 300px;
+
+            height: 60px;
+
+            text-align: start;
+
+            padding-left: 60px;
+
+            font-size: 16px;
+            font-weight: bolder;
+            color: var(--color-text);
+
+            border-bottom:  2px solid var(--color-blue);
+        }
+        
     }
-`
 
-export const Footer= styled.footer`
-    width: inherit;
-    height: 50px;
-    margin: 0px 120px 0px 120px;
-    background-color: var(--color-blue);
-    border-radius: 10px;
+    tfoot{
+         height: 45px;
 
-    display: flex;
-    color: #fff;
-    align-items: center;
-    justify-content: right;
-    gap: 40px;
-    padding-right: 20px;
+         display: flex;
+         align-items: center;
+         justify-content: end;
 
-    img{
-        cursor: pointer;
+         background-color: var(--color-blue);
+         color: white;
+
+         border-radius: 10px;
+
+        >div{
+            display: flex;
+            column-gap: 40px;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            margin-right: 50px;
+
+            #divImgSetas>img{
+                margin-left: 45px;
+            }
+        } 
     }
 
 `

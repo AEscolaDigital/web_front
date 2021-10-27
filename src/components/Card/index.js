@@ -17,7 +17,7 @@ function Card({ children }) {
     return (
         <Container>
             <div>
-                <img src={iconMore} onClick={e => setToogle(state => !state)} />
+                <img src={iconMore} onClick={e => setToogle(state => !state)} alt="aaa" />
 
                 <PoPup display={value} />
             </div>

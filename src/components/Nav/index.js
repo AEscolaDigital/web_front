@@ -9,17 +9,11 @@ import iconValidation from "../../assets/nav/iconValidation.svg"
 
 function Nav() {
    
-    const someHandler = () =>{
-        console.log("sssssssss")
-        const aa = "aaaaaa";
-        return aa;
-    }
+    
 
-    console.log(someHandler())
 
     return (
-        <Container onMouseEnter={() => someHandler()}
-        >
+        <Container >
             <div>
                 <img src={iconFeed} alt="Ícone de feed" />
                 <p  >Feed</p>

@@ -1,12 +1,12 @@
 import { GlobalSyles } from "./GlobalSytles";
-import MemberRegister from "./pages/memberRegistration";
+import AddMember from "./pages/AddMember";
 
 function App() {
 
   return (
       <>
         <GlobalSyles/>
-        <MemberRegister/>
+        <AddMember/>
       </>
   );
 
