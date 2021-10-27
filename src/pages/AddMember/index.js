@@ -49,7 +49,6 @@ function MemberRegister() {
 
     const handleRadioButton = (e) => {
         setRole({ ...formRadioButton, [e.target.name]: e.target.value });
-        console.log(e.target.value);
     }
 
     const handleSubmit = async (e) => {
@@ -175,7 +174,7 @@ function MemberRegister() {
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
                                 <td>Aluno</td>
-                                <td>{user.createdAt}</td>
+                                <td>{user.created_at}</td>
                             </tr>
                         )}
                     </tbody>
