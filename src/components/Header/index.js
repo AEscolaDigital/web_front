@@ -24,7 +24,7 @@ function Header() {
             <div>
                 <input type="text" placeholder="Pesquisar" />
                 <button type="submit">
-                    <img src={iconeMagnifier} />
+                    <img src={iconeMagnifier} alt="ícone de uma lupa" />
                 </button>
             </div>
 
@@ -42,26 +42,26 @@ function Header() {
                     <hr/>
                     <a>
                         <div>
-                            <img src={configurationIcon} />
+                            <img src={configurationIcon} id="Icone de configuração" />
                         </div>
                         <div>Configuraçãoes</div>
                     </a>
                     <a>
                         <div>
-                            <img src={puzzleIcon} />
+                            <img src={puzzleIcon} alt="Ícone de quebra-cabeça" />
                         </div>
                         <div>Atalhos</div>
                     </a>
                     <a>
                         <div>
-                            <img src={downloadIcon} />
+                            <img src={downloadIcon} alt="Ícone de download" />
                         </div>
                         <div>Dowload do aplicativo</div>
                     </a>
                     <hr/>
                     <a>
                         <div>
-                            <img src={iconExit} />
+                            <img src={iconExit} alt="Icone de sair" />
                         </div>
                         <div>Saída</div>
                     </a>

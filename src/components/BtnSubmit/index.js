@@ -1,11 +1,10 @@
 import { Container } from "../Nav/styles";
-import { Link } from "react-router-dom";
-import { A } from "./styles";
+import { Button } from "./styles";
 
 function BtnSubmit({text}){
 
     return(
-        <A> {text} </A>
+        <Button> {text} </Button>
     );
 }
 

@@ -7,7 +7,6 @@ import classCreate from "../../assets/memberClassCreate/createClass.svg";
 import { Link } from 'react-router-dom';
 
 
-
 function MemberClassCreate() {
     return (
         <Container>
