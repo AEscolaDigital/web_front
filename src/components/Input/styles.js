@@ -12,7 +12,7 @@ export const Container = styled.div`
             top: 0;
             margin: 7.2px;
             white-space: nowrap;
-            background: #EDEDED;
+            background: #fff;
             color: #A8A8A8;
             transition: transform 200ms ease-in;
             line-height: 2.7;

@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     width: 120px;
     height: 25px;
+
     font-size: 12px;
     font-weight: 600;
     
