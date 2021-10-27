@@ -10,10 +10,6 @@ export const Container = styled.div`
 
 `
 
-export const FormContainer = styled.form`
-
-`
-
 export const DivHeader = styled.div`
     div{
         margin: 5vw 0px 10px 9vw;
@@ -79,7 +75,7 @@ export const DivImage = styled.div`
     >img{
         position: fixed;
         bottom: calc(50vh - 250px);
-        right: 30px;
+        right: 150px;
     }
 `
 

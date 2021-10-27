@@ -1,4 +1,4 @@
-import { Container, DivHeader, DivImage, DivCampos, FormContainer } from "./styles";
+import { Container, DivHeader, DivImage, DivCampos} from "./styles";
 import company from "../../assets/companyRegistration/company.svg";
 import Input from "../../components/Input";
 import BtnSubmit from "../../components/BtnSubmit";
@@ -67,7 +67,7 @@ function CompanyRegistration() {
                     district: andress.bairro,
                     number: formRegistration.number,
                     city: andress.localidade,
-                    state: formRegistration.state,
+                    state: "São Paulo",
                     uf_state: andress.uf,
                     complement: formRegistration.complement,
                 }],
@@ -112,11 +112,37 @@ function CompanyRegistration() {
                 </div>
 
                 <div>
-                    <Input label="Informe seu nome" width="420px" handler={handleInput} id="name" />
-                    <Input label="Telefone comercial" width="420px" mask="phone" handler={handleInput} id="phone" />
-                    <Input label="Nome da escola" width="420px" handler={handleInput} id="CompanyName" />
-                    <Input label="CNPJ" width="420px" handler={handleInput} id="cnpj" />
-                    <Input label="Quantidade de alunos" width="330px" id="school_size" handler={handleInput} />
+                    <Input 
+                        label="Informe seu nome" 
+                        colorLabel="var(--color-background)"
+                        width="420px" 
+                        handler={handleInput} 
+                        id="name" />
+                    <Input 
+                        label="Telefone comercial" 
+                        colorLabel="var(--color-background)"
+                        width="420px"
+                        mask="phone" 
+                        handler={handleInput} 
+                        id="phone" />
+                    <Input 
+                        label="Nome da escola" 
+                        colorLabel="var(--color-background)"
+                        width="420px" 
+                        handler={handleInput} 
+                        id="CompanyName" />
+                    <Input 
+                        label="CNPJ" 
+                        colorLabel="var(--color-background)"
+                        width="420px" 
+                        handler={handleInput} 
+                        id="cnpj" />
+                    <Input  
+                        label="Quantidade de alunos"
+                        colorLabel="var(--color-background)"
+                        width="330px" 
+                        id="school_size" 
+                        handler={handleInput} />
                 </div>
 
                 <div>
@@ -126,6 +152,7 @@ function CompanyRegistration() {
                 <div>
                     <Input
                         label="Informe o seu CEP"
+                        colorLabel="var(--color-background)"
                         width="425px"
                         required
                         handler={handleInput}
@@ -136,6 +163,7 @@ function CompanyRegistration() {
                     <Input
                         id="street"
                         label="Informe a rua onde reside"
+                        colorLabel="var(--color-background)"
                         value={`${andress.logradouro}`}
                         width="490px"
                         handler={handleInput} 
@@ -145,6 +173,7 @@ function CompanyRegistration() {
                 <div>
                     <Input
                         label="Informe o bairro"
+                        colorLabel="var(--color-background)"
                         width="230px"
                         value={`${andress.bairro}`}
                         handler={handleInput}
@@ -153,6 +182,7 @@ function CompanyRegistration() {
 
                     <Input
                         label="Número"
+                        colorLabel="var(--color-background)"
                         width="150px"
                         required
                         handler={handleInput}
@@ -162,6 +192,7 @@ function CompanyRegistration() {
                 <div>
                     <Input
                         label="Cidade"
+                        colorLabel="var(--color-background)"
                         width="280px"
                         required
                         value={`${andress.localidade}`}
@@ -171,6 +202,7 @@ function CompanyRegistration() {
 
                     <Input
                         label="UF"
+                        colorLabel="var(--color-background)"
                         width="100px"
                         required
                         value={`${andress.uf}`}
@@ -181,13 +213,8 @@ function CompanyRegistration() {
 
                 <div>
                     <Input
-                        label="Estado"
-                        width="420px"
-                        handler={handleInput}
-                        id="state" />
-
-                    <Input
                         label="Complemento"
+                        colorLabel="var(--color-background)"
                         width="420px"
                         handler={handleInput}
                         id="complement" />
@@ -196,8 +223,20 @@ function CompanyRegistration() {
                 <h1> Como você fará Login: </h1>
 
                 <div>
-                    <Input label="informe o email" width="425px" required handler={handleInput} id="email" />
-                    <Input label="Informe a senha" type="password" width="280px" required handler={handleInput} id="password" />
+                    <Input 
+                        label="Informe o email" 
+                        colorLabel="var(--color-background)"
+                        width="425px" 
+                        required 
+                        handler={handleInput} id="email" />
+                    <Input 
+                        label="Informe a senha" 
+                        colorLabel="var(--color-background)"
+                        type="password" 
+                        width="280px" 
+                        required 
+                        handler={handleInput} 
+                        id="password" />
                 </div>
 
                 <div>

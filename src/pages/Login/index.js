@@ -53,6 +53,7 @@ function Login() {
 
             signIn(response.data);
             
+            console.log(response.data);
 
             history.push("/teams")
 
@@ -125,8 +126,7 @@ function Login() {
 
                     <div id="register" >
                         <span> 
-                            Escola não tem cadastro
-                            <Link to="/registerSchool" > cadastre-se</Link>
+                            Escola não tem cadastro, <Link to="/registerSchool">cadastre-se</Link>
                         </span>
                     </div>
 

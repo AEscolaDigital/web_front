@@ -8,17 +8,14 @@ import BtnSubmit from "../../components/BtnSubmit";
 import { Container, Cabeçalho, CabeçalhoLeft, CabeçalhoRight, Body, Page, ContainerAddMember, ContainerTable } from "./styles";
 import Input from "../../components/Input";
 import { useEffect, useState } from "react"
-import { signIn } from "../../services/security"
 import { api } from "../../services/api";
 
-function MemberRegister() {
-
+function AddMember() {
+ 
     const [users, setUsers] = useState([]);
 
-    console.log(users);
-
     useEffect(() => {
-        const loadUsers = async () => {
+        let loadUsers = async () => {
 
             try {
                 const response = await api.get("/users");
@@ -60,10 +57,13 @@ function MemberRegister() {
                 email: formAddMember.email,
                 role_id: formRadioButton.role,
             });
-
-            signIn(response.data)
-
+            
             console.log(response.data);
+
+            setMember({
+                name: "",
+                email: ""
+            })
 
         } catch (error) {
             console.log(error.response.data);
@@ -114,12 +114,14 @@ function MemberRegister() {
                             label="Informe o Nome"
                             width="400px"
                             id="name"
+                            value={formAddMember.name}
                             handler={handleInput} />
 
                         <Input
                             label="Informe o E-mail"
                             width="400px"
                             id="email"
+                            value={formAddMember.email}
                             handler={handleInput} />
 
                         <div id="radioButton" onChange={handleRadioButton} >
@@ -128,6 +130,7 @@ function MemberRegister() {
                                 idInput="aluno"
                                 forLabel="aluno"
                                 name="role"
+                                
                                 value="1" />
 
                             <RadioButton
@@ -205,4 +208,4 @@ function MemberRegister() {
     );
 }
 
-export default MemberRegister;
+export default AddMember;
