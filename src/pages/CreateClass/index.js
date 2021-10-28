@@ -1,4 +1,4 @@
-import { Container, DivTurma, DivImage, DivMembro } from "./styles";
+import { Container, DivTurma, DivImage, DivMembro,ContainerTable } from "./styles";
 import Nav from "../../components/Nav";
 import Header from "../../components/Header";
 import Input from "../../components/Input";
@@ -62,6 +62,44 @@ function CreateClass() {
                     <BtnSubmit text="Criar" />
                 </div>
             </DivImage>
+
+            <ContainerTable>
+                    <thead>
+                        <tr id="trTh">
+                            <th>NOME</th>
+                            <th>E-MAIL</th>
+                            <th>TIPO DE USUÁRIO</th>
+                            <th>Adicionado em</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                            <tr>
+                                <td><img src="" /></td>
+                                <td>NOME</td>
+                                <td>email</td>
+                            </tr>
+                    </tbody>
+
+                    <tfoot>
+                        <div>
+                            <div>
+                                Linhas por pagina: 10
+                            </div>
+
+                            <div>
+                                1 de 2
+                            </div>
+
+                            <div id="divImgSetas">
+                                <img src={arrowLeft} />
+                                <img src={arrowRight} />
+                            </div>
+                        </div>
+                    </tfoot>
+
+                </ContainerTable>
+
         </Container>
 
     );
