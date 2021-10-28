@@ -4,36 +4,50 @@ import iconTeam from "../../assets/nav/iconTeam.svg"
 import iconActivities from "../../assets/nav/iconActivities.svg"
 import iconFoul from "../../assets/nav/iconFoul.svg"
 import iconNotes from "../../assets/nav/iconNotes.svg"
-import iconValidation from "../../assets/nav/iconValidation.svg"
+import addMember from "../../assets/nav/addMember.svg"
+import { Link } from "react-router-dom";
 
-function Nav(){
-    return(
-        <Container>
+function Nav() {
+    return (
+        <Container >
             <div>
-                <img src={iconFeed} alt="Ícone de feed" />
-                 <p>Feed</p>
+                {/* <Link to="addMember"> */}
+                    <img src={iconFeed} alt="Ícone de feed" />
+                    <p >Feed</p>
+                {/* </Link> */}
             </div>
             <div>
-                <img src={iconTeam} alt="Ícone de turmas" />
-                <p>Turmas</p>
+                {/* <Link to="/Teams"> */}
+                    <img src={iconTeam} alt="Ícone de turmas" />
+                    <p>Turmas</p>
+                {/* </Link> */}
             </div>
             <div>
-                <img src={iconActivities} alt="Ícone de atividades" />
-                <p>Atividades</p>
+                {/* <Link to="addMember"> */}
+                    <img src={iconActivities} alt="Ícone de atividades" />
+                    <p>Atividades</p>
+                {/* </Link> */}
             </div>
             <div>
-                <img src={iconFoul} alt="Ícone de faltas" />
-                <p>Faltas</p>
+                {/* <Link to="addMember"> */}
+                    <img src={iconFoul} alt="Ícone de faltas" />
+                    <p>Faltas</p>
+                {/* </Link> */}
             </div>
             <div>
-                <img src={iconNotes} alt="Ícone de notas" />
-                <p>Notas</p>
+                {/* <Link to="addMember"> */}
+                    <img src={iconNotes} alt="Ícone de notas" />
+                    <p>Notas</p>
+                {/* </Link> */}
             </div>
             <div>
-                <img src={iconValidation} alt="Ícone de validação" />
-                <p>Validação</p>
+                {/* <Link to="addMember"> */}
+                    <img src={addMember} alt="Ícone de adicionar turma ou membro" />
+                    <p>Adicionar</p>
+                {/* </Link> */}
             </div>
-    
+
+
         </Container>
     );
 }

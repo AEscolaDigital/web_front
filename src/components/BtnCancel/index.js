@@ -1,9 +1,9 @@
-import { A } from "./styles";
+import { Button } from "./styles";
 
 function BtnCancel({text}){
 
     return(
-        <A> {text} </A>
+        <Button> {text} </Button>
     );
 }
 

@@ -1,11 +1,18 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  position:fixed;
   
+`
+export const ContainerCreateClass = styled.div`
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: "createClass  img"
+                             "addMember img";
 `
 
 export const DivTurma = styled.div`
+
+    grid-area: createClass;
 
     >div{
         width:500px;
@@ -22,6 +29,8 @@ export const DivTurma = styled.div`
 }
 `
 export const DivMembro = styled.div`
+
+   grid-area: addMember;
     
   >div{
     width:700px;
@@ -50,11 +59,11 @@ export const DivMembro = styled.div`
 `
 
 export const DivImage = styled.div`
- 
-    div{
-      position: relative;
-      left:110vh;
-      bottom:85vh;
+
+    grid-area: img;
+     
+    #img{
+        margin-top: 100px;
     }
 
       >div:nth-child(2){
@@ -107,13 +116,22 @@ export const ContainerTable = styled.table`
 
             text-align: start;
 
-            padding-left: 60px;
+            padding-left: 50px;
 
             font-size: 16px;
             font-weight: bolder;
             color: var(--color-text);
 
-            border-bottom:  2px solid var(--color-blue);
+            border-bottom:  1px solid var(--color-blue);
+
+            #image{
+                height: 40px;
+                width: 40px;
+            }
+            
+            >div{
+                margin-left: 180px;
+            }
         }
         
     }
