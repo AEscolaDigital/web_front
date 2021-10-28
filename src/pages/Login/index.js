@@ -1,4 +1,6 @@
 import imageLogin from "../../assets/login/undraw_secure_login_pdn4.svg"
+import imageHttpError503 from "../../assets/login/imageHttpError503.svg"
+
 import Input from "../../components/Input";
 import BtnSubmit from "../../components/BtnSubmit";
 import { Container, DivImage, DivLogin, TypeUser } from "./styles";
@@ -7,6 +9,8 @@ import RadioButton from "../../components/RadioButton";
 import { useState } from "react";
 import { api } from "../../services/api";
 import { signIn } from "../../services/security"
+import Swal from 'sweetalert2'
+
 
 
 function Login() {
@@ -27,18 +31,28 @@ function Login() {
     })
 
     const handleInputRadio = (e) => {
-        setTypeUser({ ...formLoginRadio, [e.target.name]: e.target.value});
+        setTypeUser({ ...formLoginRadio, [e.target.name]: e.target.value });
     }
 
     const errorLogin = (error) => {
-        document.querySelector('#error').classList.add('error');
-        document.querySelector('#error>span').textContent = `${error.error}`;
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `${error.error}`,
+            footer: `<a href=""> Esqueceu a senha ?</a> `
+        })
+    }
 
-        setInterval( () => {
-             document.querySelector('#error').classList.remove('error');
-             document.querySelector('#error>span').style.display = "none";
-        } , 3000)
-
+    const httpError503 = () => {
+        Swal.fire({
+            html: `
+                   <img style="width: 300px; height: 250px; margin-top: 20px;" src=${imageHttpError503} />
+                   </br>
+                   <span>Error 503, serviço indisponível</span>
+                   </br></br>
+                   <span>Tente novamente mais tarde!</span>
+                `,
+        })
     }
 
     const handleSubmit = async (e) => {
@@ -52,67 +66,76 @@ function Login() {
             });
 
             signIn(response.data);
-            
+
             console.log(response.data);
 
             history.push("/teams")
 
         } catch (error) {
-            errorLogin(error.response.data)
+
+            if (error.response === undefined) {
+
+                httpError503()
+
+            } else {
+
+                errorLogin(error.response.data)
+            }
+
         }
     }
-    
+
     return (
         <Container>
             <DivLogin>
                 <div>
                     <h1>Bem vindo de volta! Por favor acesse sua conta.</h1>
                     <div id="error" >
-                          <span></span>
+                        <span></span>
                     </div>
                     <form onSubmit={handleSubmit}  >
 
-                        <Input 
-                            label="Informe o seu E-mail" 
-                            colorLabel="white" 
-                            id="email" 
-                            handler={handleInput} 
+                        <Input
+                            label="Informe o seu E-mail"
+                            colorLabel="white"
+                            id="email"
+                            handler={handleInput}
                         />
 
-                        <Input 
-                            label="Informe sua senha" 
-                            type="password" 
-                            id="password" 
-                            colorLabel="white" 
-                            handler={handleInput} 
+                        <Input
+                            label="Informe sua senha"
+                            type="password"
+                            id="password"
+                            colorLabel="white"
+                            handler={handleInput}
                         />
 
                         <TypeUser>
                             <span>O que você é ?</span>
 
                             <div onChange={handleInputRadio} >
-                                <RadioButton 
-                                        idInput="student" 
-                                        forLabel="student" 
-                                        name="role" 
-                                        text="Aluno" 
-                                        value="ROLE_USER" 
+                                <RadioButton
+                                    idInput="student"
+                                    forLabel="student"
+                                    name="role"
+                                    text="Aluno"
+                                    value="ROLE_USER"
                                 />
 
-                                <RadioButton 
-                                        idInput="Escola" 
-                                        forLabel="Escola"
-                                        name="role" 
-                                        text="Escola" 
-                                        value="ROLE_ADMIN" 
+                                <RadioButton
+                                    idInput="Escola"
+                                    forLabel="Escola"
+                                    name="role"
+                                    text="Escola"
+                                    value="ROLE_ADMIN"
                                 />
 
-                                <RadioButton 
-                                        idInput="Professor" 
-                                        forLabel="Professor" 
-                                        name="role" 
-                                        text="Professor" 
-                                        value="ROLE_TEACHER" 
+                                <RadioButton
+                                    idInput="Professor"
+                                    forLabel="Professor"
+                                    name="role"
+                                    text="Professor"
+                                    value="ROLE_TEACHER"
                                 />
                             </div>
                         </TypeUser>
@@ -125,7 +148,7 @@ function Login() {
                     </form>
 
                     <div id="register" >
-                        <span> 
+                        <span>
                             Escola não tem cadastro, <Link to="/registerSchool">cadastre-se</Link>
                         </span>
                     </div>
@@ -136,7 +159,7 @@ function Login() {
             <DivImage>
                 <img src={imageLogin} alt="Imagem representando o login, na plataforma" />
             </DivImage>
-            
+
         </Container>
     );
 }

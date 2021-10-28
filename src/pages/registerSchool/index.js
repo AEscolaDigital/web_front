@@ -21,7 +21,7 @@ function CompanyRegistration() {
     const getCep = async () => {
         const cep = document.querySelector('#cep').value;
     
-        if (cep.length === 9) {
+        if (cep.length == 9) {
             const response = await fetch(`http://viacep.com.br/ws/${cep}/json/`);
             const data = await response.json();
 
@@ -116,6 +116,7 @@ function CompanyRegistration() {
                         label="Informe seu nome" 
                         colorLabel="var(--color-background)"
                         width="420px" 
+                        required
                         handler={handleInput} 
                         id="name" />
                     <Input 
@@ -123,23 +124,27 @@ function CompanyRegistration() {
                         colorLabel="var(--color-background)"
                         width="420px"
                         mask="phone" 
+                        required
                         handler={handleInput} 
                         id="phone" />
                     <Input 
                         label="Nome da escola" 
                         colorLabel="var(--color-background)"
                         width="420px" 
+                        required
                         handler={handleInput} 
                         id="CompanyName" />
                     <Input 
                         label="CNPJ" 
                         colorLabel="var(--color-background)"
                         width="420px" 
+                        required
                         handler={handleInput} 
                         id="cnpj" />
                     <Input  
                         label="Quantidade de alunos"
                         colorLabel="var(--color-background)"
+                        required
                         width="330px" 
                         id="school_size" 
                         handler={handleInput} />
@@ -165,7 +170,7 @@ function CompanyRegistration() {
                         label="Informe a rua onde reside"
                         colorLabel="var(--color-background)"
                         value={`${andress.logradouro}`}
-                        width="490px"
+                        width="425px"
                         handler={handleInput} 
                         disabled/>
                 </div>

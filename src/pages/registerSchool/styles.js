@@ -70,7 +70,7 @@ export const DivCampos = styled.form`
 `
 
 export const DivImage = styled.div`
-    margin:10vw 0px 0px 0px;
+    margin: 10px 0px 0px 0px;
 
     >img{
         position: fixed;
