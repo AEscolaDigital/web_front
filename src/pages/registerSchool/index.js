@@ -1,11 +1,14 @@
+import company from "../../assets/registerSchool/company.svg";
+import imageHttpError503 from "../../assets/alert/imageHttpError503.svg"
+
 import { Container, DivHeader, DivImage, DivCampos} from "./styles";
-import company from "../../assets/companyRegistration/company.svg";
 import Input from "../../components/Input";
 import BtnSubmit from "../../components/BtnSubmit";
 import { api } from "../../services/api";
 import { signIn } from "../../services/security";
 import { useState } from "react";
 import { useHistory } from "react-router";
+import Swal from "sweetalert2";
 
 function CompanyRegistration() {
 
@@ -48,6 +51,26 @@ function CompanyRegistration() {
         setRegistration({ ...formRegistration, [e.target.id]: e.target.value });
     };
 
+    const errorLogin = (error) => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `${error.error}`,
+            footer: `Verifique se seu e-mail, está correto!`
+        })
+    }
+
+    const httpError503 = () => {
+        Swal.fire({
+            html: `
+                   <img style="width: 300px; height: 250px; margin-top: 20px;" src=${imageHttpError503} />
+                   </br>
+                   <span>Error 503, serviço indisponível</span>
+                   </br></br>
+                   <span>Tente novamente mais tarde!</span>
+                `,
+        })
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -76,13 +99,19 @@ function CompanyRegistration() {
 
             });
 
-
             signIn(response.data)
-           
+
             history.push("/Teams")
 
         } catch (error) {
-            console.log(error.response.data);
+                
+            if (error.response === undefined) {
+                httpError503()
+
+            } else {
+                errorLogin(error.response.data)
+            }
+
         }
     }
 
@@ -139,6 +168,7 @@ function CompanyRegistration() {
                         colorLabel="var(--color-background)"
                         width="420px" 
                         required
+                        mask="cnpj"
                         handler={handleInput} 
                         id="cnpj" />
                     <Input  

@@ -1,18 +1,25 @@
-import Header from "../../components/Header";
-import Nav from "../../components/Nav";
 import memberRegister from "../../assets/memberRegistration/memberRegister.png";
-import RadioButton from "../../components/RadioButton";
+import imageHttpError503 from "../../assets/alert/imageHttpError503.svg"
 import arrowLeft from "../../assets/memberRegistration/arrowLeft.svg";
 import arrowRight from "../../assets/memberRegistration/arrowRight.svg";
+
+import Header from "../../components/Header";
+import Nav from "../../components/Nav";
+
+import RadioButton from "../../components/RadioButton";
+
 import BtnSubmit from "../../components/BtnSubmit";
 import { Container, Cabeçalho, CabeçalhoLeft, CabeçalhoRight, Body, Page, ContainerAddMember, ContainerTable } from "./styles";
 import Input from "../../components/Input";
 import { useEffect, useState } from "react"
 import { api } from "../../services/api";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function AddMember() {
  
+    const [loadUsers, setLoadUsers] = useState([]);
+
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
@@ -22,15 +29,15 @@ function AddMember() {
                 const response = await api.get("/users");
 
                 setUsers(response.data);
-
+                  
             } catch (error) {
-                alert(error);
+                httpError503(error.response);
             }
         };
 
         loadUsers();
 
-    }, []);
+    }, [loadUsers]);
 
     const [formAddMember, setMember] = useState({
         name: "",
@@ -49,6 +56,37 @@ function AddMember() {
         setRole({ ...formRadioButton, [e.target.name]: e.target.value });
     }
 
+    const errorAddingMember = (error) => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `${error.error}`,
+            footer: `Verifique se este e-mail, está correto!`
+        })
+    }
+
+    const httpError503 = () => {
+        Swal.fire({
+            html: `
+                   <img style="width: 300px; height: 250px; margin-top: 20px;" src=${imageHttpError503} />
+                   </br>
+                   <span>Error 503, serviço indisponível</span>
+                   </br></br>
+                   <span>Tente novamente mais tarde!</span>
+                `,
+        })
+    }
+
+    const memberSuccessfullyAdded = () => {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Adcionado com sucesso!',
+            showConfirmButton: false,
+            timer: 1000
+          })
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -59,7 +97,10 @@ function AddMember() {
                 role_id: formRadioButton.role,
             });
             
+
             console.log(response.data);
+            memberSuccessfullyAdded();
+            setLoadUsers();
 
             setMember({
                 name: "",
@@ -67,7 +108,13 @@ function AddMember() {
             })
 
         } catch (error) {
-            console.log(error.response.data);
+
+            if (error.response === undefined) {
+                httpError503()
+
+            } else {
+                errorAddingMember(error.response.data)
+            }
         }
 
     }
@@ -122,6 +169,7 @@ function AddMember() {
                             label="Informe o E-mail"
                             width="400px"
                             id="email"
+                            type="email"
                             value={formAddMember.email}
                             handler={handleInput} />
 

@@ -1,5 +1,5 @@
 import imageLogin from "../../assets/login/undraw_secure_login_pdn4.svg"
-import imageHttpError503 from "../../assets/login/imageHttpError503.svg"
+import imageHttpError503 from "../../assets/alert/imageHttpError503.svg"
 
 import Input from "../../components/Input";
 import BtnSubmit from "../../components/BtnSubmit";
@@ -74,14 +74,11 @@ function Login() {
         } catch (error) {
 
             if (error.response === undefined) {
-
                 httpError503()
 
             } else {
-
                 errorLogin(error.response.data)
             }
-
         }
     }
 
