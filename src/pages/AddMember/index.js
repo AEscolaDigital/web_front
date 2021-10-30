@@ -5,20 +5,37 @@ import arrowRight from "../../assets/memberRegistration/arrowRight.svg";
 
 import Header from "../../components/Header";
 import Nav from "../../components/Nav";
-
 import RadioButton from "../../components/RadioButton";
-
 import BtnSubmit from "../../components/BtnSubmit";
-import { Container, Cabeçalho, CabeçalhoLeft, CabeçalhoRight, Body, Page, ContainerAddMember, ContainerTable } from "./styles";
 import Input from "../../components/Input";
+import Dropzone from "../../components/Dropzone";
+import FileList from "../../components/FileList";
+
+import {
+    Container,
+    Cabeçalho,
+    CabeçalhoLeft,
+    CabeçalhoRight,
+    Body,
+    Page,
+    ContainerAddMember,
+    ContainerTable,
+    UploadCSV,
+    Content
+} from "./styles";
+
 import { useEffect, useState } from "react"
 import { api } from "../../services/api";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { uniqueId } from "lodash";
+import filesize from "filesize";
 
 function AddMember() {
- 
+
     const [loadUsers, setLoadUsers] = useState([]);
+
+    const [loadUsersCSV, setLoadUsersCSV] = useState([]);
 
     const [users, setUsers] = useState([]);
 
@@ -29,7 +46,7 @@ function AddMember() {
                 const response = await api.get("/users");
 
                 setUsers(response.data);
-                  
+
             } catch (error) {
                 httpError503(error.response);
             }
@@ -37,7 +54,7 @@ function AddMember() {
 
         loadUsers();
 
-    }, [loadUsers]);
+    }, [loadUsers, loadUsersCSV]);
 
     const [formAddMember, setMember] = useState({
         name: "",
@@ -84,7 +101,7 @@ function AddMember() {
             title: 'Adcionado com sucesso!',
             showConfirmButton: false,
             timer: 1000
-          })
+        })
     }
 
     const handleSubmit = async (e) => {
@@ -96,7 +113,7 @@ function AddMember() {
                 email: formAddMember.email,
                 role_id: formRadioButton.role,
             });
-            
+
 
             console.log(response.data);
             memberSuccessfullyAdded();
@@ -116,6 +133,63 @@ function AddMember() {
                 errorAddingMember(error.response.data)
             }
         }
+
+    }
+
+    const [uploadedFiles, setUploadedFiles] = useState([]);
+
+    const handleUpload = (files) => {
+        const uploadedFiles_ = files.map(file => ({
+            file,
+            id: uniqueId(),
+            name: file.name,
+            readableSize: filesize(file.size),
+            preview: URL.createObjectURL(file),
+            progress: 0,
+            uploaded: false,
+            error: false,
+            url: null
+        }))
+
+        setUploadedFiles(uploadedFiles_);
+
+        uploadedFiles_.forEach(processUpload);
+        setLoadUsers();
+
+    }
+
+    const updateFile = (id, data) => {
+
+        setUploadedFiles({ uploadedFiles: uploadedFiles.map(uploadedFile => {
+            return id == uploadedFile.id 
+            ? { ... uploadedFile, ...data }
+            : updateFile;
+        }) })
+    }
+
+
+    const processUpload = async (uploadedFile) => {
+        const data = new FormData();
+
+        data.append('fileCSV', uploadedFile.file, uploadedFile.name);
+
+        const response = await api.post('/users', data, {
+
+            onUploadProgress: e => {
+                const progress = parseInt(Math.round((e.loaded * 100) / e.total));
+
+                updateFile(uploadedFile.id, {
+                    progress
+                })
+            }
+        })
+
+        if (response.data.sucess == true) {
+            alert("Terminou");
+            setLoadUsersCSV();
+
+        }
+
 
     }
 
@@ -179,7 +253,7 @@ function AddMember() {
                                 idInput="aluno"
                                 forLabel="aluno"
                                 name="role"
-                                
+
                                 value="1" />
 
                             <RadioButton
@@ -203,11 +277,14 @@ function AddMember() {
 
                     </form>
 
-                    <div id="fileExcel">
-                        <div>
-                            Arraste o arquivo excel aqui
-                        </div>
-                    </div>
+                    <UploadCSV>
+                        <Content>
+                            <Dropzone onUpload={handleUpload} />
+                            {!!uploadedFiles.length && <FileList files={uploadedFiles} />}
+
+                        </Content>
+                    </UploadCSV>
+
                 </ContainerAddMember>
 
                 <ContainerTable>

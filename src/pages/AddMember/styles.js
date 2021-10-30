@@ -14,11 +14,8 @@ export const Cabeçalho = styled.div`
     background-color: #fff;
     display: flex;
     color: var(--color-text);
-   
 `
-
 export const CabeçalhoLeft = styled.div`
-   
    
    >div{
         margin-top: 25px;
@@ -37,7 +34,6 @@ export const CabeçalhoLeft = styled.div`
    >ol{
         padding-left: 60px;
         line-height: 25px;
-
    }
 
    >ol >li{
@@ -48,7 +44,6 @@ export const CabeçalhoLeft = styled.div`
 `
 
 export const CabeçalhoRight = styled.div`
-    
     align-items: center;
     margin-left: 200px;
     display: flex;
@@ -62,7 +57,6 @@ export const Body = styled.div`
     background-color: #fff;
     
     box-shadow: 3px -6px 13px -2px rgba(0,0,0,0.35);
-
 `
 
 export const Page = styled.div`
@@ -123,20 +117,28 @@ export const ContainerAddMember = styled.div`
         column-gap: 10px;
         margin-top: -20px;
     }
-
-    #fileExcel{
-        width: 350px;
-        height: 60px;
-
-        border: 2px dashed var(--color-blue);
-        text-align: center;
-        padding-top: 15px;
-
-        margin-left: 250px;
-        margin-top: 40px;
-        cursor: pointer;
-    }
 `
+
+export const UploadCSV = styled.div`
+  height: 100%;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: red;
+`;
+
+export const Content = styled.div`
+  width: 100%;
+  max-width: 400px;
+
+  background-color: red;
+
+  margin: 30px;
+  background: #fff;
+  border-radius: 4px;
+`;
 
 export const ContainerTable = styled.table`
     width: 1120px;
