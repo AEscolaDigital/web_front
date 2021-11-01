@@ -2,16 +2,19 @@ import styled from "styled-components";
 
 export const Container = styled.div`
    width: 1440px;
-   height: 1600px;
+   padding-bottom: 30px;
 `
 
 export const Cabeçalho = styled.div`
     width: inherit;
     height: 380px;
+
     margin-top: 50px;
     margin-left: 280px;
+
     border-radius: 20px 20px 0px 0px;
     background-color: #fff;
+
     display: flex;
     color: var(--color-text);
 `
@@ -50,12 +53,14 @@ export const CabeçalhoRight = styled.div`
 `
 
 export const Body = styled.div`
+
     width: inherit;
     height: 1220px;
+
     margin-left: 280px;
-    margin-top: 10px;
+    margin-bottom: 100px;
+
     background-color: #fff;
-    
     box-shadow: 3px -6px 13px -2px rgba(0,0,0,0.35);
 `
 
@@ -90,17 +95,19 @@ export const Page = styled.div`
 `
 
 export const ContainerAddMember = styled.div`
-
     display: flex;
 
     margin-top: 20px;
     margin-left: 130px;
     margin-bottom: 50px;
+
+    justify-content: space-around;
+    align-items: center;
     
 
     >div{
-        width: 500px;
-        height: 300px;  
+        width: 400px;
+        height: 100px;  
     }
 
     #btnSubmit{
@@ -126,7 +133,7 @@ export const UploadCSV = styled.div`
   justify-content: center;
   align-items: center;
 
-  background-color: red;
+  background-color: var(--color-blue);
 `;
 
 export const Content = styled.div`
@@ -166,6 +173,7 @@ export const ContainerTable = styled.table`
     }
 
     tbody{
+
         width: 1120px;
         margin: auto;
 
@@ -194,12 +202,14 @@ export const ContainerTable = styled.table`
 
          display: flex;
          align-items: center;
-         justify-content: end;
+         justify-content: space-between;
 
          background-color: var(--color-blue);
          color: white;
 
          border-radius: 10px;
+
+         padding: 0px 50px 0px 50px;
 
         >div{
             display: flex;
@@ -208,10 +218,9 @@ export const ContainerTable = styled.table`
             font-size: 12px;
             font-weight: 600;
 
-            margin-right: 50px;
-
             #divImgSetas>img{
                 margin-left: 45px;
+                cursor: pointer;
             }
         } 
     }

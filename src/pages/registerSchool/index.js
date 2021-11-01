@@ -1,7 +1,7 @@
 import company from "../../assets/registerSchool/company.svg";
 import imageHttpError503 from "../../assets/alert/imageHttpError503.svg"
 
-import { Container, DivHeader, DivImage, DivCampos} from "./styles";
+import { Container, DivHeader, DivImage, DivCampos } from "./styles";
 import Input from "../../components/Input";
 import BtnSubmit from "../../components/BtnSubmit";
 import { api } from "../../services/api";
@@ -23,7 +23,7 @@ function CompanyRegistration() {
 
     const getCep = async () => {
         const cep = document.querySelector('#cep').value;
-    
+
         if (cep.length == 9) {
             const response = await fetch(`http://viacep.com.br/ws/${cep}/json/`);
             const data = await response.json();
@@ -72,11 +72,28 @@ function CompanyRegistration() {
         })
     }
 
+    const waitingToAddAchool = (close) => {
+        Swal.fire({
+            title: 'Gravando os dadados, <br>na base de dados!',
+            html: 'Aguarde alguns segundos por favor',
+            onOpen: () => {
+                Swal.showLoading()
+            },
+            didOpen: () => {
+                Swal.showLoading()
+            },
+        })
+
+        if (close == true) {
+            Swal.close()
+        }
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log(formRegistration.phone);
-
+        waitingToAddAchool()
+        
         try {
             const response = await api.post("/schools", {
                 name: formRegistration.name,
@@ -99,12 +116,17 @@ function CompanyRegistration() {
 
             });
 
+
             signIn(response.data)
+
+            if (response.data.id != null) {
+                waitingToAddAchool(true)
+            }
 
             history.push("/Teams")
 
         } catch (error) {
-                
+
             if (error.response === undefined) {
                 httpError503()
 
@@ -115,10 +137,7 @@ function CompanyRegistration() {
         }
     }
 
-
-
     return (
-
 
         <Container>
 
@@ -132,7 +151,7 @@ function CompanyRegistration() {
             </DivHeader>
 
             <DivImage>
-                <img src={company} alt="Imagem representando o cadastro de uma escola na plataforma"  />
+                <img src={company} alt="Imagem representando o cadastro de uma escola na plataforma" />
             </DivImage>
 
             <DivCampos onSubmit={handleSubmit}>
@@ -141,42 +160,42 @@ function CompanyRegistration() {
                 </div>
 
                 <div>
-                    <Input 
-                        label="Informe seu nome" 
-                        colorLabel="var(--color-background)"
-                        width="420px" 
-                        required
-                        handler={handleInput} 
-                        id="name" />
-                    <Input 
-                        label="Telefone comercial" 
+                    <Input
+                        label="Informe seu nome"
                         colorLabel="var(--color-background)"
                         width="420px"
-                        mask="phone" 
                         required
-                        handler={handleInput} 
+                        handler={handleInput}
+                        id="name" />
+                    <Input
+                        label="Telefone comercial"
+                        colorLabel="var(--color-background)"
+                        width="420px"
+                        mask="phone"
+                        required
+                        handler={handleInput}
                         id="phone" />
-                    <Input 
-                        label="Nome da escola" 
+                    <Input
+                        label="Nome da escola"
                         colorLabel="var(--color-background)"
-                        width="420px" 
+                        width="420px"
                         required
-                        handler={handleInput} 
+                        handler={handleInput}
                         id="CompanyName" />
-                    <Input 
-                        label="CNPJ" 
+                    <Input
+                        label="CNPJ"
                         colorLabel="var(--color-background)"
-                        width="420px" 
+                        width="420px"
                         required
                         mask="cnpj"
-                        handler={handleInput} 
+                        handler={handleInput}
                         id="cnpj" />
-                    <Input  
+                    <Input
                         label="Quantidade de alunos"
                         colorLabel="var(--color-background)"
                         required
-                        width="330px" 
-                        id="school_size" 
+                        width="330px"
+                        id="school_size"
                         handler={handleInput} />
                 </div>
 
@@ -201,8 +220,8 @@ function CompanyRegistration() {
                         colorLabel="var(--color-background)"
                         value={`${andress.logradouro}`}
                         width="425px"
-                        handler={handleInput} 
-                        disabled/>
+                        handler={handleInput}
+                        disabled />
                 </div>
 
                 <div>
@@ -258,19 +277,19 @@ function CompanyRegistration() {
                 <h1> Como você fará Login: </h1>
 
                 <div>
-                    <Input 
-                        label="Informe o email" 
+                    <Input
+                        label="Informe o email"
                         colorLabel="var(--color-background)"
-                        width="425px" 
-                        required 
+                        width="425px"
+                        required
                         handler={handleInput} id="email" />
-                    <Input 
-                        label="Informe a senha" 
+                    <Input
+                        label="Informe a senha"
                         colorLabel="var(--color-background)"
-                        type="password" 
-                        width="280px" 
-                        required 
-                        handler={handleInput} 
+                        type="password"
+                        width="280px"
+                        required
+                        handler={handleInput}
                         id="password" />
                 </div>
 

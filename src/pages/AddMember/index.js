@@ -9,7 +9,6 @@ import RadioButton from "../../components/RadioButton";
 import BtnSubmit from "../../components/BtnSubmit";
 import Input from "../../components/Input";
 import Dropzone from "../../components/Dropzone";
-import FileList from "../../components/FileList";
 
 import {
     Container,
@@ -34,18 +33,26 @@ import filesize from "filesize";
 function AddMember() {
 
     const [loadUsers, setLoadUsers] = useState([]);
-
     const [loadUsersCSV, setLoadUsersCSV] = useState([]);
-
     const [users, setUsers] = useState([]);
+    const [totalUsers, setTotalUsers] = useState(0);
+    const [pages, setPages] = useState();
+    const [currentPage, setCurrentPage] = useState(1)
 
     useEffect(() => {
         let loadUsers = async () => {
 
             try {
-                const response = await api.get("/users");
+                const response = await api.get(`/users/page/${currentPage}`);
 
-                setUsers(response.data);
+                setTotalUsers(response.data.count);
+                setUsers(response.data.rows);
+
+
+
+                const totalPages = await Math.ceil(response.data.count / 10);
+                setPages(totalPages);
+
 
             } catch (error) {
                 httpError503(error.response);
@@ -54,7 +61,7 @@ function AddMember() {
 
         loadUsers();
 
-    }, [loadUsers, loadUsersCSV]);
+    }, [loadUsers, loadUsersCSV, currentPage]);
 
     const [formAddMember, setMember] = useState({
         name: "",
@@ -94,29 +101,59 @@ function AddMember() {
         })
     }
 
-    const memberSuccessfullyAdded = () => {
+    const memberSuccessfullyAdded = (text) => {
         Swal.fire({
             position: 'top-end',
             icon: 'success',
-            title: 'Adcionado com sucesso!',
+            title: `${text}`,
             showConfirmButton: false,
-            timer: 1000
+            timer: 1500
         })
     }
+
+    const invalidFileExtension = () => {
+        Swal.fire({
+            title: '<strong>Arquivo inválido</strong>',
+            icon: 'info',
+            html:
+                '<span> Caso você esteja tendo dificuldades para fazer o upload, <a href="/">clique aqui</a>',
+            showCloseButton: true,
+            focusConfirm: false,
+        })
+    }
+
+    const waitingToAddMember = (close) => {
+        Swal.fire({
+            title: 'Adicionando membros, <br>na base de dados!',
+            html: 'Aguarde alguns segundos por favor',
+              onOpen: () => {
+                 Swal.showLoading()
+              },
+              didOpen: () => {
+                Swal.showLoading()                
+              },
+        })
+
+        if (close == true) {
+            Swal.close()
+            memberSuccessfullyAdded("Membros Adicionados com sucesso!"); 
+        }
+    }
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await api.post("/users", {
+            await api.post("/users", {
                 name: formAddMember.name,
                 email: formAddMember.email,
                 role_id: formRadioButton.role,
             });
 
+            console.log(formRadioButton.role);
 
-            console.log(response.data);
-            memberSuccessfullyAdded();
+            memberSuccessfullyAdded("Adicionado com sucesso!");
             setLoadUsers();
 
             setMember({
@@ -136,61 +173,34 @@ function AddMember() {
 
     }
 
-    const [uploadedFiles, setUploadedFiles] = useState([]);
-
-    const handleUpload = (files) => {
-        const uploadedFiles_ = files.map(file => ({
-            file,
-            id: uniqueId(),
-            name: file.name,
-            readableSize: filesize(file.size),
-            preview: URL.createObjectURL(file),
-            progress: 0,
-            uploaded: false,
-            error: false,
-            url: null
-        }))
-
-        setUploadedFiles(uploadedFiles_);
-
-        uploadedFiles_.forEach(processUpload);
-        setLoadUsers();
-
-    }
-
-    const updateFile = (id, data) => {
-
-        setUploadedFiles({ uploadedFiles: uploadedFiles.map(uploadedFile => {
-            return id == uploadedFile.id 
-            ? { ... uploadedFile, ...data }
-            : updateFile;
-        }) })
-    }
+    const handleUpload = async (file) => {
 
 
-    const processUpload = async (uploadedFile) => {
-        const data = new FormData();
+        var extFile = file[0].name.split('.').pop();
 
-        data.append('fileCSV', uploadedFile.file, uploadedFile.name);
+        if (extFile == "csv") {
+            waitingToAddMember()
 
-        const response = await api.post('/users', data, {
+            const data = new FormData();
 
-            onUploadProgress: e => {
-                const progress = parseInt(Math.round((e.loaded * 100) / e.total));
+            data.append('fileCSV', file[0]);
 
-                updateFile(uploadedFile.id, {
-                    progress
-                })
+            const response = await api.post('/users', data)
+
+
+            if (response.data.sucess == true) {
+                setLoadUsersCSV(loadUsersCSV + 1);
+                waitingToAddMember(true)
             }
-        })
-
-        if (response.data.sucess == true) {
-            alert("Terminou");
-            setLoadUsersCSV();
-
+        } else {
+            invalidFileExtension()
         }
+    }
 
-
+    const role = {
+        1: 'Administrador',
+        2: 'Aluno',
+        3: 'Professor'
     }
 
     return (
@@ -280,8 +290,6 @@ function AddMember() {
                     <UploadCSV>
                         <Content>
                             <Dropzone onUpload={handleUpload} />
-                            {!!uploadedFiles.length && <FileList files={uploadedFiles} />}
-
                         </Content>
                     </UploadCSV>
 
@@ -298,11 +306,12 @@ function AddMember() {
                     </thead>
 
                     <tbody>
+                        
                         {users.map(user =>
                             <tr>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
-                                <td>Aluno</td>
+                                <td>{role[user.role_id] }</td>
                                 <td>{user.created_at}</td>
                             </tr>
                         )}
@@ -310,17 +319,33 @@ function AddMember() {
 
                     <tfoot>
                         <div>
+                            Total de membros: {totalUsers}
+                        </div>
+
+                        <div>
+
                             <div>
                                 Linhas por pagina: 10
                             </div>
 
                             <div>
-                                1 de 2
+                                {currentPage} de {pages}
                             </div>
 
                             <div id="divImgSetas">
-                                <img src={arrowLeft} alt="Seta para esquerda" />
-                                <img src={arrowRight} alt="Seta para direita" />
+                                {currentPage > 1 && (
+                                    <img
+                                        src={arrowLeft}
+                                        onClick={() => setCurrentPage(currentPage - 1)}
+                                        alt="Seta para esquerda" />
+                                )}
+
+                                {currentPage < pages && (
+                                    <img src={arrowRight}
+                                        onClick={() => setCurrentPage(currentPage + 1)}
+                                        alt="Seta para direita" />
+                                )}
+
                             </div>
                         </div>
                     </tfoot>

@@ -5,15 +5,16 @@ import { DropContainer, UploadMessage } from "./styles";
 function DropZone(props) {
 
     const renderDragMessage = (isDragActive, isDragReject) => {
+
         if (!isDragActive) {
-            return <UploadMessage>Arraste arquivos aqui...</UploadMessage>;
+            return <UploadMessage>Arraste o arquivo aqui...</UploadMessage>;
         }
 
         if (isDragReject) {
             return <UploadMessage type="error">Arquivo não suportado</UploadMessage>;
         }
 
-        return <UploadMessage type="success">Solte os arquivos aqui</UploadMessage>;
+        return <UploadMessage type="success">Solte o arquivo aqui</UploadMessage>;
     };
     
     const { onUpload } = props;
@@ -27,7 +28,7 @@ function DropZone(props) {
                     isDragActive={isDragActive}
                     isDragReject={isDragReject}
                 >
-                    <input {...getInputProps()} />
+                    <input accept="" {...getInputProps()} />
                     {renderDragMessage(isDragActive, isDragReject)}
 
                 </DropContainer>

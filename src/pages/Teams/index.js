@@ -3,20 +3,20 @@ import Header from "../../components/Header";
 import Modal from "../../components/Modal";
 import imgMathematics from "../../assets/teams/imgMathematics.svg"
 import iconTeam from "../../assets/teams/iconTeam.svg"
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Section } from "./styles";
 import Input from "../../components/Input";
 import BtnSubmit from "../../components/BtnSubmit";
 import BtnCancel from "../../components/BtnCancel";
 import Card from "../../components/Card";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function Teams() {
 
     const [isModalVisible, setIsModalVisible] = React.useState(false)
 
     return (
-
         <Container>
             {isModalVisible ?
                 <Modal title="Criar turma">
