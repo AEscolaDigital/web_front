@@ -5,6 +5,38 @@ export const Container = styled.div`
    padding-bottom: 30px;
 `
 
+export const ContainerModal = styled.div`
+    margin-top: 30px;
+    text-align: center;
+
+    >span {
+        color: var(--color-text);
+        font-size: 22px;      
+    }
+
+
+    >div{
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    #fileExample{
+
+        display: flex;
+        flex-direction: column;
+
+        color: var(--color-text);
+        font-size: 18px;
+
+        img{
+            width: 25px;
+            height: 30px;
+        }
+    }
+     
+`
+
 export const Cabeçalho = styled.div`
     width: inherit;
     height: 380px;

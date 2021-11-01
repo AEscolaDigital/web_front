@@ -1,20 +1,24 @@
+import imgMathematics from "../../assets/teams/imgMathematics.svg"
+import iconTeam from "../../assets/teams/iconTeam.svg"
+
 import Nav from "../../components/Nav";
 import Header from "../../components/Header";
 import Modal from "../../components/Modal";
-import imgMathematics from "../../assets/teams/imgMathematics.svg"
-import iconTeam from "../../assets/teams/iconTeam.svg"
-import React, { useState } from 'react';
-import { Container, Section } from "./styles";
 import Input from "../../components/Input";
 import BtnSubmit from "../../components/BtnSubmit";
 import BtnCancel from "../../components/BtnCancel";
 import Card from "../../components/Card";
-import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
+
+
+import { 
+    Container, 
+    Section } from "./styles";
+
+import {useState} from 'react';
 
 function Teams() {
 
-    const [isModalVisible, setIsModalVisible] = React.useState(false)
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
     return (
         <Container>
@@ -35,7 +39,8 @@ function Teams() {
             <Header />
             <Nav />
             <div id="btnCreateTeam" >
-                <Link onClick={() => setIsModalVisible(true)}> <img src={iconTeam} alt="Icone de um grupo de pessoas" /> <span>Criar Turma</span> </Link>
+                <span onClick={() => setIsModalVisible(true)}> 
+                <img src={iconTeam} alt="Icone de um grupo de pessoas" /> <span>Criar Turma</span> </span>
             </div>
             <div id="titleYourTeams" >
                 <h1>Suas turmas</h1>

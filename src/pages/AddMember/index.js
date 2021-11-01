@@ -1,7 +1,9 @@
-import memberRegister from "../../assets/memberRegistration/memberRegister.png";
+import memberRegister from "../../assets/addMember/memberRegister.png";
+import imageFileCSV from "../../assets/addMember/imageFileCSV.jpg";
 import imageHttpError503 from "../../assets/alert/imageHttpError503.svg"
-import arrowLeft from "../../assets/memberRegistration/arrowLeft.svg";
-import arrowRight from "../../assets/memberRegistration/arrowRight.svg";
+import arrowLeft from "../../assets/addMember/arrowLeft.svg";
+import arrowRight from "../../assets/addMember/arrowRight.svg";
+import fileSchoolCSV from "../../assets/addMember/school_csv.csv";
 
 import Header from "../../components/Header";
 import Nav from "../../components/Nav";
@@ -20,19 +22,21 @@ import {
     ContainerAddMember,
     ContainerTable,
     UploadCSV,
-    Content
+    Content,
+    ContainerModal
 } from "./styles";
 
 import { useEffect, useState } from "react"
 import { api } from "../../services/api";
-import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
-import { uniqueId } from "lodash";
-import filesize from "filesize";
+//import { uniqueId } from "lodash";
+//import filesize from "filesize";
+import Modal from "../../components/Modal";
+import BtnCancel from "../../components/BtnCancel";
 
 function AddMember() {
 
-    const [loadUsers, setLoadUsers] = useState([]);
+    const [loadUsers, setLoadUsers] = useState(0);
     const [loadUsersCSV, setLoadUsersCSV] = useState([]);
     const [users, setUsers] = useState([]);
     const [totalUsers, setTotalUsers] = useState(0);
@@ -47,8 +51,6 @@ function AddMember() {
 
                 setTotalUsers(response.data.count);
                 setUsers(response.data.rows);
-
-
 
                 const totalPages = await Math.ceil(response.data.count / 10);
                 setPages(totalPages);
@@ -126,20 +128,19 @@ function AddMember() {
         Swal.fire({
             title: 'Adicionando membros, <br>na base de dados!',
             html: 'Aguarde alguns segundos por favor',
-              onOpen: () => {
-                 Swal.showLoading()
-              },
-              didOpen: () => {
-                Swal.showLoading()                
-              },
+            onOpen: () => {
+                Swal.showLoading()
+            },
+            didOpen: () => {
+                Swal.showLoading()
+            },
         })
 
-        if (close == true) {
+        if (close === true) {
             Swal.close()
-            memberSuccessfullyAdded("Membros Adicionados com sucesso!"); 
+            memberSuccessfullyAdded("Membros Adicionados com sucesso!");
         }
     }
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -151,10 +152,8 @@ function AddMember() {
                 role_id: formRadioButton.role,
             });
 
-            console.log(formRadioButton.role);
-
             memberSuccessfullyAdded("Adicionado com sucesso!");
-            setLoadUsers();
+            setLoadUsers(loadUsers + 1);
 
             setMember({
                 name: "",
@@ -175,10 +174,9 @@ function AddMember() {
 
     const handleUpload = async (file) => {
 
-
         var extFile = file[0].name.split('.').pop();
 
-        if (extFile == "csv") {
+        if (extFile === "csv") {
             waitingToAddMember()
 
             const data = new FormData();
@@ -187,8 +185,7 @@ function AddMember() {
 
             const response = await api.post('/users', data)
 
-
-            if (response.data.sucess == true) {
+            if (response.data.sucess === true) {
                 setLoadUsersCSV(loadUsersCSV + 1);
                 waitingToAddMember(true)
             }
@@ -203,8 +200,32 @@ function AddMember() {
         3: 'Professor'
     }
 
+    const [isModalVisible, setIsModalVisible] = useState(false);
+
     return (
         <Container>
+
+            {isModalVisible ?
+                <Modal title="Como adicionar membros utilizando um arquivo excel">
+                    <ContainerModal>
+                        <span>Assista o video abaixo</span>
+                        <div>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/wupWISbNRug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div id="fileExample" >
+                            <span>Faça o download do arquivo de excel de exemplo</span>
+                            <span>Cliqui no icone, para fazer o download</span>
+                            <a href={fileSchoolCSV} download>
+                                <img src={imageFileCSV} alt="W3Schools" width="104" height="142" />
+                            </a>
+
+                        </div>
+                        <div onClick={() => setIsModalVisible(false)} >
+                            <BtnCancel text="Fechar" />
+                        </div>
+                    </ContainerModal>
+                </Modal> : null}
+
             <Header />
             <Nav />
 
@@ -218,9 +239,9 @@ function AddMember() {
                     <p>Instruções para adicionar membro</p>
 
                     <ol>Existe duas opções para adicionar membro
-
                         <li>adicionar o e-mail do usuário</li>
-                        <li>enviar um arquivo excel conforme o exemplo <Link to="/addMember" >aqui</Link>
+                        <li>enviar um arquivo excel conforme o exemplo
+                            <span onClick={() => setIsModalVisible(true)} >, aqui</span>
                         </li>
                     </ol>
 
@@ -264,21 +285,21 @@ function AddMember() {
                                 forLabel="aluno"
                                 name="role"
 
-                                value="1" />
+                                value="2" />
 
                             <RadioButton
                                 text="Professor"
                                 idInput="professor"
                                 forLabel="professor"
                                 name="role"
-                                value="2" />
+                                value="3" />
 
                             <RadioButton
                                 text="Administrador"
                                 idInput="admin"
                                 forLabel="admin"
                                 name="role"
-                                value="3" />
+                                value="1" />
                         </div>
 
                         <div id="btnSubmit">
@@ -306,12 +327,12 @@ function AddMember() {
                     </thead>
 
                     <tbody>
-                        
+
                         {users.map(user =>
                             <tr>
                                 <td>{user.name}</td>
                                 <td>{user.email}</td>
-                                <td>{role[user.role_id] }</td>
+                                <td>{role[user.role_id]}</td>
                                 <td>{user.created_at}</td>
                             </tr>
                         )}

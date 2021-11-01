@@ -3,15 +3,13 @@ import imageHttpError503 from "../../assets/alert/imageHttpError503.svg"
 
 import Input from "../../components/Input";
 import BtnSubmit from "../../components/BtnSubmit";
-import { Container, DivImage, DivLogin, TypeUser } from "./styles";
+import { Container, DivImage, DivLogin, RoleUser } from "./styles";
 import { useHistory, Link } from "react-router-dom";
 import RadioButton from "../../components/RadioButton";
 import { useState } from "react";
 import { api } from "../../services/api";
 import { signIn } from "../../services/security"
 import Swal from 'sweetalert2'
-
-
 
 function Login() {
 
@@ -26,12 +24,12 @@ function Login() {
         setFormLogin({ ...formLogin, [e.target.id]: e.target.value });
     }
 
-    const [formLoginRadio, setTypeUser] = useState({
+    const [formLoginRadio, setRoleUser] = useState({
         role: "",
     })
 
     const handleInputRadio = (e) => {
-        setTypeUser({ ...formLoginRadio, [e.target.name]: e.target.value });
+        setRoleUser({ ...formLoginRadio, [e.target.name]: e.target.value });
     }
 
     const errorLogin = (error) => {
@@ -107,7 +105,7 @@ function Login() {
                             handler={handleInput}
                         />
 
-                        <TypeUser>
+                        <RoleUser>
                             <span>O que você é ?</span>
 
                             <div onChange={handleInputRadio} >
@@ -135,7 +133,7 @@ function Login() {
                                     value="ROLE_TEACHER"
                                 />
                             </div>
-                        </TypeUser>
+                        </RoleUser>
                         <div id="ForgotPassword" >
                             <Link to="/" >Esqueceu a senha?</Link>
                         </div>

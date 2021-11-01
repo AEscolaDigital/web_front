@@ -4,32 +4,40 @@ import imageHttpError503 from "../../assets/alert/imageHttpError503.svg"
 import { Container, DivHeader, DivImage, DivCampos } from "./styles";
 import Input from "../../components/Input";
 import BtnSubmit from "../../components/BtnSubmit";
-import { api } from "../../services/api";
 import { signIn } from "../../services/security";
 import { useState } from "react";
 import { useHistory } from "react-router";
 import Swal from "sweetalert2";
+import { address } from "../../services/index";
+import { api } from "../../services/api";
 
 function CompanyRegistration() {
 
     const history = useHistory();
 
-    const [andress, getAndress] = useState({
+    const [andress, setAndress] = useState({
         logradouro: "",
         localidade: "",
         bairro: "",
         uf: "",
     })
 
-    const getCep = async () => {
-        const cep = document.querySelector('#cep').value;
-
-        if (cep.length == 9) {
-            const response = await fetch(`http://viacep.com.br/ws/${cep}/json/`);
-            const data = await response.json();
-
-            getAndress(data)
+    const onBlurCep = async (e) => {
+        
+        if (e.target.value?.length !== 9) {
+          return;
         }
+
+        const { logradouro, bairro, localidade, uf } =
+        await address.findAddressByZipCode(e.target.value);
+
+        setAndress({
+            logradouro,
+            bairro,
+            localidade,
+            uf,
+        })
+
     }
 
     const [formRegistration, setRegistration] = useState({
@@ -45,7 +53,6 @@ function CompanyRegistration() {
         password: "",
 
     });
-
 
     const handleInput = (e) => {
         setRegistration({ ...formRegistration, [e.target.id]: e.target.value });
@@ -93,7 +100,7 @@ function CompanyRegistration() {
         e.preventDefault();
 
         waitingToAddAchool()
-        
+
         try {
             const response = await api.post("/schools", {
                 name: formRegistration.name,
@@ -211,14 +218,14 @@ function CompanyRegistration() {
                         required
                         handler={handleInput}
                         id="cep"
-                        onBlur={getCep}
+                        onBlur={onBlurCep}
                         mask="cep" />
 
                     <Input
                         id="street"
                         label="Informe a rua onde reside"
                         colorLabel="var(--color-background)"
-                        value={`${andress.logradouro}`}
+                        value={andress.logradouro}
                         width="425px"
                         handler={handleInput}
                         disabled />
@@ -229,7 +236,7 @@ function CompanyRegistration() {
                         label="Informe o bairro"
                         colorLabel="var(--color-background)"
                         width="230px"
-                        value={`${andress.bairro}`}
+                        value={andress.bairro}
                         handler={handleInput}
                         id="district"
                         disabled />
@@ -259,7 +266,7 @@ function CompanyRegistration() {
                         colorLabel="var(--color-background)"
                         width="100px"
                         required
-                        value={`${andress.uf}`}
+                        value={andress.uf}
                         handler={handleInput}
                         disabled
                         id="uf_state" />

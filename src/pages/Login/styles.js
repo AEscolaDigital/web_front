@@ -73,7 +73,7 @@ export const DivLogin = styled.div`
     }
 `
 
-export const TypeUser = styled.div`
+export const RoleUser = styled.div`
     display: flex;
     flex-direction: column;
     margin-bottom: 50px;

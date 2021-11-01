@@ -32,7 +32,7 @@ function Input({
             phone(e)
         }
 
-        if (mask == 'cnpj') {
+        if (mask === 'cnpj') {
             cnpj(e)
         }
         
