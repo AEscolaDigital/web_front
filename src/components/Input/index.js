@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { Container } from "./styles";
-import { cep, currency, cpf, phone } from "./masks";
+import { cep, currency, cpf, phone, cnpj } from "./masks";
 
 function Input({
     id,
@@ -30,6 +30,10 @@ function Input({
         } 
         if (mask === 'phone') {
             phone(e)
+        }
+
+        if (mask === 'cnpj') {
+            cnpj(e)
         }
         
     }, [mask]);
