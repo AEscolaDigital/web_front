@@ -41,7 +41,7 @@ function Nav() {
                 </Link>
             </div>
             <div>
-                <Link to="addMember">
+                <Link to="memberClassCreate">
                     <img src={addMember} alt="Ícone de adicionar turma ou membro" />
                     <p>Adicionar</p>
                 </Link>

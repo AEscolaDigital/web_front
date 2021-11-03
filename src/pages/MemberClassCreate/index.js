@@ -15,20 +15,20 @@ function MemberClassCreate() {
 
 
             <Section>
-                {/* <Link to="/CreateClass"> */}
-                <div>
-                   
-                    <img src={classCreate} />
-                    <p>Criar Turmas</p>
-                </div>
-                {/* </Link>
+                <Link to="/createClass">
+                    <div>
 
-                <Link to="/AddMember"> */}
-                <div>
-                    <img src={memberCreate} />
-                    <p>Adicionar Membros</p>
-                </div>
-                {/* </Link> */}
+                        <img src={classCreate} alt="" />
+                        <p>Criar Turmas</p>
+                    </div>
+                </Link>
+
+                <Link to="/addMember">
+                    <div>
+                        <img src={memberCreate} alt="" />
+                        <p>Adicionar Membros</p>
+                    </div>
+                </Link>
             </Section>
         </Container>
     );
