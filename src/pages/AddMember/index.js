@@ -15,7 +15,7 @@ import Dropzone from "../../components/Dropzone";
 import {
     Container,
     Cabeçalho,
-    CabeçalhoLeft,
+    ContainerAddMemberLeft,
     CabeçalhoRight,
     Body,
     Page,
@@ -203,6 +203,7 @@ function AddMember() {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     return (
+
         <Container>
 
             {isModalVisible ?
@@ -230,7 +231,7 @@ function AddMember() {
             <Nav />
 
             <Cabeçalho>
-                <CabeçalhoLeft>
+                <ContainerAddMemberLeft>
                     <div>
                         <h2> Adicionar membros e visualização membros</h2>
                         <h4>Nome da Empresa</h4>
@@ -245,7 +246,7 @@ function AddMember() {
                         </li>
                     </ol>
 
-                </CabeçalhoLeft>
+                </ContainerAddMemberLeft>
 
                 <CabeçalhoRight>
                     <img src={memberRegister} alt="Imagem representando o adicionamento de membros na plataforma" />
@@ -258,7 +259,7 @@ function AddMember() {
 
                     <button>Visualização de membros</button>
 
-                    <div id="linha"></div>
+                    <div></div>
                 </Page>
 
                 <ContainerAddMember>

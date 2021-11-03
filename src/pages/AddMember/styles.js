@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-   width: 1440px;
+   margin: auto; 
    padding-bottom: 30px;
 `
 
@@ -38,11 +38,12 @@ export const ContainerModal = styled.div`
 `
 
 export const Cabeçalho = styled.div`
-    width: inherit;
+    max-width: 1440px;
+    width: 80vw;
     height: 380px;
 
+    margin: auto;
     margin-top: 50px;
-    margin-left: 280px;
 
     border-radius: 20px 20px 0px 0px;
     background-color: #fff;
@@ -50,11 +51,10 @@ export const Cabeçalho = styled.div`
     display: flex;
     color: var(--color-text);
 `
-export const CabeçalhoLeft = styled.div`
+export const ContainerAddMemberLeft = styled.div`
    
    >div{
         margin-top: 25px;
-        margin-left: 150px;
         line-height: 30px;
         text-align: center;
    }
@@ -85,11 +85,12 @@ export const CabeçalhoRight = styled.div`
 `
 
 export const Body = styled.div`
+    max-width: 1440px;
+    width: 80vw;
 
-    width: inherit;
+    margin: auto;
     height: 1220px;
 
-    margin-left: 280px;
     margin-bottom: 100px;
 
     background-color: #fff;
@@ -119,9 +120,11 @@ export const Page = styled.div`
     }
 
     >div{
+        max-width: 1440px;
+
+        width: inherit;
         border: 1px solid var(--color-placeholder);
-        margin-left: 80px;
-        margin-right: 80px; 
+        
     }
 
 `
@@ -180,7 +183,9 @@ export const Content = styled.div`
 `;
 
 export const ContainerTable = styled.table`
-    width: 1120px;
+    max-width: 100px;
+    width: 80vw;
+
     margin: auto;
 
     #trTh{
@@ -206,10 +211,8 @@ export const ContainerTable = styled.table`
 
     tbody{
 
-        width: 1120px;
-        margin: auto;
-
         tr{
+            
             display: grid;
             align-items: center;
             grid-template-columns: 300px 400px 300px 300px;
@@ -225,6 +228,8 @@ export const ContainerTable = styled.table`
             color: var(--color-text);
 
             border-bottom:  2px solid var(--color-blue);
+            max-width: 1360px;
+            width: 79vw;
         }
         
     }
