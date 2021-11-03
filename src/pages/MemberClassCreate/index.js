@@ -1,6 +1,6 @@
 import React from 'react';
-import Nav from "../../components/Nav";
 import Header from "../../components/Header";
+import Nav from "../../components/Nav";
 import { Container, Section, } from "./styles";
 import memberCreate from "../../assets/memberClassCreate/createMember.svg";
 import classCreate from "../../assets/memberClassCreate/createClass.svg";

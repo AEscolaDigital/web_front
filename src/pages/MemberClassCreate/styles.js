@@ -14,7 +14,7 @@ export const Section = styled.section`
     display: flex;
     
 
-    >div{
+    a>div{
         width: 260px;
         height: 250px;
         
@@ -22,8 +22,6 @@ export const Section = styled.section`
         border: 1px solid var(--color-blue);
         border-radius: 20px;
         cursor: pointer;
-       
-        
        
 
         >img{
