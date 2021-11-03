@@ -10,11 +10,13 @@ import BtnCancel from "../../components/BtnCancel";
 import Card from "../../components/Card";
 
 
-import { 
-    Container, 
-    Section } from "./styles";
+import {
+    Container,
+    Section
+} from "./styles";
 
-import {useState} from 'react';
+import { useState } from 'react';
+import { Link } from "react-router-dom";
 
 function Teams() {
 
@@ -39,16 +41,19 @@ function Teams() {
             <Header />
             <Nav />
             <div id="btnCreateTeam" >
-                <span onClick={() => setIsModalVisible(true)}> 
-                <img src={iconTeam} alt="Icone de um grupo de pessoas" /> <span>Criar Turma</span> </span>
+                <span onClick={() => setIsModalVisible(true)}>
+                    <img src={iconTeam} alt="Icone de um grupo de pessoas" /> <span>Criar Turma</span> </span>
             </div>
             <div id="titleYourTeams" >
                 <h1>Suas turmas</h1>
             </div>
             <Section>
-                <Card>
-                    <img src={imgMathematics} alt="" />
-                </Card>
+                <Link to="videoCall" >
+                    <Card>
+                        <img src={imgMathematics} alt="" />
+                    </Card>
+                </Link>
+
                 <Card>
                     <img src={imgMathematics} alt="" />
                 </Card>
