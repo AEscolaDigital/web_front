@@ -183,7 +183,7 @@ function AddMember() {
 
             data.append('fileCSV', file[0]);
 
-            const response = await api.post('/users', data)
+            const response = await api.post('/users/excelFile', data)
 
             if (response.data.sucess === true) {
                 setLoadUsersCSV(loadUsersCSV + 1);

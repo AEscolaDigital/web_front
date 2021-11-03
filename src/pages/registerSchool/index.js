@@ -91,7 +91,7 @@ function CompanyRegistration() {
             },
         })
 
-        if (close == true) {
+        if (close === true) {
             Swal.close()
         }
     }
@@ -108,7 +108,7 @@ function CompanyRegistration() {
                 name_school: formRegistration.CompanyName,
                 cnpj: formRegistration.cnpj,
                 school_size: formRegistration.school_size,
-                address: [{
+                address: {
                     cep: formRegistration.cep,
                     street: andress.logradouro,
                     district: andress.bairro,
@@ -117,7 +117,7 @@ function CompanyRegistration() {
                     state: "São Paulo",
                     uf_state: andress.uf,
                     complement: formRegistration.complement,
-                }],
+                },
                 email: formRegistration.email,
                 password: formRegistration.password,
 
