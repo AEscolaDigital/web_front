@@ -18,11 +18,25 @@ export const Container = styled.nav`
 
 
     >div {
-        display: flex;
-        align-items: center;
-        justify-self: center;
-        height: 40px;
-        margin-top: 35px;
+         
+        padding-left: 30px;
+
+        a{
+            display: flex;
+            align-items: center;
+            justify-self: center;
+
+                   
+            height: 40px;
+            margin-top: 35px;
+
+            color: white;
+
+            >p {
+                margin-left: 33px;
+                color: var(--color-background);
+            }
+        }
         
         >img {
             width: 24px;
@@ -30,9 +44,7 @@ export const Container = styled.nav`
             margin-left: 30px;
         }
 
-        >p {
-            margin-left: 33px;
-        }
+     
     }
 
     > div:hover{
