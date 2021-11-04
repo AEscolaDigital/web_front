@@ -78,6 +78,16 @@ function CreateClass() {
 
                 </ContainerAddMemberToClass>
 
+                <form>
+                    <select name="select-simples-grande" class="ls-select" style={{
+                        width: "300px"
+                    }}>
+                        <option value="ac">Acre</option>
+                        <option value="al">Alagoas</option>
+                        ...
+                    </select>
+                </form> 
+
                 <div>
                     <span>Turma: Português</span>
                 </div>
@@ -96,61 +106,61 @@ function CreateClass() {
 
                         <tr>
                             <td><input type="checkbox" /></td>
-                            <td><img src={foto}/></td>
+                            <td><img alt="" src={foto} /></td>
                             <td>Samuel</td>
                             <td>samuel@gmail.com</td>
                         </tr>
                         <tr>
                             <td><input type="checkbox" /></td>
-                            <td><img src={foto}/></td>
+                            <td><img alt="" src={foto} /></td>
                             <td>Samuel</td>
                             <td>samuel@gmail.com</td>
                         </tr>
                         <tr>
                             <td><input type="checkbox" /></td>
-                            <td><img src={foto}/></td>
+                            <td><img alt="" src={foto} /></td>
                             <td>Samuel</td>
                             <td>samuel@gmail.com</td>
                         </tr>
                         <tr>
                             <td><input type="checkbox" /></td>
-                            <td><img src={foto}/></td>
+                            <td><img alt="" src={foto} /></td>
                             <td>Samuel</td>
                             <td>samuel@gmail.com</td>
                         </tr>
                         <tr>
                             <td><input type="checkbox" /></td>
-                            <td><img src={foto}/></td>
+                            <td><img alt="" src={foto} /></td>
                             <td>Samuel</td>
                             <td>samuel@gmail.com</td>
                         </tr>
                         <tr>
                             <td><input type="checkbox" /></td>
-                            <td><img src={foto}/></td>
+                            <td><img alt="" src={foto} /></td>
                             <td>Samuel</td>
                             <td>samuel@gmail.com</td>
                         </tr>
                         <tr>
                             <td><input type="checkbox" /></td>
-                            <td><img src={foto}/></td>
+                            <td><img alt="" src={foto} /></td>
                             <td>Samuel</td>
                             <td>samuel@gmail.com</td>
                         </tr>
                         <tr>
                             <td><input type="checkbox" /></td>
-                            <td><img src={foto}/></td>
+                            <td><img alt="" src={foto} /></td>
                             <td>Samuel</td>
                             <td>samuel@gmail.com</td>
                         </tr>
                         <tr>
                             <td><input type="checkbox" /></td>
-                            <td><img src={foto}/></td>
+                            <td><img alt="" src={foto} /></td>
                             <td>Samuel</td>
                             <td>samuel@gmail.com</td>
                         </tr>
                         <tr>
                             <td><input type="checkbox" /></td>
-                            <td><img src={foto}/></td>
+                            <td><img alt="" src={foto} /></td>
                             <td>Samuel</td>
                             <td>samuel@gmail.com</td>
                         </tr>
@@ -169,15 +179,15 @@ function CreateClass() {
                             </div>
 
                             <div>
-                                 1 de 10
+                                1 de 10
                             </div>
 
                             <div id="divImgSetas">
-                                <img
+                                <img alt=""
                                     src={arrowLeft}
                                     alt="Seta para esquerda" />
 
-                                <img src={arrowRight}
+                                <img alt="" src={arrowRight}
                                     alt="Seta para direita" />
 
                             </div>
