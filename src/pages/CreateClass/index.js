@@ -14,6 +14,8 @@ import Header from "../../components/Header";
 import Input from "../../components/Input";
 import BtnSubmit from "../../components/BtnSubmit";
 import Dropzone from "../../components/Dropzone";
+import Select from "../../components/Select";
+
 
 import membro from "../../assets/createclass/membro.svg"
 import foto from "../../assets/createclass/foto.svg";
@@ -78,15 +80,7 @@ function CreateClass() {
 
                 </ContainerAddMemberToClass>
 
-                <form>
-                    <select name="select-simples-grande" class="ls-select" style={{
-                        width: "300px"
-                    }}>
-                        <option value="ac">Acre</option>
-                        <option value="al">Alagoas</option>
-                        ...
-                    </select>
-                </form> 
+                <Select/>
 
                 <div>
                     <span>Turma: Português</span>
