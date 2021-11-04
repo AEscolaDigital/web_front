@@ -5,7 +5,8 @@ import {
     ContainerAddMemberToClass,
     ContainerCreateClassAndSelectClass,
     Content,
-    AddMemberWithWxcelWile
+    AddMemberWithWxcelWile,
+    ContainerTable
 } from "./styles";
 
 import Nav from "../../components/Nav";
@@ -15,6 +16,8 @@ import BtnSubmit from "../../components/BtnSubmit";
 import Dropzone from "../../components/Dropzone";
 
 import membro from "../../assets/createclass/membro.svg"
+import foto from "../../assets/createclass/foto.svg";
+
 import arrowLeft from "../../assets/addMember/arrowLeft.svg";
 import arrowRight from "../../assets/addMember/arrowRight.svg";
 
@@ -75,31 +78,88 @@ function CreateClass() {
 
                 </ContainerAddMemberToClass>
 
+                <div>
+                    <span>Turma: Português</span>
+                </div>
+
                 <ContainerTable>
                     <thead>
                         <tr id="trTh">
-                            <th>NOME</th>
-                            <th>E-MAIL</th>
-                            <th>TIPO DE USUÁRIO</th>
-                            <th>Adicionado em</th>
+                            <th></th>
+                            <th></th>
+                            <th>Nome</th>
+                            <th>E-mail</th>
                         </tr>
                     </thead>
 
                     <tbody>
 
-                        {users.map(user =>
-                            <tr>
-                                <td>{user.name}</td>
-                                <td>{user.email}</td>
-                                <td>{role[user.role_id]}</td>
-                                <td>{user.created_at}</td>
-                            </tr>
-                        )}
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td><img src={foto}/></td>
+                            <td>Samuel</td>
+                            <td>samuel@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td><img src={foto}/></td>
+                            <td>Samuel</td>
+                            <td>samuel@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td><img src={foto}/></td>
+                            <td>Samuel</td>
+                            <td>samuel@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td><img src={foto}/></td>
+                            <td>Samuel</td>
+                            <td>samuel@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td><img src={foto}/></td>
+                            <td>Samuel</td>
+                            <td>samuel@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td><img src={foto}/></td>
+                            <td>Samuel</td>
+                            <td>samuel@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td><img src={foto}/></td>
+                            <td>Samuel</td>
+                            <td>samuel@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td><img src={foto}/></td>
+                            <td>Samuel</td>
+                            <td>samuel@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td><img src={foto}/></td>
+                            <td>Samuel</td>
+                            <td>samuel@gmail.com</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox" /></td>
+                            <td><img src={foto}/></td>
+                            <td>Samuel</td>
+                            <td>samuel@gmail.com</td>
+                        </tr>
+
                     </tbody>
 
                     <tfoot>
                         <div>
-                            Total de membros: {totalUsers}
+                            Total de membros:
                         </div>
 
                         <div>
@@ -109,22 +169,16 @@ function CreateClass() {
                             </div>
 
                             <div>
-                                {currentPage} de {pages}
+                                 1 de 10
                             </div>
 
                             <div id="divImgSetas">
-                                {currentPage > 1 && (
-                                    <img
-                                        src={arrowLeft}
-                                        onClick={() => setCurrentPage(currentPage - 1)}
-                                        alt="Seta para esquerda" />
-                                )}
+                                <img
+                                    src={arrowLeft}
+                                    alt="Seta para esquerda" />
 
-                                {currentPage < pages && (
-                                    <img src={arrowRight}
-                                        onClick={() => setCurrentPage(currentPage + 1)}
-                                        alt="Seta para direita" />
-                                )}
+                                <img src={arrowRight}
+                                    alt="Seta para direita" />
 
                             </div>
                         </div>
