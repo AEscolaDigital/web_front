@@ -1,24 +1,37 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+     
 `
 export const ContainerTask = styled.div`
+overflow-x: hidden;
 
-     width: 844px;
-     height: 80vw;
-     
-     margin-top: 50px;
-     margin-left: 505px;
-  
-     background-color: beige;
+width: 930px;
+height: 700px;
 
-     div{
-          width: 500px;
-          height: 50px;
+margin:100px 0 0 580px;
 
-          background-color: red;
-          margin-left: 50px;
+     >div{
+          
+          width: 100%;
+          height: 90px;
+
+          >div:nth-child(1) {
+               margin-top: 50px;
+               margin-left:140px;
+               display: inline-block;
+          }
+          >div:nth-child(2){
+               margin-top: 60px;
+               margin-left:140px;
+               
+               display: inline-block;
+          }
+          >div:nth-child(3){
+          display: inline-block;
+          position:relative;
+          left:130px;
+          bottom: 20px;
      }
+}
 `
-
-
