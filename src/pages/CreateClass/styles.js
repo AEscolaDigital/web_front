@@ -22,14 +22,11 @@ export const ContainerCreateClassAndSelectClass = styled.div`
     grid-template-columns: 2fr 1fr;
 
     padding-top: 85px;
-
-
 `
 export const CreateClassAndSelectClass = styled.div`
     margin-left: 60px;
 
     >h1{
-        
         color: var(--color-text);
         margin-bottom: 20px;
     }
@@ -55,6 +52,140 @@ export const CreateClassAndSelectClass = styled.div`
     form{
         margin-left: 40px;
     }
+
+    #select{
+        margin-top: 20px;
+        margin-left: -10px;
+    }
+`
+
+
+
+export const ContainerSelect = styled.div`
+    width: 350px;
+    transition: height 500ms;
+    
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+
+    position: absolute;
+    z-index: 10;
+
+    box-shadow: 0px 1px 5px 0px rgb(0 0 0 / 50%);
+
+
+    background-color: white;
+   
+    select{
+        width: 300px;
+    }
+`
+
+export const ContainerSearchDiv = styled.div`
+    width: 320px;
+    height: 40px;
+
+    padding-right: 10px;
+
+    border: 2px solid var(--color-blue);
+
+    border-radius: 5px;
+
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    column-gap: 10px;
+
+    cursor: pointer;
+`
+
+export const ContainerOption = styled.div`  
+    width: 350px;
+   
+    transition: height 500ms;
+  
+    position: absolute;
+    z-index: 10;
+
+    background-color: #F7F8FC;
+
+    margin-top: 20px;
+
+`
+
+export const ContainerSearch = styled.div`
+    display: flex;
+    justify-content: center;
+
+    margin-top: 20px;
+
+     >input{
+        width: 300px;
+        height: 35px;
+
+        border: 1px solid var(--color-blue);
+        border-radius: 5px;
+
+        padding-left: 10px;
+
+     }
+
+`
+export const Select = styled.div`
+    display: flex;
+    flex-direction: column;
+
+    margin: auto;
+
+    hr{
+        border: 1px solid var(--color-blue); 
+        margin: 0px 20px 0px 20px;
+    }
+
+    >span{
+        margin: 20px 0px 15px 20px;
+
+        color: var(--color-text); 
+        font-size: 16px;
+    }
+
+    #option{
+        display: flex;
+        flex-direction: column;
+
+        color: var(--color-text);
+
+        div{
+
+            height: 30px;
+            padding: 5px 10px 5px 10px;
+        }
+
+        div:hover{
+            background-color: #EDEDED;
+            border-radius: 5px;
+        }
+    }
+
+    div{
+        display: flex;
+        justify-content: space-between;
+
+        padding-right: 10px;
+        padding-left: 10px;
+
+        margin-top: 10px;
+
+        font-size: 16px;
+        /* color: var(--color-text); */
+
+        cursor: pointer;
+
+    }
+
 `
 
 export const ContainerImg = styled.div`
@@ -130,7 +261,7 @@ export const ContainerTable = styled.table`
     #trTh{
 
         display: grid;
-        grid-template-columns: 100px 200px 200px 200px;
+        grid-template-columns: 100px 200px 200px 300px;
 
         border-bottom:  2px solid var(--color-blue);
         border-top:  2px solid var(--color-blue);
@@ -155,7 +286,7 @@ export const ContainerTable = styled.table`
 
             display: grid;
             align-items: center;
-            grid-template-columns: 100px 200px 200px 200px;
+            grid-template-columns: 100px 200px 200px 300px;
 
             height: 60px;
 
