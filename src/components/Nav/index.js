@@ -46,8 +46,7 @@ function Nav() {
                     <p>Adicionar</p>
                 </Link>
             </div>
-
-
+        
         </Container>
     );
 }
