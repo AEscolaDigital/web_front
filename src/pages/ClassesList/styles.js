@@ -47,5 +47,12 @@ export const Container = styled.div`
            
         }
     }
-}    
+} 
+    
+`
+
+export const ContainerTable = styled.div`
+
+
+
 `
