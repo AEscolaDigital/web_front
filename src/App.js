@@ -1,12 +1,13 @@
 import { GlobalSyles } from "./GlobalSytles";
 import TaskEvaluationPage from "./pages/TaskEvaluationPage";
+import ClassesList from "./pages/ClassesList";
 
 function App() {
 
   return (
       <>
         <GlobalSyles/>
-        <TaskEvaluationPage/>
+        <ClassesList/>
       </>
   );
 
