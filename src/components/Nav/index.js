@@ -25,7 +25,7 @@ function Nav() {
             <div>
                 <Link to="addMember">
                     <img src={iconActivities} alt="Ícone de atividades" />
-                    <p>Atividades</p>
+                    <p>Tarefas</p>
                 </Link>
             </div>
             <div>

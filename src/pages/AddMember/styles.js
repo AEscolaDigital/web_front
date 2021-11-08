@@ -39,22 +39,31 @@ export const ContainerModal = styled.div`
 
 export const Cabeçalho = styled.div`
     max-width: 1440px;
-    width: 80vw;
+    width: 85vw;
     height: 380px;
 
-    margin: auto;
+    display: grid;
+    grid-template-columns: 60% 40%;
+    color: var(--color-text);
+
     margin-top: 50px;
+    margin-left: calc(50vw - 700px);
+
 
     border-radius: 20px 20px 0px 0px;
     background-color: #fff;
 
-    display: flex;
-    color: var(--color-text);
+
+    @media (max-width: 1370px) {
+        margin-left: calc(50vw - 540px);
+    }
+
 `
 export const ContainerAddMemberLeft = styled.div`
    
    >div{
         margin-top: 25px;
+        margin-left: 50px;
         line-height: 30px;
         text-align: center;
    }
@@ -71,24 +80,34 @@ export const ContainerAddMemberLeft = styled.div`
         line-height: 25px;
    }
 
-   >ol >li{
+    >ol >li{
        margin-left: 60px;
        text-decoration: none;
-   }
+    }
+
+    u{
+        color: blue;
+        cursor: pointer;
+    }
 
 `
 
 export const CabeçalhoRight = styled.div`
-    align-items: center;
-    margin-left: 200px;
     display: flex;
+    justify-content: center;
+    align-items: center;
 `
 
 export const Body = styled.div`
     max-width: 1440px;
-    width: 80vw;
+    width: 85vw;
 
-    margin: auto;
+    margin-left: calc(50vw - 700px);
+
+    @media (max-width: 1370px) {
+        margin-left: calc(50vw - 540px);
+    }
+
     height: 1220px;
 
     margin-bottom: 100px;
@@ -98,16 +117,20 @@ export const Body = styled.div`
 `
 
 export const Page = styled.div`
-    width: inherit;
+    display: flex;
+    justify-content: space-around;
     padding-top: 20px; 
 
     >button{
         height: 30px;
-        width: 250px;
+
         border: none;
         cursor: pointer;
-        margin: 0px 200px 0px 250px;
+
         background-color: #fff;
+
+        margin-left: 12%;
+
         color: var(--color-text);
         font-size: 16px;
         font-weight: 600;
@@ -183,14 +206,12 @@ export const Content = styled.div`
 `;
 
 export const ContainerTable = styled.table`
-    max-width: 100px;
-    width: 80vw;
-
+    width: 90%;
     margin: auto;
 
     #trTh{
         display: grid;
-        grid-template-columns: 300px 400px 300px 300px;
+        grid-template-columns: 25% 25% 25% 25%;
 
         border-bottom:  2px solid var(--color-blue);
         border-top:  2px solid var(--color-blue);
@@ -215,7 +236,8 @@ export const ContainerTable = styled.table`
             
             display: grid;
             align-items: center;
-            grid-template-columns: 300px 400px 300px 300px;
+            grid-template-columns: 25% 27% 24% 24%;
+
 
             height: 60px;
 

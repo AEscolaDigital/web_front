@@ -4,7 +4,7 @@ import PoPup from "../../components/PoPup";
 import React from 'react';
 
 
-function Card({ children }) {
+function Card({ children, disciplinesName, teacherName }) {
 
     const [toogle, setToogle] = React.useState(true);
     const [value, setOpenClose] = React.useState('none');
@@ -21,8 +21,8 @@ function Card({ children }) {
             </div>
             {children}
             <div>
-                <div>Matemática</div>
-                <span>Prof. Guilherme</span>
+                <div>{disciplinesName}</div>
+                <span>{teacherName}</span>
             </div>
         </Container>
     );

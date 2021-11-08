@@ -242,7 +242,7 @@ function AddMember() {
                     <ol>Existe duas opções para adicionar membro
                         <li>adicionar o e-mail do usuário</li>
                         <li>enviar um arquivo excel conforme o exemplo
-                            <span onClick={() => setIsModalVisible(true)} >, aqui</span>
+                            <span onClick={() => setIsModalVisible(true)} >, <u> aqui</u></span>
                         </li>
                     </ol>
 
@@ -258,8 +258,6 @@ function AddMember() {
                     <button>Adicionar membros</button>
 
                     <button>Visualização de membros</button>
-
-                    <div></div>
                 </Page>
 
                 <ContainerAddMember>

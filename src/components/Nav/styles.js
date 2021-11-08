@@ -33,7 +33,7 @@ export const Container = styled.nav`
             color: white;
 
             >p {
-                margin-left: 33px;
+                margin-left: 35px;
                 color: var(--color-background);
             }
         }

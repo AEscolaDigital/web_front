@@ -1,18 +1,12 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
 
-
-`
 
 export const Section = styled.section`
-    width: 1120px;
-    margin-top: 250px;
-    margin-left: calc(45vw - 500px) ;
-    gap: 100px;
-    justify-content: center;
-    display: flex;
+    margin-top: calc(50vh - 200px);
+    margin-left: calc(50vw - 310px);
     
+    display: flex;
 
     a>div{
         width: 260px;
@@ -23,7 +17,6 @@ export const Section = styled.section`
         border-radius: 20px;
         cursor: pointer;
        
-
         >img{
             width: 132px;
             height: 132px;
@@ -37,10 +30,15 @@ export const Section = styled.section`
 
         >p{   
             padding-top: 20px;
+
             font-size: 20px;
             font-weight: 600;
             text-align: center;
             color: var(--color-text);
-            }
+        }
+    }
+
+    a:nth-child(2){
+            margin-left: 100px;
     }
 `

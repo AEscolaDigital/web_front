@@ -9,7 +9,7 @@ export const Container = styled.div`
         width: 1220px;
         margin: 40px auto 0px auto ;
     
-        >a{
+        >span{
             display: flex;
             align-items: center;
             justify-content: center;

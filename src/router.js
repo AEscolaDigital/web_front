@@ -6,6 +6,7 @@ import Teams from "./pages/Teams";
 import RegisterSchool from "./pages/RegisterSchool";
 import AddMember from "./pages/AddMember";
 import MemberClassCreate from "./pages/MemberClassCreate";
+import CreateClass from "./pages/CreateClass";
 
 function PrivateRoute({ children, ...rest }) {
     if (isSignedIn()) {
@@ -34,6 +35,9 @@ function Router() {
                 </PrivateRoute>
                 <PrivateRoute path="/memberClassCreate">
                     <MemberClassCreate />
+                </PrivateRoute>
+                <PrivateRoute path="/createClass">
+                    <CreateClass />
                 </PrivateRoute>
             </Switch>
         </BrowserRouter>

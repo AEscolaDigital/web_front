@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    max-width: 1300px;
+    max-width: 1440px;
     width: 85vw;
+    min-height: 800px;
+
     background-color: white;
 
-    margin: 100px 0px 100px calc(50vw - 600px);
+    margin: 50px 0px 100px calc(50vw - 700px);
 
     padding-bottom: 100px;
 
@@ -13,6 +15,8 @@ export const Container = styled.div`
 
     @media (max-width: 1370px) {
         margin-left: calc(50vw - 540px);
+        min-height: 900px;
+
     }
 
 `
@@ -41,10 +45,11 @@ export const CreateClassAndSelectClass = styled.div`
     }
 
     #selectClass{
-
         width: 100%;
 
         margin-top: 65px;
+        margin-bottom: 30px;
+
         font-size: 11px;
         color: var(--color-text);
     }
@@ -57,9 +62,33 @@ export const CreateClassAndSelectClass = styled.div`
         margin-top: 20px;
         margin-left: -10px;
     }
+
+    #footerSelect{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        border-radius: 10px;
+
+        background-color: var(--color-blue);
+        color: white;
+
+        padding: 0px 20px 0px 20px;
+
+        height: 40px;
+
+        >div{
+           display: flex;
+           column-gap: 10px;
+        }
+
+    }
+
+    #divImgSetasFooterSelect{
+        display: flex;
+        column-gap: 10px;
+    }
 `
-
-
 
 export const ContainerSelect = styled.div`
     width: 350px;
@@ -86,7 +115,8 @@ export const ContainerSearchDiv = styled.div`
     width: 320px;
     height: 40px;
 
-    padding-right: 10px;
+    padding-right: 15px;
+    padding-left: 15px;
 
     border: 2px solid var(--color-blue);
 
@@ -96,8 +126,7 @@ export const ContainerSearchDiv = styled.div`
 
     display: flex;
     align-items: center;
-    justify-content: end;
-    column-gap: 10px;
+    justify-content: space-between;
 
     cursor: pointer;
 `
@@ -140,6 +169,9 @@ export const Select = styled.div`
 
     margin: auto;
 
+    height: 310px;
+
+
     hr{
         border: 1px solid var(--color-blue); 
         margin: 0px 20px 0px 20px;
@@ -155,10 +187,11 @@ export const Select = styled.div`
     #option{
         display: flex;
         flex-direction: column;
-
         color: var(--color-text);
 
         div{
+            display: flex;
+            align-items: center;
 
             height: 30px;
             padding: 5px 10px 5px 10px;
@@ -167,6 +200,15 @@ export const Select = styled.div`
         div:hover{
             background-color: #EDEDED;
             border-radius: 5px;
+        }
+
+        a{
+            width: 100%;
+
+            display: flex;
+            justify-content: space-between;
+
+            color: var(--color-text);
         }
     }
 
@@ -186,6 +228,19 @@ export const Select = styled.div`
 
     }
 
+    button{
+        width: 25px;
+        height: 30px;
+
+        border: 0px;
+
+        background: url(${props => props.src});
+        background-repeat: no-repeat;
+        background-position: center;
+
+        cursor: pointer;
+    }
+
 `
 
 export const ContainerImg = styled.div`
@@ -202,7 +257,7 @@ export const ContainerAddMemberToClass = styled.div`
     grid-template-columns: 1fr 1fr;
 
     margin-top: 100px;
-    margin-bottom: 130px;
+    margin-bottom: 70px;
 
     padding-left: 50px;
     padding-right: 50px;
@@ -231,11 +286,19 @@ export const ContainerAddMemberToClass = styled.div`
         form{
             margin-left: 20px;
         }
+
+        >span{
+            color: var(--color-text);
+            font-weight: 600;
+            margin-left: 40px;
+        }
         
     }
 `
 
 export const AddMemberWithWxcelWile = styled.div` 
+    width: 400px;
+    height: 100px;
 
     display: flex;
     justify-content: center;
@@ -252,16 +315,45 @@ export const Content = styled.div`
     border-radius: 4px;
 `;
 
+export const ContainerClassName = styled.div`
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
 
+    height: 55px;
 
+    margin: 0px 28px 30px 28px;
+
+    font-size: 18px;
+    color: var(--color-text);
+    font-weight: 600;
+
+    button{
+        width: 50px;
+        height: 50px;
+
+        border: 0;
+
+        background-image: url(${props => props.srcIconDelte});
+        background-repeat: no-repeat;
+        background-position: center;
+
+        background-color: white;
+
+        cursor: pointer;
+    }
+
+    #class{
+        height: 10px;
+        margin-top: 17px;
+    }
+`
 export const ContainerTable = styled.table`
-    width: 1125px;
     margin: auto;
-    
+    width: 96%;
     #trTh{
-
         display: grid;
-        grid-template-columns: 100px 200px 200px 300px;
+        grid-template-columns: 10% 16% 20% 25%;
 
         border-bottom:  2px solid var(--color-blue);
         border-top:  2px solid var(--color-blue);
@@ -286,7 +378,7 @@ export const ContainerTable = styled.table`
 
             display: grid;
             align-items: center;
-            grid-template-columns: 100px 200px 200px 300px;
+            grid-template-columns:  10% 16% 20% 25%;
 
             height: 60px;
 
@@ -309,7 +401,6 @@ export const ContainerTable = styled.table`
     } 
 
     tfoot{
-         width: 1125px;
          margin: auto;
 
          height: 45px;

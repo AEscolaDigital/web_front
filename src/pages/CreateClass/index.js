@@ -11,7 +11,8 @@ import {
     ContainerOption,
     ContainerSearch,
     Select,
-    ContainerSearchDiv
+    ContainerSearchDiv,
+    ContainerClassName
 } from "./styles";
 
 import Nav from "../../components/Nav";
@@ -26,10 +27,9 @@ import foto from "../../assets/createclass/foto.svg";
 import arrowLeft from "../../assets/addMember/arrowLeft.svg";
 import arrowRight from "../../assets/addMember/arrowRight.svg";
 import imageHttpError503 from "../../assets/alert/imageHttpError503.svg"
-import cancel from "../../assets/select/cancel.svg"
 import downArrow from "../../assets/select/downArrow.svg"
 import iconDelete from "../../assets/select/delete.svg"
-
+import iconDelete30 from "../../assets/iconsGlobal/iconDelete30.svg"
 
 import { api } from "../../services/api";
 import Swal from "sweetalert2";
@@ -37,41 +37,42 @@ import { useEffect, useState } from "react";
 
 function CreateClass() {
 
-    const [toogle, setToogle] = useState(true);
-    const [value, setOpenClose] = useState('none');
-    const [valueHeight, setHeight] = useState('0px');
+    const [classes, setClasses] = useState([]);
+
+    const [loadclasses, setloadClasses] = useState(0);
 
     useEffect(() => {
-        setOpenClose(() => toogle ? 'none' : 'block');
-        setHeight(() => toogle ? '80px' : '450px');
-
-    }, [toogle]);
-
-
-
-    const [classes, setClasses] = useState();
-    const [loadclasses, setloadClasses] = useState();
-
-    useEffect(() => {
-        let loadClasses = async () => {
+        let loadclasses = async () => {
 
             try {
-                const response = await api.get(`/classes`);
-                setClasses(response.data)
+                const response = await api.get(`/classes/1`);
+
+                setClasses(response.data.rows)
 
             } catch (error) {
                 httpError503(error.response);
             }
         };
 
-        loadClasses();
+        loadclasses();
 
     }, [loadclasses]);
 
-    const [idClass, setIdClass] = useState();
-    const [usersClass, setUsersClass] = useState();
+    const [toogle, setToogle] = useState(true);
+    const [value, setOpenClose] = useState('none');
+    const [valueHeight, setHeight] = useState('0px');
 
-    console.log(usersClass);
+    useEffect(() => {
+        setOpenClose(() => toogle ? 'none' : 'block');
+        setHeight(() => toogle ? '80px' : '490px');
+
+    }, [toogle]);
+
+
+    const [idClass, setIdClass] = useState(0);
+    const [usersClass, setUsersClass] = useState([]);
+
+    const [loadUsersClass, setLoadUserClass] = useState(0);
 
     useEffect(() => {
 
@@ -81,10 +82,8 @@ function CreateClass() {
                 setToogle(true)
 
                 try {
-                    const response = await api.get(`/classes/${idClass}`);
-                    setUsersClass(response.data)
-
-                    console.log(response);
+                    const response = await api.get(`/classes/${idClass}/page/1`);
+                    setUsersClass(response.data.rows[0])
 
                 } catch (error) {
                     httpError503(error.response);
@@ -95,7 +94,7 @@ function CreateClass() {
 
         loadClassesId();
 
-    }, [idClass]);
+    }, [idClass, loadUsersClass]);
 
     const errorCreateClass = (error) => {
         Swal.fire({
@@ -117,7 +116,7 @@ function CreateClass() {
         })
     }
 
-    const classCreatedSuccessfully = (text) => {
+    const successAlert = (text) => {
         Swal.fire({
             position: 'top-end',
             icon: 'success',
@@ -125,6 +124,64 @@ function CreateClass() {
             showConfirmButton: false,
             timer: 1500
         })
+    }
+
+    const waitingToAddaMemberToTheClass = (close) => {
+        Swal.fire({
+            title: 'Adicionando alunos na turma!',
+            html: 'Aguarde alguns segundos por favor',
+            onOpen: () => {
+                Swal.showLoading()
+            },
+            didOpen: () => {
+                Swal.showLoading()
+            },
+        })
+
+        if (close === true) {
+            Swal.close()
+            successAlert("Adicionados com sucesso!");
+        }
+    }
+
+
+    const invalidFileExtension = () => {
+        Swal.fire({
+            title: '<strong>Arquivo inválido</strong>',
+            icon: 'info',
+            html:
+                '<span> Caso você esteja tendo dificuldades para fazer o upload, <a href="/">clique aqui</a>',
+            showCloseButton: true,
+            focusConfirm: false,
+        })
+    }
+
+    const classExclusionAlert = async () => {
+        return await Swal.fire({
+            title: 'Tem certeza?',
+            text: "Você não poderá reverter isso!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#28a745',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, exclua!',
+            cancelButtonText: 'Não, exclua!'
+
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Excluído',
+                    'Turma excluído, com sucesso.',
+                    'success'
+                )
+                return true;
+
+            } else {
+                return false
+            }
+
+        })
+
     }
 
     const [formCreateClass, setClass] = useState({
@@ -148,7 +205,7 @@ function CreateClass() {
             })
 
             setloadClasses(loadclasses + 1)
-            classCreatedSuccessfully("Turma criada, com sucesso!");
+            successAlert("Turma criada, com sucesso!");
 
 
         } catch (error) {
@@ -158,6 +215,117 @@ function CreateClass() {
             } else {
                 errorCreateClass(error.response.data)
             }
+        }
+
+    }
+
+    const [formAddMember, setAddMember] = useState({
+        email: ""
+    });
+
+    const handleInputAddMember = (e) => {
+        setAddMember({ ...formAddMember, [e.target.id]: e.target.value });
+    }
+
+    const handleSubmitAddMember = async (e) => {
+        e.preventDefault();
+
+        try {
+            await api.post(`/classes/addMember/${idClass}`, {
+                email: formAddMember.email,
+            });
+
+            setAddMember({
+                email: "",
+            })
+
+            setLoadUserClass(loadUsersClass + 1)
+            successAlert("Aluno adicionado, com sucesso!");
+
+
+        } catch (error) {
+
+            if (error.response === undefined) {
+                httpError503()
+            } else {
+                errorCreateClass(error.response.data)
+            }
+        }
+
+    }
+
+    const handleUpload = async (file) => {
+
+        var extFile = file[0].name.split('.').pop();
+
+        if (extFile === "csv") {
+            waitingToAddaMemberToTheClass()
+
+            const data = new FormData();
+
+            data.append('fileCSV', file[0]);
+            data.append('class_id', idClass);
+
+            const response = await api.post('/classes/addMembers/excelFile', data)
+
+            if (response.data.sucess === true) {
+                setLoadUserClass(loadUsersClass + 1)
+                waitingToAddaMemberToTheClass(true)
+            }
+        } else {
+            invalidFileExtension()
+        }
+    }
+
+    const [idClassDelete, setIdClassDelete] = useState();
+
+    const handleDeleteClass = async (e) => {
+        e.preventDefault();
+
+        if (await classExclusionAlert()) {
+            try {
+                await api.delete(`/classes/${idClassDelete}`);
+
+                setloadClasses(loadclasses + 1)
+
+            } catch (error) {
+
+                if (error.response === undefined) {
+                    httpError503()
+                } else {
+
+                }
+            }
+
+        }
+
+    }
+
+    const [idsToDeleteUsers, setIdsToDeleteUsers] = useState([])
+
+
+    console.log(idsToDeleteUsers);
+
+    const handleDeleteUsers = async (e) => {
+        e.preventDefault();
+
+        if (await classExclusionAlert()) {
+            try {
+                await api.post(`/classes/deleteMember/${idClass}`, {
+                    id_users: idsToDeleteUsers
+                });
+
+                setLoadUserClass(loadUsersClass + 1)
+
+            } catch (error) {
+
+                if (error.response === undefined) {
+                    httpError503()
+                } else {
+
+                }
+            }
+
         }
 
     }
@@ -194,9 +362,9 @@ function CreateClass() {
                         <ContainerSelect style={{
                             height: valueHeight,
                         }} >
-                            <ContainerSearchDiv>
-                                <img src={cancel} alt="Icone de cancelar" />
-                                <img src={downArrow} onClick={e => setToogle(state => !state)} alt="Icone seta para baixo" />
+                            <ContainerSearchDiv onClick={e => setToogle(state => !state)} >
+                                <span>{usersClass.name}</span>
+                                <img src={downArrow} alt="Icone seta para baixo" />
                             </ContainerSearchDiv>
                             <ContainerOption style={{
                                 display: value,
@@ -204,23 +372,48 @@ function CreateClass() {
                                 <ContainerSearch>
                                     <input placeholder="Pesquisar" />
                                 </ContainerSearch>
-                                <Select>
+                                <Select src={iconDelete} >
                                     <span >Selecione alguma turma</span>
                                     <hr />
                                     <div id="option" >
-                                        {classes !== undefined && (
-                                            classes.map(classe =>
-                                                <div onClick={() => setIdClass(classe.id) } >
-                                                    <a href="#AddMemberToClass" >
+                                        {classes.map(classe =>
+                                            <div>
+                                                <a onClick={() => setIdClass(classe.id)} href="#class" >
                                                     <span>{classe.name}</span>
-                                                    <img src={iconDelete} alt="Icone de Lixeira" />
-                                                    </a>
-                                                </div>
-                                            ))}
+                                                </a>
+                                                <form
+                                                    onSubmit={handleDeleteClass} >
+                                                    <button
+                                                        onClick={() => setIdClassDelete(classe.id)} />
+                                                </form>
+
+                                            </div>
+                                        )}
 
                                     </div>
 
                                 </Select>
+                                <div id="footerSelect" >
+                                    <div>
+                                        Total de turmas:
+                                    </div>
+
+                                    <div>
+                                        <div>
+                                            1 de 10
+                                        </div>
+
+                                        <div id="divImgSetasFooterSelect">
+                                            <img
+                                                src={arrowLeft}
+                                                alt="Seta para esquerda" />
+
+                                            <img src={arrowRight}
+                                                alt="Seta para direita" />
+
+                                        </div>
+                                    </div>
+                                </div>
                             </ContainerOption>
 
                         </ContainerSelect>
@@ -233,95 +426,108 @@ function CreateClass() {
 
                 </ContainerCreateClassAndSelectClass>
 
-                <ContainerAddMemberToClass>
+                {idClass > 0 && (
+                    <ContainerAddMemberToClass>
 
-                    <div id="AddMemberToClass" >
-                        <h1>Adicionar  Membros : 
-                            {/* {usersClass !== undefined && (
-                                usersClass.name 
-                            )} */}
-                        </h1>
-                        <form>
-                            <Input label="Informe o e-mail" />
-                            <div id="buttonAddMemberToClass" >
-                                <BtnSubmit text="Adicionar" />
-                            </div>
+                        <div id="AddMemberToClass" >
+                            <h1>Adicionar Membros:</h1>
+                            <span>Turma: {usersClass.name}</span>
+                            <form onSubmit={handleSubmitAddMember} >
+                                <Input
+                                    id="email"
+                                    handler={handleInputAddMember}
+                                    label="Informe o e-mail"
+                                    value={formAddMember.email} />
+
+                                <div id="buttonAddMemberToClass" >
+                                    <BtnSubmit text="Adicionar" />
+                                </div>
+                            </form>
+                        </div>
+
+                        <div id="AddMemberToClassExcel" >
+                            <AddMemberWithWxcelWile>
+                                <Content>
+                                    <Dropzone onUpload={handleUpload} />
+                                </Content>
+                            </AddMemberWithWxcelWile>
+                        </div>
+
+                    </ContainerAddMemberToClass>
+                )}
+
+                {idClass > 0 && (
+                    <ContainerClassName srcIconDelte={iconDelete30} >
+                        <span id="class" >Turma: {usersClass.name}</span>
+                        <form onClick={handleDeleteUsers} >
+                            <button />
                         </form>
-                    </div>
+                    </ContainerClassName>
+                )}
 
-                    <div id="AddMemberToClassExcel" >
-                        <AddMemberWithWxcelWile>
-                            <Content>
-                                <Dropzone />
-                            </Content>
-                        </AddMemberWithWxcelWile>
-                    </div>
+                {idClass > 0 && (
 
-                </ContainerAddMemberToClass>
+                    <ContainerTable>
+                        <thead>
+                            <tr id="trTh">
+                                <th></th>
+                                <th></th>
+                                <th>Nome</th>
+                                <th>E-mail</th>
+                            </tr>
+                        </thead>
 
-                <div>
-                    <span>Turma: Português</span>
-                </div>
+                        <tbody>
+                            {usersClass.users !== undefined && (
 
-                <ContainerTable>
-                    <thead>
-                        <tr id="trTh">
-                            <th></th>
-                            <th></th>
-                            <th>Nome</th>
-                            <th>E-mail</th>
-                            <th>E-mail</th>
+                                usersClass.users.map(userClass => (
+                                    <tr>
+                                        <td>
+                                            <input
+                                                onClick={() => setIdsToDeleteUsers(idsToDeleteUsers.concat(userClass.id))}
+                                                type="checkbox" /></td>
+                                        <td>
+                                            <img alt="Foto de perfil" src={foto} />
+                                        </td>
+                                        <td>{userClass.name}</td>
+                                        <td>{userClass.email}</td>
+                                    </tr>
+                                ))
+                            )}
 
-                        </tr>
-                    </thead>
+                        </tbody>
 
-                    <tbody>
-                        {usersClass !== undefined && (
-
-                            usersClass.rows.map(userClass => (
-                                <tr>
-                                    <td><input type="checkbox" /></td>
-                                    <td><img alt="Foto de perfil" src={foto} /></td>
-                                    <td>{userClass.name}</td>
-                                    <td>{userClass.email}</td>
-                                </tr>
-                            ))
-                        )}
-
-                    </tbody>
-
-                    <tfoot>
-                        <div>
-                            Total de membros:
-                        </div>
-
-                        <div>
-
+                        <tfoot>
                             <div>
-                                Linhas por pagina: 10
+                                Total de membros:
                             </div>
 
                             <div>
-                                1 de 10
+
+                                <div>
+                                    Linhas por pagina: 10
+                                </div>
+
+                                <div>
+                                    1 de 10
+                                </div>
+
+                                <div id="divImgSetas">
+                                    <img
+                                        src={arrowLeft}
+                                        alt="Seta para esquerda" />
+
+                                    <img src={arrowRight}
+                                        alt="Seta para direita" />
+
+                                </div>
                             </div>
+                        </tfoot>
 
-                            <div id="divImgSetas">
-                                <img
-                                    src={arrowLeft}
-                                    alt="Seta para esquerda" />
-
-                                <img src={arrowRight}
-                                    alt="Seta para direita" />
-
-                            </div>
-                        </div>
-                    </tfoot>
-
-                </ContainerTable>
+                    </ContainerTable>
+                )}
 
             </Container>
-
-
 
         </>
 

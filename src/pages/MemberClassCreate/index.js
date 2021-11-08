@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 
 function MemberClassCreate() {
     return (
-        <Container>
+        <>
             <Header />
             <Nav />
 
@@ -30,7 +30,7 @@ function MemberClassCreate() {
                     </div>
                 </Link>
             </Section>
-        </Container>
+        </>
     );
 }
 

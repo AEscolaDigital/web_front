@@ -1,5 +1,6 @@
 import imgMathematics from "../../assets/teams/imgMathematics.svg"
 import iconTeam from "../../assets/teams/iconTeam.svg"
+import imageHttpError503 from "../../assets/alert/imageHttpError503.svg"
 
 import Nav from "../../components/Nav";
 import Header from "../../components/Header";
@@ -10,15 +11,51 @@ import BtnCancel from "../../components/BtnCancel";
 import Card from "../../components/Card";
 
 
-import { 
-    Container, 
-    Section } from "./styles";
+import {
+    Container,
+    Section
+} from "./styles";
 
-import {useState} from 'react';
+import { useEffect, useState } from 'react';
+import Swal from "sweetalert2";
+import { api } from "../../services/api";
 
 function Teams() {
 
     const [isModalVisible, setIsModalVisible] = useState(false);
+
+    const [disciplines, setDisciplines] = useState([]);
+
+    useEffect(() => {
+        let loadDisciplines = async () => {
+
+            try {
+                const response = await api.get(`/disciplines`);
+
+                console.log(response.data);
+                setDisciplines(response.data)
+
+            } catch (error) {
+                httpError503(error.response);
+            }
+        };
+
+        loadDisciplines();
+
+    }, []);
+
+
+    const httpError503 = () => {
+        Swal.fire({
+            html: `
+                   <img style="width: 300px; height: 250px; margin-top: 20px;" src=${imageHttpError503} />
+                   </br>
+                   <span>Error 503, serviço indisponível</span>
+                   </br></br>
+                   <span>Tente novamente mais tarde!</span>
+                `,
+        })
+    }
 
     return (
         <Container>
@@ -39,37 +76,22 @@ function Teams() {
             <Header />
             <Nav />
             <div id="btnCreateTeam" >
-                <span onClick={() => setIsModalVisible(true)}> 
-                <img src={iconTeam} alt="Icone de um grupo de pessoas" /> <span>Criar Turma</span> </span>
+                <span onClick={() => setIsModalVisible(true)}>
+                    <img src={iconTeam} alt="Icone de um grupo de pessoas" /> <span>Criar disciplina</span> </span>
             </div>
             <div id="titleYourTeams" >
                 <h1>Suas turmas</h1>
             </div>
             <Section>
-                <Card>
-                    <img src={imgMathematics} alt="" />
-                </Card>
-                <Card>
-                    <img src={imgMathematics} alt="" />
-                </Card>
-                <Card>
-                    <img src={imgMathematics} alt="" />
-                </Card>
-                <Card>
-                    <img src={imgMathematics} alt="" />
-                </Card>
-                <Card>
-                    <img src={imgMathematics} alt="" />
-                </Card>
-                <Card>
-                    <img src={imgMathematics} alt="" />
-                </Card>
-                <Card>
-                    <img src={imgMathematics} alt="" />
-                </Card>
-                <Card>
-                    <img src={imgMathematics} alt="" />
-                </Card>
+                
+                {disciplines.map(discipline =>
+                    <Card 
+                        disciplinesName={discipline.name}
+                        teacherName={discipline.school.name} >
+                        <img src={discipline.image} alt="" />
+                    </Card>
+                )}
+
             </Section>
         </Container>
 
