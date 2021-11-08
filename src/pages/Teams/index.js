@@ -1,6 +1,9 @@
-import imgMathematics from "../../assets/teams/imgMathematics.svg"
 import iconTeam from "../../assets/teams/iconTeam.svg"
 import imageHttpError503 from "../../assets/alert/imageHttpError503.svg"
+import arrowLeft from "../../assets/addMember/arrowLeft.svg";
+import arrowRight from "../../assets/addMember/arrowRight.svg";
+import downArrow from "../../assets/select/downArrow.svg"
+import iconDelete from "../../assets/select/delete.svg"
 
 import Nav from "../../components/Nav";
 import Header from "../../components/Header";
@@ -9,11 +12,20 @@ import Input from "../../components/Input";
 import BtnSubmit from "../../components/BtnSubmit";
 import BtnCancel from "../../components/BtnCancel";
 import Card from "../../components/Card";
+import Dropzone from "../../components/Dropzone";
+
 
 
 import {
     Container,
-    Section
+    Section,
+    ContainerUploadImage,
+    ContainerSelect,
+    Content,
+    Select,
+    ContainerSearchDiv,
+    ContainerOption,
+    ContainerSearch
 } from "./styles";
 
 import { useEffect, useState } from 'react';
@@ -25,6 +37,7 @@ function Teams() {
     const [isModalVisible, setIsModalVisible] = useState(false);
 
     const [disciplines, setDisciplines] = useState([]);
+
 
     useEffect(() => {
         let loadDisciplines = async () => {
@@ -44,6 +57,41 @@ function Teams() {
 
     }, []);
 
+    const [idClass, setIdClass] = useState();
+
+    console.log(idClass);
+
+    const [classes, setClasses] = useState([])
+
+
+    useEffect(() => {
+        let loadclasses = async () => {
+
+            try {
+                const response = await api.get(`/classes/1`);
+
+                setClasses(response.data.rows)
+
+            } catch (error) {
+                httpError503(error.response);
+            }
+        };
+
+        loadclasses();
+
+    }, []);
+
+    const [toogle, setToogle] = useState(true);
+    const [value, setOpenClose] = useState('none');
+    const [valueHeight, setHeight] = useState('0px');
+
+    useEffect(() => {
+        setOpenClose(() => toogle ? 'none' : 'block');
+        setHeight(() => toogle ? '80px' : '490px');
+
+    }, [toogle]);
+
+
 
     const httpError503 = () => {
         Swal.fire({
@@ -62,9 +110,74 @@ function Teams() {
             {isModalVisible ?
                 <Modal title="Criar turma">
                     <div id="inputsModal" >
-                        <Input className="labelWhite" label="Nome da turma" />
-                        <Input className="labelWhite" label="Nome do professor" />
-                        <Input className="labelWhite" label="Disciplina" />
+                        <ContainerSelect style={{
+                            height: valueHeight,
+                        }} >
+                            <ContainerSearchDiv onClick={e => setToogle(state => !state)} >
+                                {/* <span>{usersClass.name}</span> */}
+                                <img src={downArrow} alt="Icone seta para baixo" />
+                            </ContainerSearchDiv>
+                            <ContainerOption style={{
+                                display: value,
+                            }} >
+                                <ContainerSearch>
+                                    <input placeholder="Pesquisar" />
+                                </ContainerSearch>
+                                <Select src={iconDelete} >
+                                    <span >Selecione alguma turma</span>
+                                    <hr />
+                                    <div id="option" >
+                                        {classes.map(classe =>
+                                            <div>
+                                                <a onClick={() => setIdClass(classe.id)} >
+                                                    <span>{classe.name}</span>
+                                                </a>
+                                            </div>
+                                        )}
+
+                                    </div>
+
+                                </Select>
+                                <div id="footerSelect" >
+                                    <div>
+                                        Total de turmas:
+                                    </div>
+
+                                    <div>
+                                        <div>
+                                            1 de 10
+                                        </div>
+
+                                        <div id="divImgSetasFooterSelect">
+                                            <img
+                                                src={arrowLeft}
+                                                alt="Seta para esquerda" />
+
+                                            <img src={arrowRight}
+                                                alt="Seta para direita" />
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </ContainerOption>
+
+                        </ContainerSelect>
+                        <ContainerUploadImage>
+                            <Content>
+                                <Dropzone />
+                            </Content>
+                        </ContainerUploadImage>
+                        <div id="nameDiscipline" >
+                            <Input
+                                id="name"
+                                className="labelWhite"
+                                label="Nome da disciplina"
+                                width="390px"
+                            />
+                        </div>
+
+                   
+
                     </div>
                     <div id="btnModal" >
                         <div onClick={() => setIsModalVisible(false)} >
@@ -83,9 +196,9 @@ function Teams() {
                 <h1>Suas turmas</h1>
             </div>
             <Section>
-                
+
                 {disciplines.map(discipline =>
-                    <Card 
+                    <Card
                         disciplinesName={discipline.name}
                         teacherName={discipline.school.name} >
                         <img src={discipline.image} alt="" />

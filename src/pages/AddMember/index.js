@@ -283,7 +283,6 @@ function AddMember() {
                                 idInput="aluno"
                                 forLabel="aluno"
                                 name="role"
-
                                 value="2" />
 
                             <RadioButton

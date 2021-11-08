@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     max-width: 1440px;
     width: 85vw;
-    min-height: 800px;
+    min-height: 900px;
 
     background-color: white;
 
