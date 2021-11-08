@@ -14,15 +14,16 @@ function taskEvaluationPage() {
             discipline: "matematica"
         },
         {
-            title: "Random task",
-            finishdate: "17/10/2021",
-            discipline: "Projetos"
+            title: "consumo de API (CEP)",
+            finishdate: "14/10/2021",
+            discipline: "matematica"
         },
         {
-            title: "consumo de API ",
-            finishdate: "18/10/2021",
-            discipline: "Projetos"
-        }
+            title: "consumo de API (CEP)",
+            finishdate: "14/10/2021",
+            discipline: "matematica"
+        },
+       
     ];
 
     tasks.map(task => console.log(task.title));
@@ -35,7 +36,7 @@ function taskEvaluationPage() {
             <NavTask />
 
             <ContainerTask>
-                <div>
+                <header>
                     <div>
                         <h3>Atribuída</h3>
                     </div>
@@ -46,24 +47,20 @@ function taskEvaluationPage() {
                         <BtnSubmit text="Adicionar tarefa"  />
                     </div>  
                     <hr />
-                </div>
+                </header>
                 <ContainerListTask>
-                    {tasks.map(task => <div>
-                        <div>
+                    {tasks.map(task => <div id="tarefa">
+                        <div className="Image">
                             <img src={controle} />
                         </div>
-
-
-                        <>
-                            <div className="textListTask" >{task.title}</div>
-                            <div className="dateTask" >
+                            <div className="textListTask">{task.title}</div>
+                            <div className="dateTask">
                                 <div>
                                     <span>Data de entrega</span>
                                     <span>{task.finishdate}</span>
                                 </div>
                             </div>
-                        </>
-
+                        
                     </div>
                     )}
 
