@@ -6,7 +6,7 @@ export const Container = styled.div`
         display: flex;
         justify-content: end;
 
-        width: 1220px;
+        width: 80vw;
         margin: 40px auto 0px auto ;
     
         >span{
@@ -26,7 +26,7 @@ export const Container = styled.div`
     }
 
     #titleYourTeams{
-        width: 1000px;
+        width: 75vw;
         margin: auto;
 
         color: var(--color-text);
@@ -36,13 +36,15 @@ export const Container = styled.div`
         display: flex;
         column-gap: 30px;
         justify-content: end;
-
-        margin-top: 150px;
     }
 
     #inputsModal{
         width: 421px;
         margin: 30px auto;
+
+        >div:nth-child(3){
+           padding: 0px;
+        }
 
     }
 `
@@ -57,7 +59,7 @@ export const ContainerUploadImage = styled.div`
     background-color: var(--color-blue);
 
     margin-bottom: 30px;
-    margin-top: 150px;
+    margin-top: 130px;
    
 `
 
@@ -216,7 +218,7 @@ export const ContainerSearchDiv = styled.div`
 `
 
 export const ContainerOption = styled.div`  
-    width: 350px;
+    width: 421px;
    
     transition: height 500ms;
   
@@ -229,8 +231,6 @@ export const ContainerOption = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
-
-        width: 120%;
 
         border-radius: 10px;
 
@@ -253,14 +253,12 @@ export const ContainerOption = styled.div`
         column-gap: 10px;
     }
 
-    }
-
 `
 
 export const Section = styled.section`
-    width: 1120px;
+    width: 80vw;
     margin-top: 30px;
-    margin-left: calc(50vw - 500px) ;
+    margin-left: calc(50vw - 40vw) ;
 
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));

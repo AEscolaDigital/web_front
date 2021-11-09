@@ -28,7 +28,7 @@ function DropZone(props) {
                     isDragActive={isDragActive}
                     isDragReject={isDragReject}
                 >
-                    <input accept="" {...getInputProps()} />
+                    <input {...getInputProps()} />
                     {renderDragMessage(isDragActive, isDragReject)}
 
                 </DropContainer>
