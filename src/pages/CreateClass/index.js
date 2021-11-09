@@ -177,7 +177,7 @@ function CreateClass() {
                 return true;
 
             } else {
-                return false
+                return false;
             }
 
         })
@@ -301,32 +301,37 @@ function CreateClass() {
 
     }
 
-    const [idsToDeleteUsers, setIdsToDeleteUsers] = useState([])
+    const [formLogin, setFormLogin] = useState({
+        name: "",
 
+    })
 
-    console.log(idsToDeleteUsers);
+    const handleInputTeste = (e) => {
+        console.log(e);
+        setFormLogin({ ...formLogin, [e.target.id]: e.target.value });
+    }
+
 
     const handleDeleteUsers = async (e) => {
         e.preventDefault();
 
-        if (await classExclusionAlert()) {
-            try {
-                await api.post(`/classes/deleteMember/${idClass}`, {
-                    id_users: idsToDeleteUsers
-                });
+        console.log(formLogin.name);
+        // if (await classExclusionAlert()) {
+        //    
 
-                setLoadUserClass(loadUsersClass + 1)
+        //     try {
+        //         await api.delete(`/classes/deleteMember/${idClass}/0`);
 
-            } catch (error) {
+        //         setLoadUserClass(loadUsersClass + 1)
 
-                if (error.response === undefined) {
-                    httpError503()
-                } else {
+        //     } catch (error) {
 
-                }
-            }
+        //         if (error.response === undefined) {
+        //             httpError503()
+        //         }
+        //     }
 
-        }
+        // }
 
     }
 
@@ -459,21 +464,18 @@ function CreateClass() {
                 {idClass > 0 && (
                     <ContainerClassName srcIconDelte={iconDelete30} >
                         <span id="class" >Turma: {usersClass.name}</span>
-                        <form onClick={handleDeleteUsers} >
-                            <button />
-                        </form>
                     </ContainerClassName>
                 )}
 
                 {idClass > 0 && (
 
-                    <ContainerTable>
+                    <ContainerTable srcIconDelte={iconDelete30} >
                         <thead>
                             <tr id="trTh">
                                 <th></th>
-                                <th></th>
                                 <th>Nome</th>
                                 <th>E-mail</th>
+                                <th></th>
                             </tr>
                         </thead>
 
@@ -483,14 +485,20 @@ function CreateClass() {
                                 usersClass.users.map(userClass => (
                                     <tr>
                                         <td>
-                                            <input
-                                                onClick={() => setIdsToDeleteUsers(idsToDeleteUsers.concat(userClass.id))}
-                                                type="checkbox" /></td>
-                                        <td>
                                             <img alt="Foto de perfil" src={foto} />
                                         </td>
                                         <td>{userClass.name}</td>
                                         <td>{userClass.email}</td>
+                                        <td>
+                                            <form onSubmit={handleDeleteUsers}  >
+                                                <input
+                                                    id="name"
+                                                    handler={handleInputTeste}
+                                                    type="text"
+                                                />
+                                                <button id="btnDelete" />
+                                            </form>
+                                        </td>
                                     </tr>
                                 ))
                             )}

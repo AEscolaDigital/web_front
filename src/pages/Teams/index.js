@@ -63,18 +63,12 @@ function Teams() {
 
     }, [loadDisciplines]);
 
-    const [father, setFather] = useState(false);
+    const [father, setGrandson] = useState(false);
 
     if (father) {
-        setFather(false)
-        console.log(father);
+        setGrandson(false)
         setLoadDisciplines(loadDisciplines + 1);
     }
-
-    // if (father) {
-    //     console.log(father);
-    //     setFather(false)
-    // }
 
     const [selectedClass, setSelectedClass] = useState([]);
 
@@ -109,23 +103,33 @@ function Teams() {
 
     const handleAddNewDicipline = async (e) => {
         e.preventDefault();
-        let data = new FormData();
 
-        data.append("name", newDiscipline.name);
-        data.append("class_id", selectedClass.id );
-        data.append("image", image[0] );
+        try {
+            let data = new FormData();
+
+            data.append("name", newDiscipline.name);
+            data.append("class_id", selectedClass.id);
+            data.append("image", image[0]);
 
 
-        await api.post("/disciplines", data, {
-            headers: {
-                "content-type": "multipart/form-data"
-            }
-        })
+            await api.post("/disciplines", data, {
+                headers: {
+                    "content-type": "multipart/form-data"
+                }
+            })
 
-        setIsModalVisible(false);
-        setLoadDisciplines(classes + 1);
-        successAlert("Disciplina criada com sucesso");
-        setSelectedClass("");
+            setIsModalVisible(false);
+            setLoadDisciplines(loadDisciplines + 1);
+            successAlert("Disciplina criada com sucesso");
+            setSelectedClass("");
+
+
+        } catch (error) {
+            errorAlert(error.response.data, 
+            "Informe outro nome para a disciplina")
+        }
+
+
     };
 
     const httpError503 = () => {
@@ -149,6 +153,16 @@ function Teams() {
             timer: 1500
         })
     }
+
+    const errorAlert = (error, textFooter) =>{
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `${error.error}`,
+            footer: `${textFooter}`
+        })
+    }
+
 
     return (
         <Container>
@@ -237,10 +251,10 @@ function Teams() {
             <Nav />
             <div id="btnCreateTeam" >
                 <span onClick={() => setIsModalVisible(true)}>
-                    <img 
-                    src={iconTeam} 
-                    alt="Icone de um grupo de pessoas" /> 
-                    <span>Criar disciplina</span> 
+                    <img
+                        src={iconTeam}
+                        alt="Icone de um grupo de pessoas" />
+                    <span>Criar disciplina</span>
                 </span>
             </div>
             <div id="titleYourTeams" >
@@ -253,9 +267,9 @@ function Teams() {
                         disciplinesName={discipline.name}
                         teacherName={discipline.school.name}
                         id={discipline.id}
-                        setPropss={setFather} >
+                        setProps={setGrandson} >
                         <img src={discipline.image} alt=""
-                       />
+                        />
                     </Card>
                 )}
 

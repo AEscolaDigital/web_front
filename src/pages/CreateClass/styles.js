@@ -139,7 +139,7 @@ export const ContainerOption = styled.div`
     position: absolute;
     z-index: 10;
 
-    background-color: #F7F8FC;
+    background-color: white;
 
     margin-top: 20px;
 
@@ -328,21 +328,6 @@ export const ContainerClassName = styled.div`
     color: var(--color-text);
     font-weight: 600;
 
-    button{
-        width: 50px;
-        height: 50px;
-
-        border: 0;
-
-        background-image: url(${props => props.srcIconDelte});
-        background-repeat: no-repeat;
-        background-position: center;
-
-        background-color: white;
-
-        cursor: pointer;
-    }
-
     #class{
         height: 10px;
         margin-top: 17px;
@@ -351,9 +336,10 @@ export const ContainerClassName = styled.div`
 export const ContainerTable = styled.table`
     margin: auto;
     width: 96%;
+
     #trTh{
         display: grid;
-        grid-template-columns: 10% 16% 20% 25%;
+        grid-template-columns: 22% 15% 25% 40%;
 
         border-bottom:  2px solid var(--color-blue);
         border-top:  2px solid var(--color-blue);
@@ -365,11 +351,12 @@ export const ContainerTable = styled.table`
         color: var(--color-blue);
         font-weight: bolder;
 
-        padding-left: 50px;
+        padding-left: 5%;
 
        th{
            text-align: start;
        }
+
     } 
 
     tbody{
@@ -378,13 +365,13 @@ export const ContainerTable = styled.table`
 
             display: grid;
             align-items: center;
-            grid-template-columns:  10% 16% 20% 25%;
+            grid-template-columns:  20% 16% 50% 25%;
 
             height: 60px;
 
             text-align: start;
 
-            padding-left: 60px;
+            padding-left: 10%;
 
             font-size: 16px;
             font-weight: bolder;
@@ -397,6 +384,21 @@ export const ContainerTable = styled.table`
                 height: 40px;
             }
         } 
+
+        #btnDelete{
+            width: 50px;
+            height: 50px;
+
+            border: 0;
+
+            background-image: url(${props => props.srcIconDelte});
+            background-repeat: no-repeat;
+            background-position: center;
+
+            background-color: white;
+
+            cursor: pointer;
+        }
         
     } 
 

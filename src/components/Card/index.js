@@ -11,17 +11,16 @@ function Card({
     disciplinesName,
     teacherName,
     id,
-     setPropss,
+    setProps,
     }) {
 
     const [father, setFather] = useState(false);
 
     if (father) {
         setFather(false)
-        setPropss(father)
+        setProps(father)
     }
 
-   // console.log(father);
   
     const [toogle, setToogle] = useState(true);
     const [value, setOpenClose] = useState('none');

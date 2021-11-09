@@ -217,7 +217,12 @@ function AddMember() {
                             <span>Faça o download do arquivo de excel de exemplo</span>
                             <span>Cliqui no icone, para fazer o download</span>
                             <a href={fileSchoolCSV} download>
-                                <img src={imageFileCSV} alt="W3Schools" width="104" height="142" />
+                                <img
+                                    src={imageFileCSV}
+                                    alt="W3Schools"
+                                    width="104"
+                                    height="142"
+                                />
                             </a>
 
                         </div>
