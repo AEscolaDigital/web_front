@@ -2,7 +2,9 @@ import { Container, ContainerTable } from "./styles"
 import Header from "../../components/Header";
 import Nav from "../../components/Nav";
 import NavTask from "../../components/NavTask";
-
+import veia from "../../assets/classesList/veia.svg";
+import chaaat from "../../assets/classesList/chaaat.svg"
+import lixo from "../../assets/classesList/lixo.svg"
 
 function ClassesList() {
 
@@ -35,19 +37,45 @@ function ClassesList() {
                         <div>
                             <h3>Excluir </h3>
                         </div>
-
                     </div>
                     <ContainerTable>
-                        <tr>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-             </ContainerTable>
+                        <tbody>
+                            <tr>
+                                <td><img alt="Foto de perfil" src={veia}/></td>
+                                <td>Guilherme Rodrigues</td>
+                                <td><img src={chaaat}/></td>
+                                <td><img src={lixo} /></td>
+                            </tr>
+                            <tr>
+                                <td><img alt="Foto de perfil" src={veia}/></td>
+                                <td>Gustavo Marques</td>
+                                <td><img src={chaaat}/></td>
+                                <td><img src={lixo} /></td>
+                            </tr>
+                            <tr>
+                                <td><img alt="Foto de perfil" src={veia}/></td>
+                                <td>Samuel Goulart</td>
+                                <td><img src={chaaat}/></td>
+                                <td><img src={lixo} /></td>
+                            </tr>
+                            <tr>
+                                <td><img alt="Foto de perfil" src={veia}/></td>
+                                <td>Emerson Silva</td>
+                                <td><img src={chaaat}/></td>
+                                <td><img src={lixo} /></td>
+                            </tr>
+                            <tr>
+                                <td><img alt="Foto de perfil" src={veia}/></td>
+                                <td>Antônio Ailton</td>
+                                <td><img src={chaaat}/></td>
+                                <td><img src={lixo} /></td>
+                         </tr>
+                            
+                        </tbody>
+                    </ContainerTable>
                 </div>
             </div>
-          
+
         </Container>
     );
 }
