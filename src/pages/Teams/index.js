@@ -103,13 +103,18 @@ function Teams() {
 
     const handleAddNewDicipline = async (e) => {
         e.preventDefault();
+        console.log(image);
+
 
         try {
             let data = new FormData();
 
             data.append("name", newDiscipline.name);
             data.append("class_id", selectedClass.id);
-            data.append("image", image[0]);
+
+            const image_ = image === null ? "" : image[0];
+
+            data.append("image", image_);
 
 
             await api.post("/disciplines", data, {
@@ -167,7 +172,7 @@ function Teams() {
     return (
         <Container>
             {isModalVisible ?
-                <Modal title="Criar turma">
+                <Modal title="Criar disciplina">
                     <form onSubmit={handleAddNewDicipline} >
                         <div id="inputsModal" >
                             <ContainerSelect style={{
