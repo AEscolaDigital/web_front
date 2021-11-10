@@ -13,7 +13,6 @@ export const Container = styled.div`
        float:left;
        padding-left:50px; 
     }
-    
     >div:nth-child(2){
         float:left; 
         padding-left:130px; 
@@ -22,14 +21,13 @@ export const Container = styled.div`
         display: flex;
         padding-left:130px; 
     }
-
     >div:nth-child(5){
         width:800px;
-        height:550px;
+        height:510px;
+        
         margin-left:70px;
         margin-top:50px;
         background:white;
-        
         >div{
             width:100%;
             height:400px;
@@ -46,19 +44,14 @@ export const Container = styled.div`
             >div:nth-child(3){
               margin-left:10vh;
             }
-           
         }
     }
 } 
-    
 `
-
 export const ContainerTable = styled.div`
 
-width: 400px;
+    width: 400px;
     margin: auto;
-    
-   
     tbody{
         tr{
             display: grid;
@@ -71,14 +64,10 @@ width: 400px;
             font-size: 16px;
             font-weight: bolder;
             color: var(--color-text);
-           
             img{
                 width: 40px;
                 height: 40px;
             }
         } 
-        
     } 
-
-
 `
