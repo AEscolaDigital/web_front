@@ -13,10 +13,8 @@ export const Container = styled.div`
 
     border-radius: 25px;
 
-    @media (max-width: 1370px) {
+    @media (max-width: 1375px) {
         margin-left: calc(50vw - 540px);
-        min-height: 900px;
-
     }
 
 `
@@ -365,7 +363,7 @@ export const ContainerTable = styled.table`
 
             display: grid;
             align-items: center;
-            grid-template-columns:  20% 16% 50% 25%;
+            grid-template-columns:  20% 16% 55% 5%;
 
             height: 60px;
 

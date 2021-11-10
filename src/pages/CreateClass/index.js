@@ -301,37 +301,23 @@ function CreateClass() {
 
     }
 
-    const [formLogin, setFormLogin] = useState({
-        name: "",
+    const handleDeleteUsers = async (id) => {
 
-    })
+        if (await classExclusionAlert()) {
 
-    const handleInputTeste = (e) => {
-        console.log(e);
-        setFormLogin({ ...formLogin, [e.target.id]: e.target.value });
-    }
+            try {
+                await api.delete(`/classes/deleteMember/${idClass}/${id}`);
 
+                setLoadUserClass(loadUsersClass + 1)
 
-    const handleDeleteUsers = async (e) => {
-        e.preventDefault();
+            } catch (error) {
 
-        console.log(formLogin.name);
-        // if (await classExclusionAlert()) {
-        //    
+                if (error.response === undefined) {
+                    httpError503()
+                }
+            }
 
-        //     try {
-        //         await api.delete(`/classes/deleteMember/${idClass}/0`);
-
-        //         setLoadUserClass(loadUsersClass + 1)
-
-        //     } catch (error) {
-
-        //         if (error.response === undefined) {
-        //             httpError503()
-        //         }
-        //     }
-
-        // }
+        }
 
     }
 
@@ -464,6 +450,7 @@ function CreateClass() {
                 {idClass > 0 && (
                     <ContainerClassName srcIconDelte={iconDelete30} >
                         <span id="class" >Turma: {usersClass.name}</span>
+
                     </ContainerClassName>
                 )}
 
@@ -490,14 +477,11 @@ function CreateClass() {
                                         <td>{userClass.name}</td>
                                         <td>{userClass.email}</td>
                                         <td>
-                                            <form onSubmit={handleDeleteUsers}  >
-                                                <input
-                                                    id="name"
-                                                    handler={handleInputTeste}
-                                                    type="text"
-                                                />
-                                                <button id="btnDelete" />
-                                            </form>
+                                            <button
+                                                onClick={() => { 
+                                                    handleDeleteUsers(userClass.id) }}
+                                                id="btnDelete" 
+                                            />
                                         </td>
                                     </tr>
                                 ))
