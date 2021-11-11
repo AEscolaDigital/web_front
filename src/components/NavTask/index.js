@@ -19,6 +19,14 @@ function NavTask() {
                     <li>1º Turma - Matématica</li>
                     <li>2º Turma - Química</li>
                     <li>3º Turma - Educação física</li>
+                    <li>3º Turma - Educação física</li>
+                    <li>3º Turma - Educação física</li>
+                    <li>3º Turma - Educação física</li>
+                    <li>3º Turma - Educação física</li>
+                    <li>3º Turma - Educação física</li>
+                    <li>3º Turma - Educação física</li>
+                    <li>3º Turma - Educação física</li>
+                    <li>10º Turma - Educação física</li>
                 </ul>
             </ContainerClass>
         </Container >

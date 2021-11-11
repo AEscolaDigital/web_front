@@ -20,6 +20,41 @@ function Teams() {
             discipline: "Projetos"
         },
         {
+            title: "Random task",
+            finishdate: "17/10/2021",
+            discipline: "Projetos"
+        },
+        {
+            title: "Random task",
+            finishdate: "17/10/2021",
+            discipline: "Projetos"
+        },
+        {
+            title: "Random task",
+            finishdate: "17/10/2021",
+            discipline: "Projetos"
+        },
+        {
+            title: "Random task",
+            finishdate: "17/10/2021",
+            discipline: "Projetos"
+        },
+        {
+            title: "Random task",
+            finishdate: "17/10/2021",
+            discipline: "Projetos"
+        },
+        {
+            title: "Random task",
+            finishdate: "17/10/2021",
+            discipline: "Projetos"
+        },
+        {
+            title: "Random task",
+            finishdate: "17/10/2021",
+            discipline: "Projetos"
+        },
+        {
             title: "consumo de API ",
             finishdate: "18/10/2021",
             discipline: "Projetos"
@@ -29,51 +64,47 @@ function Teams() {
     tasks.map(task => console.log(task.title));
 
     return (
-        <Container>
+        <>
             <Header />
             <Nav />
             <NavTask />
-            <ContainerTask>
-                <header>
-                    <div>
-                        <span>Tarefas da turma de matématica</span>
-                    </div>
-
-                    <div>
-                        <span>Atribuída</span>
-                    </div>
-                    <div>
-                        <span>Concluída</span>
-                    </div>
-                </header>
-
-                <ContainerListTask>
-                    {tasks.map(task => <div>
+            <Container>
+                <ContainerTask>
+                    <header>
                         <div>
-                            <img src={Imagem} />
+                            <span>Tarefas da turma de matématica</span>
                         </div>
 
+                        <div>
+                            <span>Atribuída</span>
+                        </div>
+                        <div>
+                            <span>Concluída</span>
+                        </div>
+                    </header>
 
-                        <>
-                            <div className="textListTask" >{task.title}</div>
-                            <div className="dateTask" >
-                                <div>
-                                    <span>Data de entrega</span>
-                                    <span>{task.finishdate}</span>
-                                </div>
+                    <ContainerListTask>
+                        {tasks.map(task => <div>
+                            <div>
+                                <img src={Imagem} />
                             </div>
-                        </>
+                                <div className="textListTask" >{task.title}</div>
+                                <div className="dateTask" >
+                                    <div>
+                                        <span>Data de entrega</span>
+                                        <span>{task.finishdate}</span>
+                                    </div>
+                                </div>
+                        </div>
+                        )}
 
-                    </div>
-                    )}
 
+                    </ContainerListTask>
 
+                </ContainerTask>
 
-                </ContainerListTask>
-
-            </ContainerTask>
-
-        </Container>
+            </Container>
+        </>
 
     );
 }

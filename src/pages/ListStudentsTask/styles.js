@@ -5,10 +5,11 @@ export const Container = styled.div`
 export const ContainerTask = styled.div`
 
      width: 844px;
-     height: 80vw;
      
      margin-top: 50px;
-     margin-left: 505px;
+     margin-left: calc(50vw - 270px);
+
+     padding-bottom: 150px;
   
      header {
           display: grid;

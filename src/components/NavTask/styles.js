@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.nav`
-    position: fixed;
+    position: fixed; 
     left: 0px;
     top: 70px;
 
     z-index: 1;
 
-    width: 500px;
+    width: 450px;
     height: calc(100vh - 50px);
 
     padding-top: 40px;
@@ -46,6 +46,14 @@ export const Container = styled.nav`
 `;
 
 export const ContainerClass = styled.div`
+    overflow-y: auto;
+    max-height: 450px;
+    padding-bottom: 300px;
+
+    @media (min-width: 1700px) {
+        max-height: 550px;
+
+    }
     div {
         width: 100%;
         height: 42px;
