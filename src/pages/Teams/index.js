@@ -103,8 +103,6 @@ function Teams() {
 
     const handleAddNewDicipline = async (e) => {
         e.preventDefault();
-        console.log(image);
-
 
         try {
             let data = new FormData();
@@ -270,7 +268,7 @@ function Teams() {
                 {disciplines.map(discipline =>
                     <Card
                         disciplinesName={discipline.name}
-                        teacherName={discipline.school.name}
+                        teacherName={discipline.name}
                         id={discipline.id}
                         setProps={setGrandson} >
                         <img src={discipline.image} alt=""
