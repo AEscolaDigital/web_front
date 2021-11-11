@@ -6,7 +6,6 @@ import puzzleIcon from "../../assets/header/puzzleIcon.svg"
 import downloadIcon from "../../assets/header/downloadIcon.svg"
 import iconExit from "../../assets/header/iconExit.svg"
 import React from 'react';
-import { Link } from "react-router-dom";
 
 function Header() {
 
@@ -41,31 +40,31 @@ function Header() {
                     <div>Jaqueline Silva</div>
                     <div>jaqueline@gmail.com</div>
                     <hr/>
-                    <Link to="/teams" >
+                    <a to="/teams" >
                         <div>
                             <img src={configurationIcon} alt="Icone de configuração"  />
                         </div>
                         <div>Configuraçãoes</div>
-                    </Link>
-                    <Link to="/teams">
+                    </a>
+                    <a to="/teams">
                         <div>
                             <img src={puzzleIcon} alt="Ícone de quebra-cabeça" />
                         </div>
                         <div>Atalhos</div>
-                    </Link>
-                    <Link to="/teams" >
+                    </a>
+                    <a to="/teams" >
                         <div>
                             <img src={downloadIcon} alt="Ícone de download" />
                         </div>
                         <div>Dowload do aplicativo</div>
-                    </Link>
+                    </a>
                     <hr/>
-                    <Link to="/" >
+                    <a to="/" >
                         <div>
                             <img src={iconExit} alt="Icone de sair" />
                         </div>
                         <div>Saída</div>
-                    </Link>
+                    </a>
                 </div>
             </Card>
         </Container>

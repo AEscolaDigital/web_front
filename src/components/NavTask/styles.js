@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const Container = styled.nav`
     position: fixed; 
     left: 0px;
-    top: 70px;
+    top: 50px;
 
-    z-index: 1;
+    z-index: -1;
 
     width: 450px;
     height: calc(100vh - 50px);
