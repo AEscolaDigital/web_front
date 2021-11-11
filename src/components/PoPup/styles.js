@@ -20,7 +20,7 @@ export const Container = styled.div`
         row-gap: 5px;
     }
 
-    >div>div{
+    div>form>div{
         width: 215px;
         height: 40px;
 

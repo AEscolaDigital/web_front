@@ -17,8 +17,25 @@ export const currency = (e) => {
     return e;
 }
 
+export const cnpj = (e) => {
+
+    e.currentTarget.maxLength = 18;
+    let value = e.currentTarget.value;
+
+    value = value.replace(/\D+/g, '');
+    value = value.replace(/(\d{2})(\d)/, '$1.$2');
+    value = value.replace(/(\d{3})(\d)/, '$1.$2');
+    value = value.replace(/(\d{3})(\d)/, '$1/$2');
+    value = value.replace(/(\d{4})(\d)/, '$1-$2');
+    value = value.replace(/(-\d{2})\d+?$/, '$1');
+
+    e.currentTarget.value = value;
+
+    return e;
+}
+
 export const cpf = (e) => {
-    e.currentTarget.maxLength = 14;
+    e.currentTarget.maxLength = 18;
     let value = e.currentTarget.value;
     if (!value.match(/^(\d{3}).(\d{3}).(\d{3})-(\d{2})$/)) {
         value = value.replace(/\D/g, "");

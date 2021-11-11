@@ -18,7 +18,7 @@ function InputFile({forLabel, idInput}) {
     return (
         <Container >
             <label for={forLabel} id="label" >
-                <img alt="Ícone de imagem" src={iconFile} />
+                <img alt="Ícone de arquivo" src={iconFile} />
                 <span id="span" >Selecione um arquivo</span>
             </label>
             <input type="file" id={idInput} onChange={handleImage} />

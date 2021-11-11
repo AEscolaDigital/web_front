@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     width: 120px;
     height: 25px;
+
     font-size: 12px;
     font-weight: 600;
     
@@ -35,14 +36,14 @@ export const Container = styled.div`
         font-weight: 900;
         font-size: 12px;
         padding: 2px 6px 2px 2px;
-        content: url("https://firebasestorage.googleapis.com/v0/b/school-12606.appspot.com/o/icons%2Ficon_more.png?alt=media&token=e9061f75-c6de-4198-8225-d509767e6a8d");
+        content: url(${props => props.srcMore});
         transition: transform .3s ease-in-out;
     }
 
     input:checked + label::before {
         width: 10px !important;
         height: 10px !important;
-        content: url("https://firebasestorage.googleapis.com/v0/b/school-12606.appspot.com/o/icons%2Fcheck_icon.png?alt=media&token=9b0cba38-6729-4ddc-8b81-3895fe76751e");
+        content: url(${props => props.srcCheck});
         transform: rotate(-360deg);
         transition: transform .3s ease-in-out;
     }
