@@ -1,20 +1,19 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-`
 export const ContainerTask = styled.div`
 
-     width: 1350px;
-     height: 40vw;
+     width: 55vw;
+     max-width: 880px;
      
-     margin-top: 60px;
-     margin-left: 530px;
      border-radius: 20px 20px 0px 0px;
      background-color: #fff;
      padding-top: 20px;   
 
-     >.titulo{
+     margin-left: calc(50vw - 210px);
+
+     .titulo{
           margin: 40px 0 0 80px;
+          color: var(--color-text);
 
           >p{
                font-weight:bold;
@@ -26,6 +25,23 @@ export const ContainerTask = styled.div`
 
           >div{
                margin: 20px 0 25px 0;
+          }
+
+          #taskDescription{
+               width: 500px;
+               display: grid;
+               margin-left: 15px;
+               label{
+                    font-size: 15px;
+                    font-weight: bold;
+                    color: var(--color-text);
+               }
+
+               >textarea{
+                    border-radius: 10px;
+                    border: 2px solid var(--color-blue);
+               }
+
           }
      }
 `

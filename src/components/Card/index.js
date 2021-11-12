@@ -1,20 +1,55 @@
-import iconAddMember from "../../assets/card/iconAddMember.svg"
-import iconDelete from "../../assets/card/iconDelete.svg"
-import {Cards} from "./styles"
+import { Container } from "./styles";
 
-function Card() {
+import iconMore from "../../assets/teams/iconMore.svg"
+import PoPup from "../../components/PoPup";
+
+import { useEffect, useState } from "react";
+
+
+function Card({
+    children,
+    disciplinesName,
+    teacherName,
+    id,
+    setProps,
+    }) {
+
+    const [father, setFather] = useState(false);
+
+    if (father) {
+        setFather(false)
+        setProps(father)
+    }
+
+  
+    const [toogle, setToogle] = useState(true);
+    const [value, setOpenClose] = useState('none');
+
+    useEffect(() => {
+        setOpenClose(() => toogle ? 'none' : 'block');
+
+    }, [toogle]);
+
     return (
-        <Cards>
+        <Container>
             <div>
-               <div>
-                   <img src={iconAddMember} />
-               </div>
-               <div>
-                   <img src={iconDelete} />
-               </div>
+                <img
+                    src={iconMore}
+                    onClick={e => setToogle(state => !state)}
+                    alt="Ícone de mais opções"
+                />
+                <PoPup 
+                    display={value} 
+                    id={id} 
+                    setProps={setFather} 
+                />
             </div>
-
-        </Cards>
+            {children}
+            <div>
+                <div>{disciplinesName}</div>
+                <span>{teacherName}</span>
+            </div>
+        </Container>
     );
 }
 

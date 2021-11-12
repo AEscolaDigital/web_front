@@ -6,6 +6,7 @@ import puzzleIcon from "../../assets/header/puzzleIcon.svg"
 import downloadIcon from "../../assets/header/downloadIcon.svg"
 import iconExit from "../../assets/header/iconExit.svg"
 import React from 'react';
+// import { Link } from "react-router-dom";
 
 function Header() {
 
@@ -24,11 +25,11 @@ function Header() {
             <div>
                 <input type="text" placeholder="Pesquisar" />
                 <button type="submit">
-                    <img src={iconeMagnifier} />
+                    <img src={iconeMagnifier} alt="ícone de uma lupa" />
                 </button>
             </div>
 
-            <img src={profile} onClick={e => setToogle(state => !state)} ></img>
+            <img src={profile} onClick={e => setToogle(state => !state)} alt="Sua imagem de perfil" />
 
             <Card style={{
                 height: valueHeight,
@@ -36,35 +37,35 @@ function Header() {
                 <div style={{
                     display: value,
                 }} >
-                    <img src={profile} />
+                    <img src={profile} alt="Sua imagem de perfil" />
                     <div>Jaqueline Silva</div>
                     <div>jaqueline@gmail.com</div>
                     <hr/>
-                    <a>
+                    {/* <Link to="/teams" > */}
                         <div>
-                            <img src={configurationIcon} />
+                            <img src={configurationIcon} alt="Icone de configuração"  />
                         </div>
                         <div>Configuraçãoes</div>
-                    </a>
-                    <a>
+                    {/* </Link> */}
+                    {/* <Link to="/teams"> */}
                         <div>
-                            <img src={puzzleIcon} />
+                            <img src={puzzleIcon} alt="Ícone de quebra-cabeça" />
                         </div>
                         <div>Atalhos</div>
-                    </a>
-                    <a>
+                    {/* </Link> */}
+                    {/* <Link to="/teams" > */}
                         <div>
-                            <img src={downloadIcon} />
+                            <img src={downloadIcon} alt="Ícone de download" />
                         </div>
                         <div>Dowload do aplicativo</div>
-                    </a>
+                    {/* </Link> */}
                     <hr/>
-                    <a>
+                    {/* <Link to="/" > */}
                         <div>
-                            <img src={iconExit} />
+                            <img src={iconExit} alt="Icone de sair" />
                         </div>
                         <div>Saída</div>
-                    </a>
+                    {/* </Link> */}
                 </div>
             </Card>
         </Container>
