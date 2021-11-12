@@ -23,7 +23,7 @@ function Nav() {
                 </Link>
             </div>
             <div>
-                <Link to="addMember">
+                <Link to="listOfTasks">
                     <img src={iconActivities} alt="Ícone de atividades" />
                     <p>Tarefas</p>
                 </Link>

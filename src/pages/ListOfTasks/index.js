@@ -1,67 +1,40 @@
 import Nav from "../../components/Nav";
 import Header from "../../components/Header";
-import React from 'react';
 
-import { Container, ContainerTask, ContainerListTask } from "./styles";
+import {
+    Container,
+    ContainerTask,
+    ContainerListTask
+} from "./styles";
+
 import NavTask from "../../components/NavTask";
 import Imagem from "../../assets/student_task/img_controle_videoGame.svg"
 
-function Teams() {
+import { useEffect, useState } from 'react';
+import { api } from "../../services/api";
 
-    const tasks = [
-        {
-            title: "consumo de API (CEP)",
-            finishdate: "14/10/2021",
-            discipline: "matematica"
-        },
-        {
-            title: "Random task",
-            finishdate: "17/10/2021",
-            discipline: "Projetos"
-        },
-        {
-            title: "Random task",
-            finishdate: "17/10/2021",
-            discipline: "Projetos"
-        },
-        {
-            title: "Random task",
-            finishdate: "17/10/2021",
-            discipline: "Projetos"
-        },
-        {
-            title: "Random task",
-            finishdate: "17/10/2021",
-            discipline: "Projetos"
-        },
-        {
-            title: "Random task",
-            finishdate: "17/10/2021",
-            discipline: "Projetos"
-        },
-        {
-            title: "Random task",
-            finishdate: "17/10/2021",
-            discipline: "Projetos"
-        },
-        {
-            title: "Random task",
-            finishdate: "17/10/2021",
-            discipline: "Projetos"
-        },
-        {
-            title: "Random task",
-            finishdate: "17/10/2021",
-            discipline: "Projetos"
-        },
-        {
-            title: "consumo de API ",
-            finishdate: "18/10/2021",
-            discipline: "Projetos"
-        }
-    ];
+function ListOfTasks() {
 
-    tasks.map(task => console.log(task.title));
+
+    const [tasks, setTasks] = useState([]);
+
+    useEffect(() => {
+
+        let loadTasks = async () => {
+
+            try {
+                const response = await api.get('tasks/1');
+
+                setTasks(response.data);
+
+            } catch (error) {
+                //httpError503(error.response);
+            }
+        };
+
+        loadTasks();
+
+    }, []);
 
     return (
         <>
@@ -70,7 +43,7 @@ function Teams() {
             <NavTask />
             <Container>
                 <ContainerTask>
-                    <header>
+                    <section>
                         <div>
                             <span>Tarefas da turma de matématica</span>
                         </div>
@@ -81,21 +54,22 @@ function Teams() {
                         <div>
                             <span>Concluída</span>
                         </div>
-                    </header>
+                    </section>
 
                     <ContainerListTask>
-                        {tasks.map(task => <div>
+                        {tasks.map(task =>
                             <div>
-                                <img src={Imagem} />
-                            </div>
-                                <div className="textListTask" >{task.title}</div>
+                                <div>
+                                    <img src={Imagem} alt="sssssss" />
+                                </div>
+                                <div className="textListTask" >{task.name}</div>
                                 <div className="dateTask" >
                                     <div>
                                         <span>Data de entrega</span>
-                                        <span>{task.finishdate}</span>
+                                        <span>{task.date_delivery}</span>
                                     </div>
                                 </div>
-                        </div>
+                            </div>
                         )}
 
 
@@ -109,4 +83,4 @@ function Teams() {
     );
 }
 
-export default Teams;
+export default ListOfTasks;

@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
-export const Container = styled.nav`
+export const Container = styled.div`
     position: fixed; 
     left: 0px;
-    top: 70px;
+    top: 50px;
 
-    z-index: 1;
+    z-index: 10;
 
     width: 450px;
     height: calc(100vh - 50px);
@@ -54,7 +54,7 @@ export const ContainerClass = styled.div`
         max-height: 550px;
 
     }
-    div {
+    #titleDiscipline {
         width: 100%;
         height: 42px;
 
@@ -73,7 +73,8 @@ export const ContainerClass = styled.div`
         }
     }
 
-    ul{
+    #disciplines{
+        display: grid;
         margin-top: 20px;
         margin-left: 110px;
 
@@ -81,10 +82,14 @@ export const ContainerClass = styled.div`
         font-weight: 600;
         list-style: none;
 
-         
-        li{
+        cursor: pointer;
+
+        
+        span{
             margin-top: 25px;
-            
+            :hover{
+            background-color: aqua;
+        } 
         }
     }
 

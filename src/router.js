@@ -7,6 +7,7 @@ import RegisterSchool from "./pages/RegisterSchool";
 import AddMember from "./pages/AddMember";
 import MemberClassCreate from "./pages/MemberClassCreate";
 import CreateClass from "./pages/CreateClass";
+import ListOfTasks from "./pages/ListOfTasks";
 
 function PrivateRoute({ children, ...rest }) {
     if (isSignedIn()) {
@@ -38,6 +39,9 @@ function Router() {
                 </PrivateRoute>
                 <PrivateRoute path="/createClass">
                     <CreateClass />
+                </PrivateRoute>
+                <PrivateRoute path="/listOfTasks">
+                    <ListOfTasks />
                 </PrivateRoute>
             </Switch>
         </BrowserRouter>

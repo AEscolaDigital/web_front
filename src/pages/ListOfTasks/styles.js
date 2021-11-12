@@ -11,7 +11,7 @@ export const ContainerTask = styled.div`
 
      padding-bottom: 150px;
   
-     header {
+     section {
           display: grid;
           grid-template-columns: 300px 100px 100px;
           justify-self: start;
