@@ -47,18 +47,30 @@ function ListOfTasks() {
             <ContainerTask>
                 {discipline.id > 0 && (
                     <section>
-                        <div>
-                            <span>Tarefas da turma de {discipline.name}</span>
+                        <div id="typeTasks" >
+                            <div>
+                                <span>Atribuída</span>
+                            </div>
+                            <div>
+                                <span>Concluída</span>
+                            </div>
                         </div>
 
-                        <div>
-                            <span>Atribuída</span>
-                        </div>
-                        <div>
-                            <span>Concluída</span>
-                        </div>
+                        <Link>
+                            <div id="addNewTasks" >
+                                Adicionar nova tarefa
+                            </div>
+                        </Link>
+
                     </section>
                 )}
+                {discipline.id > 0 && (
+                    <div id="nameDiscipline" >
+                        <span>Tarefas da turma de {discipline.name}</span>
+                    </div>
+                )}
+
+
                 {discipline === 0 && (
                     <ContainerSelectionDiscipline>
                         <img src={selectTask} />
