@@ -15,6 +15,7 @@ import { api } from "../../services/api";
 
 function ListOfTasks() {
 
+    const [disciplineId, setDisciplineId] = useState();
 
     const [tasks, setTasks] = useState([]);
 
@@ -23,7 +24,7 @@ function ListOfTasks() {
         let loadTasks = async () => {
 
             try {
-                const response = await api.get('tasks/1');
+                const response = await api.get(`tasks/${disciplineId}`);
 
                 setTasks(response.data);
 
@@ -34,13 +35,13 @@ function ListOfTasks() {
 
         loadTasks();
 
-    }, []);
+    }, [disciplineId]);
 
     return (
         <>
             <Header />
             <Nav />
-            <NavTask />
+            <NavTask  setProps={setDisciplineId} />
             <Container>
                 <ContainerTask>
                     <section>

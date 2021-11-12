@@ -7,12 +7,12 @@ export const Container = styled.div`
 
     z-index: 10;
 
-    width: 450px;
+    width: 400px;
     height: calc(100vh - 50px);
 
     padding-top: 40px;
 
-    background-color: white;
+    background-color: black;
 
     #containerImage{
         width: 170px;
@@ -51,7 +51,9 @@ export const ContainerClass = styled.div`
     padding-bottom: 300px;
 
     @media (min-width: 1700px) {
-        max-height: 550px;
+        max-height: 500px;
+        padding-bottom: 200px;
+
 
     }
     #titleDiscipline {
@@ -85,7 +87,7 @@ export const ContainerClass = styled.div`
         cursor: pointer;
 
         
-        span{
+        div{
             margin-top: 25px;
             :hover{
             background-color: aqua;
