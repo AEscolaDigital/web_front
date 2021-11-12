@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 export const ContainerTask = styled.div`
 
-     width: 55vw;
+     width: 60vw;
      max-width: 880px;
      
      border-radius: 20px 20px 0px 0px;
      background-color: #fff;
      padding-top: 20px;   
 
-     margin-left: calc(50vw - 210px);
+     margin-left: calc(50vw - 212px);
 
      .titulo{
           margin: 40px 0 0 80px;

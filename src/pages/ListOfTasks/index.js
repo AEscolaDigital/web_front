@@ -56,7 +56,7 @@ function ListOfTasks() {
                             </div>
                         </div>
 
-                        <Link>
+                        <Link to="createTask" >
                             <div id="addNewTasks" >
                                 Adicionar nova tarefa
                             </div>

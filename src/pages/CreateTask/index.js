@@ -4,28 +4,29 @@ import Input from "../../components/Input";
 import NavTask from "../../components/NavTask";
 
 import {
-        ContainerTask, 
-        MateriaisReferencias, 
-        ContainerTexts,
-        ReferenciaAnexo, 
-        ActivityDeliveryContainer, 
-        ContainerStudentAnexo, 
-        Divs,
-    } from "./styles";
+    ContainerTask,
+    MateriaisReferencias,
+    ContainerTexts,
+    ReferenciaAnexo,
+    ActivityDeliveryContainer,
+    ContainerStudentAnexo,
+    Divs,
+} from "./styles";
 
 import iconAnexo from "../../assets/iconAnexo/Group.svg"
+import { useState } from "react";
 // import iconClip from "../../assets/createTask/Vector.svg";
-
-import React from 'react';
 
 
 function CreateTask() {
+
+    const [discipline, setDiscipline] = useState();
 
     return (
         <>
             <Header />
             <Nav />
-            <NavTask />
+            <NavTask setProps={setDiscipline} />
 
             <ContainerTask>
                 <div className="titulo">
@@ -36,7 +37,7 @@ function CreateTask() {
                     <Input label="Nome da Tarefa" width="423px" height="63px" />
                     <div id="taskDescription" >
                         <label>Descrição da Tarefa:</label>
-                        <textarea  rows="5" cols="30" />
+                        <textarea rows="5" cols="30" />
                     </div>
                     <Input label="Data de entrega" type="date" height="63px" width="423px" />
 
