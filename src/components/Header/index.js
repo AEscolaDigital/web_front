@@ -8,6 +8,7 @@ import iconExit from "../../assets/header/iconExit.svg"
 import React from 'react';
 import { Link } from "react-router-dom";
 
+
 function Header() {
 
     const [toogle, setToogle] = React.useState(true);
@@ -42,22 +43,26 @@ function Header() {
                     <div>jaqueline@gmail.com</div>
                     <hr/>
                     <Link to="/teams" >
+
                         <div>
                             <img src={configurationIcon} alt="Icone de configuração"  />
                         </div>
                         <div>Configuraçãoes</div>
                     </Link>
                     <Link to="/teams">
+               
                         <div>
                             <img src={puzzleIcon} alt="Ícone de quebra-cabeça" />
                         </div>
                         <div>Atalhos</div>
                     </Link>
                     <Link to="/teams" >
+
                         <div>
                             <img src={downloadIcon} alt="Ícone de download" />
                         </div>
                         <div>Dowload do aplicativo</div>
+
                     </Link>
                     <hr/>
                     <Link to="/" >

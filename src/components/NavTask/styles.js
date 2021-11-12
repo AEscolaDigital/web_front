@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const Container = styled.nav`
     position: fixed; 
     left: 0px;
     top: 50px;

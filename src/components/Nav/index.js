@@ -10,7 +10,7 @@ import { useState } from "react";
 
 function Nav() {
 
-    const [display, setDisplay] = useState("block")
+    const [display, setDisplay] = useState("none")
 
     const onMouseOver = () => {
         setDisplay("block");
