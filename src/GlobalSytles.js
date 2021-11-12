@@ -37,4 +37,5 @@ export const GlobalSyles = createGlobalStyle`
           display: none;
       }
 
+       
 `;

@@ -12,7 +12,7 @@ export const Container = styled.div`
 
     padding-top: 40px;
 
-    background-color: black;
+    background-color: white;
 
     #containerImage{
         width: 170px;
@@ -78,7 +78,7 @@ export const ContainerClass = styled.div`
     #disciplines{
         display: grid;
         margin-top: 20px;
-        margin-left: 110px;
+        margin-left: 80px;
 
         color: var(--color-text);
         font-weight: 600;
@@ -88,10 +88,16 @@ export const ContainerClass = styled.div`
 
         
         div{
-            margin-top: 25px;
-            :hover{
-            background-color: aqua;
-        } 
+            display: flex;
+            align-items: center;
+
+            height: 40px;
+
+            padding-left: 20px;
+
+            :hover {
+                background-color: var(--color-background);
+            } 
         }
     }
 

@@ -2,20 +2,22 @@ import Nav from "../../components/Nav";
 import Header from "../../components/Header";
 
 import {
-    Container,
     ContainerTask,
-    ContainerListTask
+    ContainerSelectionDiscipline,
+    ContainerListTask,
 } from "./styles";
 
 import NavTask from "../../components/NavTask";
-import Imagem from "../../assets/student_task/img_controle_videoGame.svg"
+import Imagem from "../../assets/tasks/img_controle_videoGame.svg"
+import selectTask from "../../assets/tasks/select_task.svg"
 
 import { useEffect, useState } from 'react';
 import { api } from "../../services/api";
+import { Link } from "react-router-dom";
 
 function ListOfTasks() {
 
-    const [disciplineId, setDisciplineId] = useState();
+    const [discipline, setDiscipline] = useState([]);
 
     const [tasks, setTasks] = useState([]);
 
@@ -24,7 +26,7 @@ function ListOfTasks() {
         let loadTasks = async () => {
 
             try {
-                const response = await api.get(`tasks/${disciplineId}`);
+                const response = await api.get(`tasks/${discipline.id}`);
 
                 setTasks(response.data);
 
@@ -35,18 +37,18 @@ function ListOfTasks() {
 
         loadTasks();
 
-    }, [disciplineId]);
+    }, [discipline]);
 
     return (
         <>
             <Header />
             <Nav />
-            <NavTask  setProps={setDisciplineId} />
-            <Container>
-                <ContainerTask>
+            <NavTask setProps={setDiscipline} />
+            <ContainerTask>
+                {discipline.id > 0 && (
                     <section>
                         <div>
-                            <span>Tarefas da turma de matématica</span>
+                            <span>Tarefas da turma de {discipline.name}</span>
                         </div>
 
                         <div>
@@ -56,9 +58,19 @@ function ListOfTasks() {
                             <span>Concluída</span>
                         </div>
                     </section>
+                )}
+                {discipline === 0 && (
+                    <ContainerSelectionDiscipline>
+                        <img src={selectTask} />
+                        <span>Selecione uma disciplina</span>
+                        <span>para poder visualizar as tarefas</span>
+                    </ContainerSelectionDiscipline>
+                )}
 
-                    <ContainerListTask>
-                        {tasks.map(task =>
+
+                <ContainerListTask>
+                    {tasks.map(task =>
+                        <Link to="" >
                             <div>
                                 <div>
                                     <img src={Imagem} alt="sssssss" />
@@ -71,14 +83,13 @@ function ListOfTasks() {
                                     </div>
                                 </div>
                             </div>
-                        )}
+                        </Link>
 
+                    )}
 
-                    </ContainerListTask>
+                </ContainerListTask>
 
-                </ContainerTask>
-
-            </Container>
+            </ContainerTask>
         </>
 
     );

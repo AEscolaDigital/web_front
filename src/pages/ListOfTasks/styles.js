@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-`
 export const ContainerTask = styled.div`
 
      width: 844px;
@@ -26,8 +24,6 @@ export const ContainerTask = styled.div`
                text-align: start;
                height: 30px;
 
-               font-family: Montserrat;
-               font-style: normal;
                font-weight: bold;
                font-size: 16px;
 
@@ -37,6 +33,32 @@ export const ContainerTask = styled.div`
     
 `
 
+export const ContainerSelectionDiscipline = styled.div`
+     display: flex;
+     align-items: center;
+     flex-direction: column;
+
+     margin-top: calc(50vh - 257px);
+
+     >img{
+          display: block;
+          
+          width: 500px;
+          height: 300px;
+
+          margin-bottom: 50px;
+     }
+
+     >span{
+          margin-top: 10px;
+
+          font-size: 18px;
+          font-weight: bold;
+          color: var(--color-text);
+     }
+
+
+`
 export const ContainerListTask = styled.div`
 
      >div{

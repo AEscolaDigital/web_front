@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.nav`
+export const ContainerNav = styled.nav`
    position: fixed;
    left: 0px;
    z-index: 15;
@@ -16,7 +16,6 @@ export const Container = styled.nav`
 
    color: var(--color-background);
    font-weight: 600;
-
 
     >div {
          
@@ -44,18 +43,16 @@ export const Container = styled.nav`
             height: 24px;
             margin-left: 30px;
         }
-
-     
     }
 
     > div:hover{
         background-color: var(--color-houver);
         cursor: pointer;
-    }
+    } 
 
     :hover{
         width: 185px;
         color: white;
-    }
-    
+    }  
+  
 `;
