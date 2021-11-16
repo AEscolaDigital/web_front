@@ -24,14 +24,13 @@ export const Container = styled.div`
     >div:nth-child(5){
         width:800px;
         height:510px;
-        
         margin-left:70px;
         margin-top:50px;
+        overflow-x:hidden;  
+        overflow-y:scroll;
         background:white;
         >div{
             width:100%;
-            height:400px;
-            margin-top:-350px;
             color: var(--color-text);
             display:flex;
             padding-top:15px;
