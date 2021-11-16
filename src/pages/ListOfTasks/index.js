@@ -14,6 +14,7 @@ import selectTask from "../../assets/tasks/select_task.svg"
 import { useEffect, useState } from 'react';
 import { api } from "../../services/api";
 import { Link } from "react-router-dom";
+import PermissionComponent from "../../components/PermissionComponent";
 
 function ListOfTasks() {
 
@@ -28,6 +29,7 @@ function ListOfTasks() {
             try {
                 const response = await api.get(`tasks/${discipline.id}`);
 
+                console.log(response.data);
                 setTasks(response.data);
 
             } catch (error) {
@@ -45,7 +47,33 @@ function ListOfTasks() {
             <Nav />
             <NavTask setProps={setDiscipline} />
             <ContainerTask>
-                {discipline.id > 0 && (
+                <PermissionComponent role="ROLE_ADMIN,ROLE_TEACHER" >
+
+                    {discipline.id > 0 && (
+
+                        <section>
+                            <div id="typeTasks" >
+                                <div>
+                                    <span>Atribuída</span>
+                                </div>
+                                <div>
+                                    <span>Concluída</span>
+                                </div>
+                            </div>
+
+                            <Link to="createTask" >
+                                <div id="addNewTasks" >
+                                    Adicionar nova tarefa
+                                </div>
+                            </Link>
+
+                        </section>
+                    )}
+
+                </PermissionComponent>
+
+
+                <PermissionComponent role="ROLE_USER" >
                     <section>
                         <div id="typeTasks" >
                             <div>
@@ -56,20 +84,15 @@ function ListOfTasks() {
                             </div>
                         </div>
 
-                        <Link to="createTask" >
-                            <div id="addNewTasks" >
-                                Adicionar nova tarefa
-                            </div>
-                        </Link>
 
                     </section>
-                )}
+                </PermissionComponent>
+
                 {discipline.id > 0 && (
                     <div id="nameDiscipline" >
                         <span>Tarefas da turma de {discipline.name}</span>
                     </div>
                 )}
-
 
                 {discipline === 0 && (
                     <ContainerSelectionDiscipline>

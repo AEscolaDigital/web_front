@@ -13,6 +13,8 @@ import BtnSubmit from "../../components/BtnSubmit";
 import BtnCancel from "../../components/BtnCancel";
 import Card from "../../components/Card";
 import Dropzone from "../../components/Dropzone";
+import PermissionComponent from "../../components/PermissionComponent";
+
 
 import {
     Container,
@@ -29,6 +31,7 @@ import {
 import { useEffect, useState } from 'react';
 import Swal from "sweetalert2";
 import { api } from "../../services/api";
+import { getUserRole } from "../../services/security";
 
 function Teams() {
 
@@ -55,6 +58,7 @@ function Teams() {
                 setDisciplines(response.data)
 
             } catch (error) {
+                console.log("aqui");
                 httpError503(error.response);
             }
         };
@@ -76,7 +80,6 @@ function Teams() {
 
     useEffect(() => {
         let loadclasses = async () => {
-
             try {
                 const response = await api.get(`/classes/1`);
 
@@ -87,7 +90,9 @@ function Teams() {
             }
         };
 
-        loadclasses();
+        if (getUserRole() !== "ROLE_USER") {
+            loadclasses();
+        }
 
     }, []);
 
@@ -128,8 +133,8 @@ function Teams() {
 
 
         } catch (error) {
-            errorAlert(error.response.data, 
-            "Informe outro nome para a disciplina")
+            errorAlert(error.response.data,
+                "Informe outro nome para a disciplina")
         }
 
 
@@ -157,7 +162,7 @@ function Teams() {
         })
     }
 
-    const errorAlert = (error, textFooter) =>{
+    const errorAlert = (error, textFooter) => {
         Swal.fire({
             icon: 'error',
             title: 'Oops...',
@@ -168,7 +173,7 @@ function Teams() {
 
 
     return (
-        <Container>
+        <Container role={getUserRole()} >
             {isModalVisible ?
                 <Modal title="Criar disciplina">
                     <form onSubmit={handleAddNewDicipline} >
@@ -252,14 +257,17 @@ function Teams() {
                 </Modal> : null}
             <Header />
             <Nav />
-            <div id="btnCreateTeam" >
-                <span onClick={() => setIsModalVisible(true)}>
-                    <img
-                        src={iconTeam}
-                        alt="Icone de um grupo de pessoas" />
-                    <span>Criar disciplina</span>
-                </span>
-            </div>
+            <PermissionComponent role="ROLE_ADMIN,ROLE_TEACHER" >
+                <div id="btnCreateTeam" >
+                    <span onClick={() => setIsModalVisible(true)}>
+                        <img
+                            src={iconTeam}
+                            alt="Icone de um grupo de pessoas" />
+                        <span>Criar disciplina</span>
+                    </span>
+                </div>
+            </PermissionComponent>
+
             <div id="titleYourTeams" >
                 <h1>Suas disciplinas</h1>
             </div>

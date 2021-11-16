@@ -65,8 +65,6 @@ function Login() {
 
             signIn(response.data);
 
-            console.log(response.data);
-
             history.push("/teams")
 
         } catch (error) {

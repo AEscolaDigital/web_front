@@ -22,6 +22,13 @@ export const getUser = () => {
   return user;
 };
 
+export const getUserRole = () => {
+  
+  const { role } = JSON.parse(localStorage.getItem(USER_KEY));
+
+  return role;
+};
+
 export const setUser = (user) => {
   const userLocal = JSON.parse(localStorage.getItem(USER_KEY));
 

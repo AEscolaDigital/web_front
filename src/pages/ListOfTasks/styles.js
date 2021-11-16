@@ -120,6 +120,7 @@ export const ContainerListTask = styled.div`
        .dateTask{
             border: 2px solid var(--color-blue);
             border-radius: 10px;
+            text-align: center;
 
             >div{
                  display: flex;

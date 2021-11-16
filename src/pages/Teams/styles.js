@@ -28,7 +28,8 @@ export const Container = styled.div`
     #titleYourTeams{
         width: 75vw;
         margin: auto;
-
+        margin-top: ${props => props.role == "ROLE_USER" &&
+        ( "80px" )};
         color: var(--color-text);
     }
 

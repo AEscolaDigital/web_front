@@ -1,5 +1,5 @@
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
-import { isSignedIn } from "./services/security";
+import { isSignedIn, getUserRole } from "./services/security";
 
 import Login from "./pages/Login";
 import Teams from "./pages/Teams";
@@ -10,13 +10,26 @@ import CreateClass from "./pages/CreateClass";
 import ListOfTasks from "./pages/ListOfTasks";
 import CreateTask from "./pages/CreateTask";
 
-function PrivateRoute({ children, ...rest }) {
-    if (isSignedIn()) {
-        return <Route {...rest}>{children}</Route>
-    }else{
+function PrivateRoute({ role, children, ...rest }) {
+
+    if (!isSignedIn()) {
         return <Redirect to="/" />
     }
+
+    if (!role && isSignedIn()) {
+        return <Route {...rest}>{children} </Route>;
+    }
+
+    const roleUser = getUserRole();
+
+    if (role !== roleUser) {
+        return <Redirect to="/" />
+
+    } else {
+        return <Route {...rest}>{children} </Route>;
+    }
 }
+
 
 function Router() {
 
@@ -27,18 +40,24 @@ function Router() {
                     <Login />
                 </Route>
                 <Route exact path="/registerSchool" >
-                    <RegisterSchool/>
+                    <RegisterSchool />
                 </Route>
                 <PrivateRoute path="/teams">
                     <Teams />
                 </PrivateRoute>
-                <PrivateRoute path="/addMember">
+                <PrivateRoute
+                    path="/addMember"
+                    role="ROLE_ADMIN" >
                     <AddMember />
                 </PrivateRoute>
-                <PrivateRoute path="/memberClassCreate">
+                <PrivateRoute
+                    path="/memberClassCreate"
+                    role="ROLE_ADMIN">
                     <MemberClassCreate />
                 </PrivateRoute>
-                <PrivateRoute path="/createClass">
+                <PrivateRoute
+                    path="/createClass"
+                    role="ROLE_ADMIN">
                     <CreateClass />
                 </PrivateRoute>
                 <PrivateRoute path="/listOfTasks">
