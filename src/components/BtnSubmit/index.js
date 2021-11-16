@@ -1,9 +1,11 @@
 import { Button } from "./styles";
 
-function BtnSubmit({text}){
+function BtnSubmit({text, width}){
 
     return(
-        <Button> {text} </Button>
+        <Button style={{
+            width
+        }} > {text} </Button>
     );
 }
 
