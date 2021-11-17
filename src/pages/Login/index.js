@@ -136,7 +136,7 @@ function Login() {
                             <Link to="/" >Esqueceu a senha?</Link>
                         </div>
                         <div id="btnSubmit" >
-                            <BtnSubmit text="Entrar" />
+                            <BtnSubmit text="Ingressar" />
                         </div>
                     </form>
 
