@@ -130,6 +130,11 @@ export const ActivityDeliveryContainer = styled.div`
      padding-left: 50px;
      height: auto;
 
+     width: 60vw;
+     max-width: 880px;
+
+     margin-left: calc(50vw - 212px);
+
      @media (min-width: 1800px) {
           width: 80vw;
           max-width: 1300px;

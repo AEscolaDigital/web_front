@@ -138,7 +138,7 @@ function CreateTask() {
 
                                 {inputs.map(input => (
                                     <div class="inputs" >
-                                        <input 
+                                        <Input 
                                             type="text"
                                             id={input.id} 
                                             handler={handleInput}
