@@ -44,7 +44,7 @@ function NavTask({setProps}) {
                 </div>
                 <div id="disciplines" >
                     {disciplines.map(discipline => 
-                        <div onClick={()=> setDisciplineId(discipline) } >{discipline.name}</div>
+                        <div onClick={()=> setDisciplineId(discipline), setProps(discipline) } >{discipline.name}</div>
                     )}
                 </div>
             </ContainerClass>

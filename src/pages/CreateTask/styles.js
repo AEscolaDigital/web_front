@@ -92,6 +92,10 @@ export const ReferenciaAnexo = styled.div`
           column-gap: 15px;
 
           margin-top: 15px;
+
+          >div{
+               padding: 0px;
+          }
           
           input {
                width: 435px;

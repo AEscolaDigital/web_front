@@ -27,9 +27,8 @@ function ListOfTasks() {
         let loadTasks = async () => {
 
             try {
-                const response = await api.get(`tasks/${discipline.id}`);
+                const response = await api.get(`tasks/list/${discipline.id}`);
 
-                console.log(response.data);
                 setTasks(response.data);
 
             } catch (error) {

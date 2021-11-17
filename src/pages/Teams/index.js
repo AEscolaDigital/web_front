@@ -58,7 +58,6 @@ function Teams() {
                 setDisciplines(response.data)
 
             } catch (error) {
-                console.log("aqui");
                 httpError503(error.response);
             }
         };
