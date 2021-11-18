@@ -6,46 +6,64 @@ export const Container = styled.div`
     width: 58vw;
     margin-left: calc(50vw - 360px);
 
->div{
-    color: var(--color-text);
-    margin-top: 80px; 
-
-    >div:nth-child(1){
-       float:left;
-       padding-left:50px;
-    } 
-    >div:nth-child(2){
-        float:left; 
-        padding-left:130px; 
+    @media (max-width: 1370px){
+        margin-left: calc(50vw - 200px);
     }
-    >div:nth-child(3){
+ 
+`
+
+export const ContainerInfo = styled.div`
+    margin-top: 50px;
+
+    div{
         display: flex;
-        padding-left:130px; 
+        flex-direction: row;
+        justify-content: space-around;
+
+        button{
+            border: 0;
+            cursor: pointer;
+
+            font-size: 15px;
+        }
+
+        font-size: 18px;
+        color: var(--color-text);
+        font-weight: bold;
     }
 
     hr{
-        width: 55vw;
-        margin-left: -70px;
+        border: 1px solid #C4C4C4;
+        margin-top: 5px;
     }
-} 
+    
 `
 export const ContainerTable = styled.table`
     max-width: 50vw;
     width: 100%; 
-
-    margin-top: 50px;
-
     height: 100%;
 
+    margin-top: 50px;
     margin-bottom: 100px;
+
+    background-color: white;
+
+    @media (max-width: 1370px){
+        max-width: 60vw;
+    }
 
     thead{
         width: inherit;
 
         tr{
             display: grid;
-            grid-template-columns: 16%  78%;
+            grid-template-columns: 16%  75%;
             text-align: end;
+        }
+
+        th{
+            padding-top: 12px;
+            color: var(--color-text);
         }
     }
 
@@ -53,7 +71,7 @@ export const ContainerTable = styled.table`
         tr{
             display: grid;
             align-items: center;
-            grid-template-columns: 10% 80% 10%;
+            grid-template-columns: 10% 75% 10%;
 
             height: 60px;
 
@@ -70,7 +88,8 @@ export const ContainerTable = styled.table`
 
             :hover{
                 width: 100%;
-                background-color: red;
+                background-color: var(--color-background);
+                border-radius: 10px;
             }
 
             img{

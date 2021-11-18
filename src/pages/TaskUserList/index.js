@@ -1,4 +1,4 @@
-import { Container, ContainerTable } from "./styles"
+import { Container, ContainerTable, ContainerInfo } from "./styles"
 
 import Header from "../../components/Header";
 import Nav from "../../components/Nav";
@@ -14,19 +14,22 @@ import { useLocation } from "react-router";
 function ClassesList() {
 
     const location = useLocation();
-   console.log(location);
+    console.log(location);
+
+
 
     const [discipline, setDiscipline] = useState([]);
 
     const [listUsers, setListUsers] = useState([]);
+
+    console.log(listUsers);
 
     useEffect(() => {
 
         let loadListUsers = async () => {
 
             try {
-                const response = await api.get('tasks/users/1');
-
+                const response = await api.get('tasks/users/8');
                 setListUsers(response.data);
 
             } catch (error) {
@@ -41,46 +44,48 @@ function ClassesList() {
     return (
         <>
             <Header />
-            <Nav /> 
+            <Nav />
             <NavTask setProps={setDiscipline} />
             <Container>
 
-                <div>
+                <ContainerInfo>
                     <div>
-                        <h3>Turma: {location.state.name}</h3>
+                        <div>
+                            <span>Turma: {location.state.name}</span>
+                        </div>
+                        <div>
+                            <button>Não concluídos</button>
+                        </div>
+                        <div>
+                            <button>Concluídos</button>
+                        </div>
                     </div>
-                    <div>
-                        <h3>Não concluídos</h3>
-                    </div>
-                    <div>
-                        <h3>Concluídos</h3>
-                    </div>
+
                     <hr />
-                    <div>
-                        <ContainerTable>
-                            <thead>
-                                <tr>
-                                    <th>Nome</th>
-                                    <th>Excluir</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {listUsers.map(listUsers => (
-                                    <tr>
-                                        <td>
-                                            <img alt="Foto de perfil" src={mulher} />
-                                        </td>
-                                        <td>{listUsers.name}</td>
-                                        <td>
-                                            <img className="delete" src={lixo} />
-                                        </td>
-                                    </tr>
-                                ))} 
-                                   
-                            </tbody>
-                        </ContainerTable>
-                    </div>
-                </div>
+                </ContainerInfo>
+                <ContainerTable>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Excluir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {listUsers.map(listUsers => (
+                            <tr>
+                                <td>
+                                    <img alt="Foto de perfil" src={mulher} />
+                                </td>
+                                <td>{listUsers.name}</td>
+                                <td>
+                                    <img className="delete" src={lixo} />
+                                </td>
+                            </tr>
+                        ))}
+
+                    </tbody>
+                </ContainerTable>
+
             </Container>
         </>
     );

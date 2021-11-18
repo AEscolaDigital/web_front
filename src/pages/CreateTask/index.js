@@ -26,10 +26,11 @@ import { useLocation } from "react-router-dom";
 function CreateTask() {
 
     const location = useLocation();
+    // const history = useHistory();
+
 
     const [discipline, setDiscipline] = useState([]);
 
-    console.log(discipline);
     const [disciplineNavTask, setDisciplineNavTask] = useState([]);
 
     const [disciplineLocation, setDisplineLocation] = useState(true);
@@ -38,17 +39,7 @@ function CreateTask() {
         setDiscipline(location.state)
         setDisplineLocation(false);
     }
-    const [displineNavTaskLoop, setDisplineNavTaskLoop] = useState(true);
-
-    if (disciplineNavTask != []) {
-        if (disciplineNavTask != 0) {
-            if (displineNavTaskLoop) {
-                setDiscipline(disciplineNavTask)
-                setDisplineNavTaskLoop(false);
-            }
-        }
-    }
-
+   
     const [inputs, setInput] = useState([{ id: 'link' }])
 
     const [filesMax, setFilesMax] = useState(1)
@@ -116,6 +107,7 @@ function CreateTask() {
             })
 
             successAlert("Tarefa criada com sucesso");
+        
 
         } catch (error) {
 
@@ -165,7 +157,7 @@ function CreateTask() {
         <>
             <Header />
             <Nav />
-            <NavTask setProps={setDisciplineNavTask} />
+            <NavTask setProps={setDisciplineNavTask} iSOnPage={true} />
 
             <form onSubmit={handleSubmit} >
                 <ContainerTask>
