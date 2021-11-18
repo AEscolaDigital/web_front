@@ -5,7 +5,7 @@ import imageTasks from "../../assets/navTask/imageTasks.svg"
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 
-function NavTask({setProps}) {
+function NavTask({ setProps }) {
 
     const [disciplines, setDisciplines] = useState([]);
 
@@ -43,8 +43,8 @@ function NavTask({setProps}) {
                     <span>Todas as disciplinas</span>
                 </div>
                 <div id="disciplines" >
-                    {disciplines.map(discipline => 
-                        <div onClick={()=> setDisciplineId(discipline), setProps(discipline) } >{discipline.name}</div>
+                    {disciplines.map(discipline =>
+                        <div onClick={() => setDisciplineId(discipline) } >{discipline.name}</div>
                     )}
                 </div>
             </ContainerClass>

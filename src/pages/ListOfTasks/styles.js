@@ -17,6 +17,10 @@ export const ContainerTask = styled.div`
 
           border-bottom:  1px solid  #C4C4C4;
 
+          button{
+               border: 0;
+          }
+
           #typeTasks {
                display: flex;
                align-items: center;

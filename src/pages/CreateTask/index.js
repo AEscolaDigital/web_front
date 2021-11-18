@@ -20,15 +20,36 @@ import plusSign from "../../assets/iconsGlobal/plusSign.svg"
 import BtnSubmit from "../../components/BtnSubmit";
 import { api } from "../../services/api";
 import Swal from "sweetalert2";
+import { useLocation } from "react-router-dom";
 
 
 function CreateTask() {
 
+    const location = useLocation();
+
     const [discipline, setDiscipline] = useState([]);
 
+    console.log(discipline);
+    const [disciplineNavTask, setDisciplineNavTask] = useState([]);
+
+    const [disciplineLocation, setDisplineLocation] = useState(true);
+
+    if (disciplineLocation) {
+        setDiscipline(location.state)
+        setDisplineLocation(false);
+    }
+    const [displineNavTaskLoop, setDisplineNavTaskLoop] = useState(true);
+
+    if (disciplineNavTask != []) {
+        if (disciplineNavTask != 0) {
+            if (displineNavTaskLoop) {
+                setDiscipline(disciplineNavTask)
+                setDisplineNavTaskLoop(false);
+            }
+        }
+    }
 
     const [inputs, setInput] = useState([{ id: 'link' }])
-
 
     const [filesMax, setFilesMax] = useState(1)
 
@@ -144,13 +165,17 @@ function CreateTask() {
         <>
             <Header />
             <Nav />
-            <NavTask setProps={setDiscipline} />
+            <NavTask setProps={setDisciplineNavTask} />
 
             <form onSubmit={handleSubmit} >
                 <ContainerTask>
                     <div id="taskHeader" >
                         <div className="titulo">
                             <p>Preencha os campos para adicionar uma tarefa</p>
+                            <span>Disciplina:
+                                {discipline.name}
+
+                            </span>
                         </div>
 
                         <div>
@@ -168,6 +193,7 @@ function CreateTask() {
                             label="Nome da Tarefa"
                             width="423px"
                             height="63px"
+                            required
                             handler={handleInput} />
 
                         <div id="taskDescription" >
@@ -176,6 +202,7 @@ function CreateTask() {
                                 id="description"
                                 rows="5"
                                 cols="30"
+                                required
                                 handler={handleInput} />
                         </div>
 
@@ -185,6 +212,7 @@ function CreateTask() {
                             type="date"
                             height="63px"
                             width="423px"
+                            required
                             handler={handleInput} />
 
                         <Input

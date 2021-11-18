@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL: "https://school-backend-eductec.herokuapp.com/"
+    baseURL: "http://localhost:3333/"
 });
 
 export const apiViaCep = axios.create({

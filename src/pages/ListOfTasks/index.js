@@ -13,12 +13,15 @@ import selectTask from "../../assets/tasks/select_task.svg"
 
 import { useEffect, useState } from 'react';
 import { api } from "../../services/api";
-import { Link } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import PermissionComponent from "../../components/PermissionComponent";
 
 function ListOfTasks() {
 
+    const history = useHistory();
+
     const [discipline, setDiscipline] = useState([]);
+
 
     const [tasks, setTasks] = useState([]);
 
@@ -40,6 +43,22 @@ function ListOfTasks() {
 
     }, [discipline]);
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            history.push({
+                pathname: `/createTask`,
+                state: {
+                    id: discipline.id,
+                    name: discipline.name,
+                }
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <>
             <Header />
@@ -60,11 +79,15 @@ function ListOfTasks() {
                                 </div>
                             </div>
 
-                            <Link to="createTask" >
-                                <div id="addNewTasks" >
-                                    Adicionar nova tarefa
-                                </div>
-                            </Link>
+
+                            <form onSubmit={handleSubmit} >
+                                <button to="createTask" >
+                                    <div id="addNewTasks" >
+                                        Adicionar nova tarefa
+                                    </div>
+                                </button>
+                            </form>
+
 
                         </section>
                     )}
