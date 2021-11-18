@@ -96,7 +96,11 @@ export const ContainerSelectionDiscipline = styled.div`
 `
 export const ContainerListTask = styled.div`
 
-     >a>div{
+     button{
+          border: 0;
+     }
+
+     form>button>div{
 
        width: 788px;
        height: 96px;
@@ -112,6 +116,8 @@ export const ContainerListTask = styled.div`
        display: grid;
        grid-template-columns: 130px 361px 222px;
        align-items: center;
+
+       cursor: pointer;
               
      }
 

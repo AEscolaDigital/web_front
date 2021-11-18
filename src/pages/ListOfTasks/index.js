@@ -59,6 +59,22 @@ function ListOfTasks() {
         }
     }
 
+    const handleSubmitTaskUserList = async (e) => {
+        e.preventDefault();
+
+        try {
+            history.push({
+                pathname: `/taskUserList`,
+                state: {
+                    id: discipline.id,
+                    name: discipline.name,
+                }
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     return (
         <>
             <Header />
@@ -126,24 +142,26 @@ function ListOfTasks() {
 
 
                 <ContainerListTask>
-                    {tasks.map(task =>
-                        <Link to="" >
-                            <div>
+                    <form onSubmit={handleSubmitTaskUserList} >
+                        {tasks.map(task =>
+
+                            <button>
                                 <div>
-                                    <img src={Imagem} alt="sssssss" />
-                                </div>
-                                <div className="textListTask" >{task.name}</div>
-                                <div className="dateTask" >
                                     <div>
-                                        <span>Data de entrega</span>
-                                        <span>{task.date_delivery}</span>
+                                        <img src={Imagem} alt="sssssss" />
+                                    </div>
+                                    <div className="textListTask" >{task.name}</div>
+                                    <div className="dateTask" >
+                                        <div>
+                                            <span>Data de entrega</span>
+                                            <span>{task.date_delivery}</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </Link>
+                            </button>
 
-                    )}
-
+                        )}
+                    </form>
                 </ContainerListTask>
 
             </ContainerTask>

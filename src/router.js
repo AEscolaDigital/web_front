@@ -9,6 +9,7 @@ import MemberClassCreate from "./pages/MemberClassCreate";
 import CreateClass from "./pages/CreateClass";
 import ListOfTasks from "./pages/ListOfTasks";
 import CreateTask from "./pages/CreateTask";
+import TaskUserList from "./pages/TaskUserList";
 
 function PrivateRoute({ role, children, ...rest }) {
 
@@ -65,6 +66,9 @@ function Router() {
                 </PrivateRoute>
                 <PrivateRoute path="/createTask">
                     <CreateTask />
+                </PrivateRoute>
+                <PrivateRoute path="/taskUserList">
+                    <TaskUserList />
                 </PrivateRoute>
             </Switch>
         </BrowserRouter>
