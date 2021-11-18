@@ -7,6 +7,7 @@ function Input({
     value,
     handler,
     label,
+    height,
     width,
     type,
     colorLabel,
@@ -43,6 +44,7 @@ function Input({
             <label>
                 <input style={{
                     width: width,
+                    height: height,
                 }}
                     id={id}
                     value={value}
