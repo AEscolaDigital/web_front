@@ -3,10 +3,10 @@ import Router from "./router";
 
 function App() {
   return (
-      <>
-        <GlobalSyles/>
-        <Router/>
-      </>
+    <>
+      <GlobalSyles />
+      <Router />
+    </>
   );
 
 }
