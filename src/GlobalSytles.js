@@ -11,7 +11,8 @@ export const GlobalSyles = createGlobalStyle`
           --modal-overlay-color: rgba(37, 36, 35, 0.5);
           --color-text: #5c5c5c;
           --color-houver: rgba(242, 242, 242, 0.4);
-          --color-background: #ededed;
+          /* --color-background: #ededed; */
+          --color-background: #d5d5d5;
           --color-placeholder: #a8a8a8;
       }
 
@@ -26,7 +27,7 @@ export const GlobalSyles = createGlobalStyle`
       }
 
       body{
-       background-color: #EDEDED;
+       background-color: var(--color-background);
       }
 
       a{

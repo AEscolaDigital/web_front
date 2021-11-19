@@ -25,6 +25,11 @@ export const ContainerInfo = styled.div`
             cursor: pointer;
 
             font-size: 15px;
+            font-weight: bold;
+            color: var(--color-text);
+
+            background-color: var(--color-background);
+
         }
 
         font-size: 18px;
@@ -100,6 +105,8 @@ export const ContainerTable = styled.table`
             .delete{
                 margin-top: 10px;
             }
+
+        
         } 
     }  
 `

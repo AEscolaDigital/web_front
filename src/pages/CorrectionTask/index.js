@@ -15,23 +15,46 @@ import {
 import NavTask from "../../components/NavTask";
 import { api } from "../../services/api";
 import { useEffect, useState } from 'react';
+import { useLocation } from "react-router";
 
 
 function CorrectionTask() {
 
-    const [discipline, setDiscipline] = useState([]);
+    const location = useLocation();
 
+    console.log(location.state);
+
+    const [discipline, setDiscipline] = useState([]);
 
     const [task, setTask] = useState([]);
 
-    console.log();
+
 
     useEffect(() => {
 
         let loadTasks = async () => {
 
             try {
-                const response = await api.get(`tasks/3`);
+                const response = await api.get(`tasks/${location.state.task.id}`);
+
+                setTask(response.data[0]);
+
+            } catch (error) {
+                //httpError503(error.response);
+            }
+        };
+
+        loadTasks();
+
+    }, []);
+
+
+    useEffect(() => {
+
+        let loadTasks = async () => {
+
+            try {
+                const response = await api.get(`taskdelivery/${location.state.task.id}`);
 
                 setTask(response.data[0]);
 
@@ -59,39 +82,62 @@ function CorrectionTask() {
                     </div>
 
 
-                        <div>
+                    <div>
 
-                            <div id="infos" >
-                                <span>Prof. Amanda</span>
-                                <h1>{task.name}</h1>
-                                <span>Data de entrega: {task.date_delivery} </span>
+                        <div id="infos" >
+                            <span>Prof. Amanda</span>
+                            <h1>{task.name}</h1>
+                            <span>Data de entrega: {task.date_delivery} </span>
+                        </div>
+
+                        <div id="taskDescription" >
+                            {task.description}
+
+                        </div>
+                        <div id="taskAttachments" >
+                            <span>Materiais de referência</span>
+                            <div id="links">
+                                <span>Links</span>
+
+
+                                {task.tasksAttachments !== undefined && (
+                                    task.tasksAttachments.link !== "" && (
+                                        <a href={task.tasksAttachments.link} target="_blank"  >
+                                            <input value={task.tasksAttachments.link} disabled />
+                                        </a>
+                                    )
+                                )}
+
+                                {task.tasksAttachments !== undefined && (
+                                    task.tasksAttachments.link1 !== "" && (
+
+                                        <a href={task.tasksAttachments.link} target="_blank"  >
+                                            <input value={task.tasksAttachments.link1} disabled />
+                                        </a>
+                                    )
+                                )}
+
+
+                                {task.tasksAttachments !== undefined && (
+
+                                    task.tasksAttachments.link2 !== "" && (
+                                        <a href={task.tasksAttachments.link2} target="_blank"  >
+
+                                            <input
+                                                value={task.tasksAttachments.link2}
+                                                disabled />
+                                        </a>
+                                    )
+                                )}
+
                             </div>
-                   
-                            <div id="taskDescription" >
-                                {task.description}
+                            <div id="attachments" >
+                                <span>Anexos</span>
 
-                            </div>
-                            <div id="taskAttachments" >
-                                <span>Materiais de referência</span>
-                                <div id="links">
-                                    <span>Links</span>
-                                    <a href={task.tasksAttachments !== undefined && (task.tasksAttachments.link)} >
-                                        <input value={task.tasksAttachments !== undefined && (task.tasksAttachments.link)} />
-                                    </a>
-                                    <a href="http://localhost:3000/correctionTask" >
-                                        http://localhost:3000/correctionTask
-                                    </a>
-                                    <a href="http://localhost:3000/correctionTask" >
-                                        http://localhost:3000/correctionTask
-                                    </a>
-                                </div>
-                                <div>
-                                    <span>Anexos</span>
-
-                                </div>
                             </div>
                         </div>
-              
+                    </div>
+
 
                 </Task>
 

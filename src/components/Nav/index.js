@@ -36,7 +36,7 @@ function Nav() {
                     <img src={iconTeam} alt="Ícone de turmas" />
                     <p style={{
                         display: display
-                    }} >Turmas</p>
+                    }} >Disciplinas</p>
                 </Link>
             </div>
             <div>

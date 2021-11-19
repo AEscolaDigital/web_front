@@ -25,6 +25,8 @@ function ListOfTasks() {
 
     const [tasks, setTasks] = useState([]);
 
+    console.log(tasks);
+
     useEffect(() => {
 
         let loadTasks = async () => {
@@ -43,6 +45,8 @@ function ListOfTasks() {
 
     }, [discipline]);
 
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -58,8 +62,11 @@ function ListOfTasks() {
             console.log(error);
         }
     }
+    
+    const [task, setTask] = useState();
 
     const handleSubmitTaskUserList = async (e) => {
+
         e.preventDefault();
 
         try {
@@ -68,6 +75,7 @@ function ListOfTasks() {
                 state: {
                     id: discipline.id,
                     name: discipline.name,
+                    task: task
                 }
             })
         } catch (error) {
@@ -96,7 +104,7 @@ function ListOfTasks() {
                             </div>
 
 
-                            <form onSubmit={handleSubmit} >
+                            <form id="formCreateTask" onSubmit={handleSubmit} >
                                 <button to="createTask" >
                                     <div id="addNewTasks" >
                                         Adicionar nova tarefa
@@ -144,8 +152,7 @@ function ListOfTasks() {
                 <ContainerListTask>
                     <form onSubmit={handleSubmitTaskUserList} >
                         {tasks.map(task =>
-
-                            <button>
+                            <button onClick={()=> setTask(task)} >
                                 <div>
                                     <div>
                                         <img src={Imagem} alt="sssssss" />
@@ -159,7 +166,8 @@ function ListOfTasks() {
                                     </div>
                                 </div>
                             </button>
-
+                         
+                         
                         )}
                     </form>
                 </ContainerListTask>

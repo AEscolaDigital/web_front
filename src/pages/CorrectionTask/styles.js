@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
      width: 65vw;
 
-     margin-left: calc(50vw - 595px);
+     margin-left: calc(50vw - 440px);
      margin-top: 20px;
 
      @media (max-width: 1400px){
@@ -54,16 +54,33 @@ export const Task = styled.div`
                a{
                     height: 35px;
                
-                    background-color: #EDEDED;
+                    background-color: var(--color-background);
+
                     cursor: pointer;   
                     color: var(--text-color);
                     
                     padding: 8px 15px 8px 15px;
 
                     margin-top: 10px;
+                     
+                    >input{
+                         border: 0;
+                         width: 100%;
 
+                         font-size: 16px;
+
+                         background-color: var(--color-background);
+                         cursor: pointer;   
+                              
+                         color: var(--text-color);
+                    }
                }
 
+          }
+
+          #attachments{
+               margin-top: 20px;
+               margin-left: 15px;
           }
      }
 

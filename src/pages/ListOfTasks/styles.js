@@ -8,7 +8,12 @@ export const ContainerTask = styled.div`
      margin-left: calc(50vw - 270px);
 
      padding-bottom: 150px;
-  
+
+     @media (min-width: 1800px){
+          width: 1000px;
+          margin-left: calc(50vw - 320px);
+     }
+
      section {
           display: flex;
           justify-content: space-between;
@@ -19,6 +24,8 @@ export const ContainerTask = styled.div`
 
           button{
                border: 0;
+               height: 50px;
+               border-radius: 10px;
           }
 
           #typeTasks {
@@ -35,6 +42,8 @@ export const ContainerTask = styled.div`
 
                color: #5C5C5C;
           }
+
+     
 
           #addNewTasks{
                display: flex;
@@ -53,6 +62,8 @@ export const ContainerTask = styled.div`
                border-radius: 10px;
 
                margin-bottom: 10px;
+
+               cursor: pointer;
 
           }
      }
@@ -74,6 +85,7 @@ export const ContainerSelectionDiscipline = styled.div`
      flex-direction: column;
 
      margin-top: calc(50vh - 257px);
+
 
      >img{
           display: block;
@@ -100,6 +112,14 @@ export const ContainerListTask = styled.div`
           border: 0;
      }
 
+     form{
+          margin-top: 35px;
+     }
+
+     @media (min-width: 1800px){
+          margin-left: 5vw;
+     }
+
      form>button>div{
 
        width: 788px;
@@ -111,8 +131,6 @@ export const ContainerListTask = styled.div`
        padding-right: 40px;
 
        margin-left: 80px;
-       margin-top: 35px;
-
        display: grid;
        grid-template-columns: 130px 361px 222px;
        align-items: center;

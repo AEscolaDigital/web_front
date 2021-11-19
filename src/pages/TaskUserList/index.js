@@ -9,28 +9,25 @@ import lixo from "../../assets/classesList/lixo.svg";
 
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
-import { useLocation } from "react-router";
+import { useHistory, useLocation } from "react-router";
 import { Link } from "react-router-dom";
 
 function ClassesList() {
 
+    const history = useHistory();
+
     const location = useLocation();
-    console.log(location);
-
-
 
     const [discipline, setDiscipline] = useState([]);
 
     const [listUsers, setListUsers] = useState([]);
-
-    console.log(listUsers);
 
     useEffect(() => {
 
         let loadListUsers = async () => {
 
             try {
-                const response = await api.get('tasks/users/8');
+                const response = await api.get(`tasks/users/${location.state.task.id}`);
                 setListUsers(response.data);
 
             } catch (error) {
@@ -41,6 +38,24 @@ function ClassesList() {
         loadListUsers();
 
     }, []);
+
+
+    const handleSubmit = async (listUsers) => {
+
+        try {
+            history.push({
+                pathname: `correctionTask`,
+                state: {
+                    disciplina: location.state,
+                    task: location.state.task,
+                    user: listUsers
+                }
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
 
     return (
         <>
@@ -73,23 +88,22 @@ function ClassesList() {
                     </thead>
                     <tbody>
                         {listUsers.map(listUsers => (
-                            <Link to="correctionTask" >
-                                <tr>
-                                    <td>
-                                        <img alt="Foto de perfil" src={mulher} />
-                                    </td>
-                                    <td>{listUsers.name}</td>
-                                    <td>
-                                        <img className="delete" src={lixo} />
-                                    </td>
-                                </tr>
-                            </Link>
+                            <tr onClick={() => handleSubmit(listUsers)} >
+                        <td>
+                            <img alt="Foto de perfil" src={mulher} />
+                        </td>
+                        <td>{listUsers.name}</td>
+                        <td>
+                            <img className="delete" src={lixo} />
+                        </td>
+                    </tr>
+
                         ))}
 
-                    </tbody>
-                </ContainerTable>
+                </tbody>
+            </ContainerTable>
 
-            </Container>
+        </Container>
         </>
     );
 }
