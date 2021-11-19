@@ -65,8 +65,10 @@ export const Card = styled.div`
     position: absolute;
     right: 30px;
     top: 55px;
+
     width: 360px;
     height: 365px;
+    
     background-color: white;
     color: var(--color-text);
     border-radius: 10px;
@@ -98,8 +100,20 @@ export const Card = styled.div`
             display: flex;
             align-items: center;
             column-gap: 30px;
-            margin: 10px 0px 0px 30px;
+
+            margin: 10px 0px 0px 15px;
+
             font-size: 14px;
+            color: var(--text-color);
+
+            padding-top: 1px;
+            padding-left: 15px;
+        
+            :hover{
+                width: 320px;
+                border-radius: 5px;
+                background-color: var(--color-background);
+            }
         }
     }
 `;

@@ -53,6 +53,8 @@ export const ContainerTable = styled.table`
 
     background-color: white;
 
+    border-radius: 10px;
+
     @media (max-width: 1370px){
         max-width: 60vw;
     }

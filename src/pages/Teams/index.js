@@ -191,18 +191,18 @@ function Teams() {
                                         <input
                                             placeholder="Pesquisar" />
                                     </ContainerSearch>
-                                    <Select src={iconDelete} >
+                                    <Select>
                                         <span >Selecione alguma turma</span>
                                         <hr />
                                         <div id="option" >
                                             {classes.map(classe =>
                                                 <div>
-                                                    <a onClick={() => {
+                                                    <button onClick={() => {
                                                         setToogle(true);
                                                         setSelectedClass(classe);
                                                     }}>
                                                         <span >{classe.name}</span>
-                                                    </a>
+                                                    </button>
                                                 </div>
                                             )}
 

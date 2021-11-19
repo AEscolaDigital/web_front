@@ -98,6 +98,13 @@ export const TaskDelivery = styled.div`
 
      #infosTaskDelivery{
           display: flex;
+
+          >img{
+               width: 60px;
+               height: 60px;
+               border-radius: 100px;
+          }
+
           div{
                display: grid;
                padding-left: 15px;
@@ -117,12 +124,19 @@ export const TaskDelivery = styled.div`
      #taskAttachmentsUser{
         
           width: 380px;
+
           #linksUser{
                display: flex;
                flex-direction: column;
 
                margin-top: 15px;
                margin-left: 15px;
+
+               span{
+                    color: var(--color-text);
+                    font-weight: bold;
+                    font-size: 18px;
+               }
 
                a{
                     height: 35px;
@@ -135,6 +149,18 @@ export const TaskDelivery = styled.div`
 
                     margin-top: 10px;
 
+               }
+          }
+
+          #attachmentsUser{
+               margin-top: 15px;
+               span{
+                    color: var(--color-text);
+                    font-weight: bold;
+                    font-size: 18px;
+
+                    margin-left: 15px;
+            
                }
           }
      }
@@ -185,4 +211,37 @@ export const TaskComment = styled.form`
 
           }
      }
+`
+
+export const TaskNotDelivery = styled.div`
+     width: 100%;
+     height: 100px;
+
+     box-shadow: 0px -4px 7px 1px rgb(206 206 206 / 55%);
+
+     background-color: white;
+
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     flex-direction: column;
+
+     >div{
+          width: 70%;
+          height: 50px;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          color: var(--color-text);
+          font-size: 18px;
+
+          background-color: var(--color-background);
+
+          border-radius: 5px;
+
+
+     }
+       
 `

@@ -3,6 +3,7 @@ import { Container, ContainerTable, ContainerInfo } from "./styles"
 import Header from "../../components/Header";
 import Nav from "../../components/Nav";
 import NavTask from "../../components/NavTask";
+import ProfilePicture from "../../components/ProfilePicture";
 
 import mulher from "../../assets/classesList/mulher.svg";
 import lixo from "../../assets/classesList/lixo.svg";
@@ -21,6 +22,8 @@ function ClassesList() {
     const [discipline, setDiscipline] = useState([]);
 
     const [listUsers, setListUsers] = useState([]);
+
+    console.log(listUsers);
 
     useEffect(() => {
 
@@ -67,7 +70,7 @@ function ClassesList() {
                 <ContainerInfo>
                     <div>
                         <div>
-                            <span>Turma: {location.state.name}</span>
+                            <span>Disciplina: {location.state.name}</span>
                         </div>
                         <div>
                             <button>Não concluídos</button>
@@ -90,7 +93,10 @@ function ClassesList() {
                         {listUsers.map(listUsers => (
                             <tr onClick={() => handleSubmit(listUsers)} >
                         <td>
-                            <img alt="Foto de perfil" src={mulher} />
+                            <ProfilePicture 
+                                style="style2"
+                                name={listUsers.name} 
+                                profile_picture={listUsers.profile_picture} />
                         </td>
                         <td>{listUsers.name}</td>
                         <td>

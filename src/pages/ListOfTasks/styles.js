@@ -129,8 +129,9 @@ export const ContainerListTask = styled.div`
 
        padding-left: 45px;
        padding-right: 40px;
-
+       
        margin-left: 80px;
+       margin-top: 30px;
        display: grid;
        grid-template-columns: 130px 361px 222px;
        align-items: center;

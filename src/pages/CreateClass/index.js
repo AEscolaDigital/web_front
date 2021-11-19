@@ -22,8 +22,6 @@ import BtnSubmit from "../../components/BtnSubmit";
 import Dropzone from "../../components/Dropzone";
 
 import membro from "../../assets/createclass/membro.svg"
-import foto from "../../assets/createclass/foto.svg";
-
 import arrowLeft from "../../assets/addMember/arrowLeft.svg";
 import arrowRight from "../../assets/addMember/arrowRight.svg";
 import imageHttpError503 from "../../assets/alert/imageHttpError503.svg"
@@ -34,6 +32,7 @@ import iconDelete30 from "../../assets/iconsGlobal/iconDelete30.svg"
 import { api } from "../../services/api";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
+import ProfilePicture from "../../components/ProfilePicture";
 
 function CreateClass() {
 
@@ -472,15 +471,19 @@ function CreateClass() {
                                 usersClass.users.map(userClass => (
                                     <tr>
                                         <td>
-                                            <img alt="Foto de perfil" src={foto} />
+                                            <ProfilePicture
+                                                style="style2"
+                                                name={userClass.name}
+                                                profile_picture={userClass.profile_picture} />
                                         </td>
                                         <td>{userClass.name}</td>
                                         <td>{userClass.email}</td>
                                         <td>
                                             <button
-                                                onClick={() => { 
-                                                    handleDeleteUsers(userClass.id) }}
-                                                id="btnDelete" 
+                                                onClick={() => {
+                                                    handleDeleteUsers(userClass.id)
+                                                }}
+                                                id="btnDelete"
                                             />
                                         </td>
                                     </tr>

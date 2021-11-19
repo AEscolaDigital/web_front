@@ -17,7 +17,7 @@ export const signOut = () => {
 };
 
 export const getUser = () => {
-  const { user } = JSON.parse(localStorage.getItem(USER_KEY));
+  const user  = JSON.parse(localStorage.getItem(USER_KEY));
 
   return user;
 };

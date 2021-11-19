@@ -8,27 +8,25 @@ import {
     Container,
     Task,
     TaskDelivery,
-    TaskComment
-
+    TaskComment,
+    TaskNotDelivery
 } from "./styles";
 
 import NavTask from "../../components/NavTask";
+import ProfilePicture from "../../components/ProfilePicture";
+
 import { api } from "../../services/api";
 import { useEffect, useState } from 'react';
 import { useLocation } from "react-router";
-
+import { getUser } from "../../services/security";
 
 function CorrectionTask() {
 
     const location = useLocation();
 
-    console.log(location.state);
-
     const [discipline, setDiscipline] = useState([]);
 
     const [task, setTask] = useState([]);
-
-
 
     useEffect(() => {
 
@@ -48,24 +46,27 @@ function CorrectionTask() {
 
     }, []);
 
+    const [taskDelivery, setTaskDelivery] = useState([]);
 
     useEffect(() => {
 
-        let loadTasks = async () => {
+        let loadTaskDelivery = async () => {
 
             try {
-                const response = await api.get(`taskdelivery/${location.state.task.id}`);
+                const response = await api.get(`taskdelivery/user_id/${location.user.id}/task_id/${location.task.id}`);
 
-                setTask(response.data[0]);
+                setTaskDelivery(response.data[0]);
 
             } catch (error) {
                 //httpError503(error.response);
             }
         };
 
-        loadTasks();
+        loadTaskDelivery();
 
     }, []);
+
+    console.log(location.state.user);
 
 
     return (
@@ -75,12 +76,10 @@ function CorrectionTask() {
             <NavTask setProps={setDiscipline} />
             <Container>
                 <Task>
-
-
                     <div>
-                        <img src={Image} />
+                        <ProfilePicture
+                            name={getUser().name} style="style1" />
                     </div>
-
 
                     <div>
 
@@ -140,43 +139,76 @@ function CorrectionTask() {
 
 
                 </Task>
+                {taskDelivery.tasksAttachments !== undefined && (
+                    <TaskDelivery>
+                        <div id="infosTaskDelivery" >
 
-                <TaskDelivery>
-                    <div id="infosTaskDelivery" >
-                        <img src={Image} />
+                            <ProfilePicture
+                                style="style1"
+                                name={location.state.user.name}
+                                profile_picture={location.state.user.profile_picture} />
+
+                            <div>
+                                <span id="name" >{location.state.user.name}</span>
+                                <span id="date" >Data de entrega: {taskDelivery.delivery_date}</span>
+                            </div>
+                        </div>
+                        <div id="taskAttachmentsUser" >
+                            <div id="linksUser" >
+                                <span>Links</span>
+
+                                taskDelivery.link !== undefined && (
+                                <a href={taskDelivery.link} >
+                                    {taskDelivery.link}
+                                </a>
+                                )
+
+                                taskDelivery.link1 !== undefined && (
+                                <a href={taskDelivery.link1} >
+                                    {taskDelivery.link1}
+                                </a>
+                                )
+
+                                taskDelivery.link2 !== undefined && (
+                                <a href={taskDelivery.link2} >
+                                    {taskDelivery.link2}
+                                </a>
+                                )
+
+
+                            </div>
+
+                            <div id="attachmentsUser" >
+                                <span>Anexos</span>
+                            </div>
+
+                        </div>
+
+                        <TaskComment>
+                            <h1>AQUIII</h1>
+                            <div id="spots" >
+                                <Input id="spots" width="200px" label="Pontuação" />
+                            </div>
+                            <label>Comentário</label>
+                            <textarea cols="30" rows="10" />
+                            <div id="buttons" >
+                                <BtnSubmit text="Devolver" />
+
+                                <BtnSubmit text="Corrigido" />
+                            </div>
+                        </TaskComment>
+                    </TaskDelivery>
+                )}
+
+                {taskDelivery.tasksAttachments === undefined && (
+                    <TaskNotDelivery>
                         <div>
-                            <span id="name" >Soeli Kristin</span>
-                            <span id="date" >Data de entrega: 18/10/2021</span>
+                            Tarefa não entregue, até o momento!
                         </div>
-                    </div>
-                    <div id="taskAttachmentsUser" >
-                        <div id="linksUser" >
-                            <span>Links</span>
-                            <a href="http://localhost:3000/correctionTask" >
-                                http://localhost:3000/correctionTask
-                            </a>
-                            <a href="http://localhost:3000/correctionTask" >
-                                http://localhost:3000/correctionTask
-                            </a>
-                            <a href="http://localhost:3000/correctionTask" >
-                                http://localhost:3000/correctionTask
-                            </a>
-                        </div>
+                
+                    </TaskNotDelivery>
+                )}
 
-                    </div>
-                    <TaskComment>
-                        <div id="spots" >
-                            <Input id="spots" width="200px" label="Pontuação" />
-                        </div>
-                        <label>Comentário</label>
-                        <textarea cols="30" rows="10" />
-                        <div id="buttons" >
-                            <BtnSubmit text="Devolver" />
-
-                            <BtnSubmit text="Corrigido" />
-                        </div>
-                    </TaskComment>
-                </TaskDelivery>
 
             </Container>
         </>
