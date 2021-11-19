@@ -10,6 +10,7 @@ import lixo from "../../assets/classesList/lixo.svg";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { useLocation } from "react-router";
+import { Link } from "react-router-dom";
 
 function ClassesList() {
 
@@ -72,15 +73,17 @@ function ClassesList() {
                     </thead>
                     <tbody>
                         {listUsers.map(listUsers => (
-                            <tr>
-                                <td>
-                                    <img alt="Foto de perfil" src={mulher} />
-                                </td>
-                                <td>{listUsers.name}</td>
-                                <td>
-                                    <img className="delete" src={lixo} />
-                                </td>
-                            </tr>
+                            <Link to="correctionTask" >
+                                <tr>
+                                    <td>
+                                        <img alt="Foto de perfil" src={mulher} />
+                                    </td>
+                                    <td>{listUsers.name}</td>
+                                    <td>
+                                        <img className="delete" src={lixo} />
+                                    </td>
+                                </tr>
+                            </Link>
                         ))}
 
                     </tbody>

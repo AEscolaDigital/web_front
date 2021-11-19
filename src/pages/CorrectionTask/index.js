@@ -1,117 +1,141 @@
 import Nav from "../../components/Nav";
 import Header from "../../components/Header";
 import Input from "../../components/Input";
-import BtnCancel from "../../components/BtnCancel";
 import BtnSubmit from "../../components/BtnSubmit";
-import React from 'react';
 import Image from "../../assets/listStudentsTask/Image.svg";
 import iconClip from "../../assets/listStudentsTask/Vector.png";
 import {
-    Container, ContainerTask, MateriaisReferencias, ContainerImage, ContainerTexts,
-    ReferenciaAnexo, ActivityDeliveryContainer, ContainerStudent, ContainerStudentAnexo, Divs,
-    ContainerBtn
-} from "./styles";
-import NavTask from "../../components/NavTask";
+    Container,
+    Task,
+    TaskDelivery,
+    TaskComment
 
-function Teams() {
+} from "./styles";
+
+import NavTask from "../../components/NavTask";
+import { api } from "../../services/api";
+import { useEffect, useState } from 'react';
+
+
+function CorrectionTask() {
+
+    const [discipline, setDiscipline] = useState([]);
+
+
+    const [task, setTask] = useState([]);
+
+    console.log();
+
+    useEffect(() => {
+
+        let loadTasks = async () => {
+
+            try {
+                const response = await api.get(`tasks/3`);
+
+                setTask(response.data[0]);
+
+            } catch (error) {
+                //httpError503(error.response);
+            }
+        };
+
+        loadTasks();
+
+    }, []);
+
 
     return (
-        <Container>
+        <>
             <Header />
             <Nav />
-            <NavTask />
-            <ContainerTask>
+            <NavTask setProps={setDiscipline} />
+            <Container>
+                <Task>
 
-                <ContainerImage>
-                    <img src={Image} />
-
-                    <p>Prof° Amanda </p>
-                    <p>14/07/2004</p>
-                </ContainerImage>
-
-                <ContainerTexts>
-                    <h2> Consumo de API ( CEP )</h2>
-                    <p>Data de entrega: 14/07/2004</p>
-                </ContainerTexts>
-
-
-                <MateriaisReferencias>
-                    <p>
-                        Consumir API de CEP
-                    </p>
 
                     <div>
-                        <p>
-                            Viacep (https://youtu.be/imk6Y0viabg)
-                            Postmon (https://postmon.com.br/)
-                            CEP Aberto (https://cepaberto.com/)
-                        </p>
+                        <img src={Image} />
                     </div>
-                    <p>
-                        Entregar o link do grithub, lembrando de habilitar o gitpage
-                    </p>
 
-                </MateriaisReferencias>
 
-                <ReferenciaAnexo>
-                    <h5>Materiáis de Referência</h5>
-                    <div>
-                        <p>Aqui vai um arquivo de anexo... </p>
-                    </div>
-                </ReferenciaAnexo>
+                        <div>
 
-            </ContainerTask>
+                            <div id="infos" >
+                                <span>Prof. Amanda</span>
+                                <h1>{task.name}</h1>
+                                <span>Data de entrega: {task.date_delivery} </span>
+                            </div>
+                   
+                            <div id="taskDescription" >
+                                {task.description}
 
-            <ActivityDeliveryContainer>
-                <ContainerStudent>
-                    <img src={Image} />
+                            </div>
+                            <div id="taskAttachments" >
+                                <span>Materiais de referência</span>
+                                <div id="links">
+                                    <span>Links</span>
+                                    <a href={task.tasksAttachments !== undefined && (task.tasksAttachments.link)} >
+                                        <input value={task.tasksAttachments !== undefined && (task.tasksAttachments.link)} />
+                                    </a>
+                                    <a href="http://localhost:3000/correctionTask" >
+                                        http://localhost:3000/correctionTask
+                                    </a>
+                                    <a href="http://localhost:3000/correctionTask" >
+                                        http://localhost:3000/correctionTask
+                                    </a>
+                                </div>
+                                <div>
+                                    <span>Anexos</span>
 
-                    <p>Emerson Silva </p>
-
-                </ContainerStudent>
-
-                <ContainerStudentAnexo>
-                    <div>
-                        <h4>Anexo</h4>
-
-                        <div id="enexos" >
-
-                            <Divs>
-                                <p>Aqui vai um arquivo de anexo... </p>
-                            </Divs>
-
-                            <Divs>
-                                <p>Aqui vai um arquivo de anexo... </p>
-                            </Divs>
+                                </div>
+                            </div>
                         </div>
+              
 
+                </Task>
 
-                        <div id="imageAnexo">
-                            <img src={iconClip} />
-                            <p>Anexo</p>
+                <TaskDelivery>
+                    <div id="infosTaskDelivery" >
+                        <img src={Image} />
+                        <div>
+                            <span id="name" >Soeli Kristin</span>
+                            <span id="date" >Data de entrega: 18/10/2021</span>
                         </div>
                     </div>
-
-                    <div>
-                        <div id="pontuacao">
-                            <Input label="Pontuação" />
+                    <div id="taskAttachmentsUser" >
+                        <div id="linksUser" >
+                            <span>Links</span>
+                            <a href="http://localhost:3000/correctionTask" >
+                                http://localhost:3000/correctionTask
+                            </a>
+                            <a href="http://localhost:3000/correctionTask" >
+                                http://localhost:3000/correctionTask
+                            </a>
+                            <a href="http://localhost:3000/correctionTask" >
+                                http://localhost:3000/correctionTask
+                            </a>
                         </div>
+
                     </div>
-                </ContainerStudentAnexo>
+                    <TaskComment>
+                        <div id="spots" >
+                            <Input id="spots" width="200px" label="Pontuação" />
+                        </div>
+                        <label>Comentário</label>
+                        <textarea cols="30" rows="10" />
+                        <div id="buttons" >
+                            <BtnSubmit text="Devolver" />
 
-                <Input label="Comentários" width="600px" height="150px"/>
+                            <BtnSubmit text="Corrigido" />
+                        </div>
+                    </TaskComment>
+                </TaskDelivery>
 
-                <ContainerBtn>
-                <BtnSubmit text="Corrigido" />
-                <BtnCancel text="Devolver" />
-                </ContainerBtn>
-
-            </ActivityDeliveryContainer>
-
-
-        </Container>
+            </Container>
+        </>
 
     );
 }
 
-export default Teams;
+export default CorrectionTask;
