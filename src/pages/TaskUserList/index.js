@@ -5,13 +5,11 @@ import Nav from "../../components/Nav";
 import NavTask from "../../components/NavTask";
 import ProfilePicture from "../../components/ProfilePicture";
 
-import mulher from "../../assets/classesList/mulher.svg";
 import lixo from "../../assets/classesList/lixo.svg";
 
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { useHistory, useLocation } from "react-router";
-import { Link } from "react-router-dom";
 
 function ClassesList() {
 
@@ -19,11 +17,7 @@ function ClassesList() {
 
     const location = useLocation();
 
-    const [discipline, setDiscipline] = useState([]);
-
     const [listUsers, setListUsers] = useState([]);
-
-    console.log(listUsers);
 
     useEffect(() => {
 
@@ -40,7 +34,7 @@ function ClassesList() {
 
         loadListUsers();
 
-    }, []);
+    });
 
 
     const handleSubmit = async (listUsers) => {
@@ -64,7 +58,7 @@ function ClassesList() {
         <>
             <Header />
             <Nav />
-            <NavTask setProps={setDiscipline} />
+            <NavTask  iSOnPage={true}/>
             <Container>
 
                 <ContainerInfo>
@@ -100,7 +94,7 @@ function ClassesList() {
                         </td>
                         <td>{listUsers.name}</td>
                         <td>
-                            <img className="delete" src={lixo} />
+                            <img className="delete" src={lixo} alt="Ícone de uma lixeira" />
                         </td>
                     </tr>
 

@@ -3,7 +3,6 @@ import imageHttpError503 from "../../assets/alert/imageHttpError503.svg"
 import arrowLeft from "../../assets/addMember/arrowLeft.svg";
 import arrowRight from "../../assets/addMember/arrowRight.svg";
 import downArrow from "../../assets/select/downArrow.svg"
-import iconDelete from "../../assets/select/delete.svg"
 
 import Nav from "../../components/Nav";
 import Header from "../../components/Header";
@@ -244,6 +243,7 @@ function Teams() {
                                 label="Nome da disciplina"
                                 width="420px"
                                 handler={handleInput}
+                                required
                             />
                         </div>
                         <div id="btnModal" >

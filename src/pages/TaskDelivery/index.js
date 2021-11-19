@@ -2,6 +2,8 @@ import Nav from "../../components/Nav";
 import Header from "../../components/Header";
 import Input from "../../components/Input";
 import BtnSubmit from "../../components/BtnSubmit";
+import Image from "../../assets/listStudentsTask/Image.svg";
+import iconClip from "../../assets/listStudentsTask/Vector.png";
 import {
     Container,
     Task,
@@ -18,11 +20,12 @@ import { useEffect, useState } from 'react';
 import { useLocation } from "react-router";
 import { getUser } from "../../services/security";
 
-function CorrectionTask() {
+function TaskDelivery() {
 
     const location = useLocation();
 
     const [discipline, setDiscipline] = useState([]);
+
 
     const [task, setTask] = useState([]);
 
@@ -66,9 +69,9 @@ function CorrectionTask() {
 
     return (
         <>
-            <Header />
-            <Nav />
-            <NavTask setProps={setDiscipline} iSOnPage={true}/>
+            {/* <Header />
+            <Nav /> */}
+            <NavTask setProps={setDiscipline} />
             <Container>
                 <Task>
                     <div>
@@ -211,4 +214,4 @@ function CorrectionTask() {
     );
 }
 
-export default CorrectionTask;
+export default TaskDelivery;

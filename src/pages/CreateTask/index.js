@@ -11,7 +11,6 @@ import {
     InputFile,
 } from "./styles";
 
-import iconAnexo from "../../assets/iconAnexo/Group.svg"
 import imageHttpError503 from "../../assets/alert/imageHttpError503.svg"
 
 import { useState } from "react";
@@ -26,8 +25,6 @@ import { useLocation } from "react-router-dom";
 function CreateTask() {
 
     const location = useLocation();
-    // const history = useHistory();
-
 
     const [discipline, setDiscipline] = useState([]);
 

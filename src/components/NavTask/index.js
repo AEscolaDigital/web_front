@@ -12,15 +12,16 @@ function NavTask({ setProps, iSOnPage }) {
 
     const [disciplines, setDisciplines] = useState([]);
 
-    const [disciplineId, setDisciplineId] = useState(0);
-    setProps(disciplineId)
+    const setDisciplineId = (disciplineId) =>{
+        if (!iSOnPage) 
+            setProps(disciplineId);
+    }
 
-    const status = () =>{
+    const status = () => {
         if (iSOnPage) {
             history.push("listOfTasks");
-            setDisciplineId(1)
         }
-   
+
     }
 
     useEffect(() => {
@@ -41,7 +42,7 @@ function NavTask({ setProps, iSOnPage }) {
 
     }, []);
 
-  
+
 
     return (
         <Container>

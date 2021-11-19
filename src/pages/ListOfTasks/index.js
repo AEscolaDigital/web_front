@@ -13,7 +13,7 @@ import selectTask from "../../assets/tasks/select_task.svg"
 
 import { useEffect, useState } from 'react';
 import { api } from "../../services/api";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import PermissionComponent from "../../components/PermissionComponent";
 
 function ListOfTasks() {
@@ -22,10 +22,7 @@ function ListOfTasks() {
 
     const [discipline, setDiscipline] = useState([]);
 
-
     const [tasks, setTasks] = useState([]);
-
-    console.log(tasks);
 
     useEffect(() => {
 
@@ -140,9 +137,9 @@ function ListOfTasks() {
                     </div>
                 )}
 
-                {discipline === 0 && (
+                {discipline.length === 0 && (
                     <ContainerSelectionDiscipline>
-                        <img src={selectTask} />
+                        <img src={selectTask} alt="" />
                         <span>Selecione uma disciplina</span>
                         <span>para poder visualizar as tarefas</span>
                     </ContainerSelectionDiscipline>

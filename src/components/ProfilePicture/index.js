@@ -3,7 +3,6 @@ import { Container } from "./styles";
 function ProfilePicture({ name, profile_picture, style }) {
 
     const nameInitlias = () => {
-        console.log(profile_picture);
 
         if (profile_picture === undefined || profile_picture === null) {
             name.split(" ")

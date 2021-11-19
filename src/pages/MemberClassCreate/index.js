@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from "../../components/Header";
 import Nav from "../../components/Nav";
-import { Container, Section, } from "./styles";
+import { Section } from "./styles";
 import memberCreate from "../../assets/memberClassCreate/createMember.svg";
 import classCreate from "../../assets/memberClassCreate/createClass.svg";
 import { Link } from 'react-router-dom';
@@ -12,8 +12,6 @@ function MemberClassCreate() {
         <>
             <Header />
             <Nav />
-
-
             <Section>
                 <Link to="/createClass">
                     <div>
