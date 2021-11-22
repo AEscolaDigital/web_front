@@ -48,13 +48,14 @@ function Teams() {
 
     const [disciplines, setDisciplines] = useState([]);
     const [loadDisciplines, setLoadDisciplines] = useState(0);
-
+   
     useEffect(() => {
         let loadDisciplines = async () => {
 
             try {
                 const response = await api.get(`/disciplines`);
                 setDisciplines(response.data)
+              
 
             } catch (error) {
                 httpError503(error.response);
@@ -270,12 +271,12 @@ function Teams() {
             <div id="titleYourTeams" >
                 <h1>Suas disciplinas</h1>
             </div>
-            <Section>
 
-                {disciplines.map(discipline =>
+            <Section>
+                {disciplines.map(discipline => 
                     <Card
                         disciplinesName={discipline.name}
-                        teacherName={discipline.name}
+                        teacherName={discipline.teacher_name}
                         id={discipline.id}
                         setProps={setGrandson} >
                         <img src={discipline.image} alt=""

@@ -22,8 +22,9 @@ function ClassesList() {
     useEffect(() => {
 
         let loadListUsers = async () => {
-
+         
             try {
+              
                 const response = await api.get(`tasks/users/${location.state.task.id}`);
                 setListUsers(response.data);
 
@@ -34,7 +35,7 @@ function ClassesList() {
 
         loadListUsers();
 
-    });
+    }, []);
 
 
     const handleSubmit = async (listUsers) => {

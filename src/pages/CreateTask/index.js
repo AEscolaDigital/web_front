@@ -19,11 +19,12 @@ import plusSign from "../../assets/iconsGlobal/plusSign.svg"
 import BtnSubmit from "../../components/BtnSubmit";
 import { api } from "../../services/api";
 import Swal from "sweetalert2";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 
 
 function CreateTask() {
 
+    const history = useHistory();
     const location = useLocation();
 
     const [discipline, setDiscipline] = useState([]);
@@ -36,19 +37,19 @@ function CreateTask() {
         setDiscipline(location.state)
         setDisplineLocation(false);
     }
-   
+
     const [inputs, setInput] = useState([{ id: 'link' }])
 
-    const [filesMax, setFilesMax] = useState(1)
+    const [inputsMax, setInputsMax] = useState(1)
 
     const handleAddInputs = async () => {
 
         const itensCopy = Array.from(inputs);
 
         if (inputs.length < 3) {
-            itensCopy.push({ id: `link${filesMax}` });
+            itensCopy.push({ id: `link${inputsMax}` });
 
-            setFilesMax(filesMax + 1)
+            setInputsMax(inputsMax + 1)
         }
 
         if (inputs.length === 3) {
@@ -56,7 +57,27 @@ function CreateTask() {
         }
 
         setInput(itensCopy);
+    }
 
+    const [inputsFile, setInputFile] = useState([{ id: 'file' }])
+
+    const [filesMax, setFilesMax] = useState(1)
+
+    const handleAddInputsFile = async () => {
+
+        const itensCopy = Array.from(inputsFile);
+
+        if (inputsFile.length < 3) {
+            itensCopy.push({ id: `file${filesMax}` });
+
+            setFilesMax(filesMax + 1)
+        }
+
+        if (inputsFile.length === 3) {
+            alert("O número máximo é de 3 links")
+        }
+
+        setInputFile(itensCopy);
     }
 
     const [formTask, setFormTesk] = useState({
@@ -67,9 +88,6 @@ function CreateTask() {
         link: "",
         link1: "",
         link2: "",
-        file: "",
-        file1: "",
-        file2: "",
     });
 
 
@@ -77,6 +95,18 @@ function CreateTask() {
         setFormTesk({ ...formTask, [e.target.id]: e.target.value });
     };
 
+    const [fileName, setFileName] = useState();
+    const [files, setFiles] = useState(null);
+
+    const handleFile = (e) => {
+
+        if (e.target.files.length > 0) {
+            const files = e.target.files[0];
+            setFileName(files.name);
+            setFiles(files)
+        }
+
+    };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -92,7 +122,7 @@ function CreateTask() {
             data.append("link", formTask.link);
             data.append("link1", formTask.link1);
             data.append("link2", formTask.link2);
-            data.append("file", "");
+            data.append("file", files);
             data.append("file1", "");
             data.append("file2", "");
 
@@ -104,7 +134,15 @@ function CreateTask() {
             })
 
             successAlert("Tarefa criada com sucesso");
-        
+
+            history.push({
+                pathname: `/listOfTasks`,
+                state: {
+                    discipline: discipline
+                }
+            })
+
+            history.push("/listOfTasks")
 
         } catch (error) {
 
@@ -154,25 +192,17 @@ function CreateTask() {
         <>
             <Header />
             <Nav />
-            <NavTask setProps={setDisciplineNavTask} iSOnPage={true} />
+            <NavTask
+                setProps={setDisciplineNavTask}
+                iSOnPage={true} />
 
             <form onSubmit={handleSubmit} >
                 <ContainerTask>
                     <div id="taskHeader" >
                         <div className="titulo">
                             <p>Preencha os campos para adicionar uma tarefa</p>
-                            <span>Disciplina:
-                                {discipline.name}
-
+                            <span id="nameDisiciplina" >Disciplina: {discipline.name}
                             </span>
-                        </div>
-
-                        <div>
-                            <BtnSubmit
-                                width="247px"
-                                text="Criar tarefa"
-                            />
-
                         </div>
                     </div>
 
@@ -236,7 +266,9 @@ function CreateTask() {
                                             width="380px"
                                         />
 
-                                        <img src={plusSign} onClick={() => handleAddInputs()} />
+                                        <img
+                                            src={plusSign}
+                                            onClick={() => handleAddInputs()} />
                                     </div>
                                 ))}
 
@@ -245,23 +277,35 @@ function CreateTask() {
                                 </div>
 
                                 <InputFile>
-                                    <label>
-                                        Selecione um arquivo
-                                        <input type="file" />
-                                    </label>
+                                    {inputsFile.map(inputFile => (
+                                        <div className="files" >
+                                            <div>
+                                                <label>
+                                                    {fileName}
+                                                    {fileName === undefined && (
+                                                        <span>Selecione um arquivo</span>
+                                                    )}
+                                                    <input type="file" 
+                                                            onChange={handleFile} />
+                                                </label>
+                                            </div>
+                                            <div>
+                                                <img
+                                                    src={plusSign}
+                                                    onClick={() => handleAddInputsFile()} />
+                                            </div>
+                                        </div>
+                                    ))}
 
                                 </InputFile>
-
-
                             </ReferenciaAnexo>
-
-                            {/* <div id="imageAnexo">
-                            <img src={iconClip} />
-                            <p>Anexo</p>
-                        </div> */}
                         </div>
-
                     </ContainerStudentAnexo>
+                    <div id="btn" >
+                        <BtnSubmit
+                            text="Criar tarefa"
+                        />
+                    </div>
                 </ActivityDeliveryContainer>
             </form>
 

@@ -2,30 +2,29 @@ import Nav from "../../components/Nav";
 import Header from "../../components/Header";
 import Input from "../../components/Input";
 import BtnSubmit from "../../components/BtnSubmit";
-import Image from "../../assets/listStudentsTask/Image.svg";
-import iconClip from "../../assets/listStudentsTask/Vector.png";
+import NavTask from "../../components/NavTask";
+import ProfilePicture from "../../components/ProfilePicture";
+
 import {
     Container,
     Task,
-    TaskDelivery,
-    TaskComment,
-    TaskNotDelivery
+    ContainerTaskDelivery,
 } from "./styles";
 
-import NavTask from "../../components/NavTask";
-import ProfilePicture from "../../components/ProfilePicture";
+
+import imageHttpError503 from "../../assets/alert/imageHttpError503.svg"
+import plusSign from "../../assets/iconsGlobal/plusSign.svg"
+
 
 import { api } from "../../services/api";
 import { useEffect, useState } from 'react';
 import { useLocation } from "react-router";
 import { getUser } from "../../services/security";
+import Swal from "sweetalert2";
 
 function TaskDelivery() {
 
     const location = useLocation();
-
-    const [discipline, setDiscipline] = useState([]);
-
 
     const [task, setTask] = useState([]);
 
@@ -54,7 +53,7 @@ function TaskDelivery() {
         let loadTaskDelivery = async () => {
 
             try {
-                const response = await api.get(`taskdelivery/user_id/${location.user.id}/task_id/${location.task.id}`);
+                const response = await api.get(`taskdelivery/user_id/${getUser().id}/task_id/${location.state.task.id}`);
 
                 setTaskDelivery(response.data[0]);
 
@@ -67,11 +66,114 @@ function TaskDelivery() {
 
     }, []);
 
+    const [inputs, setInput] = useState([{ id: 'link' }])
+
+    const [filesMax, setFilesMax] = useState(1)
+
+    const handleAddInputs = async () => {
+
+        const itensCopy = Array.from(inputs);
+
+        if (inputs.length < 2) {
+            itensCopy.push({ id: `link${filesMax}` });
+
+            setFilesMax(filesMax + 1)
+        }
+
+        if (inputs.length === 2) {
+            alert("O número máximo é de 2 links")
+        }
+
+        setInput(itensCopy);
+
+    }
+
+    const [formTask, setFormTesk] = useState({
+        link: "",
+        link1: "",
+        file: "",
+        file1: "",
+        file2: "",
+    });
+
+    const handleInput = (e) => {
+        setFormTesk({ ...formTask, [e.target.id]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+
+            let data = new FormData();
+
+            data.append("link", formTask.link);
+            data.append("link1", formTask.link1);
+            data.append("file", "");
+            data.append("file1", "");
+            data.append("file2", "");
+            data.append("task_id", location.state.task.id);
+
+
+
+            await api.post(`taskdelivery`, data, {
+                headers: {
+                    "content-type": "multipart/form-data"
+                }
+            })
+
+            successAlert("Tarefa entregue com sucesso");
+
+
+        } catch (error) {
+
+            if (error.response === undefined) {
+                httpError503()
+
+            } else {
+                errorAlert(error.response.data)
+            }
+
+        }
+    }
+
+    const successAlert = (text) => {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: `${text}`,
+            showConfirmButton: false,
+            timer: 1500
+        })
+    }
+
+    const httpError503 = () => {
+        Swal.fire({
+            html: `
+                   <img style="width: 300px; height: 250px; margin-top: 20px;" src=${imageHttpError503} />
+                   </br>
+                   <span>Error 503, serviço indisponível</span>
+                   </br></br>
+                   <span>Tente novamente mais tarde!</span>
+                `,
+        })
+    }
+
+    const errorAlert = (error, textFooter) => {
+        Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: `${error.error}`,
+            footer: `${textFooter}`
+        })
+    }
+
+
     return (
         <>
-            {/* <Header />
-            <Nav /> */}
-            <NavTask setProps={setDiscipline} />
+            <Header />
+            <Nav />
+            <NavTask />
             <Container>
                 <Task>
                     <div>
@@ -134,78 +236,86 @@ function TaskDelivery() {
                             </div>
                         </div>
                     </div>
+                    <div>
+                        {taskDelivery !== undefined && (
+
+                            <div id="taskComment" >
+                                <span id="commentTitle" >Comentários:</span>
+                                <span id="comment" >{taskDelivery.comment}</span>
+                            </div>
+                        )}
+                    </div>
 
 
                 </Task>
-                {taskDelivery.tasksAttachments !== undefined && (
-                    <TaskDelivery>
-                        <div id="infosTaskDelivery" >
+                <ContainerTaskDelivery>
+                    <div id="title" className="titleFormatting" >
+                        <span>Meu trabalho</span>
+                    </div>
 
-                            <ProfilePicture
-                                style="style1"
-                                name={location.state.user.name}
-                                profile_picture={location.state.user.profile_picture} />
-
-                            <div>
-                                <span id="name" >{location.state.user.name}</span>
-                                <span id="date" >Data de entrega: {taskDelivery.delivery_date}</span>
-                            </div>
-                        </div>
-                        <div id="taskAttachmentsUser" >
-                            <div id="linksUser" >
+                    <form onSubmit={handleSubmit} >
+                        {taskDelivery === undefined && (
+                            <div id="linksTaskDelivery" className="titleFormatting"  >
                                 <span>Links</span>
 
-                                taskDelivery.link !== undefined && (
-                                <a href={taskDelivery.link} >
-                                    {taskDelivery.link}
-                                </a>
-                                )
+                                {inputs.map(input => (
+                                    <div class="inputs" >
+                                        <Input
+                                            type="url"
+                                            id={input.id}
+                                            width="380px"
+                                            handler={handleInput}
+                                            autocomplete="off"
+                                        />
 
-                                taskDelivery.link1 !== undefined && (
-                                <a href={taskDelivery.link1} >
-                                    {taskDelivery.link1}
-                                </a>
-                                )
-
-                                taskDelivery.link2 !== undefined && (
-                                <a href={taskDelivery.link2} >
-                                    {taskDelivery.link2}
-                                </a>
-                                )
-
-
+                                        <img src={plusSign} onClick={() => handleAddInputs()} alt="sinal de mais" />
+                                    </div>
+                                ))}
                             </div>
+                        )}
 
-                            <div id="attachmentsUser" >
-                                <span>Anexos</span>
+                        {taskDelivery !== undefined && (
+                            <div id="deliveredTaskLinks" >
+                                <span>Links</span>
+
+                                {taskDelivery.link !== "" && (
+                                    <a href={taskDelivery.link} target="blank" >
+                                        <input value={taskDelivery.link} />
+                                    </a>
+                                )}
+
+                                {taskDelivery.link1 !== "" && (
+                                    <a href={taskDelivery.link1} >
+                                        <input value={taskDelivery.link1} />
+                                    </a>
+                                )}
                             </div>
+                        )}
+
+
+                        <div id="attachmentsTaskDelivery" className="titleFormatting"  >
+                            <span>Anexos</span>
 
                         </div>
 
-                        <TaskComment>
-                            <h1>AQUIII</h1>
-                            <div id="spots" >
-                                <Input id="spots" width="200px" label="Pontuação" />
+                        {taskDelivery === undefined && (
+                            <div id="btn" >
+                                <BtnSubmit text="Entregar" />
                             </div>
-                            <label>Comentário</label>
-                            <textarea cols="30" rows="10" />
-                            <div id="buttons" >
-                                <BtnSubmit text="Devolver" />
+                        )}
 
-                                <BtnSubmit text="Corrigido" />
+                        {taskDelivery !== undefined && (
+
+                            <div id="taskMessageDelivered" >
+                                <span>A tarefa {task.name}, foi entregue com sucesso</span>
                             </div>
-                        </TaskComment>
-                    </TaskDelivery>
-                )}
+                        )}
 
-                {taskDelivery.tasksAttachments === undefined && (
-                    <TaskNotDelivery>
-                        <div>
-                            Tarefa não entregue, até o momento!
-                        </div>
-                
-                    </TaskNotDelivery>
-                )}
+
+                    </form>
+
+
+                </ContainerTaskDelivery>
 
 
             </Container>

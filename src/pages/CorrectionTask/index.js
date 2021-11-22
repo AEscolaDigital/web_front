@@ -22,8 +22,6 @@ function CorrectionTask() {
 
     const location = useLocation();
 
-    const [discipline, setDiscipline] = useState([]);
-
     const [task, setTask] = useState([]);
 
     useEffect(() => {
@@ -51,7 +49,7 @@ function CorrectionTask() {
         let loadTaskDelivery = async () => {
 
             try {
-                const response = await api.get(`taskdelivery/user_id/${location.user.id}/task_id/${location.task.id}`);
+                const response = await api.get(`taskdelivery/user_id/${location.state.user.id}/task_id/${location.state.task.id}`);
 
                 setTaskDelivery(response.data[0]);
 
@@ -68,7 +66,7 @@ function CorrectionTask() {
         <>
             <Header />
             <Nav />
-            <NavTask setProps={setDiscipline} iSOnPage={true}/>
+            <NavTask iSOnPage={true} />
             <Container>
                 <Task>
                     <div>
@@ -111,19 +109,6 @@ function CorrectionTask() {
                                     )
                                 )}
 
-
-                                {task.tasksAttachments !== undefined && (
-
-                                    task.tasksAttachments.link2 !== "" && (
-                                        <a href={task.tasksAttachments.link2} target="blank"  >
-
-                                            <input
-                                                value={task.tasksAttachments.link2}
-                                                disabled />
-                                        </a>
-                                    )
-                                )}
-
                             </div>
                             <div id="attachments" >
                                 <span>Anexos</span>
@@ -134,7 +119,7 @@ function CorrectionTask() {
 
 
                 </Task>
-                {taskDelivery.tasksAttachments !== undefined && (
+                {taskDelivery !== undefined && (
                     <TaskDelivery>
                         <div id="infosTaskDelivery" >
 
@@ -152,24 +137,17 @@ function CorrectionTask() {
                             <div id="linksUser" >
                                 <span>Links</span>
 
-                                taskDelivery.link !== undefined && (
-                                <a href={taskDelivery.link} >
-                                    {taskDelivery.link}
-                                </a>
-                                )
+                                {taskDelivery.link !== "" && (
+                                    <a href={taskDelivery.link} target="blank" >
+                                        <input value={taskDelivery.link} />
+                                    </a>
+                                )}
 
-                                taskDelivery.link1 !== undefined && (
-                                <a href={taskDelivery.link1} >
-                                    {taskDelivery.link1}
-                                </a>
-                                )
-
-                                taskDelivery.link2 !== undefined && (
-                                <a href={taskDelivery.link2} >
-                                    {taskDelivery.link2}
-                                </a>
-                                )
-
+                                {taskDelivery.link1 !== "" && (
+                                    <a href={taskDelivery.link1} target="blank" >
+                                        <input value={taskDelivery.link1} />
+                                    </a>
+                                )}
 
                             </div>
 
@@ -180,27 +158,47 @@ function CorrectionTask() {
                         </div>
 
                         <TaskComment>
-                            <h1>AQUIII</h1>
                             <div id="spots" >
                                 <Input id="spots" width="200px" label="Pontuação" />
                             </div>
                             <label>Comentário</label>
-                            <textarea cols="30" rows="10" />
-                            <div id="buttons" >
-                                <BtnSubmit text="Devolver" />
+                            <textarea cols="30" rows="10" value={taskDelivery.comment} />
 
-                                <BtnSubmit text="Corrigido" />
-                            </div>
+                            {taskDelivery.status !== 2 && (
+                                <div id="buttons" >
+                                    <BtnSubmit text="Devolver" />
+
+                                    <BtnSubmit text="Corrigido" />
+                                </div>
+                            )}
+
+                            {taskDelivery.status === 2 && (
+                                <div id="fixedTask" >
+                                    <span>A tarefa do aluno {location.state.user.name}, já foi corrigido</span>
+                                </div>
+                            )}
+
                         </TaskComment>
                     </TaskDelivery>
                 )}
 
-                {taskDelivery.tasksAttachments === undefined && (
+                {taskDelivery === undefined && (
                     <TaskNotDelivery>
-                        <div>
+                        <div id="user" >
+                            <ProfilePicture
+                                style="style1"
+                                name={location.state.user.name}
+                                profile_picture={location.state.user.profile_picture} />
+                            <div id="username" >
+                                <span>{location.state.user.name}</span>
+
+                            </div>
+                        </div>
+
+                        <div id="undeliveredTaskMessage" >
                             Tarefa não entregue, até o momento!
                         </div>
-                
+
                     </TaskNotDelivery>
                 )}
 

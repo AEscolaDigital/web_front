@@ -13,19 +13,31 @@ import selectTask from "../../assets/tasks/select_task.svg"
 
 import { useEffect, useState } from 'react';
 import { api } from "../../services/api";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import PermissionComponent from "../../components/PermissionComponent";
+import { getUser } from "../../services/security";
+
 
 function ListOfTasks() {
 
     const history = useHistory();
+    const location = useLocation();
+
 
     const [discipline, setDiscipline] = useState([]);
+
+    const [disciplineCreateTask, setDisciplineCreateTask] = useState(true);
+
+    if (location.state !== undefined) {
+        if (disciplineCreateTask) {
+            setDisciplineCreateTask(false);
+            setDiscipline(location.state.discipline);
+        }
+    }
 
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-
         let loadTasks = async () => {
 
             try {
@@ -67,14 +79,26 @@ function ListOfTasks() {
         e.preventDefault();
 
         try {
-            history.push({
-                pathname: `/taskUserList`,
-                state: {
+            if (getUser().role !== "ROLE_USER") {
+                history.push({
+                    pathname: `/taskUserList`,
+                    state: {
                     id: discipline.id,
                     name: discipline.name,
                     task: task
-                }
-            })
+                    }
+                })
+            }else{
+                history.push({
+                    pathname: `/taskDelivery`,
+                    state: {
+                    id: discipline.id,
+                    name: discipline.name,
+                    task: task
+                    }
+                })
+            }
+
         } catch (error) {
             console.log(error);
         }
@@ -152,7 +176,7 @@ function ListOfTasks() {
                             <button onClick={()=> setTask(task)} >
                                 <div>
                                     <div>
-                                        <img src={Imagem} alt="sssssss" />
+                                        <img src={Imagem} alt="Image de controle de video game" />
                                     </div>
                                     <div className="textListTask" >{task.name}</div>
                                     <div className="dateTask" >

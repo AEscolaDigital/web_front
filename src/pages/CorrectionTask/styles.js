@@ -14,7 +14,7 @@ export const Task = styled.div`
      width: 100%;
 
      display: grid;
-     grid-template-columns: 10% 50%;
+     grid-template-columns: 10% 50% 40%;
 
      background-color: white;
      border-radius: 15px 15px 0px 0px;
@@ -141,14 +141,24 @@ export const TaskDelivery = styled.div`
                a{
                     height: 35px;
                
-                    background-color: #EDEDED;
+                    background-color: var(--color-background);
                     cursor: pointer;   
                     color: var(--text-color);
                     
                     padding: 8px 15px 8px 15px;
 
                     margin-top: 10px;
+               }
 
+               >a>input{
+                    width: 320px;
+
+                    border: 0;
+
+                    background-color: var(--color-background);
+
+                    font-size: 14px;
+                    cursor: pointer;
                }
           }
 
@@ -211,12 +221,30 @@ export const TaskComment = styled.form`
 
           }
      }
+
+     #fixedTask{
+          width: 80%;
+          height: 50px;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          margin: 30px auto;
+
+          background-color: var(--color-background);
+          
+          color: var(--color-text);
+          font-size: 18px;
+
+          border-radius: 10px;
+          
+     }
 `
 
 export const TaskNotDelivery = styled.div`
      width: 100%;
-     height: 100px;
-
+   
      box-shadow: 0px -4px 7px 1px rgb(206 206 206 / 55%);
 
      background-color: white;
@@ -226,7 +254,26 @@ export const TaskNotDelivery = styled.div`
      justify-content: center;
      flex-direction: column;
 
-     >div{
+     margin-bottom: 100px;
+     padding-bottom: 40px;
+
+
+     #user{
+          font-size: 18px;
+          font-weight: bold;
+          color: var(--color-text);
+          margin-bottom: 30px;
+          margin-top: 20px;
+
+          display: grid;
+          justify-items: center;
+
+          #username{
+               margin-top: 20px;
+          }
+     }
+
+     #undeliveredTaskMessage{
           width: 70%;
           height: 50px;
 
@@ -243,5 +290,6 @@ export const TaskNotDelivery = styled.div`
 
 
      }
+
        
 `

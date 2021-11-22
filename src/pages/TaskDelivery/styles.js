@@ -14,7 +14,7 @@ export const Task = styled.div`
      width: 100%;
 
      display: grid;
-     grid-template-columns: 10% 50%;
+     grid-template-columns: 10% 50% 40%;
 
      background-color: white;
      border-radius: 15px 15px 0px 0px;
@@ -84,8 +84,27 @@ export const Task = styled.div`
           }
      }
 
+     #taskComment{
+          display: grid;
+          margin-top: 10px;
+
+          #commentTitle{
+               font-size: 18px;
+               font-weight: bold;
+               color: var(--color-text);
+          }
+
+          #comment{
+               font-size: 14px;
+               color: var(--color-text);
+
+               margin-top: 20px;
+          }
+          
+     }
+
 `
-export const TaskDelivery = styled.div`
+export const ContainerTaskDelivery = styled.div`
      width: 100%;
 
      background-color: white;
@@ -96,152 +115,124 @@ export const TaskDelivery = styled.div`
 
      margin-bottom: 70px;
 
-     #infosTaskDelivery{
-          display: flex;
-
-          >img{
-               width: 60px;
-               height: 60px;
-               border-radius: 100px;
-          }
-
-          div{
-               display: grid;
-               padding-left: 15px;
-
-               color: var(--color-text);
-
-               #name{
-                    font-size: 18px;
-               }
-
-               #date{
-                    font-weight: bolder;
-               }
-          }
-     }
-
-     #taskAttachmentsUser{
-        
-          width: 380px;
-
-          #linksUser{
-               display: flex;
-               flex-direction: column;
-
-               margin-top: 15px;
-               margin-left: 15px;
-
-               span{
-                    color: var(--color-text);
-                    font-weight: bold;
-                    font-size: 18px;
-               }
-
-               a{
-                    height: 35px;
-               
-                    background-color: #EDEDED;
-                    cursor: pointer;   
-                    color: var(--text-color);
-                    
-                    padding: 8px 15px 8px 15px;
-
-                    margin-top: 10px;
-
-               }
-          }
-
-          #attachmentsUser{
-               margin-top: 15px;
-               span{
-                    color: var(--color-text);
-                    font-weight: bold;
-                    font-size: 18px;
-
-                    margin-left: 15px;
-            
-               }
-          }
-     }
-
-`
-
-export const TaskComment = styled.form`
-     display: grid;
-  
-     margin-top: -70px;
-     margin-left: 15px;
-
-     #spots{
-          display: grid;
-          justify-content: end;
-          margin-right: 20px;
-     }
-
-     label{
+     .titleFormatting{
           color: var(--color-text);
           font-weight: bold;
+     }
 
+
+     #title{
+          font-size: 18px;
+          margin-left: 30px;
           margin-bottom: 10px;
-          margin-top: 15px;
-     }
-      
-     textarea{
-          width: 600px;
-          border-radius: 10px;
-          border: 2px solid var(--color-blue);
      }
 
-     #buttons{
+     #linksTaskDelivery{
+          >span{
+               margin-left: 40px;
+               font-size: 14px;
+          }
+
+          .inputs {
+               display: flex;
+               align-items: center;
+               column-gap: 15px;
+
+               margin-top: 15px;
+               margin-left: 40px;
+
+               >div{
+                    padding: 0px;
+               }
+          
+               input {
+                    width: 435px;
+                    height: 35px;
+
+                    background-color: #EDEDED;
+                    border-radius: 5px;
+                    border: 0px;
+
+                    color: var(--color-text);
+
+                    padding-left: 10px;
+               }
+
+               img{
+                    width: 20px;
+                    height: 20px;
+                    cursor: pointer;
+               }
+          }
+     }
+
+     #attachmentsTaskDelivery{
+          margin-top: 20px;
+          >span{
+               font-size: 14px;
+               margin-left: 40px;
+          }
+     }
+
+     #btn{
           display: flex;
           justify-content: end;
-
-          margin-top: 20px;
           margin-right: 50px;
-
-          button{
-               margin-left: 15px;
-          }
-
-          button:nth-child(1){
-               background-color: white;
-               color: black;
-               border: 1px solid var(--color-blue);
-
-          }
+          margin-top: 20px;
      }
-`
 
-export const TaskNotDelivery = styled.div`
-     width: 100%;
-     height: 100px;
+     #taskMessageDelivered{
+          width: 80%;
+          height: 70px;
 
-     box-shadow: 0px -4px 7px 1px rgb(206 206 206 / 55%);
-
-     background-color: white;
-
-     display: flex;
-     align-items: center;
-     justify-content: center;
-     flex-direction: column;
-
-     >div{
-          width: 70%;
-          height: 50px;
+          margin: 40px auto;
 
           display: flex;
-          justify-content: center;
           align-items: center;
-
-          color: var(--color-text);
-          font-size: 18px;
+          justify-content: center;
 
           background-color: var(--color-background);
 
-          border-radius: 5px;
+          border-radius: 10px;
 
+          font-size: 18px;
+          color: var(--color-text);
+     }
+
+     #deliveredTaskLinks{
+          display: grid;
+
+          margin-left: 40px;
+
+          >span{
+               color: var(--color-text);
+               font-size: 14px;
+               font-weight: bold;
+          }
+
+          a{
+               width: 370px;
+               height: 35px;
+               
+               background-color: var(--color-background);
+               cursor: pointer;   
+               color: var(--text-color);
+                    
+               padding: 8px 15px 8px 15px;
+
+               margin-top: 10px;
+          }
+
+          >a>input{
+               width: 320px;
+
+               border: 0;
+
+               background-color: var(--color-background);
+
+               font-size: 14px;
+               cursor: pointer;
+          }
 
      }
-       
 `

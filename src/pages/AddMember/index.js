@@ -29,8 +29,7 @@ import {
 import { useEffect, useState } from "react"
 import { api } from "../../services/api";
 import Swal from "sweetalert2";
-//import { uniqueId } from "lodash";
-//import filesize from "filesize";
+
 import Modal from "../../components/Modal";
 import BtnCancel from "../../components/BtnCancel";
 

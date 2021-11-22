@@ -11,6 +11,7 @@ import ListOfTasks from "./pages/ListOfTasks";
 import CreateTask from "./pages/CreateTask";
 import TaskUserList from "./pages/TaskUserList";
 import CorrectionTask from "./pages/CorrectionTask";
+import TaskDelivery from "./pages/TaskDelivery";
 
 function PrivateRoute({ role, children, ...rest }) {
 
@@ -73,6 +74,9 @@ function Router() {
                 </PrivateRoute>
                 <PrivateRoute path="/correctionTask">
                     <CorrectionTask />
+                </PrivateRoute>
+                <PrivateRoute path="/taskDelivery">
+                    <TaskDelivery />
                 </PrivateRoute>
             </Switch>
         </BrowserRouter>
