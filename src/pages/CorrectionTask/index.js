@@ -44,6 +44,8 @@ function CorrectionTask() {
 
     const [taskDelivery, setTaskDelivery] = useState([]);
 
+    console.log(taskDelivery);
+
     useEffect(() => {
 
         let loadTaskDelivery = async () => {
