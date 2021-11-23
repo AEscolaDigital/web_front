@@ -3,7 +3,6 @@ import imageHttpError503 from "../../assets/alert/imageHttpError503.svg"
 import arrowLeft from "../../assets/addMember/arrowLeft.svg";
 import arrowRight from "../../assets/addMember/arrowRight.svg";
 import downArrow from "../../assets/select/downArrow.svg"
-import iconDelete from "../../assets/select/delete.svg"
 
 import Nav from "../../components/Nav";
 import Header from "../../components/Header";
@@ -49,13 +48,14 @@ function Teams() {
 
     const [disciplines, setDisciplines] = useState([]);
     const [loadDisciplines, setLoadDisciplines] = useState(0);
-
+   
     useEffect(() => {
         let loadDisciplines = async () => {
 
             try {
                 const response = await api.get(`/disciplines`);
                 setDisciplines(response.data)
+              
 
             } catch (error) {
                 httpError503(error.response);
@@ -191,18 +191,18 @@ function Teams() {
                                         <input
                                             placeholder="Pesquisar" />
                                     </ContainerSearch>
-                                    <Select src={iconDelete} >
+                                    <Select>
                                         <span >Selecione alguma turma</span>
                                         <hr />
                                         <div id="option" >
                                             {classes.map(classe =>
                                                 <div>
-                                                    <a onClick={() => {
+                                                    <button onClick={() => {
                                                         setToogle(true);
                                                         setSelectedClass(classe);
                                                     }}>
                                                         <span >{classe.name}</span>
-                                                    </a>
+                                                    </button>
                                                 </div>
                                             )}
 
@@ -244,6 +244,7 @@ function Teams() {
                                 label="Nome da disciplina"
                                 width="420px"
                                 handler={handleInput}
+                                required
                             />
                         </div>
                         <div id="btnModal" >
@@ -270,12 +271,12 @@ function Teams() {
             <div id="titleYourTeams" >
                 <h1>Suas disciplinas</h1>
             </div>
-            <Section>
 
-                {disciplines.map(discipline =>
+            <Section>
+                {disciplines.map(discipline => 
                     <Card
                         disciplinesName={discipline.name}
-                        teacherName={discipline.name}
+                        teacherName={discipline.teacher_name}
                         id={discipline.id}
                         setProps={setGrandson} >
                         <img src={discipline.image} alt=""

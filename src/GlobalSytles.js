@@ -26,7 +26,7 @@ export const GlobalSyles = createGlobalStyle`
       }
 
       body{
-       background-color: #EDEDED;
+       background-color: var(--color-background);
       }
 
       a{

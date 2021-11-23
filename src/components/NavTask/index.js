@@ -4,10 +4,25 @@ import imageTasks from "../../assets/navTask/imageTasks.svg"
 
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
+import { useHistory } from "react-router";
 
-function NavTask({setProps}) {
+function NavTask({ setProps, iSOnPage }) {
+
+    const history = useHistory();
 
     const [disciplines, setDisciplines] = useState([]);
+
+    const setDisciplineId = (disciplineId) =>{
+        if (!iSOnPage) 
+            setProps(disciplineId);
+    }
+
+    const status = () => {
+        if (iSOnPage) {
+            history.push("listOfTasks");
+        }
+
+    }
 
     useEffect(() => {
 
@@ -27,8 +42,7 @@ function NavTask({setProps}) {
 
     }, []);
 
-    const [disciplineId, setDisciplineId] = useState(0);
-    setProps(disciplineId)
+
 
     return (
         <Container>
@@ -43,8 +57,11 @@ function NavTask({setProps}) {
                     <span>Todas as disciplinas</span>
                 </div>
                 <div id="disciplines" >
-                    {disciplines.map(discipline => 
-                        <div onClick={()=> setDisciplineId(discipline), setProps(discipline) } >{discipline.name}</div>
+                    {disciplines.map(discipline =>
+                        <div onClick={() => {
+                            setDisciplineId(discipline);
+                            status();
+                        }} >{discipline.name}</div>
                     )}
                 </div>
             </ContainerClass>

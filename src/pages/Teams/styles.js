@@ -28,8 +28,8 @@ export const Container = styled.div`
     #titleYourTeams{
         width: 75vw;
         margin: auto;
-        margin-top: ${props => props.role == "ROLE_USER" &&
-        ( "80px" )};
+        margin-top: ${props => props.role === "ROLE_USER" &&
+        ("80px")};
         color: var(--color-text);
     }
 
@@ -98,7 +98,6 @@ export const ContainerSelect = styled.div`
     }
 `
 
-
 export const Select = styled.div`
     display: flex;
     flex-direction: column;
@@ -133,18 +132,34 @@ export const Select = styled.div`
             padding: 5px 10px 5px 10px;
         }
 
-        div:hover{
-            background-color: #EDEDED;
+        /* div:hover{
+            background-color: var(--color-background);
             border-radius: 5px;
+        } */
+
+        button:hover{
+            background-color: var(--color-background);
         }
 
-        a{
+
+
+        button{
             width: 100%;
+
+            padding: 5px 0px 5px 5px;
 
             display: flex;
             justify-content: space-between;
+            background-color: white;
 
             color: var(--color-text);
+            font-size: 15px;
+
+            border: 0;
+
+            cursor: pointer;
+
+            border-radius: 5px;
         }
     }
 
@@ -162,19 +177,6 @@ export const Select = styled.div`
 
         cursor: pointer;
 
-    }
-
-    button{
-        width: 25px;
-        height: 30px;
-
-        border: 0px;
-
-        background: url(${props => props.src});
-        background-repeat: no-repeat;
-        background-position: center;
-
-        cursor: pointer;
     }
 
 `

@@ -29,10 +29,19 @@ export const ContainerTask = styled.div`
           color: var(--color-text);
 
           >p{
-               font-weight:bold;
+               font-weight: bold;
+               margin-bottom: 5px;
+          } 
+
+          #nameDisiciplina{
+               font-size: 14px;
+               color: var(--color-text);
+               font-weight: bold;
           }
+
      }
 
+   
      >div{
 
           >div{
@@ -126,7 +135,7 @@ export const ReferenciaAnexo = styled.div`
                color: #5C5C5C;
           }
      }
-  
+
 `
 
 export const ActivityDeliveryContainer = styled.div`
@@ -136,6 +145,10 @@ export const ActivityDeliveryContainer = styled.div`
 
      width: 60vw;
      max-width: 880px;
+
+     margin-bottom: 40px;
+     padding-bottom: 40px;
+     padding-right: 40px;
 
      margin-left: calc(50vw - 212px);
 
@@ -150,6 +163,12 @@ export const ActivityDeliveryContainer = styled.div`
 
      box-shadow: 0px -4px 7px 1px rgba(206, 206, 206, 0.35);
      border-radius: 0px 0px 15px 15px;
+
+     
+     #btn{
+          display: flex;
+          justify-content: end;
+     }
 
 `
 
@@ -167,13 +186,12 @@ export const ContainerStudent = styled.div`
 
 export const ContainerStudentAnexo = styled.div`
      width: 200px;
+
      
      display: grid;
      grid-template-columns: 500px 200px;
 
-     padding-bottom: 50px;
-
-     margin-bottom: 100px;
+     margin-bottom: 40px;
 
      #enexos{
           display: flex;
@@ -193,13 +211,12 @@ export const ContainerStudentAnexo = styled.div`
      #pontuacao{
           margin-top: 45px;
      }
+
 `
 
 export const InputFile = styled.div`
-     width: 365px;
+     width: 385px;
      height: 35px;
-     background-color: #EDEDED;
-
 
      label {
         display: flex;
@@ -216,6 +233,41 @@ export const InputFile = styled.div`
     input[type='file']{
         display: none;
     } 
+
+     .files{
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+
+         background-color: var(--color-background);
+
+         border-radius: 5px;
+
+         height: 35px;
+
+         margin-top: 15px;
+
+         div>label{
+              width: 385px;
+
+              padding-bottom: 10px;
+
+              overflow: hidden;
+
+              white-space: nowrap; 
+
+              text-overflow: ellipsis;
+         }
+
+          div>img{
+              width: 20px;
+              height: 20px;
+
+              margin-left: 10px;
+
+              cursor: pointer;
+         }
+    }
 
 `
 export const ContainerBtn = styled.div`

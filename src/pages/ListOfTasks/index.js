@@ -13,17 +13,30 @@ import selectTask from "../../assets/tasks/select_task.svg"
 
 import { useEffect, useState } from 'react';
 import { api } from "../../services/api";
-import { Link } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import PermissionComponent from "../../components/PermissionComponent";
+import { getUser } from "../../services/security";
+
 
 function ListOfTasks() {
 
+    const history = useHistory();
+    const location = useLocation();
+
     const [discipline, setDiscipline] = useState([]);
+
+    const [disciplineCreateTask, setDisciplineCreateTask] = useState(true);
+
+    if (location.state !== undefined) {
+        if (disciplineCreateTask) {
+            setDisciplineCreateTask(false);
+            setDiscipline(location.state.discipline);
+        }
+    }
 
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
-
         let loadTasks = async () => {
 
             try {
@@ -39,6 +52,56 @@ function ListOfTasks() {
         loadTasks();
 
     }, [discipline]);
+
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            history.push({
+                pathname: `/createTask`,
+                state: {
+                    id: discipline.id,
+                    name: discipline.name,
+                }
+            })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    
+    const [task, setTask] = useState();
+
+    const handleSubmitTaskUserList = async (e) => {
+
+        e.preventDefault();
+
+        try {
+            if (getUser().role !== "ROLE_USER") {
+                history.push({
+                    pathname: `/taskUserList`,
+                    state: {
+                    id: discipline.id,
+                    name: discipline.name,
+                    task: task
+                    }
+                })
+            }else{
+                history.push({
+                    pathname: `/taskDelivery`,
+                    state: {
+                    id: discipline.id,
+                    name: discipline.name,
+                    task: task
+                    }
+                })
+            }
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <>
@@ -60,11 +123,15 @@ function ListOfTasks() {
                                 </div>
                             </div>
 
-                            <Link to="createTask" >
-                                <div id="addNewTasks" >
-                                    Adicionar nova tarefa
-                                </div>
-                            </Link>
+
+                            <form id="formCreateTask" onSubmit={handleSubmit} >
+                                <button to="createTask" >
+                                    <div id="addNewTasks" >
+                                        Adicionar nova tarefa
+                                    </div>
+                                </button>
+                            </form>
+
 
                         </section>
                     )}
@@ -93,9 +160,9 @@ function ListOfTasks() {
                     </div>
                 )}
 
-                {discipline === 0 && (
+                {discipline.length === 0 && (
                     <ContainerSelectionDiscipline>
-                        <img src={selectTask} />
+                        <img src={selectTask} alt="" />
                         <span>Selecione uma disciplina</span>
                         <span>para poder visualizar as tarefas</span>
                     </ContainerSelectionDiscipline>
@@ -103,24 +170,26 @@ function ListOfTasks() {
 
 
                 <ContainerListTask>
-                    {tasks.map(task =>
-                        <Link to="" >
-                            <div>
+                    <form onSubmit={handleSubmitTaskUserList} >
+                        {tasks.map(task =>
+                            <button onClick={()=> setTask(task)} >
                                 <div>
-                                    <img src={Imagem} alt="sssssss" />
-                                </div>
-                                <div className="textListTask" >{task.name}</div>
-                                <div className="dateTask" >
                                     <div>
-                                        <span>Data de entrega</span>
-                                        <span>{task.date_delivery}</span>
+                                        <img src={Imagem} alt="Image de controle de video game" />
+                                    </div>
+                                    <div className="textListTask" >{task.name}</div>
+                                    <div className="dateTask" >
+                                        <div>
+                                            <span>Data de entrega</span>
+                                            <span>{task.date_delivery}</span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </Link>
-
-                    )}
-
+                            </button>
+                         
+                         
+                        )}
+                    </form>
                 </ContainerListTask>
 
             </ContainerTask>
