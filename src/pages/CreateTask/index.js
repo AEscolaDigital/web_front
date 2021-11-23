@@ -90,23 +90,42 @@ function CreateTask() {
         link2: "",
     });
 
+    const handleChange = (e) =>{
+        setFormTesk({ ...formTask, [e.target.id]: e.target.value });
+    }
 
     const handleInput = (e) => {
         setFormTesk({ ...formTask, [e.target.id]: e.target.value });
     };
 
-    const [fileName, setFileName] = useState();
-    const [files, setFiles] = useState(null);
+  //  const [fileName, setFileName] = useState();
+    //const [files, setFiles] = useState(null);
+
+   // console.log(files);
+
+    const [formTaskFile, setFormTeskFile] = useState({
+        file: "",
+        file1: "",
+        file2: "",
+    });
+
+    // console.log(formTaskFile);
 
     const handleFile = (e) => {
 
-        if (e.target.files.length > 0) {
-            const files = e.target.files[0];
-            setFileName(files.name);
-            setFiles(files)
-        }
+        setFormTeskFile({ ...formTaskFile, [e.target.id]: e.target.file });
 
     };
+
+
+
+        // if (e.target.files.length > 0) {
+        //     const files = e.target.files;
+        //     setFileName(files.name);
+        //     setFiles(files)
+        // }
+
+    // };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -122,7 +141,7 @@ function CreateTask() {
             data.append("link", formTask.link);
             data.append("link1", formTask.link1);
             data.append("link2", formTask.link2);
-            data.append("file", files);
+            data.append("file", formTaskFile.file);
             data.append("file1", "");
             data.append("file2", "");
 
@@ -213,6 +232,7 @@ function CreateTask() {
                             width="423px"
                             height="63px"
                             required
+                            autocomplete="off"
                             handler={handleInput} />
 
                         <div id="taskDescription" >
@@ -222,7 +242,9 @@ function CreateTask() {
                                 rows="5"
                                 cols="30"
                                 required
-                                handler={handleInput} />
+                                autocomplete="off"
+                                maxlength="765"
+                                onChange={handleChange} />
                         </div>
 
                         <Input
@@ -232,6 +254,7 @@ function CreateTask() {
                             height="63px"
                             width="423px"
                             required
+                            autocomplete="off"
                             handler={handleInput} />
 
                         <Input
@@ -240,6 +263,7 @@ function CreateTask() {
                             type="number"
                             width="423px"
                             height="63px"
+                            autocomplete="off"
                             handler={handleInput} />
                     </div>
                 </ContainerTask>
@@ -281,12 +305,14 @@ function CreateTask() {
                                         <div className="files" >
                                             <div>
                                                 <label>
-                                                    {fileName}
-                                                    {fileName === undefined && (
+                                                    {/* {fileName} */}
+                                                    {/* {fileName === undefined && ( */}
                                                         <span>Selecione um arquivo</span>
-                                                    )}
-                                                    <input type="file" 
-                                                            onChange={handleFile} />
+                                                    {/* )} */}
+                                                    <input 
+                                                        id={inputFile.id}
+                                                        type="file" 
+                                                        onChange={handleFile} />
                                                 </label>
                                             </div>
                                             <div>

@@ -226,7 +226,9 @@ function CorrectionTask() {
 
                             {taskDelivery.status !== 2 && (
                                 <div id="buttons" >
-                                    <BtnSubmit text="Devolver" />
+                                    <BtnSubmit 
+                                       id="btnGiveBack"
+                                        text="Devolver" />
 
                                     <div onClick={() => setStatus(status + 2)} >
                                         <BtnSubmit

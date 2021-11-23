@@ -29,7 +29,7 @@ export const Container = styled.div`
         width: 75vw;
         margin: auto;
         margin-top: ${props => props.role === "ROLE_USER" &&
-        ( "80px" )};
+        ("80px")};
         color: var(--color-text);
     }
 
@@ -132,17 +132,21 @@ export const Select = styled.div`
             padding: 5px 10px 5px 10px;
         }
 
-        div:hover{
+        /* div:hover{
             background-color: var(--color-background);
             border-radius: 5px;
-        }
+        } */
 
         button:hover{
             background-color: var(--color-background);
         }
 
+
+
         button{
             width: 100%;
+
+            padding: 5px 0px 5px 5px;
 
             display: flex;
             justify-content: space-between;
@@ -154,6 +158,8 @@ export const Select = styled.div`
             border: 0;
 
             cursor: pointer;
+
+            border-radius: 5px;
         }
     }
 

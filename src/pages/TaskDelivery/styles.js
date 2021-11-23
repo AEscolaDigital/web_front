@@ -102,6 +102,10 @@ export const Task = styled.div`
                color: var(--color-text);
 
                margin-top: 20px;
+
+               max-width: 400px;
+               word-break: break-all;
+
           }
           
      }

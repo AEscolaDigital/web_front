@@ -34,7 +34,7 @@ function Header() {
                 </button>
             </div>
 
-            <div onClick={e => setToogle(state => !state)} >
+            <div id="profilePicture" onClick={e => setToogle(state => !state)} >
                 <ProfilePicture
                     style="style2"
                     name={getUser().name}

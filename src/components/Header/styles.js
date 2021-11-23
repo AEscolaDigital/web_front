@@ -59,6 +59,10 @@ export const Container = styled.header`
     img{
         cursor: pointer;
     }
+
+    #profilePicture{
+        cursor: pointer;
+    }
 `;
 
 export const Card = styled.div`

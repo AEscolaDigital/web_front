@@ -213,13 +213,13 @@ export const TaskComment = styled.form`
           button{
                margin-left: 15px;
           }
-
-          button:nth-child(1){
+          
+          >button:nth-child(1){
                background-color: white;
-               color: black;
                border: 1px solid var(--color-blue);
-
+               color: black;
           }
+
      }
 
      #fixedTask{

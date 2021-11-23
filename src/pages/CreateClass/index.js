@@ -338,6 +338,7 @@ function CreateClass() {
                                 label="Nome da turma"
                                 handler={handleInput}
                                 value={formCreateClass.name}
+                                autocomplete="off"
                             />
 
                             <div id="button" >
@@ -427,7 +428,9 @@ function CreateClass() {
                                     id="email"
                                     handler={handleInputAddMember}
                                     label="Informe o e-mail"
-                                    value={formAddMember.email} />
+                                    value={formAddMember.email}
+                                    autocomplete="off"
+                                />
 
                                 <div id="buttonAddMemberToClass" >
                                     <BtnSubmit text="Adicionar" />
