@@ -52,6 +52,8 @@ export const Task = styled.div`
                margin-left: 15px;
 
                a{
+                    width: 370px;
+
                     height: 35px;
                
                     background-color: var(--color-background);
@@ -87,6 +89,7 @@ export const Task = styled.div`
      #taskComment{
           display: grid;
           margin-top: 10px;
+          margin-right: 20px;
 
           #commentTitle{
                font-size: 18px;

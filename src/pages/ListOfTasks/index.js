@@ -23,7 +23,6 @@ function ListOfTasks() {
     const history = useHistory();
     const location = useLocation();
 
-
     const [discipline, setDiscipline] = useState([]);
 
     const [disciplineCreateTask, setDisciplineCreateTask] = useState(true);

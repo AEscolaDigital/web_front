@@ -19,6 +19,8 @@ function ClassesList() {
 
     const [listUsers, setListUsers] = useState([]);
 
+    console.log(listUsers);
+
     useEffect(() => {
 
         let loadListUsers = async () => {

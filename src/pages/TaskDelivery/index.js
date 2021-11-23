@@ -47,6 +47,7 @@ function TaskDelivery() {
     }, []);
 
     const [taskDelivery, setTaskDelivery] = useState([]);
+    const [loadTaskDelivery, setLoadTaskDelivery] = useState(0);
 
     useEffect(() => {
 
@@ -64,7 +65,7 @@ function TaskDelivery() {
 
         loadTaskDelivery();
 
-    }, []);
+    }, [loadTaskDelivery]);
 
     const [inputs, setInput] = useState([{ id: 'link' }])
 
@@ -123,6 +124,9 @@ function TaskDelivery() {
             })
 
             successAlert("Tarefa entregue com sucesso");
+            setTimeout(()=>{
+                setLoadTaskDelivery(loadTaskDelivery + 2);
+            }, 500)
 
 
         } catch (error) {
@@ -173,7 +177,7 @@ function TaskDelivery() {
         <>
             <Header />
             <Nav />
-            <NavTask />
+            <NavTask iSOnPage="true" />
             <Container>
                 <Task>
                     <div>
@@ -300,7 +304,8 @@ function TaskDelivery() {
 
                         {taskDelivery === undefined && (
                             <div id="btn" >
-                                <BtnSubmit text="Entregar" />
+                                <BtnSubmit 
+                                    text="Entregar" />
                             </div>
                         )}
 

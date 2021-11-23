@@ -17,11 +17,11 @@ import { api } from "../../services/api";
 import { useEffect, useState } from 'react';
 import { useLocation } from "react-router";
 import { getUser } from "../../services/security";
+import Swal from "sweetalert2";
 
 function CorrectionTask() {
 
     const location = useLocation();
-
     const [task, setTask] = useState([]);
 
     useEffect(() => {
@@ -42,8 +42,10 @@ function CorrectionTask() {
 
     }, []);
 
+  
     const [taskDelivery, setTaskDelivery] = useState([]);
-
+    const [loadTaskDelivery1, setLoadTaskDelivery] = useState(0);
+  
     useEffect(() => {
 
         let loadTaskDelivery = async () => {
@@ -60,7 +62,53 @@ function CorrectionTask() {
 
         loadTaskDelivery();
 
-    }, []);
+
+    }, [loadTaskDelivery1]);
+
+    const [formCorrectionTask, setCorrectionTask] = useState({
+        spots: "",
+        comment: "",
+
+    });
+
+    const handleInput = (e) => {
+        setCorrectionTask({ ...formCorrectionTask, [e.target.id]: e.target.value });
+    };
+
+    const handleTextarea = (e) => {
+        setCorrectionTask({ ...formCorrectionTask, [e.target.id]: e.target.value });
+    }
+
+    const [status, setStatus] = useState(0);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            await api.put(`/taskdelivery/${taskDelivery.id}`, {
+                spots: formCorrectionTask.spots,
+                comment: formCorrectionTask.comment,
+                status: status
+            });
+
+            successAlert('Tarefa corrigida!');
+            setTimeout(()=> {
+                setLoadTaskDelivery(loadTaskDelivery1 + 2);
+            }, 500);
+        } catch (error) {
+            alert(error)
+        }
+    }
+
+    const successAlert = (text) => {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: `${text}`,
+            showConfirmButton: false,
+            timer: 1500
+        })
+    }
 
     return (
         <>
@@ -157,18 +205,33 @@ function CorrectionTask() {
 
                         </div>
 
-                        <TaskComment>
+                        <TaskComment onSubmit={handleSubmit}>
                             <div id="spots" >
-                                <Input id="spots" width="200px" label="Pontuação" />
+                                <Input
+                                    id="spots"
+                                    width="200px"
+                                    label="Pontuação"
+                                    handler={handleInput} />
                             </div>
+
                             <label>Comentário</label>
-                            <textarea cols="30" rows="10" value={taskDelivery.comment} />
+                            <textarea
+                                id="comment"
+                                cols="30"
+                                rows="10"
+                                onChange={handleTextarea}
+                                required
+                                value={taskDelivery.comment}
+                            />
 
                             {taskDelivery.status !== 2 && (
                                 <div id="buttons" >
                                     <BtnSubmit text="Devolver" />
 
-                                    <BtnSubmit text="Corrigido" />
+                                    <div onClick={() => setStatus(status + 2)} >
+                                        <BtnSubmit
+                                            text="Corrigido" />
+                                    </div>
                                 </div>
                             )}
 
