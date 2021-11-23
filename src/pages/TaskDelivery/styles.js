@@ -31,6 +31,7 @@ export const Task = styled.div`
      }
 
      #taskDescription{
+          max-width: 500px; 
           margin-top: 15px;
      }
 
@@ -104,7 +105,6 @@ export const Task = styled.div`
                margin-top: 20px;
 
                max-width: 400px;
-               word-break: break-all;
 
           }
           

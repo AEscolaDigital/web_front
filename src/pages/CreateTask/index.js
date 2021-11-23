@@ -90,7 +90,8 @@ function CreateTask() {
         link2: "",
     });
 
-    const handleChange = (e) =>{
+
+    const handleChange = (e) => {
         setFormTesk({ ...formTask, [e.target.id]: e.target.value });
     }
 
@@ -98,34 +99,16 @@ function CreateTask() {
         setFormTesk({ ...formTask, [e.target.id]: e.target.value });
     };
 
-  //  const [fileName, setFileName] = useState();
-    //const [files, setFiles] = useState(null);
-
-   // console.log(files);
 
     const [formTaskFile, setFormTeskFile] = useState({
-        file: "",
-        file1: "",
-        file2: "",
+        file: {},
+        file1: {},
+        file2: {},
     });
 
-    // console.log(formTaskFile);
-
     const handleFile = (e) => {
-
-        setFormTeskFile({ ...formTaskFile, [e.target.id]: e.target.file });
-
+        setFormTeskFile({ ...formTaskFile, [e.target.id]: e.target.files[0] });
     };
-
-
-
-        // if (e.target.files.length > 0) {
-        //     const files = e.target.files;
-        //     setFileName(files.name);
-        //     setFiles(files)
-        // }
-
-    // };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -142,8 +125,8 @@ function CreateTask() {
             data.append("link1", formTask.link1);
             data.append("link2", formTask.link2);
             data.append("file", formTaskFile.file);
-            data.append("file1", "");
-            data.append("file2", "");
+            data.append("file1", formTaskFile.file1);
+            data.append("file2", formTaskFile.file2);
 
 
             await api.post(`tasks/${discipline.id}`, data, {
@@ -205,7 +188,6 @@ function CreateTask() {
             footer: `${textFooter}`
         })
     }
-
 
     return (
         <>
@@ -305,13 +287,22 @@ function CreateTask() {
                                         <div className="files" >
                                             <div>
                                                 <label>
-                                                    {/* {fileName} */}
-                                                    {/* {fileName === undefined && ( */}
-                                                        <span>Selecione um arquivo</span>
-                                                    {/* )} */}
-                                                    <input 
+
+                                                    {inputFile.id === "file" && (
+                                                        formTaskFile.file.name === undefined ? <span>Selecione um arquivo</span> : formTaskFile.file.name
+                                                    )}
+
+                                                    {inputFile.id === "file1" && (
+                                                        formTaskFile.file1.name === undefined ? <span>Selecione um arquivo</span> : formTaskFile.file1.name
+
+                                                    )}
+                                                    {inputFile.id === "file2" && (
+                                                        formTaskFile.file2.name === undefined ? <span>Selecione um arquivo</span> : formTaskFile.file2.name
+                                                    )}
+
+                                                    <input
                                                         id={inputFile.id}
-                                                        type="file" 
+                                                        type="file"
                                                         onChange={handleFile} />
                                                 </label>
                                             </div>

@@ -222,6 +222,8 @@ function CorrectionTask() {
                                 onChange={handleTextarea}
                                 required
                                 value={taskDelivery.comment}
+                                autocomplete="off"
+                                maxlength="755"
                             />
 
                             {taskDelivery.status !== 2 && (

@@ -249,7 +249,14 @@ export const InputFile = styled.div`
 
          div>label{
               width: 385px;
+
               padding-bottom: 10px;
+
+              overflow: hidden;
+
+              white-space: nowrap; 
+
+              text-overflow: ellipsis;
          }
 
           div>img{

@@ -124,7 +124,7 @@ function TaskDelivery() {
             })
 
             successAlert("Tarefa entregue com sucesso");
-            setTimeout(()=>{
+            setTimeout(() => {
                 setLoadTaskDelivery(loadTaskDelivery + 2);
             }, 500)
 
@@ -233,10 +233,15 @@ function TaskDelivery() {
                                     )
                                 )}
 
+
                             </div>
                             <div id="attachments" >
                                 <span>Anexos</span>
-
+                                {task.tasksAttachments !== undefined && (
+                                    task.tasksAttachments.file !== "" && (
+                                        <a href={task.tasksAttachments.file} >Visualizar aquivo 1</a>
+                                    )
+                                )}
                             </div>
                         </div>
                     </div>
@@ -304,7 +309,7 @@ function TaskDelivery() {
 
                         {taskDelivery === undefined && (
                             <div id="btn" >
-                                <BtnSubmit 
+                                <BtnSubmit
                                     text="Entregar" />
                             </div>
                         )}
