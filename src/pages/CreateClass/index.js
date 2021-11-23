@@ -338,7 +338,6 @@ function CreateClass() {
                                 label="Nome da turma"
                                 handler={handleInput}
                                 value={formCreateClass.name}
-                                autocomplete="off"
                             />
 
                             <div id="button" >
