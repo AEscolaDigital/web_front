@@ -174,7 +174,8 @@ function CompanyRegistration() {
                         width="420px"
                         required
                         handler={handleInput}
-                        id="name" />
+                        id="name"
+                        autocomplete="off" />
                     <Input
                         label="Telefone comercial"
                         colorLabel="var(--color-background)"
@@ -182,14 +183,16 @@ function CompanyRegistration() {
                         mask="phone"
                         required
                         handler={handleInput}
-                        id="phone" />
+                        id="phone"
+                        autocomplete="off" />
                     <Input
                         label="Nome da escola"
                         colorLabel="var(--color-background)"
                         width="420px"
                         required
                         handler={handleInput}
-                        id="CompanyName" />
+                        id="CompanyName"
+                        autocomplete="off" />
                     <Input
                         label="CNPJ"
                         colorLabel="var(--color-background)"
@@ -197,14 +200,16 @@ function CompanyRegistration() {
                         required
                         mask="cnpj"
                         handler={handleInput}
-                        id="cnpj" />
+                        id="cnpj"
+                        autocomplete="off" />
                     <Input
                         label="Quantidade de alunos"
                         colorLabel="var(--color-background)"
                         required
                         width="330px"
                         id="school_size"
-                        handler={handleInput} />
+                        handler={handleInput}
+                        autocomplete="off" />
                 </div>
 
                 <div>
@@ -220,7 +225,8 @@ function CompanyRegistration() {
                         handler={handleInput}
                         id="cep"
                         onBlur={onBlurCep}
-                        mask="cep" />
+                        mask="cep"
+                        autocomplete="off" />
 
                     <Input
                         id="street"
@@ -229,6 +235,7 @@ function CompanyRegistration() {
                         value={andress.logradouro}
                         width="425px"
                         handler={handleInput}
+                        autocomplete="off"
                         disabled />
                 </div>
 
@@ -240,6 +247,7 @@ function CompanyRegistration() {
                         value={andress.bairro}
                         handler={handleInput}
                         id="district"
+                        autocomplete="off"
                         disabled />
 
                     <Input
@@ -247,6 +255,7 @@ function CompanyRegistration() {
                         colorLabel="var(--color-background)"
                         width="150px"
                         required
+                        autocomplete="off"
                         handler={handleInput}
                         id="number" />
                 </div>
@@ -260,6 +269,7 @@ function CompanyRegistration() {
                         value={`${andress.localidade}`}
                         handler={handleInput}
                         disabled
+                        autocomplete="off"
                         id="city" />
 
                     <Input
@@ -267,6 +277,7 @@ function CompanyRegistration() {
                         colorLabel="var(--color-background)"
                         width="100px"
                         required
+                        autocomplete="off"
                         value={andress.uf}
                         handler={handleInput}
                         disabled
@@ -278,6 +289,7 @@ function CompanyRegistration() {
                         label="Complemento"
                         colorLabel="var(--color-background)"
                         width="420px"
+                        autocomplete="off"
                         handler={handleInput}
                         id="complement" />
                 </div>
@@ -289,6 +301,7 @@ function CompanyRegistration() {
                         label="Informe o email"
                         colorLabel="var(--color-background)"
                         width="425px"
+                        autocomplete="off"
                         required
                         handler={handleInput} id="email" />
                     <Input
@@ -297,6 +310,7 @@ function CompanyRegistration() {
                         type="password"
                         width="280px"
                         required
+                        autocomplete="off"
                         handler={handleInput}
                         id="password" />
                 </div>
