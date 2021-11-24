@@ -1,1 +1,4 @@
 /* /index.html 200
+
+/api/*  https://educ-tec-back-end.herokuapp.com/:splat  200
+
