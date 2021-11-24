@@ -172,6 +172,10 @@ function TaskDelivery() {
         })
     }
 
+    let profilePictureStyle = {
+        style1: "style1"
+    };
+
 
     return (
         <>
@@ -182,7 +186,7 @@ function TaskDelivery() {
                 <Task>
                     <div>
                         <ProfilePicture
-                            name={getUser().name} style="style1" />
+                            name={getUser().name} style={profilePictureStyle.style1} />
                     </div>
 
                     <div>

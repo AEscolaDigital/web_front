@@ -22,14 +22,19 @@ import Swal from "sweetalert2";
 function CorrectionTask() {
 
     const location = useLocation();
+
+    let userId = { idUser: location.state.user.id };
+    let taskId = { idTask: location.state.task.id };
+
     const [task, setTask] = useState([]);
 
     useEffect(() => {
 
         let loadTasks = async () => {
 
+
             try {
-                const response = await api.get(`tasks/${location.state.task.id}`);
+                const response = await api.get(`tasks/${taskId.idTask}`);
 
                 setTask(response.data[0]);
 
@@ -51,7 +56,7 @@ function CorrectionTask() {
         let loadTaskDelivery = async () => {
 
             try {
-                const response = await api.get(`taskdelivery/user_id/${location.state.user.id}/task_id/${location.state.task.id}`);
+                const response = await api.get(`taskdelivery/user_id/${userId.idUser}/task_id/${taskId.idTask}`);
 
                 setTaskDelivery(response.data[0]);
 
@@ -110,6 +115,10 @@ function CorrectionTask() {
         })
     }
 
+    let profilePictureStyle = {
+        style1: "style1"
+    };
+
     return (
         <>
             <Header />
@@ -119,7 +128,7 @@ function CorrectionTask() {
                 <Task>
                     <div>
                         <ProfilePicture
-                            name={getUser().name} style="style1" />
+                            name={getUser().name} style={profilePictureStyle.style1} />
                     </div>
 
                     <div>
@@ -172,7 +181,7 @@ function CorrectionTask() {
                         <div id="infosTaskDelivery" >
 
                             <ProfilePicture
-                                style="style1"
+                                style={profilePictureStyle.style1}
                                 name={location.state.user.name}
                                 profile_picture={location.state.user.profile_picture} />
 
@@ -253,7 +262,7 @@ function CorrectionTask() {
                     <TaskNotDelivery>
                         <div id="user" >
                             <ProfilePicture
-                                style="style1"
+                                style={profilePictureStyle.style1}
                                 name={location.state.user.name}
                                 profile_picture={location.state.user.profile_picture} />
                             <div id="username" >

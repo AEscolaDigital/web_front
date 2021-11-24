@@ -19,8 +19,6 @@ function ClassesList() {
 
     const [listUsers, setListUsers] = useState([]);
 
-    console.log(listUsers);
-
     useEffect(() => {
 
         let loadListUsers = async () => {
@@ -39,7 +37,6 @@ function ClassesList() {
 
     }, []);
 
-
     const handleSubmit = async (listUsers) => {
 
         try {
@@ -56,6 +53,9 @@ function ClassesList() {
         }
     }
 
+    let profilePictureStyle = {
+        style2: "style2"
+    };
 
     return (
         <>
@@ -91,7 +91,7 @@ function ClassesList() {
                             <tr onClick={() => handleSubmit(listUsers)} >
                         <td>
                             <ProfilePicture 
-                                style="style2"
+                                style={profilePictureStyle.style2}
                                 name={listUsers.name} 
                                 profile_picture={listUsers.profile_picture} />
                         </td>
