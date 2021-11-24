@@ -321,9 +321,8 @@ function CreateClass() {
     }
 
     let profilePictureStyle = {
-        style2: "style2"
+        style: "style2"
     };
-
 
     return (
         <>
@@ -480,7 +479,7 @@ function CreateClass() {
                                     <tr>
                                         <td>
                                             <ProfilePicture
-                                                style={profilePictureStyle.style2}
+                                                style={profilePictureStyle}
                                                 name={userClass.name}
                                                 profile_picture={userClass.profile_picture} />
                                         </td>

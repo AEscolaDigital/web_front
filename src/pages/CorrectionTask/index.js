@@ -109,7 +109,7 @@ function CorrectionTask() {
     }
 
     let profilePictureStyle = {
-        style1: "style1"
+        style: "style1"
     };
 
     return (
@@ -121,7 +121,9 @@ function CorrectionTask() {
                 <Task>
                     <div>
                         <ProfilePicture
-                            name={getUser().name} style={profilePictureStyle.style1} />
+                            name={getUser().name} 
+                            style={profilePictureStyle}
+                        />
                     </div>
 
                     <div>
@@ -174,7 +176,7 @@ function CorrectionTask() {
                         <div id="infosTaskDelivery" >
 
                             <ProfilePicture
-                                style={profilePictureStyle.style1}
+                                style={profilePictureStyle}
                                 name={location.state.user.name}
                                 profile_picture={location.state.user.profile_picture} />
 
@@ -255,7 +257,7 @@ function CorrectionTask() {
                     <TaskNotDelivery>
                         <div id="user" >
                             <ProfilePicture
-                                style={profilePictureStyle.style1}
+                                style={profilePictureStyle}
                                 name={location.state.user.name}
                                 profile_picture={location.state.user.profile_picture} />
                             <div id="username" >

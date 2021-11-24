@@ -54,7 +54,7 @@ function ClassesList() {
     }
 
     let profilePictureStyle = {
-        style2: "style2"
+        style: "style2"
     };
 
     return (
@@ -91,7 +91,7 @@ function ClassesList() {
                             <tr onClick={() => handleSubmit(listUsers)} >
                         <td>
                             <ProfilePicture 
-                                style={profilePictureStyle.style2}
+                                style={profilePictureStyle}
                                 name={listUsers.name} 
                                 profile_picture={listUsers.profile_picture} />
                         </td>
