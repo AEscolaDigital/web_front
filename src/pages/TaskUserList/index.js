@@ -35,7 +35,7 @@ function ClassesList() {
 
         loadListUsers();
 
-    }, []);
+    }, [location]);
 
     const handleSubmit = async (listUsers) => {
 

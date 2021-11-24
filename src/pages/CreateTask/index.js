@@ -29,8 +29,6 @@ function CreateTask() {
 
     const [discipline, setDiscipline] = useState([]);
 
-    const [disciplineNavTask, setDisciplineNavTask] = useState([]);
-
     const [disciplineLocation, setDisplineLocation] = useState(true);
 
     if (disciplineLocation) {
@@ -194,7 +192,6 @@ function CreateTask() {
             <Header />
             <Nav />
             <NavTask
-                setProps={setDisciplineNavTask}
                 iSOnPage={true} />
 
             <form onSubmit={handleSubmit} >

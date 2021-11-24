@@ -23,18 +23,12 @@ function CorrectionTask() {
 
     const location = useLocation();
 
-    let userId = { idUser: location.state.user.id };
-    let taskId = { idTask: location.state.task.id };
-
     const [task, setTask] = useState([]);
 
     useEffect(() => {
-
         let loadTasks = async () => {
-
-
             try {
-                const response = await api.get(`tasks/${taskId.idTask}`);
+                const response = await api.get(`tasks/${location.state.task.id}`);
 
                 setTask(response.data[0]);
 
@@ -44,8 +38,7 @@ function CorrectionTask() {
         };
 
         loadTasks();
-
-    }, []);
+    }, [location]);
 
   
     const [taskDelivery, setTaskDelivery] = useState([]);
@@ -56,7 +49,7 @@ function CorrectionTask() {
         let loadTaskDelivery = async () => {
 
             try {
-                const response = await api.get(`taskdelivery/user_id/${userId.idUser}/task_id/${taskId.idTask}`);
+                const response = await api.get(`taskdelivery/user_id/${location.state.user.id}/task_id/${location.state.task.id}`);
 
                 setTaskDelivery(response.data[0]);
 
@@ -68,7 +61,7 @@ function CorrectionTask() {
         loadTaskDelivery();
 
 
-    }, [loadTaskDelivery1]);
+    }, [loadTaskDelivery1, location]);
 
     const [formCorrectionTask, setCorrectionTask] = useState({
         spots: "",

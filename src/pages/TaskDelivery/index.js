@@ -44,7 +44,7 @@ function TaskDelivery() {
 
         loadTasks();
 
-    }, []);
+    }, [location]);
 
     const [taskDelivery, setTaskDelivery] = useState([]);
     const [loadTaskDelivery, setLoadTaskDelivery] = useState(0);
@@ -65,7 +65,7 @@ function TaskDelivery() {
 
         loadTaskDelivery();
 
-    }, [loadTaskDelivery]);
+    }, [loadTaskDelivery, location]);
 
     const [inputs, setInput] = useState([{ id: 'link' }])
 
