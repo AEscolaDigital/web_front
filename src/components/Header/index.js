@@ -23,6 +23,10 @@ function Header() {
         setOpenClose(() => toogle ? 'none' : 'block');
         setHeight(() => toogle ? '0px' : '365px');
     }, [toogle]);
+    
+    let profilePictureStyle = {
+        style: "style2"
+    };
 
     return (
         <Container>
@@ -36,7 +40,7 @@ function Header() {
 
             <div id="profilePicture" onClick={e => setToogle(state => !state)} >
                 <ProfilePicture
-                    style="style2"
+                    style={profilePictureStyle}
                     name={getUser().name}
                 />
             </div>

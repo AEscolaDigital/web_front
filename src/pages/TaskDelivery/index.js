@@ -44,7 +44,7 @@ function TaskDelivery() {
 
         loadTasks();
 
-    }, []);
+    }, [location]);
 
     const [taskDelivery, setTaskDelivery] = useState([]);
     const [loadTaskDelivery, setLoadTaskDelivery] = useState(0);
@@ -65,7 +65,7 @@ function TaskDelivery() {
 
         loadTaskDelivery();
 
-    }, [loadTaskDelivery]);
+    }, [loadTaskDelivery, location]);
 
     const [inputs, setInput] = useState([{ id: 'link' }])
 
@@ -172,6 +172,10 @@ function TaskDelivery() {
         })
     }
 
+    let profilePictureStyle = {
+        style: "style1"
+    };
+
 
     return (
         <>
@@ -182,7 +186,7 @@ function TaskDelivery() {
                 <Task>
                     <div>
                         <ProfilePicture
-                            name={getUser().name} style="style1" />
+                            name={getUser().name} style={profilePictureStyle} />
                     </div>
 
                     <div>
@@ -239,7 +243,25 @@ function TaskDelivery() {
                                 <span>Anexos</span>
                                 {task.tasksAttachments !== undefined && (
                                     task.tasksAttachments.file !== "" && (
-                                        <a href={task.tasksAttachments.file} >Visualizar aquivo 1</a>
+                                        <a
+                                            href={task.tasksAttachments.file}
+                                            target="blank"
+                                            className="files" >Visualizar ou fazer download
+                                        </a>
+                                    )
+                                )}
+                                {task.tasksAttachments !== undefined && (
+                                    task.tasksAttachments.file1 !== "" && (
+                                        <a
+                                            href={task.tasksAttachments.file1} className="files"
+                                            target="blank" >Visualizar ou fazer download
+                                        </a>
+                                    )
+                                )}
+                                {task.tasksAttachments !== undefined && (
+                                    task.tasksAttachments.file2 !== "" && (
+                                        <a href={task.tasksAttachments.file2}
+                                            target="blank" className="files" >Visualizar ou fazer download</a>
                                     )
                                 )}
                             </div>

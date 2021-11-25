@@ -92,6 +92,7 @@ function Login() {
                             label="Informe o seu E-mail"
                             colorLabel="white"
                             id="email"
+                            autocomplete="off"
                             handler={handleInput}
                         />
 
@@ -99,6 +100,7 @@ function Login() {
                             label="Informe sua senha"
                             type="password"
                             id="password"
+                            autocomplete="off"
                             colorLabel="white"
                             handler={handleInput}
                         />

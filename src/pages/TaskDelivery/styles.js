@@ -65,6 +65,8 @@ export const Task = styled.div`
                     padding: 8px 15px 8px 15px;
 
                     margin-top: 10px;
+
+                    border-radius: 5px;
                      
                     >input{
                          border: 0;
@@ -84,6 +86,26 @@ export const Task = styled.div`
           #attachments{
                margin-top: 20px;
                margin-left: 15px;
+
+               display: grid;
+
+               .files{
+                    width: 370px;
+                    height: 35px;
+
+                    font-size: 16px;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    border-radius: 5px;
+
+                    margin-top: 10px;
+
+                    background-color: var(--color-background);
+                    color: black;
+               }
           }
      }
 

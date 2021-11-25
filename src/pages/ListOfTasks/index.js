@@ -175,7 +175,7 @@ function ListOfTasks() {
                             <button onClick={()=> setTask(task)} >
                                 <div>
                                     <div>
-                                        <img src={Imagem} alt="Image de controle de video game" />
+                                        <img src={Imagem} alt="Controle de video game" />
                                     </div>
                                     <div className="textListTask" >{task.name}</div>
                                     <div className="dateTask" >
