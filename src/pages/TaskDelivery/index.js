@@ -243,7 +243,17 @@ function TaskDelivery() {
                                 <span>Anexos</span>
                                 {task.tasksAttachments !== undefined && (
                                     task.tasksAttachments.file !== "" && (
-                                        <a href={task.tasksAttachments.file} >Visualizar aquivo 1</a>
+                                        <a href={task.tasksAttachments.file} className="files" >Visualizar ou fazer download</a>
+                                    )
+                                )}
+                                {task.tasksAttachments !== undefined && (
+                                    task.tasksAttachments.file1 !== "" && (
+                                        <a href={task.tasksAttachments.file1} className="files" >Visualizar ou fazer download</a>
+                                    )
+                                )}
+                                {task.tasksAttachments !== undefined && (
+                                    task.tasksAttachments.file2 !== "" && (
+                                        <a href={task.tasksAttachments.file2} className="files" >Visualizar ou fazer download</a>
                                     )
                                 )}
                             </div>

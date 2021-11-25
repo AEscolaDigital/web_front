@@ -3,7 +3,7 @@ import imageFileCSV from "../../assets/addMember/imageFileCSV.jpg";
 import imageHttpError503 from "../../assets/alert/imageHttpError503.svg"
 import arrowLeft from "../../assets/addMember/arrowLeft.svg";
 import arrowRight from "../../assets/addMember/arrowRight.svg";
-import fileSchoolCSV from "../../assets/addMember/school_csv.csv";
+import fileSchoolCSV from "../../assets/addMember/user_plataforma.csv";
 
 import Header from "../../components/Header";
 import Nav from "../../components/Nav";
@@ -270,6 +270,7 @@ function AddMember() {
                             label="Informe o Nome"
                             width="400px"
                             id="name"
+                            autocomplete="off"
                             value={formAddMember.name}
                             handler={handleInput} />
 
@@ -278,6 +279,7 @@ function AddMember() {
                             width="400px"
                             id="email"
                             type="email"
+                            autocomplete="off"
                             value={formAddMember.email}
                             handler={handleInput} />
 

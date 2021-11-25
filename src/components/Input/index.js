@@ -57,6 +57,7 @@ function Input({
                     {...rest}
                     onKeyUp={handleKeyUp}
                     mask={mask}
+                    autocomplete="off"
                 />
                 <span className={className} style={{
                     backgroundColor: colorLabel,
