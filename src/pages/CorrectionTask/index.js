@@ -40,10 +40,12 @@ function CorrectionTask() {
         loadTasks();
     }, [location]);
 
-  
+    console.log(task.tasksAttachments);
+
+
     const [taskDelivery, setTaskDelivery] = useState([]);
     const [loadTaskDelivery1, setLoadTaskDelivery] = useState(0);
-  
+
     useEffect(() => {
 
         let loadTaskDelivery = async () => {
@@ -90,7 +92,7 @@ function CorrectionTask() {
             });
 
             successAlert('Tarefa corrigida!');
-            setTimeout(()=> {
+            setTimeout(() => {
                 setLoadTaskDelivery(loadTaskDelivery1 + 2);
             }, 500);
         } catch (error) {
@@ -121,7 +123,7 @@ function CorrectionTask() {
                 <Task>
                     <div>
                         <ProfilePicture
-                            name={getUser().name} 
+                            name={getUser().name}
                             style={profilePictureStyle}
                         />
                     </div>
@@ -165,6 +167,32 @@ function CorrectionTask() {
                             <div id="attachments" >
                                 <span>Anexos</span>
 
+                                {task.tasksAttachments !== undefined && (
+                                    task.tasksAttachments.file !== "" && (
+                                        <a
+                                            href={task.tasksAttachments.file}
+                                            target="blank"
+                                            className="files" >Visualizar ou fazer download
+                                        </a>
+                                    )
+                                )}
+
+                                {task.tasksAttachments !== undefined && (
+                                    task.tasksAttachments.file1 !== "" && (
+                                        <a
+                                            href={task.tasksAttachments.file1} className="files"
+                                            target="blank" >Visualizar ou fazer download
+                                        </a>
+                                    )
+                                )}
+
+                                {task.tasksAttachments !== undefined && (
+                                    task.tasksAttachments.file2 !== "" && (
+                                        <a href={task.tasksAttachments.file2}
+                                            target="blank" className="files" >Visualizar ou fazer download</a>
+                                    )
+                                )}
+
                             </div>
                         </div>
                     </div>
@@ -205,6 +233,21 @@ function CorrectionTask() {
 
                             <div id="attachmentsUser" >
                                 <span>Anexos</span>
+
+                                    {taskDelivery.file !== "" && (
+                                        <a 
+                                            href={taskDelivery.file} 
+                                            target="blank"
+                                            className="files" > Visualizar ou fazer download </a>
+                                    )}
+
+                                    {taskDelivery.file1 !== "" && (
+                                        <a 
+                                            href={taskDelivery.file1} 
+                                            target="blank"
+                                            className="files" > Visualizar ou fazer download</a>
+                                    )}
+
                             </div>
 
                         </div>
@@ -232,8 +275,8 @@ function CorrectionTask() {
 
                             {taskDelivery.status !== 2 && (
                                 <div id="buttons" >
-                                    <BtnSubmit 
-                                       id="btnGiveBack"
+                                    <BtnSubmit
+                                        id="btnGiveBack"
                                         text="Devolver" />
 
                                     <div onClick={() => setStatus(status + 2)} >

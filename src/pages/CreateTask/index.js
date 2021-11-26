@@ -72,7 +72,7 @@ function CreateTask() {
         }
 
         if (inputsFile.length === 3) {
-            alert("O número máximo é de 3 links")
+            alert("O número máximo é de 3 arquivos")
         }
 
         setInputFile(itensCopy);

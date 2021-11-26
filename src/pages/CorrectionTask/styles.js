@@ -77,10 +77,30 @@ export const Task = styled.div`
                }
 
           }
-
+          
           #attachments{
                margin-top: 20px;
                margin-left: 15px;
+
+               display: grid;
+
+               .files{
+                    width: 370px;
+                    height: 35px;
+
+                    font-size: 16px;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    border-radius: 5px;
+
+                    margin-top: 10px;
+
+                    background-color: var(--color-background);
+                    color: black;
+               }
           }
      }
 
@@ -164,14 +184,29 @@ export const TaskDelivery = styled.div`
 
           #attachmentsUser{
                margin-top: 15px;
-               span{
-                    color: var(--color-text);
-                    font-weight: bold;
-                    font-size: 18px;
+               
 
-                    margin-left: 15px;
-            
+               .files{
+                    width: 370px;
+                    height: 35px;
+
+                    font-size: 16px;
+
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    border-radius: 5px;
+
+                    margin-top: 10px;
+
+                    background-color: var(--color-background);
+                    color: black;
+
+                    cursor: pointer;
                }
+
+
           }
      }
 

@@ -195,12 +195,66 @@ export const ContainerTaskDelivery = styled.div`
           }
      }
 
-     #attachmentsTaskDelivery{
-          margin-top: 20px;
-          >span{
-               font-size: 14px;
-               margin-left: 40px;
+     #attachmentsTaskDelivery {
+          width: 385px;
+          height: 35px;
+         
+          margin-left: 40px;
+          margin-top: 15px;
+
+          label {
+               display: flex;
+
+               padding-left: 25px;
+               padding-top: 7px;
+               border-radius: 10px 0px;
+
+               cursor: pointer;
+
+               color: var(--color-text);
+               
+               font-weight: 400;
           }
+
+          input[type='file']{
+               display: none;
+          } 
+
+          .files{
+               display: flex;
+               align-items: center;
+               justify-content: space-between;
+
+               background-color: var(--color-background);
+
+               border-radius: 5px;
+
+               height: 35px;
+
+               margin-top: 15px;
+
+          div>label{
+              width: 385px;
+
+              padding-bottom: 10px;
+
+              overflow: hidden;
+
+              white-space: nowrap; 
+
+              text-overflow: ellipsis;
+          }
+
+          div>img{
+              width: 20px;
+              height: 20px;
+
+              margin-left: 10px;
+
+              cursor: pointer;
+         }
+     }
+
      }
 
      #btn{

@@ -69,16 +69,16 @@ function TaskDelivery() {
 
     const [inputs, setInput] = useState([{ id: 'link' }])
 
-    const [filesMax, setFilesMax] = useState(1)
+    const [inputsMax, setInputsMax] = useState(1)
 
     const handleAddInputs = async () => {
 
         const itensCopy = Array.from(inputs);
 
         if (inputs.length < 2) {
-            itensCopy.push({ id: `link${filesMax}` });
+            itensCopy.push({ id: `link${inputsMax}` });
 
-            setFilesMax(filesMax + 1)
+            setInputsMax(inputsMax + 1)
         }
 
         if (inputs.length === 2) {
@@ -86,8 +86,37 @@ function TaskDelivery() {
         }
 
         setInput(itensCopy);
-
     }
+
+    const [inputsFile, setInputFile] = useState([{ id: 'file' }])
+
+    const [filesMax, setFilesMax] = useState(1)
+
+    const handleAddInputsFile = async () => {
+
+        const itensCopy = Array.from(inputsFile);
+
+        if (inputsFile.length < 2) {
+            itensCopy.push({ id: `file${filesMax}` });
+
+            setFilesMax(filesMax + 1)
+        }
+
+        if (inputsFile.length === 2) {
+            alert("O número máximo é de 2 arquivos")
+        }
+
+        setInputFile(itensCopy);
+    }
+
+    const [formTaskFile, setFormTeskFile] = useState({
+        file: {},
+        file1: {},
+    });
+
+    const handleFile = (e) => {
+        setFormTeskFile({ ...formTaskFile, [e.target.id]: e.target.files[0] });
+    };
 
     const [formTask, setFormTesk] = useState({
         link: "",
@@ -110,12 +139,11 @@ function TaskDelivery() {
 
             data.append("link", formTask.link);
             data.append("link1", formTask.link1);
-            data.append("file", "");
-            data.append("file1", "");
-            data.append("file2", "");
             data.append("task_id", location.state.task.id);
+            data.append("file", formTaskFile.file);
+            data.append("file1", formTaskFile.file1);
 
-
+            console.log(formTaskFile.file);
 
             await api.post(`taskdelivery`, data, {
                 headers: {
@@ -326,6 +354,37 @@ function TaskDelivery() {
 
                         <div id="attachmentsTaskDelivery" className="titleFormatting"  >
                             <span>Anexos</span>
+                            {inputsFile.map(inputFile => (
+                                <div className="files" >
+                                    <div>
+                                        <label>
+
+                                            {inputFile.id === "file" && (
+                                                formTaskFile.file.name === undefined ? <span>Selecione um arquivo</span> : formTaskFile.file.name
+                                            )}
+
+                                            {inputFile.id === "file1" && (
+                                                formTaskFile.file1.name === undefined ? <span>Selecione um arquivo</span> : formTaskFile.file1.name
+
+                                            )}
+                                            {inputFile.id === "file2" && (
+                                                formTaskFile.file2.name === undefined ? <span>Selecione um arquivo</span> : formTaskFile.file2.name
+                                            )}
+
+                                            <input
+                                                id={inputFile.id}
+                                                type="file"
+                                                onChange={handleFile} />
+                                        </label>
+                                    </div>
+                                    <div>
+                                        <img
+                                            src={plusSign}
+                                            onClick={() => handleAddInputsFile()}
+                                            alt="Icone de adicionar mais um" />
+                                    </div>
+                                </div>
+                            ))}
 
                         </div>
 
