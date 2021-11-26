@@ -183,8 +183,12 @@ export const TaskDelivery = styled.div`
           }
 
           #attachmentsUser{
-               margin-top: 15px;
-               
+               margin-top: 20px;
+               margin-left: 15px;
+
+               cursor: pointer;
+
+               display: grid;
 
                .files{
                     width: 370px;
@@ -203,7 +207,6 @@ export const TaskDelivery = styled.div`
                     background-color: var(--color-background);
                     color: black;
 
-                    cursor: pointer;
                }
 
 
