@@ -278,6 +278,7 @@ function Teams() {
                         teacherName={discipline.teacher_name}
                         id={discipline.id}
                         setProps={setGrandson} >
+                            
                         <img src={discipline.image} alt=""
                         />
                     </Card>

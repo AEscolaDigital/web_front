@@ -4,6 +4,7 @@ import iconMore from "../../assets/teams/iconMore.svg"
 import PoPup from "../../components/PoPup";
 
 import { useEffect, useState } from "react";
+import PermissionComponent from "../PermissionComponent";
 
 
 function Card({
@@ -12,7 +13,7 @@ function Card({
     teacherName,
     id,
     setProps,
-    }) {
+}) {
 
     const [father, setFather] = useState(false);
 
@@ -21,7 +22,7 @@ function Card({
         setProps(father)
     }
 
-  
+
     const [toogle, setToogle] = useState(true);
     const [value, setOpenClose] = useState('none');
 
@@ -33,16 +34,19 @@ function Card({
     return (
         <Container>
             <div>
+                
                 <img
                     src={iconMore}
                     onClick={e => setToogle(state => !state)}
                     alt="Ícone de mais opções"
                 />
-                <PoPup 
-                    display={value} 
-                    id={id} 
-                    setProps={setFather} 
-                />
+                <PermissionComponent role="ROLE_ADMIN,ROLE_TEACHER" >
+                    <PoPup
+                        display={value}
+                        id={id}
+                        setProps={setFather}
+                    />
+                </PermissionComponent>
             </div>
             {children}
             <div>

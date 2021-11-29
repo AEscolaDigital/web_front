@@ -24,14 +24,6 @@ function Nav() {
         <ContainerNav
             onMouseOver={onMouseOver} onMouseOut={onMouseOut} >
             <div>
-                <Link to="addMember">
-                    <img src={iconFeed} alt="Ícone de feed" />
-                    <p style={{
-                        display: display
-                    }} >Feed</p>
-                </Link>
-            </div>
-            <div>
                 <Link to="teams">
                     <img src={iconTeam} alt="Ícone de turmas" />
                     <p style={{
@@ -47,16 +39,6 @@ function Nav() {
                     <p style={{
                         display: display
                     }} >Tarefas</p>
-                </Link>
-            </div>
-            <div>
-                <Link to="teams">
-                    <img
-                        src={iconFoul}
-                        alt="Ícone de faltas" />
-                    <p style={{
-                        display: display
-                    }}>Faltas</p>
                 </Link>
             </div>
             <div>
