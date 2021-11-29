@@ -1,4 +1,9 @@
-import { Container, ContainerTable, ContainerInfo } from "./styles"
+import { 
+        Container, 
+        ContainerTable, 
+        ContainerNameDiscipline, 
+        ContainerOption 
+    } from "./styles"
 
 import Header from "../../components/Header";
 import Nav from "../../components/Nav";
@@ -10,22 +15,26 @@ import lixo from "../../assets/classesList/lixo.svg";
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { useHistory, useLocation } from "react-router";
+import Swal from "sweetalert2";
 
 function ClassesList() {
 
     const history = useHistory();
 
     const location = useLocation();
+    const task_id = location.state.task.id;
 
     const [listUsers, setListUsers] = useState([]);
+
+    const [loadListUsers, setloadListUsers] = useState(0);
 
     useEffect(() => {
 
         let loadListUsers = async () => {
-         
+
             try {
-              
-                const response = await api.get(`tasks/users/${location.state.task.id}`);
+
+                const response = await api.get(`tasks/users/${task_id}`);
                 setListUsers(response.data);
 
             } catch (error) {
@@ -35,7 +44,7 @@ function ClassesList() {
 
         loadListUsers();
 
-    }, [location]);
+    }, [task_id, loadListUsers]);
 
     const handleSubmit = async (listUsers) => {
 
@@ -53,6 +62,63 @@ function ClassesList() {
         }
     }
 
+    const [status, setStatus] = useState(0);
+    const [className, setClassName] = useState("btnSelected");
+    const [className1, setClassName1] = useState("btnNotSelected");
+    const [className2, setClassName2] = useState("btnNotSelected");
+
+
+    const setTaskStatus = (status) => {
+
+        setStatus(status);
+
+        status === 0 ? setClassName("btnSelected") : setClassName("btnNotSelected");
+        status === 1 ? setClassName1("btnSelected") : setClassName1("btnNotSelected");
+        status === 2 ? setClassName2("btnSelected") : setClassName2("btnNotSelected");
+
+    }
+
+    const  deleteUserFromThisTask = async (user_id, task_id) => {
+
+        if (await confirmationToDelete()) {
+            try {
+                await api.delete(`/tasks/user_id/${user_id}/task_id/${task_id}`);
+                setloadListUsers(loadListUsers + 1);
+            } catch (error) {
+                alert(error);
+            }
+        }
+
+    }
+
+    const confirmationToDelete = async () => {
+        return await Swal.fire({
+            title: 'Tem certeza?',
+            text: "Você não poderá reverter isso!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#28a745',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Sim, exclua!',
+            cancelButtonText: 'Não, exclua!'
+
+        }).then((result) => {
+            if (result.isConfirmed) {
+                Swal.fire(
+                    'Excluído',
+                    'Aluno(a) deletado dessa tarefa, com sucesso.',
+                    'success'
+                )
+                return true;
+
+            } else {
+                return false;
+            }
+
+        })
+
+    }
+
     let profilePictureStyle = {
         style: "style2"
     };
@@ -61,24 +127,37 @@ function ClassesList() {
         <>
             <Header />
             <Nav />
-            <NavTask  iSOnPage={true}/>
+            <NavTask iSOnPage={true} />
             <Container>
-
-                <ContainerInfo>
+                <ContainerNameDiscipline>
                     <div>
                         <div>
                             <span>Disciplina: {location.state.name}</span>
                         </div>
-                        <div>
-                            <button>Não concluídos</button>
-                        </div>
-                        <div>
-                            <button>Concluídos</button>
-                        </div>
                     </div>
 
                     <hr />
-                </ContainerInfo>
+                </ContainerNameDiscipline>
+                <ContainerOption>
+                    <div>
+                        <button
+                            className={className}
+                            onClick={() => setTaskStatus(0)} >Não entregue
+                        </button>
+                    </div>
+                    <div>
+                        <button
+                            className={className1}
+                            onClick={() => setTaskStatus(1)} >Entregue, mas não corrigido
+                        </button>
+                    </div>
+                    <div>
+                        <button
+                            className={className2}
+                            onClick={() => setTaskStatus(2)}>Entregue, é corrigido
+                        </button>
+                    </div>
+                </ContainerOption>
                 <ContainerTable>
                     <thead>
                         <tr>
@@ -88,25 +167,30 @@ function ClassesList() {
                     </thead>
                     <tbody>
                         {listUsers.map(listUsers => (
-                            <tr onClick={() => handleSubmit(listUsers)} >
-                        <td>
-                            <ProfilePicture 
-                                style={profilePictureStyle}
-                                name={listUsers.name} 
-                                profile_picture={listUsers.profile_picture} />
-                        </td>
-                        <td>{listUsers.name}</td>
-                        <td>
-                            <img className="delete" src={lixo} alt="Ícone de uma lixeira" />
-                        </td>
-                    </tr>
-
+                            listUsers.status === status && (
+                                <tr>
+                                    <td>
+                                        <ProfilePicture
+                                            style={profilePictureStyle}
+                                            name={listUsers.name}
+                                            profile_picture={listUsers.profile_picture} />
+                                    </td>
+                                    <td onClick={() => handleSubmit(listUsers)} >{listUsers.name}</td>
+                                    <td>
+                                        <img
+                                            className="delete"
+                                            src={lixo}
+                                            alt="Ícone de uma lixeira"
+                                            onClick={() => deleteUserFromThisTask(listUsers.id, task_id)} />
+                                    </td>
+                                </tr>
+                            )
                         ))}
 
-                </tbody>
-            </ContainerTable>
+                    </tbody>
+                </ContainerTable>
 
-        </Container>
+            </Container>
         </>
     );
 }

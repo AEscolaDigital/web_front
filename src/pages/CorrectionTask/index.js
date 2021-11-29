@@ -40,9 +40,6 @@ function CorrectionTask() {
         loadTasks();
     }, [location]);
 
-    console.log(task.tasksAttachments);
-
-
     const [taskDelivery, setTaskDelivery] = useState([]);
     const [loadTaskDelivery1, setLoadTaskDelivery] = useState(0);
 
@@ -196,7 +193,10 @@ function CorrectionTask() {
                             </div>
                         </div>
                     </div>
-
+                    <div>
+                        <span>Total de pontos possíveis:                                 {task.spots !== null ? task.spots : "Não informado"}
+                        </span>
+                    </div>
 
                 </Task>
                 {taskDelivery !== undefined && (
@@ -234,19 +234,19 @@ function CorrectionTask() {
                             <div id="attachmentsUser" >
                                 <span>Anexos</span>
 
-                                    {taskDelivery.file !== "" && (
-                                        <a 
-                                            href={taskDelivery.file} 
-                                            target="blank"
-                                            className="files" > Visualizar ou fazer download </a>
-                                    )}
+                                {taskDelivery.file !== "" && (
+                                    <a
+                                        href={taskDelivery.file}
+                                        target="blank"
+                                        className="files" > Visualizar ou fazer download </a>
+                                )}
 
-                                    {taskDelivery.file1 !== "" && (
-                                        <a 
-                                            href={taskDelivery.file1} 
-                                            target="blank"
-                                            className="files" > Visualizar ou fazer download</a>
-                                    )}
+                                {taskDelivery.file1 !== "" && (
+                                    <a
+                                        href={taskDelivery.file1}
+                                        target="blank"
+                                        className="files" > Visualizar ou fazer download</a>
+                                )}
 
                             </div>
 
@@ -257,22 +257,23 @@ function CorrectionTask() {
                                 <Input
                                     id="spots"
                                     width="200px"
-                                    label="Pontuação"
+                                    label="Pontos da avaliação"
+                                    value={taskDelivery.spots}
                                     handler={handleInput} />
                             </div>
 
-                            <label>Comentário</label>
-                            <textarea
-                                id="comment"
-                                cols="30"
-                                rows="10"
-                                onChange={handleTextarea}
-                                required
-                                value={taskDelivery.comment}
-                                autocomplete="off"
-                                maxlength="755"
-                            />
-
+                            <label>Comentário
+                                <textarea
+                                    id="comment"
+                                    cols="30"
+                                    rows="10"
+                                    onChange={handleTextarea}
+                                    required
+                                    value={taskDelivery.comment}
+                                    autocomplete="off"
+                                    maxlength="755"
+                                />
+                            </label>
                             {taskDelivery.status !== 2 && (
                                 <div id="buttons" >
                                     <BtnSubmit

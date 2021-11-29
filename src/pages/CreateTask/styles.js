@@ -222,7 +222,6 @@ export const InputFile = styled.div`
         display: flex;
 
         padding-left: 25px;
-        padding-top: 7px;
         border-radius: 10px 0px;
 
         cursor: pointer;
@@ -245,12 +244,10 @@ export const InputFile = styled.div`
 
          height: 35px;
 
-         margin-top: 15px;
+         margin-top: 10px;
 
          div>label{
               width: 385px;
-
-              padding-bottom: 10px;
 
               overflow: hidden;
 

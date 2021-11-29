@@ -12,35 +12,56 @@ export const Container = styled.div`
  
 `
 
-export const ContainerInfo = styled.div`
+export const ContainerNameDiscipline = styled.div`
     margin-top: 50px;
 
     div{
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-
-        button{
-            border: 0;
-            cursor: pointer;
-
-            font-size: 15px;
-            font-weight: bold;
-            color: var(--color-text);
-
-            background-color: var(--color-background);
-
-        }
-
+       
         font-size: 18px;
         color: var(--color-text);
         font-weight: bold;
+
+        margin-left: 20px;
     }
 
     hr{
         border: 1px solid #C4C4C4;
         margin-top: 5px;
     }
+    
+`
+export const ContainerOption = styled.div`
+    display: flex;
+    justify-content: space-around;
+
+    margin-top: 25px;
+
+
+    button{
+        height: 30px;
+        padding: 0px 15px 0px 15px;
+
+        border: 1px solid var(--color-blue);
+        border-radius: 5px;
+        
+        cursor: pointer;
+
+        :hover{
+            background-color: var(--color-blue);
+            color: white;
+        }
+    }
+
+    .btnSelected{
+        background-color: var(--color-blue);
+        color: white;
+    }
+
+    .btnNotSelected{
+        background-color: white;
+        color: black;
+    }
+
     
 `
 export const ContainerTable = styled.table`
@@ -102,6 +123,16 @@ export const ContainerTable = styled.table`
             img{
                 width: 40px;
                 height: 40px;
+
+                :hover{
+                    width: 50px;
+                    height: 50px;
+
+                    transition: width 1s, height 1s;
+
+                    margin-left: -4px;
+
+                }
             }
 
             .delete{

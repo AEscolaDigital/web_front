@@ -33,6 +33,10 @@ export const Task = styled.div`
      #taskDescription{
           max-width: 500px; 
           margin-top: 15px;
+
+          @media (min-width: 1365px){
+               max-width: 400px; 
+          }
      }
 
      #taskAttachments{
@@ -90,10 +94,11 @@ export const Task = styled.div`
                display: grid;
 
                .files{
-                    width: 370px;
+                    width: 360px;
                     height: 35px;
 
                     font-size: 16px;
+                    color: black;
 
                     display: flex;
                     align-items: center;
@@ -104,33 +109,46 @@ export const Task = styled.div`
                     margin-top: 10px;
 
                     background-color: var(--color-background);
-                    color: black;
+
                }
           }
      }
 
-     #taskComment{
+     #commentSpots{
           display: grid;
-          margin-top: 10px;
-          margin-right: 20px;
+          grid-template-columns: 1fr;
+          grid-template-rows: 6fr 1fr;
+          align-items: baseline;
 
-          #commentTitle{
-               font-size: 18px;
-               font-weight: bold;
-               color: var(--color-text);
+
+          #taskComment{
+               display: grid;
+               margin-top: 10px;
+               margin-right: 20px;
+
+               #commentTitle{
+                    font-size: 18px;
+                    font-weight: bold;
+                    color: var(--color-text);
+               }
+
+               #comment{
+                    font-size: 14px;
+                    color: var(--color-text);
+
+                    margin-top: 20px;
+
+                    max-width: 400px;
+               }
           }
+          #spots{
+               display: grid;
 
-          #comment{
                font-size: 14px;
-               color: var(--color-text);
-
-               margin-top: 20px;
-
-               max-width: 400px;
-
           }
           
      }
+
 
 `
 export const ContainerTaskDelivery = styled.div`
@@ -196,16 +214,17 @@ export const ContainerTaskDelivery = styled.div`
      }
 
      #attachmentsTaskDelivery {
-          width: 385px;
+          width: 370px;
           height: 35px;
          
           margin-left: 40px;
           margin-top: 15px;
+          margin-bottom: 100px;
 
-          label {
+          div>div {
                display: flex;
+               justify-content: center;
 
-               padding-left: 25px;
                padding-top: 7px;
                border-radius: 10px 0px;
 
@@ -221,6 +240,8 @@ export const ContainerTaskDelivery = styled.div`
           } 
 
           .files{
+               width: 380px;
+
                display: flex;
                align-items: center;
                justify-content: space-between;
@@ -233,27 +254,56 @@ export const ContainerTaskDelivery = styled.div`
 
                margin-top: 15px;
 
-          div>label{
-              width: 385px;
+               cursor: pointer;
 
-              padding-bottom: 10px;
+               div{
+                    cursor: pointer;
+               }
 
-              overflow: hidden;
+               div>label{
+                    width: 385px;
 
-              white-space: nowrap; 
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
 
-              text-overflow: ellipsis;
+                    padding-bottom: 10px;
+
+                    overflow: hidden;
+
+                    white-space: nowrap; 
+
+                    text-overflow: ellipsis;
+
+                    cursor: pointer;
+               }
+
+               div>img{
+                    width: 20px;
+                    height: 20px;
+
+                    margin-left: 10px;
+
+                    cursor: pointer;
+                    margin-bottom: 11px;
+               }
           }
 
-          div>img{
-              width: 20px;
-              height: 20px;
+          .attachmentsDelivered{
+               width: 380px;
+               height: 35px;
 
-              margin-left: 10px;
+               background-color: var(--color-background);
 
-              cursor: pointer;
-         }
-     }
+               border-radius: 5px;
+
+               margin-top: 10px;
+                
+               >a{
+                    color: black;
+
+               }
+          }
 
      }
 
@@ -267,7 +317,7 @@ export const ContainerTaskDelivery = styled.div`
      #taskMessageDelivered{
           width: 80%;
           height: 70px;
-
+          
           margin: 40px auto;
 
           display: flex;
@@ -304,6 +354,8 @@ export const ContainerTaskDelivery = styled.div`
                padding: 8px 15px 8px 15px;
 
                margin-top: 10px;
+
+               border-radius: 5px;
           }
 
           >a>input{

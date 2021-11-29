@@ -215,9 +215,7 @@ export const TaskDelivery = styled.div`
 
 `
 
-export const TaskComment = styled.form`
-     display: grid;
-  
+export const TaskComment = styled.form`  
      margin-top: -70px;
      margin-left: 15px;
 
@@ -228,6 +226,8 @@ export const TaskComment = styled.form`
      }
 
      label{
+          display: grid;
+
           color: var(--color-text);
           font-weight: bold;
 
@@ -239,6 +239,8 @@ export const TaskComment = styled.form`
           width: 600px;
           border-radius: 10px;
           border: 2px solid var(--color-blue);
+
+          margin-top: 15px;
      }
 
      #buttons{

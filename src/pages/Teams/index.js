@@ -14,7 +14,6 @@ import Card from "../../components/Card";
 import Dropzone from "../../components/Dropzone";
 import PermissionComponent from "../../components/PermissionComponent";
 
-
 import {
     Container,
     Section,

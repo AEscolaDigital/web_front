@@ -97,7 +97,6 @@ function CreateTask() {
         setFormTesk({ ...formTask, [e.target.id]: e.target.value });
     };
 
-
     const [formTaskFile, setFormTeskFile] = useState({
         file: {},
         file1: {},
@@ -233,6 +232,7 @@ function CreateTask() {
                             height="63px"
                             width="423px"
                             required
+                            min={new Date().toLocaleDateString("pt-BR").split('/').reverse().join('-')}
                             autocomplete="off"
                             handler={handleInput} />
 
@@ -242,6 +242,8 @@ function CreateTask() {
                             type="number"
                             width="423px"
                             height="63px"
+                            min="1"
+                            max="100"
                             autocomplete="off"
                             handler={handleInput} />
                     </div>

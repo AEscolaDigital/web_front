@@ -47,6 +47,7 @@ function TaskDelivery() {
     }, [location]);
 
     const [taskDelivery, setTaskDelivery] = useState([]);
+
     const [loadTaskDelivery, setLoadTaskDelivery] = useState(0);
 
     useEffect(() => {
@@ -56,7 +57,7 @@ function TaskDelivery() {
             try {
                 const response = await api.get(`taskdelivery/user_id/${getUser().id}/task_id/${location.state.task.id}`);
 
-                setTaskDelivery(response.data[0]);
+                setTaskDelivery(response.data);
 
             } catch (error) {
                 //httpError503(error.response);
@@ -143,8 +144,6 @@ function TaskDelivery() {
             data.append("file", formTaskFile.file);
             data.append("file1", formTaskFile.file1);
 
-            console.log(formTaskFile.file);
-
             await api.post(`taskdelivery`, data, {
                 headers: {
                     "content-type": "multipart/form-data"
@@ -204,7 +203,6 @@ function TaskDelivery() {
         style: "style1"
     };
 
-
     return (
         <>
             <Header />
@@ -237,8 +235,10 @@ function TaskDelivery() {
 
                                 {task.tasksAttachments !== undefined && (
                                     task.tasksAttachments.link !== "" && (
-                                        <a href={task.tasksAttachments.link} target="blank"  >
-                                            <input value={task.tasksAttachments.link} disabled />
+                                        <a 
+                                            href={task.tasksAttachments.link} target="blank"  >
+                                            <input 
+                                                value={task.tasksAttachments.link} disabled />
                                         </a>
                                     )
                                 )}
@@ -246,8 +246,11 @@ function TaskDelivery() {
                                 {task.tasksAttachments !== undefined && (
                                     task.tasksAttachments.link1 !== "" && (
 
-                                        <a href={task.tasksAttachments.link} target="blank"  >
-                                            <input value={task.tasksAttachments.link1} disabled />
+                                        <a
+                                            href={task.tasksAttachments.link1} target="blank"  >
+                                            <input
+                                                value={task.tasksAttachments.link1}
+                                                disabled />
                                         </a>
                                     )
                                 )}
@@ -295,15 +298,29 @@ function TaskDelivery() {
                             </div>
                         </div>
                     </div>
-                    <div>
-                        {taskDelivery !== undefined && (
+                    <div id="commentSpots" >
+                        <div id="taskComment" >
+                            <span id="commentTitle" >Comentários:</span>
+                            {taskDelivery[0] !== undefined && (
+                                <span id="comment" >{taskDelivery[0].comment}</span>
+                            )}
+                        </div>
 
-                            <div id="taskComment" >
-                                <span id="commentTitle" >Comentários:</span>
-                                <span id="comment" >{taskDelivery.comment}</span>
-                            </div>
-                        )}
+
+                        <div id="spots" >
+                            <span>Total de pontos possíveis: &nbsp;
+                                {task.spots !== null ? task.spots : "Não informado"}
+                            </span>
+                            {taskDelivery[0] !== undefined && (
+                                taskDelivery[0].spots !== null && (
+                                    <span>Total de pontos da avaliação: &nbsp;
+                                        {taskDelivery[0].spots}
+                                    </span>
+                                )
+                            )}
+                        </div>
                     </div>
+
 
 
                 </Task>
@@ -313,7 +330,7 @@ function TaskDelivery() {
                     </div>
 
                     <form onSubmit={handleSubmit} >
-                        {taskDelivery === undefined && (
+                        {taskDelivery[0] === undefined && (
                             <div id="linksTaskDelivery" className="titleFormatting"  >
                                 <span>Links</span>
 
@@ -333,19 +350,19 @@ function TaskDelivery() {
                             </div>
                         )}
 
-                        {taskDelivery !== undefined && (
+                        {taskDelivery[0] !== undefined && (
                             <div id="deliveredTaskLinks" >
                                 <span>Links</span>
 
-                                {taskDelivery.link !== "" && (
-                                    <a href={taskDelivery.link} target="blank" >
-                                        <input value={taskDelivery.link} />
+                                {taskDelivery[0].link !== "" && (
+                                    <a href={taskDelivery[0].link} target="blank" >
+                                        <input value={taskDelivery[0].link} />
                                     </a>
                                 )}
 
-                                {taskDelivery.link1 !== "" && (
-                                    <a href={taskDelivery.link1} >
-                                        <input value={taskDelivery.link1} />
+                                {taskDelivery[0].link1 !== "" && (
+                                    <a href={taskDelivery[0].link1} target="blank" >
+                                        <input value={taskDelivery[0].link1} />
                                     </a>
                                 )}
                             </div>
@@ -355,50 +372,84 @@ function TaskDelivery() {
                         <div id="attachmentsTaskDelivery" className="titleFormatting"  >
                             <span>Anexos</span>
                             {inputsFile.map(inputFile => (
-                                <div className="files" >
-                                    <div>
-                                        <label>
+                                taskDelivery[0] === undefined && (
+                                    <div className="files" >
+                                        <div>
+                                            <label>
+                                                {inputFile.id === "file" && (
+                                                    formTaskFile.file.name === undefined ? <span>Selecione um arquivo</span> : formTaskFile.file.name
+                                                )}
 
-                                            {inputFile.id === "file" && (
-                                                formTaskFile.file.name === undefined ? <span>Selecione um arquivo</span> : formTaskFile.file.name
-                                            )}
+                                                {inputFile.id === "file1" && (
+                                                    formTaskFile.file1.name === undefined ? <span>Selecione um arquivo</span> : formTaskFile.file1.name
 
-                                            {inputFile.id === "file1" && (
-                                                formTaskFile.file1.name === undefined ? <span>Selecione um arquivo</span> : formTaskFile.file1.name
+                                                )}
 
-                                            )}
-                                            {inputFile.id === "file2" && (
-                                                formTaskFile.file2.name === undefined ? <span>Selecione um arquivo</span> : formTaskFile.file2.name
-                                            )}
+                                                <input
+                                                    id={inputFile.id}
+                                                    type="file"
+                                                    onChange={handleFile} />
+                                            </label>
+                                        </div>
 
-                                            <input
-                                                id={inputFile.id}
-                                                type="file"
-                                                onChange={handleFile} />
-                                        </label>
+                                        <div>
+                                            <img
+                                                src={plusSign}
+                                                onClick={() => handleAddInputsFile()}
+                                                alt="Icone de adicionar mais um" />
+                                        </div>
                                     </div>
-                                    <div>
-                                        <img
-                                            src={plusSign}
-                                            onClick={() => handleAddInputsFile()}
-                                            alt="Icone de adicionar mais um" />
-                                    </div>
+                                )
+                            ))}
+
+                            {taskDelivery.map(taskDelivery => (
+                                <div>
+                                    {taskDelivery.file !== '' && (
+                                        <div className="attachmentsDelivered" >
+                                            <a
+                                                href={taskDelivery.file}
+                                                target="blank" >
+                                                Visualizar ou fazer download</a>
+                                        </div>
+                                    )}
+                                    {taskDelivery.file1 !== '' && (
+                                        <div className="attachmentsDelivered" >
+                                            <a
+                                                href={taskDelivery.file1}
+                                                target="blank">
+                                                Visualizar ou fazer download</a>
+                                        </div>
+                                    )}
                                 </div>
                             ))}
 
+
+                            {/* {taskDelivery.file !== null && (
+                                <div className="attachmentsDelivered" >
+                                    <a href={taskDelivery.file} >Visualizar ou fazer download</a>
+                                </div>
+                            )}
+
+                            {taskDelivery.file1 !== null && (
+                                <div className="attachmentsDelivered" >
+                                    <a href={taskDelivery.file1} >Visualizar ou fazer download</a>
+                                </div> */}
+                            {/* )} */}
+
                         </div>
 
-                        {taskDelivery === undefined && (
+                        {taskDelivery[0] === undefined && (
                             <div id="btn" >
                                 <BtnSubmit
                                     text="Entregar" />
                             </div>
                         )}
 
-                        {taskDelivery !== undefined && (
+                        {taskDelivery[0] !== undefined && (
 
                             <div id="taskMessageDelivered" >
                                 <span>A tarefa {task.name}, foi entregue com sucesso</span>
+
                             </div>
                         )}
 
