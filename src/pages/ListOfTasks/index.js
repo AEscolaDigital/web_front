@@ -27,6 +27,7 @@ function ListOfTasks() {
 
     const [disciplineCreateTask, setDisciplineCreateTask] = useState(true);
 
+
     if (location.state !== undefined) {
         if (disciplineCreateTask) {
             setDisciplineCreateTask(false);
@@ -49,7 +50,9 @@ function ListOfTasks() {
             }
         };
 
-        loadTasks();
+        if (discipline.id !== undefined) {
+            loadTasks();
+        }
 
     }, [discipline]);
 
@@ -70,7 +73,7 @@ function ListOfTasks() {
             console.log(error);
         }
     }
-    
+
     const [task, setTask] = useState();
 
     const handleSubmitTaskUserList = async (e) => {
@@ -82,18 +85,18 @@ function ListOfTasks() {
                 history.push({
                     pathname: `/taskUserList`,
                     state: {
-                    id: discipline.id,
-                    name: discipline.name,
-                    task: task
+                        id: discipline.id,
+                        name: discipline.name,
+                        task: task
                     }
                 })
-            }else{
+            } else {
                 history.push({
                     pathname: `/taskDelivery`,
                     state: {
-                    id: discipline.id,
-                    name: discipline.name,
-                    task: task
+                        id: discipline.id,
+                        name: discipline.name,
+                        task: task
                     }
                 })
             }
@@ -172,7 +175,7 @@ function ListOfTasks() {
                 <ContainerListTask>
                     <form onSubmit={handleSubmitTaskUserList} >
                         {tasks.map(task =>
-                            <button onClick={()=> setTask(task)} >
+                            <button onClick={() => setTask(task)} >
                                 <div>
                                     <div>
                                         <img src={Imagem} alt="Controle de video game" />
@@ -186,8 +189,8 @@ function ListOfTasks() {
                                     </div>
                                 </div>
                             </button>
-                         
-                         
+
+
                         )}
                     </form>
                 </ContainerListTask>
