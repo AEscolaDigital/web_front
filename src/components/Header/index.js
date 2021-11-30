@@ -23,7 +23,7 @@ function Header() {
         setOpenClose(() => toogle ? 'none' : 'block');
         setHeight(() => toogle ? '0px' : '365px');
     }, [toogle]);
-    
+
     let profilePictureStyle = {
         style: "style2"
     };
@@ -51,7 +51,13 @@ function Header() {
                 <div style={{
                     display: value,
                 }} >
-                    <img src={profile} alt="Sua imagem de perfil" />
+                    <div id="profile" >
+
+                        <ProfilePicture
+                            style={profilePictureStyle}
+                            name={getUser().name}
+                        />
+                    </div>
                     <div>{getUser().name}</div>
                     <div>{getUser().email}</div>
                     <hr />
@@ -78,7 +84,7 @@ function Header() {
 
                     </Link>
                     <hr />
-                    <Link to="/" onClick={()=> signOut()} >
+                    <Link to="/" onClick={() => signOut()} >
                         <div>
                             <img src={iconExit} alt="Icone de sair" />
                         </div>

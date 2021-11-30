@@ -74,16 +74,20 @@ export const Card = styled.div`
     height: 365px;
     
     background-color: white;
+
     color: var(--color-text);
+
     border-radius: 10px;
+
     transition: height 500ms;
     
-    >div{
-        
-        >img{
+    #profile{
+            width: 45px;
             display: block;
             margin: 15px auto 10px auto;
         }
+
+    >div{
 
         >div{
             text-align: center;
