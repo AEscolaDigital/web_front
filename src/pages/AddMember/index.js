@@ -210,7 +210,7 @@ function AddMember() {
                     <ContainerModal>
                         <span>Assista o video abaixo</span>
                         <div>
-                            <iframe width="560" height="315" src="https://www.youtube.com/embed/wupWISbNRug" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <iframe width="560" height="315" src="https://www.youtube.com/embed/jl92UHvcodY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         </div>
                         <div id="fileExample" >
                             <span>Faça o download do arquivo de excel de exemplo</span>
