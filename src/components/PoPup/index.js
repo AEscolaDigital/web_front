@@ -10,7 +10,7 @@ function PoPup({ display, setProps, id }) {
 
     const handleDelete = async (e) => {
         e.preventDefault();
-
+            
         if (await confirmationToDelete()) {
             try {
                 await api.delete(`/disciplines/${id}`);

@@ -8,6 +8,9 @@ export const Container = styled.div`
     background-color: white;
     border-radius: 20px;
 
+    transition: all 0.5s linear 0s;
+
+
     >img{
             display: block;
             margin: -25px auto 0px auto;

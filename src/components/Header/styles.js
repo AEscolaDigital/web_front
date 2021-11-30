@@ -56,13 +56,10 @@ export const Container = styled.header`
         transition: all 100ms;
     }
 
-    img{
+    #profilePicture, #profile{
         cursor: pointer;
     }
 
-    #profilePicture{
-        cursor: pointer;
-    }
 `;
 
 export const Card = styled.div`
@@ -81,11 +78,22 @@ export const Card = styled.div`
 
     transition: height 500ms;
     
-    #profile{
+    #profile {
             width: 45px;
             display: block;
             margin: 15px auto 10px auto;
+    }
+
+    #profilePictureCard {
+        :hover{
+            padding: 10px !important; 
+            background-color: #000000; 
+            opacity: 0.5;
+            content: url(${props => props.srcCamera});
+
         }
+        
+    }
 
     >div{
 

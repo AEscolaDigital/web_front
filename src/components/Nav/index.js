@@ -1,8 +1,6 @@
 import { ContainerNav } from "./styles";
-import iconFeed from "../../assets/nav/iconFeed.svg"
 import iconTeam from "../../assets/nav/iconTeam.svg"
 import iconActivities from "../../assets/nav/iconActivities.svg"
-import iconFoul from "../../assets/nav/iconFoul.svg"
 import iconNotes from "../../assets/nav/iconNotes.svg"
 import addMember from "../../assets/nav/addMember.svg"
 import { Link } from "react-router-dom";

@@ -1,6 +1,6 @@
 import { Container } from "./styles";
 
-function ProfilePicture({ name, profile_picture, style }) {
+function ProfilePicture({ name, profile_picture, style, id }) {
     const nameInitlias = () => {
 
         if (profile_picture === undefined || profile_picture === null) {
@@ -12,8 +12,8 @@ function ProfilePicture({ name, profile_picture, style }) {
     }
 
     return (
-        <Container >
-            <div className={style.style}>
+        <Container  >
+            <div id={id} className={style.style}>
                 <div>
                     {nameInitlias()}
                     {nameInitlias() === true && <img src={profile_picture} alt="Imagem de perfil" />}
