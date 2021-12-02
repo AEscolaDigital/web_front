@@ -195,7 +195,7 @@ function AddMember() {
 
     const role = {
         1: 'Administrador',
-        2: 'Aluno',
+        2: 'Aluno(a)',
         3: 'Professor'
     }
 

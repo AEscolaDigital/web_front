@@ -132,6 +132,7 @@ function Teams() {
 
             if (response.status === 201) {
                 waitingToAddMember(true);
+                setImage(null);
             }
 
 
