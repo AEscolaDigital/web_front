@@ -88,6 +88,55 @@ export const CreateClassAndSelectClass = styled.div`
     }
 `
 
+
+export const InputFile = styled.div`
+    width: 385px;
+    height: 35px;
+    
+    margin-left: 15px;
+    
+    label {
+        display: flex;
+
+        padding-left: 25px;
+        border-radius: 10px 0px;
+
+        cursor: pointer;
+
+        color: var(--color-text);
+
+    }
+    input[type='file']{
+        display: none;
+    } 
+
+     .files{
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+
+         background-color: var(--color-background);
+
+         border-radius: 5px;
+
+         height: 35px;
+
+         margin-top: 10px;
+
+         div>label{
+              width: 385px;
+
+              overflow: hidden;
+
+              white-space: nowrap; 
+
+              text-overflow: ellipsis;
+         }
+
+    }
+
+`
+
 export const ContainerSelect = styled.div`
     width: 350px;
     transition: height 500ms;
@@ -272,6 +321,10 @@ export const ContainerAddMemberToClass = styled.div`
             margin-bottom: 10px;
         }
 
+        #course_name{
+            font-size: 12px;
+        }
+
         #buttonAddMemberToClass{
             display: flex;
             justify-content: end;
@@ -329,6 +382,10 @@ export const ContainerClassName = styled.div`
     #class{
         height: 10px;
         margin-top: 17px;
+    }
+
+    #course_name_classe_name{
+        font-size: 12px;
     }
 `
 export const ContainerTable = styled.table`

@@ -96,6 +96,7 @@ function Teams() {
 
     const [image, setImage] = useState(null);
 
+
     const [newDiscipline, setNewDiscipline] = useState({
         name: "",
     })

@@ -12,7 +12,8 @@ import {
     ContainerSearch,
     Select,
     ContainerSearchDiv,
-    ContainerClassName
+    ContainerClassName,
+    InputFile
 } from "./styles";
 
 import Nav from "../../components/Nav";
@@ -183,8 +184,14 @@ function CreateClass() {
 
     }
 
+
+
+    const [image, setImage] = useState(null);
+
     const [formCreateClass, setClass] = useState({
         name: "",
+        sigla: "",
+        start_date: "",
     });
 
     const handleInput = (e) => {
@@ -195,12 +202,27 @@ function CreateClass() {
         e.preventDefault();
 
         try {
-            await api.post("/classes", {
-                name: formCreateClass.name,
-            });
+
+            let data = new FormData();
+
+            data.append("course_name", formCreateClass.course_name);
+            data.append("sigla", formCreateClass.sigla);
+            data.append("start_date", formCreateClass.start_date);
+
+            const image_ = image === null ? "" : image[0];
+
+            data.append("image", image_);
+
+            await api.post("/classes", data, {
+                headers: {
+                    "content-type": "multipart/form-data"
+                }
+            })
 
             setClass({
-                name: "",
+                course_name: "",
+                sigla: "",
+                start_date: "",
             })
 
             setloadClasses(loadclasses + 1)
@@ -338,12 +360,44 @@ function CreateClass() {
 
                         <form onSubmit={handleSubmit} >
                             <Input
-                                id="name"
-                                label="Nome da turma"
+                                id="course_name"
+                                label="Nome do curso"
                                 handler={handleInput}
-                                value={formCreateClass.name}
+                                value={formCreateClass.course_name}
                                 autocomplete="off"
                             />
+
+                            <Input
+                                id="sigla"
+                                label="Sigla do curso"
+                                handler={handleInput}
+                                value={formCreateClass.sigla}
+                                autocomplete="off"
+                            />
+
+                            <Input
+                                id="start_date"
+                                type="date"
+                                label="Data de inicio"
+                                handler={handleInput}
+                                value={formCreateClass.start_date}
+                                autocomplete="off"
+                            />
+
+                            <InputFile>
+                                <div className="files" >
+                                    <div>
+                                        <label>
+                                            <span>Selecione uma image</span> 
+                                            <input
+                                                type="file"
+                                                onChange={setImage} />
+                                        </label>
+                                    </div>
+                                </div>
+
+                            </InputFile>
+
 
                             <div id="button" >
                                 <BtnSubmit text="Criar" />
@@ -354,16 +408,12 @@ function CreateClass() {
                             <h1>Selecione alguma turma para adicionar membros a ela:</h1>
                         </div>
 
-                        <ContainerSelect style={{
-                            height: valueHeight,
-                        }} >
+                        <ContainerSelect style={{ height: valueHeight }} >
                             <ContainerSearchDiv onClick={e => setToogle(state => !state)} >
                                 <span>{usersClass.name}</span>
                                 <img src={downArrow} alt="Icone seta para baixo" />
                             </ContainerSearchDiv>
-                            <ContainerOption style={{
-                                display: value,
-                            }} >
+                            <ContainerOption style={{ display: value }} >
                                 <ContainerSearch>
                                     <input placeholder="Pesquisar" />
                                 </ContainerSearch>
@@ -374,7 +424,7 @@ function CreateClass() {
                                         {classes.map(classe =>
                                             <div>
                                                 <a onClick={() => setIdClass(classe.id)} href="#class" >
-                                                    <span>{classe.name}</span>
+                                                    <span>{classe.sigla}</span>
                                                 </a>
                                                 <form
                                                     onSubmit={handleDeleteClass} >
@@ -426,7 +476,7 @@ function CreateClass() {
 
                         <div id="AddMemberToClass" >
                             <h1>Adicionar Membros:</h1>
-                            <span>Turma: {usersClass.name}</span>
+                            <span>Turma: {usersClass.sigla} - <span id="course_name" > {usersClass.course_name} </span></span>
                             <form onSubmit={handleSubmitAddMember} >
                                 <Input
                                     id="email"
@@ -445,9 +495,9 @@ function CreateClass() {
                         <div id="AddMemberToClassExcel" >
                             <AddMemberWithWxcelWile>
                                 <Content>
-                                    <Dropzone 
+                                    <Dropzone
                                         onUpload={handleUpload}
-                                        text="Arraste uma arquivo .csv aqui..."  />
+                                        text="Arraste uma arquivo .csv aqui..." />
                                 </Content>
                             </AddMemberWithWxcelWile>
                         </div>
@@ -457,7 +507,7 @@ function CreateClass() {
 
                 {idClass > 0 && (
                     <ContainerClassName srcIconDelte={iconDelete30} >
-                        <span id="class" >Turma: {usersClass.name}</span>
+                        <span id="class" >Turma: {usersClass.sigla} <span id="course_name_classe_name" > {usersClass.course_name} </span></span>
 
                     </ContainerClassName>
                 )}
