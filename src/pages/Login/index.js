@@ -83,11 +83,7 @@ function Login() {
             <DivLogin>
                 <div>
                     <h1>Bem vindo de volta! Por favor acesse sua conta.</h1>
-                    <div id="error" >
-                        <span></span>
-                    </div>
                     <form onSubmit={handleSubmit}  >
-
                         <Input
                             label="Informe o seu E-mail"
                             colorLabel="white"

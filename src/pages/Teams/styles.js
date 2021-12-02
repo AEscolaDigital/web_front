@@ -43,10 +43,29 @@ export const Container = styled.div`
         width: 421px;
         margin: 30px auto;
 
-        >div:nth-child(3){
+        >div:nth-child(4){
            padding: 0px;
+           margin-top: 20px;
         }
 
+    }
+
+    #imageName{
+        height: 50px;
+
+        margin-top: -30px;
+
+        border: 2px solid var(--color-blue);
+
+        display: flex;
+        align-items: center;
+        
+
+        >span{
+            margin-left: 10px;
+            color: var(--color-text);
+            font-weight: bold;
+        }
     }
 `
 export const ContainerUploadImage = styled.div`
@@ -55,7 +74,7 @@ export const ContainerUploadImage = styled.div`
     align-content: center;
 
     width: 100%;
-    height: 120px;
+    height: 100px;
 
     background-color: var(--color-blue);
 
@@ -73,6 +92,14 @@ export const Content = styled.div`
   margin: 30px;
   background: #fff;
   border-radius: 4px;
+
+  >div{
+      height: 50px;
+
+        p{
+            padding: 13px 0px;
+        }
+  }
 `;
 
 

@@ -7,21 +7,22 @@ function DropZone(props) {
     const renderDragMessage = (isDragActive, isDragReject) => {
 
         if (!isDragActive) {
-            return <UploadMessage>Arraste o arquivo aqui...</UploadMessage>;
+            return <UploadMessage>{props.text}</UploadMessage>;
         }
 
         if (isDragReject) {
             return <UploadMessage type="error">Arquivo não suportado</UploadMessage>;
         }
 
-        return <UploadMessage type="success">Solte o arquivo aqui</UploadMessage>;
+          return <UploadMessage type="success">Solte o arquivo aqui</UploadMessage>;
     };
     
-    const { onUpload } = props;
 
+    const { onUpload } = props;
+        
     return (
         
-        <Dropzone accept="" onDropAccepted={onUpload} >
+        <Dropzone accept={props.accept} onDropAccepted={onUpload} >
             {({ getRootProps, getInputProps, isDragActive, isDragReject }) =>
                 <DropContainer
                     {...getRootProps()}

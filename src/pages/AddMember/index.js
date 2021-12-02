@@ -117,7 +117,7 @@ function AddMember() {
             title: '<strong>Arquivo inválido</strong>',
             icon: 'info',
             html:
-                '<span> Caso você esteja tendo dificuldades para fazer o upload, <a href="/">clique aqui</a>',
+                '<span> Caso você esteja tendo dificuldades para fazer o upload, <a onClick={setIsModalVisible(true)} >clique aqui</a>',
             showCloseButton: true,
             focusConfirm: false,
         })
@@ -125,8 +125,8 @@ function AddMember() {
 
     const waitingToAddMember = (close) => {
         Swal.fire({
-            title: 'Adicionando membros, <br>na base de dados!',
-            html: 'Aguarde alguns segundos por favor',
+            title: 'Aguarde',
+            html: 'Adicionando membros, na base de dados!',
             onOpen: () => {
                 Swal.showLoading()
             },
@@ -314,7 +314,10 @@ function AddMember() {
 
                     <UploadCSV>
                         <Content>
-                            <Dropzone onUpload={handleUpload} />
+                            <Dropzone 
+                                onUpload={handleUpload}
+                                text="Arraste uma arquivo .csv aqui..."
+                         />
                         </Content>
                     </UploadCSV>
 

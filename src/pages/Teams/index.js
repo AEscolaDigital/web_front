@@ -47,14 +47,14 @@ function Teams() {
 
     const [disciplines, setDisciplines] = useState([]);
     const [loadDisciplines, setLoadDisciplines] = useState(0);
-   
+
     useEffect(() => {
         let loadDisciplines = async () => {
 
             try {
                 const response = await api.get(`/disciplines`);
                 setDisciplines(response.data)
-              
+
 
             } catch (error) {
                 httpError503(error.response);
@@ -96,7 +96,6 @@ function Teams() {
 
     const [image, setImage] = useState(null);
 
-
     const [newDiscipline, setNewDiscipline] = useState({
         name: "",
     })
@@ -108,6 +107,8 @@ function Teams() {
         e.preventDefault();
 
         try {
+            waitingToAddMember()
+
             let data = new FormData();
 
             data.append("name", newDiscipline.name);
@@ -118,16 +119,20 @@ function Teams() {
             data.append("image", image_);
 
 
-            await api.post("/disciplines", data, {
+            const response = await api.post("/disciplines", data, {
                 headers: {
                     "content-type": "multipart/form-data"
                 }
             })
 
+
             setIsModalVisible(false);
             setLoadDisciplines(loadDisciplines + 1);
-            successAlert("Disciplina criada com sucesso");
             setSelectedClass("");
+
+            if (response.status === 201) {
+                waitingToAddMember(true);
+            }
 
 
         } catch (error) {
@@ -169,6 +174,24 @@ function Teams() {
         })
     }
 
+    const waitingToAddMember = (close) => {
+        Swal.fire({
+            title: 'Aguarde',
+            html: 'Adicionando os alunos nessa disciplina !',
+            onOpen: () => {
+                Swal.showLoading()
+            },
+            didOpen: () => {
+                Swal.showLoading()
+            },
+        })
+
+        if (close === true) {
+            Swal.close()
+            successAlert("Disciplina criada com sucesso");
+        }
+    }
+
 
     return (
         <Container role={getUserRole()} >
@@ -176,16 +199,12 @@ function Teams() {
                 <Modal title="Criar disciplina">
                     <form onSubmit={handleAddNewDicipline} >
                         <div id="inputsModal" >
-                            <ContainerSelect style={{
-                                height: valueHeight,
-                            }} >
+                            <ContainerSelect style={{ height: valueHeight }} >
                                 <ContainerSearchDiv onClick={e => setToogle(state => !state)} >
                                     <span>{selectedClass.name}</span>
                                     <img src={downArrow} alt="Icone seta para baixo" />
                                 </ContainerSearchDiv>
-                                <ContainerOption style={{
-                                    display: value,
-                                }} >
+                                <ContainerOption style={{ display: value }} >
                                     <ContainerSearch>
                                         <input
                                             placeholder="Pesquisar" />
@@ -234,9 +253,17 @@ function Teams() {
                             </ContainerSelect>
                             <ContainerUploadImage>
                                 <Content>
-                                    <Dropzone onUpload={setImage} />
+                                    <Dropzone 
+                                        onUpload={setImage} 
+                                        text="Arraste uma imagem aqui..."
+                                        accept="image/*"/>
                                 </Content>
                             </ContainerUploadImage>
+                            {image !== null && (
+                                <div id="imageName" >
+                                    <span>Nome da imagem: {image[0].name} </span>
+                                </div>
+                            )}
                             <Input
                                 id="name"
                                 className="labelWhite"
@@ -247,7 +274,7 @@ function Teams() {
                             />
                         </div>
                         <div id="btnModal" >
-                            <div onClick={() => setIsModalVisible(false)} >
+                            <div onClick={() => {setIsModalVisible(false); setImage(null)}} >
                                 <BtnCancel text="Cancelar" />
                             </div>
                             <BtnSubmit text="Concluído" />
@@ -272,13 +299,13 @@ function Teams() {
             </div>
 
             <Section>
-                {disciplines.map(discipline => 
+                {disciplines.map(discipline =>
                     <Card
                         disciplinesName={discipline.name}
                         teacherName={discipline.teacher_name}
                         id={discipline.id}
                         setProps={setGrandson} >
-                            
+
                         <img src={discipline.image} alt=""
                         />
                     </Card>

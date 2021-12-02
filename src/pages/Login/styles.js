@@ -15,11 +15,7 @@ export const Container = styled.div`
 
 export const DivLogin = styled.div`
     width: 50vw;
-    height: calc(48vw + 15px);
-
-    @media (max-width: 1400px){
-        height: calc(44vw + 20px) ;
-    }
+    height: 100vh;
 
     background-color: white;  
 
@@ -28,28 +24,6 @@ export const DivLogin = styled.div`
         text-align: center;
         font-size: 18px;
     }
-
-    .error{
-        width: 400px;
-        height: 70px;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        margin: 20px 0px 20px 0px;
-
-        background-color: #5059c9;
-
-        border-radius: 0px 50px 0px 50px;
-        border: 2px solid #013097;
-        
-        span{
-            color: white;
-            font-size: 18px;
-        }
-    }
-    
     #ForgotPassword{
         width: 395px;
         text-align: end;

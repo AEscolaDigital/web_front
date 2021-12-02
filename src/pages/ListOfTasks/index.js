@@ -117,16 +117,6 @@ function ListOfTasks() {
                     {discipline.id > 0 && (
 
                         <section>
-                            <div id="typeTasks" >
-                                <div>
-                                    <span>Atribuída</span>
-                                </div>
-                                <div>
-                                    <span>Concluída</span>
-                                </div>
-                            </div>
-
-
                             <form id="formCreateTask" onSubmit={handleSubmit} >
                                 <button to="createTask" >
                                     <div id="addNewTasks" >
@@ -139,22 +129,6 @@ function ListOfTasks() {
                         </section>
                     )}
 
-                </PermissionComponent>
-
-
-                <PermissionComponent role="ROLE_USER" >
-                    <section>
-                        <div id="typeTasks" >
-                            <div>
-                                <span>Atribuída</span>
-                            </div>
-                            <div>
-                                <span>Concluída</span>
-                            </div>
-                        </div>
-
-
-                    </section>
                 </PermissionComponent>
 
                 {discipline.id > 0 && (

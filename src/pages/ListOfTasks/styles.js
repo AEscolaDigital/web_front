@@ -16,34 +16,20 @@ export const ContainerTask = styled.div`
 
      section {
           display: flex;
-          justify-content: space-between;
+          justify-content: end;
           margin-top: 70px;
           margin-left: 80px;
 
           border-bottom:  1px solid  #C4C4C4;
 
           button{
-               border: 0;
                height: 50px;
+
+               border: 0;
                border-radius: 10px;
+
+               margin-bottom: 10px;
           }
-
-          #typeTasks {
-               display: flex;
-               align-items: center;
-               justify-content: space-between;
-               text-align: center;
-
-               width: 200px;
-               height: 61px;
-
-               font-weight: bold;
-               font-size: 16px;
-
-               color: #5C5C5C;
-          }
-
-     
 
           #addNewTasks{
                display: flex;

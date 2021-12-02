@@ -445,7 +445,9 @@ function CreateClass() {
                         <div id="AddMemberToClassExcel" >
                             <AddMemberWithWxcelWile>
                                 <Content>
-                                    <Dropzone onUpload={handleUpload} />
+                                    <Dropzone 
+                                        onUpload={handleUpload}
+                                        text="Arraste uma arquivo .csv aqui..."  />
                                 </Content>
                             </AddMemberWithWxcelWile>
                         </div>
