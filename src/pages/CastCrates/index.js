@@ -37,7 +37,55 @@ function CastCrates() {
                                 <td >
                                     <img
                                         className="imgTable"
-                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUEgE45wBPSyEEe2Aigcp4bkCPuOs7rcLi3A&usqp=CAU" />
+                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUEgE45wBPSyEEe2Aigcp4bkCPuOs7rcLi3A&usqp=CAU"
+                                        alt="Perfil" />
+                                </td>
+
+                                <td>Samuel Goulart</td>
+                                <td>1</td>
+                                <td>
+                                    <input 
+                                        className="inputGrades" 
+                                        max="100" 
+                                        maxLength="3" 
+                                        min="1" 
+                                        required
+                                        type="number"/>
+                                </td>
+                                <td>
+                                    <input 
+                                        className="inputGrades" 
+                                        max="100" 
+                                        maxLength="3" 
+                                        min="1"
+                                        type="number" />
+                                </td>
+                                <td>
+                                    <input 
+                                        className="inputGrades" 
+                                        max="100" 
+                                        maxLength="3" 
+                                        min="1" 
+                                        required
+                                        type="number" />
+                                </td>
+                                <td>
+                                    <input 
+                                        className="inputGrades" 
+                                        max="100" 
+                                        maxLength="3" 
+                                        min="1" 
+                                        required
+                                        type="number" />
+                                </td>
+                                <td>Aprovado</td>
+                            </tr>
+                            <tr>
+                                <td >
+                                    <img
+                                        className="imgTable"
+                                        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUEgE45wBPSyEEe2Aigcp4bkCPuOs7rcLi3A&usqp=CAU"
+                                        alt="Perfil" />
                                 </td>
 
                                 <td>Samuel Goulart</td>

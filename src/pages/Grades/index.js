@@ -15,10 +15,7 @@ import { Link } from "react-router-dom";
 
 function Grades() {
 
-
     const [classes, setClasses] = useState([])
-
-    console.log(classes);
 
     useEffect(() => {
         let loadclasses = async () => {
@@ -44,7 +41,7 @@ function Grades() {
             <Nav />
             <ContainerTitle>
                 <h1>Escolha uma classe</h1>
-                <h2>Lançamento de notas</h2>
+                <h2>Para o lançamento de notas</h2>
 
             </ContainerTitle>
             <ContainerCard>

@@ -191,6 +191,7 @@ function CreateClass() {
     }
 
     const [formCreateClass, setClass] = useState({
+        course_name: "",
         name: "",
         sigla: "",
         start_date: "",
@@ -362,6 +363,7 @@ function CreateClass() {
 
                         <form onSubmit={handleSubmit} >
                             <Input
+                                id="course_name"
                                 className="course_name"
                                 label="Nome do curso"
                                 handler={handleInput}
