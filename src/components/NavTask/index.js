@@ -61,7 +61,7 @@ function NavTask({ setProps, iSOnPage }) {
                         <div onClick={() => {
                             setDisciplineId(discipline);
                             status();
-                        }} >{discipline.name}</div>
+                        }} >{discipline.sigla}</div>
                     )}
                 </div>
             </ContainerClass>

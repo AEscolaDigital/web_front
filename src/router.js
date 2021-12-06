@@ -12,6 +12,8 @@ import CreateTask from "./pages/CreateTask";
 import TaskUserList from "./pages/TaskUserList";
 import CorrectionTask from "./pages/CorrectionTask";
 import TaskDelivery from "./pages/TaskDelivery";
+import Grades from "./pages/Grades";
+import CastCrates from "./pages/CastCrates";
 
 function PrivateRoute({ role, children, ...rest }) {
 
@@ -78,6 +80,16 @@ function Router() {
                 <PrivateRoute path="/taskDelivery">
                     <TaskDelivery />
                 </PrivateRoute>
+                <PrivateRoute 
+                    path="/grades"
+                    role="ROLE_ADMIN">
+                    <Grades />
+                </PrivateRoute>K
+                <PrivateRoute 
+                    path="/castCrates"
+                    role="ROLE_ADMIN">
+                    <CastCrates />
+                </PrivateRoute>K
             </Switch>
         </BrowserRouter>
     );

@@ -158,17 +158,10 @@ export const Select = styled.div`
             height: 30px;
             padding: 5px 10px 5px 10px;
         }
-
-        /* div:hover{
-            background-color: var(--color-background);
-            border-radius: 5px;
-        } */
-
+        
         button:hover{
             background-color: var(--color-background);
         }
-
-
 
         button{
             width: 100%;
@@ -187,6 +180,10 @@ export const Select = styled.div`
             cursor: pointer;
 
             border-radius: 5px;
+        }
+
+        #course_name{
+            font-size: 12px;
         }
     }
 
@@ -245,6 +242,16 @@ export const ContainerSearchDiv = styled.div`
     justify-content: space-between;
 
     cursor: pointer;
+
+    #course_name {
+
+        overflow: hidden;    
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        font-size: 14px;
+        margin-left: 5px;
+    }
 `
 
 export const ContainerOption = styled.div`  

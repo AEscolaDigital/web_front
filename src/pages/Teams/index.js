@@ -99,6 +99,7 @@ function Teams() {
 
     const [newDiscipline, setNewDiscipline] = useState({
         name: "",
+        sigla: ""
     })
     const handleInput = (e) => {
         setNewDiscipline({ ...newDiscipline, [e.target.id]: e.target.value });
@@ -113,6 +114,7 @@ function Teams() {
             let data = new FormData();
 
             data.append("name", newDiscipline.name);
+            data.append("sigla", newDiscipline.sigla);
             data.append("class_id", selectedClass.id);
 
             const image_ = image === null ? "" : image[0];
@@ -198,12 +200,16 @@ function Teams() {
     return (
         <Container role={getUserRole()} >
             {isModalVisible ?
-                <Modal title="Criar disciplina">
+                <Modal 
+                    title="Criar disciplina">
+                        
                     <form onSubmit={handleAddNewDicipline} >
                         <div id="inputsModal" >
                             <ContainerSelect style={{ height: valueHeight }} >
                                 <ContainerSearchDiv onClick={e => setToogle(state => !state)} >
-                                    <span>{selectedClass.name}</span>
+                                    <span id="course_name" >
+                                        {selectedClass.sigla} - {selectedClass.course_name}
+                                    </span>
                                     <img src={downArrow} alt="Icone seta para baixo" />
                                 </ContainerSearchDiv>
                                 <ContainerOption style={{ display: value }} >
@@ -221,7 +227,7 @@ function Teams() {
                                                         setToogle(true);
                                                         setSelectedClass(classe);
                                                     }}>
-                                                        <span >{classe.name}</span>
+                                                        <span >{classe.sigla} - <span id="course_name" >{classe.course_name}</span> </span>
                                                     </button>
                                                 </div>
                                             )}
@@ -274,9 +280,18 @@ function Teams() {
                                 handler={handleInput}
                                 required
                             />
+
+                            <Input
+                                id="sigla"
+                                className="labelWhite"
+                                label="Sigla"
+                                width="200px"
+                                handler={handleInput}
+                                required
+                            />
                         </div>
                         <div id="btnModal" >
-                            <div onClick={() => {setIsModalVisible(false); setImage(null)}} >
+                            <div onClick={() => {setIsModalVisible(false); setImage(null); setSelectedClass([]) }} >
                                 <BtnCancel text="Cancelar" />
                             </div>
                             <BtnSubmit text="Concluído" />
@@ -303,7 +318,7 @@ function Teams() {
             <Section>
                 {disciplines.map(discipline =>
                     <Card
-                        disciplinesName={discipline.name}
+                        disciplinesName={discipline.sigla}
                         teacherName={discipline.teacher_name}
                         id={discipline.id}
                         setProps={setGrandson} >

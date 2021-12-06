@@ -184,9 +184,11 @@ function CreateClass() {
 
     }
 
-
-
     const [image, setImage] = useState(null);
+
+    const handleImage = (e) => {
+        setImage(e.target.files[0]);
+    }
 
     const [formCreateClass, setClass] = useState({
         name: "",
@@ -209,9 +211,7 @@ function CreateClass() {
             data.append("sigla", formCreateClass.sigla);
             data.append("start_date", formCreateClass.start_date);
 
-            const image_ = image === null ? "" : image[0];
-
-            data.append("image", image_);
+            if (image) data.append("image", image);
 
             await api.post("/classes", data, {
                 headers: {
@@ -223,7 +223,9 @@ function CreateClass() {
                 course_name: "",
                 sigla: "",
                 start_date: "",
-            })
+            });
+
+            setImage(null);
 
             setloadClasses(loadclasses + 1)
             successAlert("Turma criada, com sucesso!");
@@ -360,7 +362,7 @@ function CreateClass() {
 
                         <form onSubmit={handleSubmit} >
                             <Input
-                                id="course_name"
+                                className="course_name"
                                 label="Nome do curso"
                                 handler={handleInput}
                                 value={formCreateClass.course_name}
@@ -369,7 +371,7 @@ function CreateClass() {
 
                             <Input
                                 id="sigla"
-                                label="Sigla do curso"
+                                label="Sigla da Turma"
                                 handler={handleInput}
                                 value={formCreateClass.sigla}
                                 autocomplete="off"
@@ -388,10 +390,11 @@ function CreateClass() {
                                 <div className="files" >
                                     <div>
                                         <label>
-                                            <span>Selecione uma image</span> 
+                                            {image !== null ? <span>{image.name} </span> : <span>Selecione uma image</span>  }
+                                         
                                             <input
                                                 type="file"
-                                                onChange={setImage} />
+                                                onChange={handleImage} />
                                         </label>
                                     </div>
                                 </div>
@@ -410,7 +413,9 @@ function CreateClass() {
 
                         <ContainerSelect style={{ height: valueHeight }} >
                             <ContainerSearchDiv onClick={e => setToogle(state => !state)} >
-                                <span>{usersClass.name}</span>
+                                <span id="selectCourseName" >
+                                        {usersClass.sigla} - {usersClass.course_name}
+                                    </span>
                                 <img src={downArrow} alt="Icone seta para baixo" />
                             </ContainerSearchDiv>
                             <ContainerOption style={{ display: value }} >
@@ -497,7 +502,7 @@ function CreateClass() {
                                 <Content>
                                     <Dropzone
                                         onUpload={handleUpload}
-                                        text="Arraste uma arquivo .csv aqui..." />
+                                        text="Arraste um arquivo .csv aqui..." />
                                 </Content>
                             </AddMemberWithWxcelWile>
                         </div>
@@ -507,7 +512,7 @@ function CreateClass() {
 
                 {idClass > 0 && (
                     <ContainerClassName srcIconDelte={iconDelete30} >
-                        <span id="class" >Turma: {usersClass.sigla} <span id="course_name_classe_name" > {usersClass.course_name} </span></span>
+                        <span id="class" >Turma: {usersClass.sigla} -<span id="course_name_classe_name" > {usersClass.course_name} </span></span>
 
                     </ContainerClassName>
                 )}

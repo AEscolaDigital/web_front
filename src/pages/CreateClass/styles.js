@@ -176,6 +176,15 @@ export const ContainerSearchDiv = styled.div`
     justify-content: space-between;
 
     cursor: pointer;
+
+    #selectCourseName {
+        overflow: hidden;    
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        font-size: 14px;
+        margin-left: 5px;
+    }
 `
 
 export const ContainerOption = styled.div`  
@@ -321,7 +330,7 @@ export const ContainerAddMemberToClass = styled.div`
             margin-bottom: 10px;
         }
 
-        #course_name{
+        .course_name{
             font-size: 12px;
         }
 
@@ -394,7 +403,7 @@ export const ContainerTable = styled.table`
 
     #trTh{
         display: grid;
-        grid-template-columns: 22% 15% 25% 40%;
+        grid-template-columns: 22% 21% 25% 30%;
 
         border-bottom:  2px solid var(--color-blue);
         border-top:  2px solid var(--color-blue);
@@ -420,7 +429,7 @@ export const ContainerTable = styled.table`
 
             display: grid;
             align-items: center;
-            grid-template-columns:  20% 16% 55% 5%;
+            grid-template-columns:  20% 21% 50% 5%;
 
             height: 60px;
 

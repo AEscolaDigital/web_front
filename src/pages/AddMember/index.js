@@ -316,7 +316,7 @@ function AddMember() {
                         <Content>
                             <Dropzone 
                                 onUpload={handleUpload}
-                                text="Arraste uma arquivo .csv aqui..."
+                                text="Arraste um arquivo .csv aqui..."
                          />
                         </Content>
                     </UploadCSV>

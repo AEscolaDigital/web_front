@@ -66,7 +66,7 @@ function ListOfTasks() {
                 pathname: `/createTask`,
                 state: {
                     id: discipline.id,
-                    name: discipline.name,
+                    name: discipline.sigla,
                 }
             })
         } catch (error) {
@@ -86,8 +86,9 @@ function ListOfTasks() {
                     pathname: `/taskUserList`,
                     state: {
                         id: discipline.id,
-                        name: discipline.name,
-                        task: task
+                        name: discipline.sigla,
+                        teacher_name: discipline.teacher_name,
+                        task: task,
                     }
                 })
             } else {
@@ -95,7 +96,8 @@ function ListOfTasks() {
                     pathname: `/taskDelivery`,
                     state: {
                         id: discipline.id,
-                        name: discipline.name,
+                        name: discipline.sigla,
+                        teacher_name: discipline.teacher_name,
                         task: task
                     }
                 })
@@ -133,7 +135,7 @@ function ListOfTasks() {
 
                 {discipline.id > 0 && (
                     <div id="nameDiscipline" >
-                        <span>Tarefas da turma de {discipline.name}</span>
+                        <span>Tarefas da turma de {discipline.sigla}</span>
                     </div>
                 )}
 

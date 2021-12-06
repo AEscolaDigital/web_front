@@ -25,6 +25,7 @@ import Swal from "sweetalert2";
 function TaskDelivery() {
 
     const location = useLocation();
+    const teacherName = location.state.teacher_name
 
     const [task, setTask] = useState([]);
 
@@ -218,7 +219,7 @@ function TaskDelivery() {
                     <div>
 
                         <div id="infos" >
-                            <span>Prof. Amanda</span>
+                            <span>Prof. {teacherName}</span>
                             <h1>{task.name}</h1>
                             <span>Data de entrega: {task.date_delivery} </span>
                         </div>

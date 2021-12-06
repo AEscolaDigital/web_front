@@ -39,14 +39,18 @@ function Nav() {
                     }} >Tarefas</p>
                 </Link>
             </div>
-            <div>
-                <Link to="teams">
-                    <img src={iconNotes} alt="Ícone de notas" />
-                    <p style={{
-                        display: display
-                    }}>Notas</p>
-                </Link>
-            </div>
+
+            <PermissionComponent role="ROLE_ADMIN,ROLE_TEACHER" >
+                <div>
+                    <Link to="grades">
+                        <img src={iconNotes} alt="Ícone de notas" />
+                        <p style={{
+                            display: display
+                        }}>Notas</p>
+                    </Link>
+                </div>
+            </PermissionComponent>
+
             <PermissionComponent role="ROLE_ADMIN" >
                 <div>
                     <Link to="memberClassCreate">

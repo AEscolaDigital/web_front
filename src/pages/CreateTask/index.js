@@ -198,7 +198,7 @@ function CreateTask() {
                     <div id="taskHeader" >
                         <div className="titulo">
                             <p>Preencha os campos para adicionar uma tarefa</p>
-                            <span id="nameDisiciplina" >Disciplina: {discipline.name}
+                            <span id="nameDisiciplina" >Disciplina: {discipline.sigla}
                             </span>
                         </div>
                     </div>

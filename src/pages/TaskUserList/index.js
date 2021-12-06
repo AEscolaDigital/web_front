@@ -24,6 +24,8 @@ function ClassesList() {
     const location = useLocation();
     const task_id = location.state.task.id;
 
+    console.log(location.state);
+
     const [listUsers, setListUsers] = useState([]);
 
     const [loadListUsers, setloadListUsers] = useState(0);

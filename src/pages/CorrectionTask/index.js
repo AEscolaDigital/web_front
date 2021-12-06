@@ -22,6 +22,7 @@ import Swal from "sweetalert2";
 function CorrectionTask() {
 
     const location = useLocation();
+    const teacherName = location.state.disciplina.teacher_name;
 
     const [task, setTask] = useState([]);
 
@@ -128,7 +129,7 @@ function CorrectionTask() {
                     <div>
 
                         <div id="infos" >
-                            <span>Prof. Amanda</span>
+                            <span>Prof. {teacherName}</span>
                             <h1>{task.name}</h1>
                             <span>Data de entrega: {task.date_delivery} </span>
                         </div>

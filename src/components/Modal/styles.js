@@ -34,4 +34,8 @@ export const ModalContainer = styled.section`
     .labelWhite {
           background-color: white;
     }
+
+    @media (max-width: 1375px) {
+          max-height: 95vh; 
+    }
 `;
