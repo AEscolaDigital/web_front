@@ -10,10 +10,11 @@ import {
 import { useEffect, useState } from "react";
 import { api } from "../../services/api";
 import { getUserRole } from "../../services/security";
-import { Link } from "react-router-dom";
-
+import { useHistory } from "react-router-dom";
 
 function Grades() {
+
+    const history = useHistory();
 
     const [classes, setClasses] = useState([])
 
@@ -35,6 +36,28 @@ function Grades() {
 
     }, []);
 
+    const [classe, setClasse] = useState([]);
+
+
+    const handleSumibCastCrates = async (e) => {
+        e.preventDefault();
+
+        try {
+            history.push({
+                pathname: `/castCrates`,
+                state: {
+                    classe: classe,
+                }
+            })
+
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
+
+
+
     return (
         <>
             <Header />
@@ -46,15 +69,18 @@ function Grades() {
             </ContainerTitle>
             <ContainerCard>
                 {classes.map(classe =>
-                    <Card>
-                        <Link to="castCrates" >
-                            <img src={classe.image} alt="Classe" />
-                            <div class="data">
-                                <h1>{classe.sigla}</h1>
-                                <p>{classe.course_name}</p>
-                            </div>
-                        </Link>
-                    </Card>
+                    <form onSubmit={handleSumibCastCrates} >
+                        <button 
+                            onClick={() => setClasse(classe)}>
+                            <Card>
+                                <img src={classe.image} alt="Classe" />
+                                <div class="data">
+                                    <h1>{classe.sigla}</h1>
+                                    <p>{classe.course_name}</p>
+                                </div>
+                            </Card>
+                        </button>
+                    </form>
                 )}
             </ContainerCard>
         </>

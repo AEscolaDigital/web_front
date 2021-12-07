@@ -28,6 +28,11 @@ export const ContainerCard = styled.div`
     display: grid;
 
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+
+    button{
+        border: 0;
+        
+    }
 `
 
 export const Card = styled.div`
@@ -54,6 +59,7 @@ export const Card = styled.div`
     }
 
     .data {
+
         margin-top: 10px;
 
         >h1{

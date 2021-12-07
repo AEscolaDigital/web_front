@@ -17,9 +17,72 @@ export const Container = styled.div`
         margin-left: calc(50vw - 540px);
     }
 
+    #btnSubmit{
+        width: 98%;
+
+        display: flex;
+        justify-content: end;
+
+        margin-top: 20px;
+
+    }
+
 `
 
 export const ContainerFillInTheData = styled.div`
+
+    margin-left: 150px;
+    margin-bottom: 20px;
+
+    padding-top: 25px;
+
+    >h1{
+        color: var(--color-text);
+        margin-bottom: 10px;
+    }
+
+    >span{
+        color: var(--color-text);
+        margin-left: 10px;
+    }
+
+    fieldset{
+        width: 400px;
+        height: 100px;
+
+        border:2px solid var(--color-blue);
+
+        border-radius: 5px;
+
+        margin-top: 30px;
+        margin-bottom: 50px;
+        margin-left: 45px;
+
+        >legend{
+            margin-left: 16px;
+
+            padding: 0px 5px 0px 5px;
+
+            color: var(--color-text);
+        }
+
+        #selects{
+            display: grid;
+            
+            width: 275px;
+            height: 20px;
+
+            margin-left: 30px;
+            
+            >select{
+                margin-top: 10px;
+                border: 1px solid var(--color-blue);
+
+
+            }
+        }
+
+    }
 
 `
 
@@ -53,7 +116,7 @@ export const ContainerTable = styled.table`
         tr{
             display: grid;
             align-items: center;
-            grid-template-columns: 11% 18.5% 10% 12% 12% 12% 12% 12.5%;
+            grid-template-columns: 11% 18.5% 6% 12% 12% 12% 17% 12.5%;
 
             height: 60px;
 
@@ -74,9 +137,43 @@ export const ContainerTable = styled.table`
 
             border-radius: 100px;
         }
+        
+        .selectGrades{
+            /* margin-left: -50px; */
 
-        .inputGrades{
-            width: 40px;
+            border: 2px solid var(--color-blue);
         }
     }
+
+    
+    tfoot{
+         margin: auto;
+
+         height: 45px;
+
+         display: flex;
+         align-items: center;
+         justify-content: space-between;
+
+         background-color: var(--color-blue);
+         color: white;
+
+         border-radius: 10px;
+
+         padding: 0px 50px 0px 50px;
+
+        >div{
+            display: flex;
+            column-gap: 40px;
+
+            font-size: 12px;
+            font-weight: 600;
+
+            #divImgSetas>img{
+                margin-left: 45px;
+                cursor: pointer;
+            }
+        } 
+    }
+
 `
