@@ -4,7 +4,7 @@ import Nav from "../../components/Nav";
 import {
     ContainerTitle,
     ContainerCard,
-    Card
+    Card,
 } from "./styles";
 
 import { useEffect, useState } from "react";

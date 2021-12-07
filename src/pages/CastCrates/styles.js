@@ -18,6 +18,11 @@ export const Container = styled.div`
     }
 
 `
+
+export const ContainerFillInTheData = styled.div`
+
+`
+
 export const ContainerTable = styled.table`
     margin: auto;
     width: 96%;

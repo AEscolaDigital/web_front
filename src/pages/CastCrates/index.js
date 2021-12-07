@@ -6,7 +6,8 @@ import BtnSubmit from "../../components/BtnSubmit";
 
 import {
     ContainerTable,
-    Container
+    Container,
+    ContainerFillInTheData
 } from "./styles";
 
 function CastCrates() {
@@ -16,6 +17,16 @@ function CastCrates() {
             <Header />
             <Nav />
             <Container>
+
+                <ContainerFillInTheData>
+                    <h1>Lançamento de notas</h1>
+                    <span>Classe: DS3-M</span>
+
+                    <fieldset>
+
+                    </fieldset>
+
+                </ContainerFillInTheData>
 
                 <form>
 
@@ -44,37 +55,37 @@ function CastCrates() {
                                 <td>Samuel Goulart</td>
                                 <td>1</td>
                                 <td>
-                                    <input 
-                                        className="inputGrades" 
-                                        max="100" 
-                                        maxLength="3" 
-                                        min="1" 
+                                    <input
+                                        className="inputGrades"
+                                        max="100"
+                                        maxLength="3"
+                                        min="1"
                                         required
-                                        type="number"/>
+                                        type="number" />
                                 </td>
                                 <td>
-                                    <input 
-                                        className="inputGrades" 
-                                        max="100" 
-                                        maxLength="3" 
+                                    <input
+                                        className="inputGrades"
+                                        max="100"
+                                        maxLength="3"
                                         min="1"
                                         type="number" />
                                 </td>
                                 <td>
-                                    <input 
-                                        className="inputGrades" 
-                                        max="100" 
-                                        maxLength="3" 
-                                        min="1" 
+                                    <input
+                                        className="inputGrades"
+                                        max="100"
+                                        maxLength="3"
+                                        min="1"
                                         required
                                         type="number" />
                                 </td>
                                 <td>
-                                    <input 
-                                        className="inputGrades" 
-                                        max="100" 
-                                        maxLength="3" 
-                                        min="1" 
+                                    <input
+                                        className="inputGrades"
+                                        max="100"
+                                        maxLength="3"
+                                        min="1"
                                         required
                                         type="number" />
                                 </td>
@@ -91,34 +102,34 @@ function CastCrates() {
                                 <td>Samuel Goulart</td>
                                 <td>1</td>
                                 <td>
-                                    <input 
-                                        className="inputGrades" 
-                                        max="100" 
-                                        maxLength="3" 
-                                        min="1" 
-                                        required/>
-                                </td>
-                                <td>
-                                    <input 
-                                        className="inputGrades" 
-                                        max="100" 
-                                        maxLength="3" 
-                                        min="1" />
-                                </td>
-                                <td>
-                                    <input 
-                                        className="inputGrades" 
-                                        max="100" 
-                                        maxLength="3" 
-                                        min="1" 
+                                    <input
+                                        className="inputGrades"
+                                        max="100"
+                                        maxLength="3"
+                                        min="1"
                                         required />
                                 </td>
                                 <td>
-                                    <input 
-                                        className="inputGrades" 
-                                        max="100" 
-                                        maxLength="3" 
-                                        min="1" 
+                                    <input
+                                        className="inputGrades"
+                                        max="100"
+                                        maxLength="3"
+                                        min="1" />
+                                </td>
+                                <td>
+                                    <input
+                                        className="inputGrades"
+                                        max="100"
+                                        maxLength="3"
+                                        min="1"
+                                        required />
+                                </td>
+                                <td>
+                                    <input
+                                        className="inputGrades"
+                                        max="100"
+                                        maxLength="3"
+                                        min="1"
                                         required />
                                 </td>
                                 <td>Aprovado</td>
