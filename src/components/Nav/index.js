@@ -42,7 +42,7 @@ function Nav() {
 
             <PermissionComponent role="ROLE_ADMIN,ROLE_TEACHER" >
                 <div>
-                    <Link to="grades">
+                    <Link to="notes">
                         <img src={iconNotes} alt="Ícone de notas" />
                         <p style={{
                             display: display

@@ -12,7 +12,7 @@ import { api } from "../../services/api";
 import { getUserRole } from "../../services/security";
 import { useHistory } from "react-router-dom";
 
-function Grades() {
+function Notes() {
 
     const history = useHistory();
 
@@ -44,7 +44,7 @@ function Grades() {
 
         try {
             history.push({
-                pathname: `/castCrates`,
+                pathname: `/CastNote`,
                 state: {
                     classe: classe,
                 }
@@ -88,4 +88,4 @@ function Grades() {
 
 }
 
-export default Grades;
+export default Notes;

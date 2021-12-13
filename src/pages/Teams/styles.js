@@ -47,6 +47,15 @@ export const Container = styled.div`
            padding: 0px;
            margin-top: 20px;
         }
+        
+        >div:nth-child(3){
+          padding: 0px;
+        }
+
+        >div:nth-child(5){
+          padding: 0px;
+          margin-top: 20px;
+        }
 
     }
 
@@ -123,6 +132,7 @@ export const ContainerSelect = styled.div`
     select{
         width: 300px;
     }
+
 `
 
 export const Select = styled.div`

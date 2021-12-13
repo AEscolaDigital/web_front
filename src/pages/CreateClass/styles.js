@@ -17,6 +17,17 @@ export const Container = styled.div`
         margin-left: calc(50vw - 540px);
     }
 
+    .selectCourseName {
+        overflow: hidden;    
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
+        font-size: 14px;
+        margin-left: 5px;
+
+        max-width: 280px;
+    }
+
 `
 
 export const ContainerCreateClassAndSelectClass = styled.div`
@@ -50,10 +61,6 @@ export const CreateClassAndSelectClass = styled.div`
 
         font-size: 11px;
         color: var(--color-text);
-    }
-
-    form{
-        margin-left: 40px;
     }
 
     #select{
@@ -177,14 +184,6 @@ export const ContainerSearchDiv = styled.div`
 
     cursor: pointer;
 
-    #selectCourseName {
-        overflow: hidden;    
-        white-space: nowrap;
-        text-overflow: ellipsis;
-
-        font-size: 14px;
-        margin-left: 5px;
-    }
 `
 
 export const ContainerOption = styled.div`  

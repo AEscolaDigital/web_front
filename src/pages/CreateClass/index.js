@@ -415,7 +415,7 @@ function CreateClass() {
 
                         <ContainerSelect style={{ height: valueHeight }} >
                             <ContainerSearchDiv onClick={e => setToogle(state => !state)} >
-                                <span id="selectCourseName" >
+                                <span class="selectCourseName" >
                                         {usersClass.sigla} - {usersClass.course_name}
                                     </span>
                                 <img src={downArrow} alt="Icone seta para baixo" />
@@ -431,7 +431,7 @@ function CreateClass() {
                                         {classes.map(classe =>
                                             <div>
                                                 <a onClick={() => setIdClass(classe.id)} href="#class" >
-                                                    <span>{classe.sigla}</span>
+                                                    <span class="selectCourseName" >{classe.sigla} - {classe.course_name}</span>
                                                 </a>
                                                 <form
                                                     onSubmit={handleDeleteClass} >

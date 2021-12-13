@@ -3,8 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     max-width: 1440px;
     width: 85vw;
-    min-height: 900px;
-
+    
     background-color: white;
 
     margin: 50px 0px 100px calc(50vw - 700px);
@@ -139,10 +138,15 @@ export const ContainerTable = styled.table`
         }
         
         .selectGrades{
-            /* margin-left: -50px; */
-
+            width: 110px;
             border: 2px solid var(--color-blue);
+
+            @media (min-width: 1400px) {
+                width: 137px;
+            }
         }
+
+        
     }
 
     
