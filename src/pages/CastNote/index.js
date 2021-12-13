@@ -27,8 +27,6 @@ function CastNote() {
     const [disciplineSelects, setDisciplineSelects] = useState([]);
     const [semester, setSemester] = useState([]);   
 
-    console.log(notes);
-
     useEffect(() => {
         let loadNotes = async () => {
             try {
@@ -132,7 +130,7 @@ function CastNote() {
                                         <td>{note.user.name}</td>
                                         <td>{semester} </td>
                                         <td>
-                                            <select className="selectGrades" name="select">
+                                            <select className="selectGrades" id={`note_${note.user.id}`} name="select">
                                                 <option value="valor1">INFORME NOTA</option>
                                                 <option value="100">Nota - 100</option>
                                                 <option value="75">Nota - 75</option>

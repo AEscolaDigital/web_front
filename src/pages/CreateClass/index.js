@@ -10,7 +10,7 @@ import {
     ContainerSelect,
     ContainerOption,
     ContainerSearch,
-    Select,
+    Select1,
     ContainerSearchDiv,
     ContainerClassName,
     InputFile
@@ -21,6 +21,7 @@ import Header from "../../components/Header";
 import Input from "../../components/Input";
 import BtnSubmit from "../../components/BtnSubmit";
 import Dropzone from "../../components/Dropzone";
+import ProfilePicture from "../../components/ProfilePicture";
 
 import membro from "../../assets/createclass/membro.svg"
 import arrowLeft from "../../assets/addMember/arrowLeft.svg";
@@ -33,7 +34,12 @@ import iconDelete30 from "../../assets/iconsGlobal/iconDelete30.svg"
 import { api } from "../../services/api";
 import Swal from "sweetalert2";
 import { useEffect, useState } from "react";
-import ProfilePicture from "../../components/ProfilePicture";
+// import Select from 'react-select'
+
+// import { colourOptions } from '../../docs/data';
+
+
+
 
 function CreateClass() {
 
@@ -368,7 +374,6 @@ function CreateClass() {
                                 label="Nome do curso"
                                 handler={handleInput}
                                 value={formCreateClass.course_name}
-                                autocomplete="off"
                             />
 
                             <Input
@@ -376,7 +381,6 @@ function CreateClass() {
                                 label="Sigla da Turma"
                                 handler={handleInput}
                                 value={formCreateClass.sigla}
-                                autocomplete="off"
                             />
 
                             <Input
@@ -385,15 +389,22 @@ function CreateClass() {
                                 label="Data de inicio"
                                 handler={handleInput}
                                 value={formCreateClass.start_date}
-                                autocomplete="off"
                             />
+
+                            {/* <Select
+                                id="timeCourse"
+                                className="basic-single"
+                                classNamePrefix="select"
+                                defaultValue={colourOptions[0]}
+                                name="color"
+                            /> */}
 
                             <InputFile>
                                 <div className="files" >
                                     <div>
                                         <label>
-                                            {image !== null ? <span>{image.name} </span> : <span>Selecione uma image</span>  }
-                                         
+                                            {image !== null ? <span>{image.name} </span> : <span>Selecione uma image</span>}
+
                                             <input
                                                 type="file"
                                                 onChange={handleImage} />
@@ -416,15 +427,15 @@ function CreateClass() {
                         <ContainerSelect style={{ height: valueHeight }} >
                             <ContainerSearchDiv onClick={e => setToogle(state => !state)} >
                                 <span class="selectCourseName" >
-                                        {usersClass.sigla} - {usersClass.course_name}
-                                    </span>
+                                    {usersClass.sigla} - {usersClass.course_name}
+                                </span>
                                 <img src={downArrow} alt="Icone seta para baixo" />
                             </ContainerSearchDiv>
                             <ContainerOption style={{ display: value }} >
                                 <ContainerSearch>
                                     <input placeholder="Pesquisar" />
                                 </ContainerSearch>
-                                <Select src={iconDelete} >
+                                <Select1 src={iconDelete} >
                                     <span >Selecione alguma turma</span>
                                     <hr />
                                     <div id="option" >
@@ -444,7 +455,7 @@ function CreateClass() {
 
                                     </div>
 
-                                </Select>
+                                </Select1>
                                 <div id="footerSelect" >
                                     <div>
                                         Total de turmas:

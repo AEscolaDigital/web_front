@@ -63,6 +63,23 @@ export const CreateClassAndSelectClass = styled.div`
         color: var(--color-text);
     }
 
+    #timeCourse{
+        width: 380px;
+        margin-right: 15px;
+        
+        >div{
+            border: 2px solid var(--color-blue);
+            
+            
+
+            >div:nth-child(2){
+                span{
+                    background-color: var(--color-blue);
+                }
+            }
+        }
+    }
+
     #select{
         margin-top: 20px;
         margin-left: -10px;
@@ -218,7 +235,7 @@ export const ContainerSearch = styled.div`
      }
 
 `
-export const Select = styled.div`
+export const Select1 = styled.div`
     display: flex;
     flex-direction: column;
 
