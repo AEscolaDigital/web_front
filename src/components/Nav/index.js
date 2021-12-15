@@ -40,16 +40,14 @@ function Nav() {
                 </Link>
             </div>
 
-            <PermissionComponent role="ROLE_ADMIN,ROLE_TEACHER" >
-                <div>
-                    <Link to="notes">
-                        <img src={iconNotes} alt="Ícone de notas" />
-                        <p style={{
-                            display: display
-                        }}>Notas</p>
-                    </Link>
-                </div>
-            </PermissionComponent>
+            <div>
+                <Link to="notes">
+                    <img src={iconNotes} alt="Ícone de notas" />
+                    <p style={{
+                        display: display
+                    }}>Notas</p>
+                </Link>
+            </div>
 
             <PermissionComponent role="ROLE_ADMIN" >
                 <div>

@@ -80,14 +80,10 @@ function Router() {
                 <PrivateRoute path="/taskDelivery">
                     <TaskDelivery />
                 </PrivateRoute>
-                <PrivateRoute 
-                    path="/notes"
-                    role="ROLE_ADMIN">
+                <PrivateRoute path="/notes">
                     <Notes />
                 </PrivateRoute>
-                <PrivateRoute 
-                    path="/castNote"
-                    role="ROLE_ADMIN">
+                <PrivateRoute path="/castNote">
                     <CastNote />
                 </PrivateRoute>
             </Switch>
