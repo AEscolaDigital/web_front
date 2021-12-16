@@ -134,7 +134,7 @@ function CreateClass() {
 
     const waitingToAddaMemberToTheClass = (close) => {
         Swal.fire({
-            title: 'Adicionando alunos na turma!',
+            title: 'Aguarde!',
             html: 'Aguarde alguns segundos por favor',
             onOpen: () => {
                 Swal.showLoading()

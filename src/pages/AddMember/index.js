@@ -125,8 +125,8 @@ function AddMember() {
 
     const waitingToAddMember = (close) => {
         Swal.fire({
-            title: 'Aguarde',
-            html: 'Adicionando membros, na base de dados!',
+            title: 'Aguarde!',
+            html: 'Adicionando membros na base de dados!',
             onOpen: () => {
                 Swal.showLoading()
             },
@@ -194,9 +194,9 @@ function AddMember() {
     }
 
     const role = {
-        1: 'Administrador',
+        1: 'Administrador(a)',
         2: 'Aluno(a)',
-        3: 'Professor'
+        3: 'Professor(a)'
     }
 
     const [isModalVisible, setIsModalVisible] = useState(false);

@@ -82,7 +82,7 @@ function CompanyRegistration() {
 
     const waitingToAddAchool = (close) => {
         Swal.fire({
-            title: 'Gravando os dadados, <br>na base de dados!',
+            title: 'Aguarde!',
             html: 'Aguarde alguns segundos por favor',
             onOpen: () => {
                 Swal.showLoading()

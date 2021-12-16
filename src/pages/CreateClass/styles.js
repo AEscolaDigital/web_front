@@ -17,6 +17,14 @@ export const Container = styled.div`
         margin-left: calc(50vw - 540px);
     }
 
+    @media (min-width: 1400px) {
+        margin-left: calc(50vw - 575px);
+    }
+
+    @media (min-width: 1500px) {
+        margin-left: calc(50vw - 612px);
+    }
+
     .selectCourseName {
         overflow: hidden;    
         white-space: nowrap;

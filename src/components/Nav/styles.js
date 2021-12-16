@@ -51,7 +51,7 @@ export const ContainerNav = styled.nav`
     } 
 
     :hover{
-        width: 185px;
+        width: 210px;
         color: white;
     }  
   

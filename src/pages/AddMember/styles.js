@@ -58,6 +58,14 @@ export const Cabeçalho = styled.div`
         margin-left: calc(50vw - 540px);
     }
 
+    @media (min-width: 1400px) {
+        margin-left: calc(50vw - 575px);
+    }
+
+    @media (min-width: 1500px) {
+        margin-left: calc(50vw - 612px);
+    }
+
 `
 export const ContainerAddMemberLeft = styled.div`
    
@@ -106,6 +114,14 @@ export const Body = styled.div`
 
     @media (max-width: 1370px) {
         margin-left: calc(50vw - 540px);
+    }
+
+    @media (min-width: 1400px) {
+        margin-left: calc(50vw - 575px);
+    }
+
+    @media (min-width: 1500px) {
+        margin-left: calc(50vw - 612px);
     }
 
     height: 1220px;

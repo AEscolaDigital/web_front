@@ -82,7 +82,7 @@ function Header() {
                         <div>
                             <img src={downloadIcon} alt="Ícone de download" />
                         </div>
-                        <div>Dowload do aplicativo</div>
+                        <div>Download do aplicativo</div>
 
                     </Link>
                     <hr />
